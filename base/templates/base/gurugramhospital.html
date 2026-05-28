@@ -1,0 +1,2488 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - Dr Gaurav Mohan Clone{% endblock %}
+
+{% block meta_description %}Get in touch with Dr Gaurav Mohan Clone - We're here to help{% endblock %}
+
+{% block extra_css %}
+<!-- Add contact page specific CSS here -->
+<!-- <link rel="stylesheet" href="{% static 'base/css/contact.css' %}"> -->
+{% endblock %}
+
+{% block content %}
+
+    
+        <style>
+            #patientstories-section-outer.unit-patient.py-50 {
+                padding-top: 0;
+            }
+            /* map section */
+            .map-section {
+                padding: 40px;
+            }
+    
+            .map-container {
+                position: relative;
+            }
+    
+            .map-container .map {
+                border-radius: 20px;
+                box-shadow: 0 3px 30px rgba(0, 0, 0, 0.14);
+                border: 1px solid #ddd;
+                overflow: hidden;
+                line-height: 0;
+            }
+    
+            .location-card {
+                box-shadow: 0 3px 30px rgba(0, 0, 0, 0.14);
+                border-radius: 20px;
+                padding: 25px;
+                width: 400px;
+                max-width: 100%;
+                position: absolute;
+                left: 10px;
+                top: 10px;
+                background-color: #fff;
+                z-index: 88;
+            }
+    
+            .location-card .direction-frm {
+                position: relative;
+            }
+    
+            .location-card .direction-frm input[type="text"] {
+                border: 1px solid #D9D9D9;
+                box-shadow: 0 4px 50px rgba(0, 0, 0, 0.14);
+                border-radius: 15px;
+                height: 42px;
+                padding: 3px 120px 3px 15px;
+                font-size: 12px;
+                color: #58595B;
+                width: 100%;
+                font-family: 'Montserrat', sans-serif;
+            }
+    
+            .location-card .direction-frm button {
+                background-color: transparent;
+                outline: 0;
+                border: 0;
+                color: var(--primary);
+                font-size: 14px;
+                font-weight: 600;
+                position: absolute;
+                right: 0;
+                width: 140px;
+                height: 42px;
+                padding: 0;
+                font-family: 'Montserrat', sans-serif;
+                top: 0;
+                cursor: pointer;
+            }
+    
+            .location-card .contact-row {
+                display: flex;
+                gap: 10px;
+                margin-top: 25px;
+                font-size: 18px;
+                font-weight: 500;
+                /* width: 250px; */
+                width: 100%;
+                max-width: 100%;
+                line-height: 1.4;
+            }
+    
+            .location-card .contact-row .icon svg {
+                width: 16px;
+            }
+    
+            .location-card .contact-row a {
+                color: var(--primary);
+                font-weight: 600;
+            }
+    
+            .md-specialities {
+                margin-top: 0;
+                padding: 50px 0;
+            }
+    
+            @media screen and (max-width: 1599px) {
+                .location-card .direction-frm input[type="text"] {
+                    font-size: 11px;
+                }
+    
+                .location-card .direction-frm button {
+                    font-size: 13px;
+                }
+    
+                .location-card .contact-row {
+                    font-size: 16px;
+                }
+            }
+    
+            @media screen and (max-width: 1199px) {
+                .location-card .direction-frm button {
+                    font-size: 12px;
+                }
+    
+                .location-card .contact-row {
+                    font-size: 14px;
+                }
+    
+                .map-section {
+                    padding: 50px 20px;
+                }
+    
+                .location-card {
+                    padding: 20px;
+                }
+    
+            }
+    
+            @media screen and (max-width: 767px) {
+                .location-card {
+                    padding: 20px;
+                    position: relative;
+                    left: auto;
+                    top: auto;
+                    width: 96%;
+                    margin: -50px auto 0 auto;
+                }
+    
+                .map-container .map {
+                    position: relative;
+                    padding-bottom: 56.25%;
+                }
+    
+                .map-container .map iframe {
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                }
+                .md-specialities{
+                    padding:30px 0;
+                }
+                .location-card .contact-row {
+                    font-size: 13px;
+                }
+    
+            }
+    
+            /* end of map section */
+    
+            /* stats styling */
+            .stats-container {
+                box-shadow: 0 4px 40px rgba(0, 0, 0, 0.14);
+                display: flex;
+                border-radius: 20px;
+                top: -50px;
+                background-color: #fff;
+                position: relative;
+                flex-wrap: wrap;
+            }
+    
+            .stats-container .stats {
+                padding: 20px;
+                width: 25%;
+                text-align: center;
+            }
+    
+            .stats-container .stats .count {
+                color: var(--primary)
+            }
+    
+            .stats-container .stats .stats-title {
+                color: var(--text)
+            }
+    
+            @media screen and (max-width: 767px) {
+                .stats-container {
+                    border-radius: 0;
+                    top: 0;
+                    padding:0 0 30px 0;
+                    margin: 0 -20px;
+                    box-shadow: none;
+                }
+    
+                .stats-container .stats {
+                    padding: 10px;
+                    width: 50%;
+                }
+    
+                .stats-container .stats-inner {
+                    padding: 20px 10px;
+                    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.14);
+                    border-radius: 20px;
+                    border: 1px solid #dfdfdf;
+                    background-color: #fff;
+                    min-height: 100%;
+                }
+            }
+    
+            /* stats styling */
+    
+            /* view360-section */
+            .view360-section {
+                position: relative;
+            }
+    
+            .view360-section picture {
+                display: block;
+            }
+    
+            .view360-section .section-content {
+                width: 400px;
+                max-width: 100%;
+                padding: 0 20px;
+                margin: auto;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+    
+            .view360-section canvas {
+                max-width: 100%;
+            }
+    
+            .view360-section .section-content .text360-view {
+                font-size: 54px;
+                color: #fff;
+                font-weight: 700;
+            }
+            .view360-section .section-content .text360-view span{
+                font-weight:400;
+            }
+    
+            .view360-section .section-content .text360-view:after {
+                width: 2px;
+                margin: 20px auto;
+                height: 60px;
+                content: '';
+                background-color: #fff;
+                display: block;
+            }
+    
+            .view360-section .section-content .rotate-360-icon {
+                width: 62px;
+                margin: auto;
+            }
+    
+            @media screen and (max-width: 1599px) {
+                .view360-section .section-content .text360-view {
+                    font-size: 42px;
+                }
+            }
+    
+            @media screen and (max-width: 991px) {
+                .view360-section .section-content .text360-view {
+                    font-size: 32px;
+                }
+    
+                .view360-section .section-content .rotate-360-icon {
+                    width: 42px;
+                }
+            }
+    
+            /* end of view360-section */
+        </style>
+    
+      <!----------CSS Start------------------------->
+        <style>
+          body {
+            padding-top: 82px;
+          }
+    
+          .site-header {
+            height: 82px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: #fff;
+            padding: 15px 0;
+          }
+          .logo {
+            margin-bottom: -3px;
+            line-height: 0;
+          }
+          .logo svg {
+            max-width: 100%;
+          }
+    
+          .site-header nav .close-menu {
+            width: 32px;
+            height: 32px;
+            border: 0;
+            outline: 0;
+            text-align: center;
+            background-color: var(--primary);
+            color: #fff;
+            font-weight: 600;
+            position: absolute;
+            left: 300px;
+            top: 10px;
+            display: none;
+          }
+    
+          .site-header nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+          }
+    
+          nav {
+            display: flex;
+            justify-content: center;
+          }
+    
+          .site-header nav .menu {
+            display: flex;
+          }
+    
+          .site-header nav .menu > li {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin: 0 15px;
+          }
+    
+          .site-header nav .menu > li a {
+            display: block;
+            white-space: nowrap;
+            color: inherit;
+            padding: 18px 0;
+          }
+    
+          .site-header nav .menu li.has-submenu {
+            position: relative;
+            padding-right: 18px;
+          }
+    
+          .site-header nav .menu > li.has-submenu ul {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.14);
+            background-color: #fff;
+            padding: 10px 20px;
+            z-index: 999;
+            width: 280px;
+          }
+    
+          .site-header nav .menu > li.has-submenu .open-dropdown,
+          .site-header nav .menu > li.has-submenu .thirdopen-dropdown {
+            position: absolute;
+            right: 0;
+            background: transparent;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            top: 14px;
+            width: 12px;
+            height: 24px;
+            text-align: center;
+            cursor: pointer;
+          }
+    
+          .site-header nav .menu > li.has-submenu .open-dropdown svg,
+          .site-header nav .menu li.has-submenu .thirdopen-dropdown svg {
+            width: 10px;
+            height: auto;
+          }
+    
+          .site-header nav .menu li.third-level .open-dropdown {
+            top: 14px;
+            pointer-events: none;
+          }
+    
+          .site-header nav .menu li.third-level ul {
+            left: 260px;
+            top: 0;
+            display: none;
+            border-top-left-radius: 0;
+          }
+    
+          .site-header nav .menu > li.has-submenu ul li a {
+            color: var(--text);
+            white-space: normal;
+            padding: 10px 0;
+          }
+    
+          @media screen and (min-width: 1200px) {
+            .site-header nav .menu > li.has-submenu ul li a:hover,
+            .site-header nav .menu > li:hover a {
+              color: var(--primary);
+            }
+    
+            .site-header nav .menu > li.has-submenu:hover > ul,
+            .site-header nav .menu li.third-level:hover > ul {
+              display: block;
+            }
+    
+            .site-header nav .menu li.third-level .open-dropdown,
+            .site-header nav .menu li.third-level .thirdopen-dropdown {
+              transform: rotate(-90deg);
+              top: 14px;
+            }
+    
+            .site-header nav .menu li.third-level ul:before {
+              left: -40px;
+              top: 0;
+              width: 40px;
+              content: "";
+              position: absolute;
+              height: 100%;
+            }
+    
+            .site-header nav .menu li.third-level ul li.third-level ul {
+              left: auto;
+              top: 0px;
+              border-top-left-radius: 15px;
+              right: 100%;
+            }
+          }
+    
+          .site-header nav .menu > li.has-submenu ul li {
+            border-bottom: 1px solid rgba(88, 89, 91, 0.5);
+          }
+    
+          .site-header nav .menu > li.has-submenu ul li:last-child {
+            border-bottom: 0;
+          }
+    
+          .site-header nav .menu > li.has-submenu ul li a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 50px;
+          }
+    
+          .site-header nav .menu > li.has-submenu ul li a .icon {
+            width: 26px;
+            flex: 0 0 26px;
+          }
+    
+          .header-contact-number {
+            display: flex;
+            gap: 10px;
+          }
+    
+          .header-contact-number a.whatsapp-btn {
+            display: none;
+          }
+    
+          .header-contact-number a {
+            font-weight: 700;
+            display: flex;
+            padding: 10px 18px;
+            background-color: var(--primary);
+            border-radius: 40px;
+            border: 1px solid var(--primary);
+            color: #58595b;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          }
+    
+          .header-contact-number a img {
+            width: 24px;
+            height: 24px;
+            margin: auto;
+          }
+          .header-contact-number a.whatsapp-btn img,
+          .header-contact-number a.feedback-btn img,
+          .header-contact-number a.emergency-btn img {
+            display: block;
+          }
+          .header-contact-number a .txt {
+            display: none;
+            font-size: 10px;
+          }
+          .header-contact-number .reqcallback-btn span {
+            font-size: 12px;
+            color: #fff;
+            margin-left: 10px;
+          }
+    
+          .header-contact-number a.feedback-btn,
+          .header-contact-number a.emergency-btn {
+            background-color: transparent;
+          }
+    
+          .chatbot-waiting {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: rgba(255, 255, 255, 0.85)
+              url(../../../assets/images/icons/loading.svg) no-repeat center center;
+            background-size: 60px auto;
+          }
+    
+          #sendResumModal .frm-holder .theme-button {
+            width: 100%;
+            display: block;
+          }
+    
+          @media screen and (min-width: 1200px) {
+            .header-contact-number a.contact-btn,
+            .header-contact-number a.emergency-btn {
+              display: none;
+            }
+          }
+    
+          @media screen and (min-width: 1820px) {
+            .header-contact-number a .txt {
+              display: block;
+              margin-left: 5px;
+              font-size: 12px;
+            }
+            .header-contact-number a.reqcallback-btn {
+              color: #fff;
+            }
+          }
+    
+          @media screen and (max-width: 1699px) {
+            .site-header nav .menu > li {
+              margin: 0 10px;
+            }
+          }
+    
+          @media screen and (max-width: 1599px) {
+            .site-header nav .menu > li {
+              font-size: 14px;
+            }
+            .site-header nav .menu li.third-level .open-dropdown,
+            .site-header nav .menu li.third-level .thirdopen-dropdown {
+              top: 14px;
+            }
+          }
+    
+          @media screen and (max-width: 1399px) {
+            .logo {
+              width: 115px;
+            }
+            .site-header nav .menu > li {
+              font-size: 12px;
+              margin: 0 7px;
+            }
+            .site-header nav .menu li.third-level .open-dropdown,
+            .site-header nav .menu li.third-level .thirdopen-dropdown {
+              top: 12px;
+            }
+          }
+    
+          @media screen and (max-width: 1199px) {
+            body {
+              padding-top: 62px;
+            }
+    
+            .site-header {
+              border-bottom: 1px solid #d9d9d9;
+              padding: 7px 0;
+              height: 62px;
+            }
+            .site-header nav {
+              display: none;
+              position: fixed;
+              left: 0;
+              top: 62px;
+              right: 0;
+              bottom: 76px;
+              z-index: 999;
+              background-color: #fff;
+              overflow: auto;
+            }
+    
+            .site-header nav.is-opened {
+              display: block;
+            }
+    
+            .site-header nav .close-menu {
+              display: block;
+            }
+    
+            .site-header nav .menu > li.has-submenu ul li.active > a,
+            .site-header nav .menu > li.active > a {
+              color: var(--primary);
+            }
+    
+            .site-header nav .menu > li.has-submenu.active > ul {
+              display: block;
+            }
+    
+            .site-header nav .menu > li.has-submenu.active li.third-level ul {
+              display: none;
+            }
+    
+            .site-header nav .menu > li.has-submenu.active li.third-level.active ul {
+              display: block;
+            }
+    
+            .site-header nav .menu > li.has-submenu.active li.third-level ul {
+              display: none;
+            }
+    
+            .site-header nav .menu > li.has-submenu.active li.third-level.active ul {
+              display: block;
+            }
+    
+            .site-header
+              nav
+              .menu
+              > li.has-submenu.active
+              li.third-level
+              ul
+              li.third-level
+              ul {
+              display: none;
+            }
+    
+            .site-header
+              nav
+              .menu
+              > li.has-submenu.active
+              li.third-level.active
+              ul
+              li.third-level.active
+              ul {
+              display: block;
+            }
+    
+            .site-header
+              nav
+              .menu
+              > li.has-submenu.active
+              li.third-level.active
+              ul
+              li.third-level.active
+              ul
+              li.third-level
+              ul {
+              display: none;
+            }
+            .site-header
+              nav
+              .menu
+              > li.has-submenu.active
+              li.third-level.active
+              ul
+              li.third-level.active
+              ul
+              li.third-level.active
+              ul {
+              display: block;
+            }
+    
+            .site-header nav .menu {
+              display: block;
+              padding: 5px 20px;
+              overflow: auto;
+            }
+    
+            .site-header nav .menu > li {
+              margin: 0;
+              font-size: 13px;
+              border-bottom: 1px solid #dadada;
+            }
+    
+            .site-header nav .menu li.has-submenu {
+              padding-right: 0;
+            }
+            .site-header nav .menu li.has-submenu a.open-submenu {
+              padding-right: 30px;
+            }
+    
+            nav .menu > li a {
+              padding: 16px 0;
+            }
+    
+            nav .menu > li.has-submenu .open-dropdown {
+              top: 12px;
+              pointer-events: none;
+            }
+    
+            nav .menu > li.has-submenu.active > .open-dropdown svg path,
+            nav li.third-level.active > .open-dropdown svg path {
+              stroke: var(--primary);
+            }
+    
+            .site-header nav .menu > li.has-submenu ul {
+              position: static;
+              width: auto;
+              box-shadow: none;
+              margin-bottom: 15px;
+              padding: 0;
+            }
+            .site-header nav .menu > li.has-submenu.active ul {
+              display: block;
+            }
+    
+            .site-header nav .menu > li.has-submenu ul li a .icon {
+              width: 32px;
+              flex: 0 0 32px;
+            }
+            .header-contact-number a {
+              padding: 10px 15px;
+            }
+    
+            .header-contact-number a.reqcallback-btn {
+              display: none;
+            }
+          }
+    
+    
+          @media screen and (max-width: 767px) {
+            .header-contact-number {
+              gap: 0;
+            }
+            .header-contact-number a.whatsapp-btn {
+              display: block;
+            }
+            .header-contact-number a.feedback-btn {
+              display: none;
+            }
+            .site-header {
+              padding: 10px 0 7px 0;
+            }
+    
+            .header-contact-number a {
+              background-color: transparent;
+              border: 0;
+              display: block;
+              padding: 0;
+              margin-left: 15px;
+              text-align: center;
+            }
+            .header-contact-number a .txt {
+              display: block;
+            }
+            .header-contact-number a img {
+              margin-bottom: 5px;
+            }
+            .logo {
+              width: 100px;
+            }
+    
+            .cookies {
+              flex-wrap: wrap;
+            }
+            .cookies p {
+              margin: 0 0 15px;
+              width: 100%;
+            }
+            .cookies .list-details {
+              justify-content: center;
+              width: 100%;
+            }
+    
+            .header-contact-number a{width: auto; margin: 0 auto;}
+            .header-contact-number a.emergency-btn{width: 70px;}
+    
+    
+            .emergency-txt-grp {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+    
+            .flip-box {
+              width: 100px;
+              height: 24px;
+              perspective: 1000px;
+            }
+    
+            .flipper {
+              width: 100%;
+              height: 100%;
+              position: relative;
+              transform-style: preserve-3d;
+              animation: rotateText 4s infinite linear;
+            }
+    
+            .flip-text {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              backface-visibility: hidden;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: #f04e30;
+              font-size: 10px;
+              margin-top: -5px;
+            }
+    
+            .front {
+              transform: rotateY(0deg);
+            }
+    
+            .back {
+              transform: rotateY(180deg);
+            }
+    
+            @keyframes rotateText {
+              0% {
+                transform: rotateY(0deg);
+              }
+              50% {
+                transform: rotateY(180deg);
+              }
+              100% {
+                transform: rotateY(360deg);
+              }
+            }
+    
+    
+          }
+    
+        .emergency-btn-box-mb {
+            display: none !important;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0px;
+            text-decoration: none;
+            width: 70px;
+        }
+    
+        @keyframes flipLoop {
+            0% {
+                transform: rotateY(0deg);
+            }
+    
+            45% {
+                transform: rotateY(0deg);
+            }
+    
+            50% {
+                transform: rotateY(180deg);
+            }
+    
+            95% {
+                transform: rotateY(180deg);
+            }
+    
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+    
+        .emergency-side {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            gap: 0px;
+            flex-direction: column;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+    
+        .emergency-side.emergency-front {
+            background-color: #ffffff;
+            border: 1px solid #EE4F39;
+        }
+    
+        .emergency-side.emergency-front .emergency-text {
+            color: #58595B;
+            font-size: 12px;
+            font-weight: 700;
+        }
+    
+        .emergency-side.emergency-back {
+            background-color: #EE4F39;
+            font-size: 12px;
+            font-weight: 700;
+            transform: rotateY(180deg);
+        }
+    
+        .emergency-side.emergency-back .emergency-text {
+            color: #FFFFFF;
+        }
+    
+        .emergency-svg-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+        }
+    
+      .emergency-svg-wrapper::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background-color: #e9493093;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse-scale 2s infinite;
+            z-index: 0;
+        }
+    
+        .emergency-svg-wrapper svg {
+            /* animation: svg-vibrate 2s infinite; */
+            position: relative;
+            z-index: 1;
+        }
+    
+        @keyframes pulse-scale {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.7;
+            }
+    
+            50% {
+                transform: translate(-50%, -50%) scale(1.3);
+                opacity: 0.4;
+            }
+    
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.7;
+            }
+        }
+    
+        @keyframes svg-vibrate {
+            0% {
+                transform: translateY(0);
+            }
+    
+            50% {
+                transform: translateY(1px);
+            }
+    
+            100% {
+                transform: translateY(0);
+            }
+        }
+    
+        .emergency-info-box span {
+            font-size: 10px;
+            color: #58595B;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+    
+        .emergency-info-box {
+            position: relative;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+    
+        .emergency-info-box .emergency-number {
+            animation: blink1 5s infinite;
+        }
+    
+        .emergency-info-box .emergency-back {
+            transform: rotateY(180deg);
+        }
+    
+        .emergency-info-box .emergency-text {
+            animation: blink2 5s infinite;
+            transform: translateX(-50%) rotateY(180deg);
+        }
+    
+        @keyframes blink1 {
+            0% {
+                transform: translateX(-50%) rotateY(0deg);
+                opacity: 1;
+            }
+    
+            40% {
+                transform: translateX(-50%) rotateY(0deg);
+                opacity: 1;
+            }
+    
+            50% {
+                transform: translateX(-50%) rotateY(90deg);
+                opacity: 0;
+            }
+    
+            51% {
+                transform: translateX(-50%) rotateY(270deg);
+                opacity: 0;
+            }
+    
+            100% {
+                transform: translateX(-50%) rotateY(360deg);
+                opacity: 0;
+            }
+        }
+    
+        @keyframes blink2 {
+            0% {
+                transform: translateX(-50%) rotateY(180deg);
+                opacity: 0;
+            }
+    
+            49% {
+                transform: translateX(-50%) rotateY(180deg);
+                opacity: 0;
+            }
+    
+            50% {
+                transform: translateX(-50%) rotateY(270deg);
+                opacity: 0;
+            }
+    
+            51% {
+                transform: translateX(-50%) rotateY(360deg);
+                opacity: 1;
+            }
+    
+            90% {
+                transform: translateX(-50%) rotateY(360deg);
+                opacity: 1;
+            }
+    
+            100% {
+                transform: translateX(-50%) rotateY(540deg);
+                opacity: 0;
+            }
+        }
+    
+        @media screen and (max-width:767px) {
+            .header-contact-number a.emergency-btn-box-mb {
+                display: flex !important;
+                width: 80px;
+            }
+        }
+        </style>
+      <!----------CSS End------------------------->
+    
+      <style >[wire\:loading], [wire\:loading\.delay], [wire\:loading\.inline-block], [wire\:loading\.inline], [wire\:loading\.block], [wire\:loading\.flex], [wire\:loading\.table], [wire\:loading\.grid], [wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short], [wire\:loading\.delay\.long], [wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest] {display:none;}[wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {animation-duration: 50000s;animation-name: livewireautofill;}@keyframes livewireautofill { from {} }</style>
+
+<body>
+
+  
+
+  <div class="modal" id="Marmosetloadmodal">
+    <div class="close close-model-layer" data-close="modal"></div>
+    <div class="modal__dialog">
+      <div wire:id="siuo86jcBpOMX29kHy2y" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;siuo86jcBpOMX29kHy2y&quot;,&quot;name&quot;:&quot;request-callbacks&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;hospitals-near-me\/gurugram-hospital&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;332f6d7f&quot;,&quot;data&quot;:{&quot;name&quot;:null,&quot;email&quot;:null,&quot;mobile&quot;:null,&quot;type&quot;:&quot;home-navbar&quot;,&quot;token&quot;:&quot;&quot;,&quot;captcha&quot;:0,&quot;recaptcha&quot;:null,&quot;userIp&quot;:null,&quot;userAgent&quot;:null,&quot;currentPageUrl&quot;:&quot;https:\/\/www.sudharshan heart clinic.org\/hospitals-near-me\/gurugram-hospital&quot;,&quot;utm_source&quot;:&quot;Website&quot;,&quot;utm_medium&quot;:null,&quot;utm_campaign&quot;:null,&quot;getSubSource&quot;:&quot;Website - gurugram-hospital&quot;,&quot;utm_term&quot;:null},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;2e2a2bc7a62709aab403ce03a75d535021752b3020f9f8e7f0b44e4b2daa8c92&quot;}}">
+    <a class="close close-modal" data-close="modal" id="closeModal"></a>
+    <div class="modal__content">
+    <div class="modal-body">
+        <h2 class="reacllHeading">Request Call Back</h2>
+        <div class="btn-modal text-right">
+            <form wire:submit.prevent="submit">
+                <div >
+                                    </div>
+                <label for="fname">Name *</label>
+                <input type="text" id="fname" name="fname" value="" wire:model.lazy="name" placeholder="Enter Your Name">
+                
+                <label for="lname">Mobile Number *</label>
+                <input type="number" id="lname" name="lname" value="" wire:model.lazy="mobile" placeholder="Enter Your Mobile Number">
+                
+                <label for="lname">Email</label>
+                <input type="text" id="lname" name="lname" value="" wire:model.lazy="email" placeholder="Enter Your Email">
+                
+                <input type="hidden" name="type" wire:model="type" value="home-navbar">     
+                <br> <br>
+                <button type="submit" class="submitpopupbt" wire:click="loading">Submit</button>
+                <div class="form-loader loading" wire:loading wire:target="loading">
+                    <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                        <g transform="rotate(0 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(30 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(60 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(90 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(120 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(150 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(180 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(210 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(240 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(270 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(300 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(330 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                    </svg>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <script>
+        window.addEventListener('close-modal', function(event) {
+            const delay = event.detail.delay;
+            setTimeout(function() {
+                var $closeModal = document.querySelector('#closeModal');
+                $closeModal.click();
+            }, 5000);
+        });
+    </script>
+    
+        <script type="text/javascript">
+             window.addEventListener('postUpdated', event => {
+                var $closeModal = document.querySelector('#closeModal');
+                $closeModal.click();
+            })
+            var onCallback = function (){
+                // alert('ue');
+                console.log('gcaptch')
+                console.log(grecaptcha.getResponse());
+                window.livewire.find('siuo86jcBpOMX29kHy2y').set('recaptcha',grecaptcha.getResponse());
+            }
+            window.addEventListener('reset-recaptcha', event => {
+                grecaptcha.reset();
+            })
+        </script>
+    
+</div>
+
+<!-- Livewire Component wire-end:siuo86jcBpOMX29kHy2y -->    </div>
+  </div>
+
+  <!-- Upload Resume Model -->
+  <div class="modal" id="sendResumModal">
+    <div class="close close-model-layer" data-close="modal"></div>
+    <div class="modal__dialog">
+      <a class="close close-modal" data-close="modal"></a>
+      <div class="modal__content">
+        <div class="modal-body">
+          <div class="frm-holder">
+            <div wire:id="U9Uvd4ipI60mNKaPcZno" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;U9Uvd4ipI60mNKaPcZno&quot;,&quot;name&quot;:&quot;jop-application-list&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;hospitals-near-me\/gurugram-hospital&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;62240f24&quot;,&quot;data&quot;:{&quot;name&quot;:null,&quot;email&quot;:null,&quot;mobile&quot;:null,&quot;resume&quot;:null,&quot;userIp&quot;:null,&quot;userAgent&quot;:null,&quot;currentPageUrl&quot;:&quot;https:\/\/www.sudharshan heart clinic.org\/hospitals-near-me\/gurugram-hospital&quot;,&quot;utm_source&quot;:&quot;Website&quot;,&quot;utm_medium&quot;:null,&quot;utm_campaign&quot;:null,&quot;utm_term&quot;:null},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;655585d5da35fe6fb9102b0a8ae202132e4476952ffd7adb98669b4ca0aeefb6&quot;}}">
+            <form wire:submit.prevent="save()">
+
+        <div class="field">
+            <label>Name *</label>
+            <input type="text" class="inputbox" wire:model.defer="name" placeholder="Enter Your Name" onkeydown="return /[a-zA-Z ]/i.test(event.key)">
+            <br>
+        </div>
+        <div class="field">
+            <label>Mobile Number *</label>
+            <input type="number" class="inputbox"  wire:model.defer="mobile" placeholder="Enter Your Number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);">
+            <br>
+        </div>
+        <div class="field">
+            <label>Email *</label>
+            <input type="email" class="inputbox"  wire:model.defer="email" placeholder="Enter Your Email">
+            <br>
+        </div>
+
+        <div class="field mb-20">
+            <label>Resume (accepted only pdf, docx) *</label>
+            <div class="upload-file" wire:ignore>
+                <input type="file" class="inputbox" id="resume" name="resume" wire:model.defer="resume"/>
+            </div>
+            <br>
+        </div>
+        <button type="submit" class="theme-button">Submit</button>
+        <div class="form-loader loading" wire:loading wire:target="save">
+            <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                <g transform="rotate(0 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(30 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(60 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(90 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(120 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(150 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(180 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(210 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(240 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(270 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(300 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(330 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g>
+            </svg>
+        </div>
+    </form>
+     <script>
+        window.addEventListener('resetFileInput', event => {
+            document.getElementById('resume').value = null;
+        });
+    </script>
+</div>
+
+<!-- Livewire Component wire-end:U9Uvd4ipI60mNKaPcZno -->          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      <div class="sticky-links">
+        <div class="container">
+            <ul>
+                <li><a href="#abouthospital-section">About</a></li>
+                                    <li><a href="#specialities-section">Specialities</a></li>
+                                <li><a href="#team-section">Meet Our Doctors</a></li>
+                 <li><a href="#technology-section">Technology</a></li>                  <li><a href="#updates-section">Updates</a></li>                                     <li><a href="#patientstories-section-outer">Patient Stories</a></li>
+                    <li><a href="#awards-section">Awards & Accreditations</a></li>
+                                <li><a href="#map-section">Map</a></li>
+                <li><a href="#hospitals-section">Dr Gaurav Mohan Network</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="herobanner">
+        <section class="innerpage-banner">
+                <picture class="img-wrap">
+                    <source media="(min-width: 768px)" srcset="https://www.lnh.edu.pk/BlueTheme/images/bg/Hero-Services-image.jpg" width="1920" height="500" alt="Delhi-hospital"/>
+                    <source media="(min-width: 320px)" srcset="https://www.lnh.edu.pk/BlueTheme/images/bg/Hero-Services-image.jpg" width="480" height="320" alt="Delhi-hospital"/>
+                    <img src="https://www.lnh.edu.pk/BlueTheme/images/bg/Hero-Services-image.jpg" width="1920" height="500" alt="Delhi-hospital"/>
+                </picture>
+            <div class="banner-caption text-center">
+                            </div>
+        </section>
+     
+    </div>
+
+    <section class="direction-section section-lightbg" id="abouthospital-section">
+        <div class="container">
+            <div wire:id="e1oaYffFcEeisf6DdWJA" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;e1oaYffFcEeisf6DdWJA&quot;,&quot;name&quot;:&quot;hospital-description&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;hospitals-near-me\/gurugram-hospital&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;dispatches&quot;:[{&quot;event&quot;:&quot;load&quot;,&quot;data&quot;:null}],&quot;listeners&quot;:[&quot;emitBannerEvent&quot;]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;faf632a0&quot;,&quot;data&quot;:{&quot;hospital&quot;:[]},&quot;dataMeta&quot;:{&quot;models&quot;:{&quot;hospital&quot;:{&quot;class&quot;:&quot;App\\Models\\Hospital&quot;,&quot;id&quot;:1,&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null}}},&quot;checksum&quot;:&quot;b7cd5ec38c38e7b5aac75e566935e121daf1b817314f91df9bd14cba2512f55e&quot;}}">
+    <style>
+       /* .stats-container{
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            text-align: center;
+            display: grid !important;
+        }
+        
+        .stats-container .stats{
+            width:100% !important;
+        }*/
+    </style>
+    <div class="stats-container" id="stats-counter" style="justify-content: center;">
+                    <div class="stats">
+                <div class="stats-inner">
+                    <div class="count heading-lg" data-count="900">1200+</div>
+                    <div class="stats-title sudharshan heart clinicxsheading font600">Happy Patients</div>
+                </div>
+            </div>
+                 
+            <div class="stats">
+                <div class="stats-inner">
+                    <div class="count heading-lg" data-count="1300">800+</div>
+                    <div class="stats-title sudharshan heart clinicxsheading font600">Angiography</div>
+                </div>
+            </div>
+                 
+            <div class="stats">
+                <div class="stats-inner">
+                    <div class="count heading-lg" data-count="500">500+</div>
+                    <div class="stats-title sudharshan heart clinicxsheading font600">Angioplasty</div>
+                </div>
+            </div>
+                 
+            <div class="stats">
+                <div class="stats-inner">
+                    <div class="count heading-lg" data-count="30">107+</div>
+                    <div class="stats-title sudharshan heart clinicxsheading font600">Awards & Certifications</div>
+                </div>
+            </div>
+            </div>
+
+    <div class="col-wrap dflex flexwrap py-50">
+        <div class="col col5">
+            <h1 class="heading mb-20 wow fadeInUp">Dr Gaurav Mohan - The Medicity, Delhi</h1>
+            <a href="https://www.google.com/maps/dir//Dr Gaurav Mohan+-+The+Medicity+CH+Baktawar+Singh+Rd+Medicity,+Islampur+Colony,+Sector+38+Delhi,+Haryana+122001/@28.4391555,77.0407063,19.7z/data=!4m8!4m7!1m0!1m5!1m1!1s0x390d186ec89f751b:0xdc2ab32fc4675cac!2m2!1d77.040637!2d28.439238?entry=ttu" target="_blank" class="anchor-button wow fadeInUp">Get Directions <span></span> </a>
+        </div>
+        <div class="col col7">
+            <div class="para-wrap mb-10 content-holder wow fadeInUp" data-wow-delay=".3s">
+    <div class="more-content show">
+        <div class="mb-10">
+            <p>Dr Gaurav Mohan Delhi was established by <a href="/hospitals-near-me/gurugram-hospital/speciality/cardiology/doctor/dr-naresh-trehan"><span style="text-decoration: underline;">Dr Gaurav Mohan</span></a>, a globally respected expert in cardiovascular and cardiothoracic surgery. The institution was created with the goal of providing advanced, high-quality, and affordable healthcare services.&nbsp;</p>
+            <p>For six consecutive years, Dr Gaurav Mohan Delhi has been recognized as the Best Private Hospital in India (2020, 2021, 2022, 2023, 2024, and 2025). It was also included in the list of the top 250 hospitals worldwide in the World's Best Hospitals Survey 2024 by News...</p>
+        </div>
+        <a href="javascript:void(0)" class="anchor-button read-more">Read More <span></span></a>
+    </div>
+    <div class="less-content">
+        <div class="mb-10">
+            <p>Dr Gaurav Mohan Delhi was established by <a href="/hospitals-near-me/gurugram-hospital/speciality/cardiology/doctor/dr-naresh-trehan"><span style="text-decoration: underline;">Dr Gaurav Mohan</span></a>, a globally respected cardiovascular and cardiothoracic surgeon. The centre was created with the vision of offering advanced, reliable, and affordable medical care.&nbsp;</p>
+            <p>For six consecutive years, Dr Gaurav Mohan Delhi has been honoured as India’s Best Private Hospital (2020 through 2025). It was also ranked among the top 250 hospitals worldwide in the Newsweek World's Best Hospitals Survey 2024.&nbsp;<br>The hospital is designed to ensure accessible, high-quality healthcare for patients, following the architectural standards for medical institutions set by the American Institute of Architects. To support superior patient care, we offer:</p>
+            <ul>
+                <li>43-acre campus&nbsp;</li>
+                <li>30+ medical specialities&nbsp;</li>
+                <li>900+ doctors&nbsp;</li>
+                <li>40 operation theatres&nbsp;</li>
+                <li>1,391 operational beds&nbsp;</li>
+                <li>270+ ICU beds&nbsp;</li>
+                <li>JCI and NABH accreditation&nbsp;</li>
+                <li>NABL accreditation</li>
+            </ul>
+        </div>
+        <a href="javascript:void(0)" class="anchor-button read-less">Read Less <span></span></a>
+    </div>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', ()=>{
+            Livewire.emit('emitBannerEvent');
+        })
+    </script>
+
+</div>
+
+<!-- Livewire Component wire-end:e1oaYffFcEeisf6DdWJA -->        </div>
+    </section>
+
+            <section class="md-specialities" id="specialities-section">
+    <div class="container">
+        <div wire:id="jM46Tl9mQdM8vJnRWRoc" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;jM46Tl9mQdM8vJnRWRoc&quot;,&quot;name&quot;:&quot;speciality&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;hospitals-near-me\/gurugram-hospital&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;dbac23cf&quot;,&quot;data&quot;:{&quot;specialities&quot;:[],&quot;treatment&quot;:null,&quot;procedure&quot;:null,&quot;desease&quot;:null,&quot;availableChars&quot;:[&quot;Osteoarthritis&quot;,&quot;Frozen Shoulder&quot;,&quot;Disc Prolapse&quot;,&quot;Fibromyalgia&quot;,&quot;Hip Fracture&quot;,&quot;Paget\u2019s Disease&quot;,&quot;Knee Fractures &amp; Injuries&quot;,&quot;Trigger Finger&quot;,&quot;Severe Bone Fracture&quot;,&quot;Panfacial Fractures&quot;,&quot;Dystonia&quot;,&quot;Prolapsed Intervertebral Disc&quot;,&quot;Flatfeet&quot;,&quot;Osteoporosis&quot;,&quot;Carcinoma Lung&quot;,&quot;Pilonidal Sinus&quot;,&quot;Pimple&quot;,&quot;Scabies&quot;,&quot;Rosacea&quot;,&quot;Skin Allergies&quot;,&quot;Androgenetic Alopecia or Pattern Baldness&quot;,&quot;Impetigo&quot;,&quot;Gynecomastia&quot;,&quot;Maxillary and Mandibular Fractures&quot;,&quot;Severe Burns&quot;,&quot;Dental Malocclusions&quot;,&quot;Road Accidents&quot;,&quot;Traumatic Crush Injuries&quot;,&quot;Extensive Wound or Trauma&quot;,&quot;Nasal Polyps&quot;,&quot;Allergic Rhinitis&quot;,&quot;Deviated Nasal Septum&quot;,&quot;Maxillary Sinusitis&quot;,&quot;Chronic Otitis Media&quot;,&quot;Eardrum Perforation&quot;,&quot;Asperger\u2019s disease&quot;,&quot;Marfan Syndrome&quot;,&quot;Coronary Artery Disease&quot;,&quot;Rheumatic Heart Disease&quot;,&quot;Heart Failure&quot;,&quot;Hypertension &quot;,&quot;Kidney Cancer&quot;,&quot;Acute Kidney Injury&quot;,&quot;Bartter Syndrome&quot;,&quot;Bladder Pain Syndrome&quot;,&quot;Glomerular Disease&quot;,&quot;Diabetic Kidney Disease&quot;,&quot;Horseshoe Kidney&quot;,&quot;Urinary Incontinence&quot;,&quot;Renal Tubular Acidosis&quot;,&quot;Nephrotic Syndrome&quot;,&quot;Carcinoma Prostate&quot;,&quot;Interstitial Cystitis&quot;,&quot;Hydronephrosis&quot;,&quot;Head and Neck Cancer&quot;,&quot;Carcinoma Pancreas&quot;,&quot;Lung Cancer&quot;,&quot;Tracheal Cancer&quot;,&quot;Brain Metastasis&quot;,&quot;Dysphagia&quot;,&quot;Voice Box Tumours&quot;,&quot;Pharyngeal Cancer&quot;,&quot;Carcinoma Buccal Mucosa&quot;,&quot;Carcinoma Larynx&quot;,&quot;Bloody Nipple Discharge&quot;,&quot;Carcinoma Tonsil&quot;,&quot;Bowen\u2019s Disease&quot;,&quot;Acute Myeloid Leukemia&quot;,&quot;Fibrocystic Disease&quot;,&quot;Melanoma&quot;,&quot;Tongue Cancer&quot;,&quot;Lipoma&quot;,&quot;Large Ductal Carcinoma&quot;,&quot;Lip Cancer&quot;,&quot;Laryngeal Cancer&quot;,&quot;Ewing\u2019s Sarcoma&quot;,&quot;Brain Cancer&quot;,&quot;Glioblastoma (GBM)&quot;,&quot;Meningioma&quot;,&quot;Multiple Sclerosis&quot;,&quot;Cerebral Aneurysm&quot;,&quot;Acquired Brain Injury&quot;,&quot;Trigeminal Neuralgia&quot;,&quot;Agnosia&quot;,&quot;Anxiety&quot;,&quot;CSF Rhinorrhea&quot;,&quot;Huntington&#039;s Disease&quot;,&quot;Skull Base Tumor&quot;,&quot;Extradural Spinal Tumour&quot;,&quot;Migraine&quot;,&quot;Lumbar Canal Stenosis&quot;,&quot;Intradural Spinal Tumour&quot;,&quot;Obsessive Compulsive Disorder&quot;,&quot;Traumatic Brain Injury&quot;,&quot;Parkinson\u2019s Disease&quot;,&quot;Craniosynostosis&quot;,&quot;Tourette Syndrome&quot;,&quot;Moebius Syndrome&quot;,&quot;Nerve Injury&quot;,&quot;Hemifacial Spasm&quot;,&quot;Dawson Disease&quot;,&quot;Hydrocephalus&quot;,&quot;Ulcer&quot;,&quot;Fecal Incontinence&quot;,&quot;Biliary Atresia&quot;,&quot;Biliary Disease&quot;,&quot;Dyspepsia (Indigestion, Upset Stomach)&quot;,&quot;Esophageal Obstruction&quot;,&quot;Peritonitis&quot;,&quot;Irritable Bowel Syndrome&quot;,&quot;Extreme Obesity&quot;,&quot;Internal Hemorrhoidal Prolapse&quot;,&quot;Carcinoma Esophagus&quot;,&quot;Cholecystitis&quot;,&quot;Hepatitis C&quot;,&quot;Hernia&quot;,&quot;Carcinoma Rectum&quot;,&quot;Jaundice&quot;,&quot;GESTATIONAL DIABETES&quot;,&quot;Keratoconus&quot;,&quot;Immunodeficiency Disorder&quot;,&quot;Goodpasture Syndrome&quot;,&quot;Myositis&quot;,&quot;Rheumatoid Arthritis&quot;,&quot;Diabetic Foot Infection&quot;,&quot;Cushing Syndrome&quot;,&quot;Adenoid Hypertrophy&quot;],&quot;availableCharsArr&quot;:[],&quot;availableProcedureCharsArr&quot;:[],&quot;availableTechnologyCharsArr&quot;:{&quot;2&quot;:&quot;c&quot;,&quot;3&quot;:&quot;d&quot;,&quot;6&quot;:&quot;g&quot;,&quot;8&quot;:&quot;i&quot;,&quot;11&quot;:&quot;l&quot;,&quot;12&quot;:&quot;m&quot;,&quot;14&quot;:&quot;o&quot;,&quot;15&quot;:&quot;p&quot;,&quot;17&quot;:&quot;r&quot;,&quot;19&quot;:&quot;t&quot;},&quot;availableDeseaseCharsArr&quot;:{&quot;0&quot;:&quot;a&quot;,&quot;1&quot;:&quot;b&quot;,&quot;2&quot;:&quot;c&quot;,&quot;3&quot;:&quot;d&quot;,&quot;4&quot;:&quot;e&quot;,&quot;5&quot;:&quot;f&quot;,&quot;6&quot;:&quot;g&quot;,&quot;7&quot;:&quot;h&quot;,&quot;8&quot;:&quot;i&quot;,&quot;9&quot;:&quot;j&quot;,&quot;10&quot;:&quot;k&quot;,&quot;11&quot;:&quot;l&quot;,&quot;12&quot;:&quot;m&quot;,&quot;13&quot;:&quot;n&quot;,&quot;14&quot;:&quot;o&quot;,&quot;15&quot;:&quot;p&quot;,&quot;17&quot;:&quot;r&quot;,&quot;18&quot;:&quot;s&quot;,&quot;19&quot;:&quot;t&quot;,&quot;20&quot;:&quot;u&quot;,&quot;21&quot;:&quot;v&quot;},&quot;availableTreatmentCharsArr&quot;:{&quot;0&quot;:&quot;a&quot;,&quot;1&quot;:&quot;b&quot;,&quot;2&quot;:&quot;c&quot;,&quot;3&quot;:&quot;d&quot;,&quot;4&quot;:&quot;e&quot;,&quot;5&quot;:&quot;f&quot;,&quot;7&quot;:&quot;h&quot;,&quot;8&quot;:&quot;i&quot;,&quot;11&quot;:&quot;l&quot;,&quot;12&quot;:&quot;m&quot;,&quot;13&quot;:&quot;n&quot;,&quot;15&quot;:&quot;p&quot;,&quot;17&quot;:&quot;r&quot;,&quot;18&quot;:&quot;s&quot;,&quot;19&quot;:&quot;t&quot;,&quot;20&quot;:&quot;u&quot;,&quot;21&quot;:&quot;v&quot;},&quot;selectedChar&quot;:&quot;&quot;,&quot;slug&quot;:&quot;gurugram-hospital&quot;,&quot;heading2&quot;:null,&quot;isMediclinic&quot;:null,&quot;searchType&quot;:&quot;Diseases&quot;,&quot;charArr&quot;:[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;,&quot;f&quot;,&quot;g&quot;,&quot;h&quot;,&quot;i&quot;,&quot;j&quot;,&quot;k&quot;,&quot;l&quot;,&quot;m&quot;,&quot;n&quot;,&quot;o&quot;,&quot;p&quot;,&quot;q&quot;,&quot;r&quot;,&quot;s&quot;,&quot;t&quot;,&quot;u&quot;,&quot;v&quot;,&quot;w&quot;,&quot;x&quot;,&quot;y&quot;,&quot;z&quot;]},&quot;dataMeta&quot;:{&quot;modelCollections&quot;:{&quot;specialities&quot;:{&quot;class&quot;:&quot;App\\Models\\Speciality&quot;,&quot;id&quot;:[110,112,137,138,9,111],&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:&quot;Kalnoy\\Nestedset\\Collection&quot;}},&quot;collections&quot;:[&quot;availableChars&quot;]},&quot;checksum&quot;:&quot;d7c3aea08e46b645999fe8419fbb03aa5621ead76ddbfbaa2ca7e95bbed3b4a6&quot;}}">
+    <style>
+        .md-specialities .md-specialitesinner .md-sp-inner.md-sp-part-a{padding-left: 0;}
+        .btnn-sp{padding-top: 20px;}
+        .btnn-sp .btnn-health-b{padding: 15px 0 0 15px}
+        @media screen and (max-width: 767px) {
+            .btnn-sp{padding-top: 0px;}
+            .btnn-sp .btnn-health-b{padding: 0px 0 15px 0px}
+        }
+
+    </style>
+    <div class="md-specialitesinner" wire:initial="loadData">
+        <div class="md-sp-inner md-sp-part-a">
+            <h4 class="md-sp-subheading wow fadeInUp">Specialities</h4>
+            <h2 class="md-sp-heading wow fadeInUp" data-wow-delay=".3s">An Ecosystem for Clinical Excellence</h2>
+            
+        </div>
+        <div class="md-sp-inner md-sp-innerborder wow fadeInUp" data-wow-delay=".5s">
+            <div class="sp-wrapper sp-center-filter">
+                                    <a href="/hospitals-near-me/gurugram-hospital/speciality/cardiology">
+                        <div class="md-all-sp active">
+                            <div class="md-all-spInner">
+                                                                                                                                                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M33 22.5L23.5 24L22 25V27.5L23 33.5L24 37.5V43V49.5L23 54C22.6667 55.8333 22 59.6 22 60V70.5C22 71.5 23 73 23.5 73C23.9 73 25.3333 75.3333 26 76.5L27.5 78H31L35.5 77L37.5 75.5L39.5 70L40 66.5L41.5 62.5L42.5 59.5L44 56.5V54L42 52L39.5 50L37.5 47L35.5 45.5L35 42.5L34 38V35L35.5 31.5L36.5 28.5L36 25.5L34 23.5L33 22.5Z" fill="#F04E30"/>
+<path d="M39.8602 65.8231C39.8602 65.8231 42.1099 55.4719 48.4164 52.3246C54.7109 49.1773 55.1657 48.7226 55.1657 48.7226C55.1657 48.7226 56.5179 40.1664 61.0174 38.8261C65.517 37.4858 80.3677 37.9286 81.72 37.9286C83.0722 37.9286 84.8672 39.7236 85.322 42.8828C85.7767 46.0301 84.4245 48.7346 80.8225 48.7346H74.0732C74.0732 48.7346 73.6185 51.4391 74.0732 52.7793C74.5279 54.1316 84.8792 63.1306 89.3787 67.1754C93.8782 71.2202 95.6732 80.2311 94.7757 87.4232C93.8782 94.6272 92.0712 96.4222 92.0712 97.7745C92.0712 99.1267 92.0712 103.171 90.2762 104.524C88.4812 105.876 78.1299 107.228 63.7219 102.729C49.3259 98.2292 39.8721 91.4799 38.0652 89.2302C36.2701 86.9804 35.8154 85.1854 35.8154 85.1854C35.8154 85.1854 24.1119 79.7884 22.3169 72.5844C20.5218 65.3804 22.3169 55.9386 23.6691 50.5296C25.0214 45.1326 22.7716 34.7813 22.3169 29.8271C21.8621 24.8728 21.4194 22.623 28.1686 22.623C34.9179 22.623 35.3726 23.5206 35.8154 24.4181C36.2582 25.3156 37.1676 28.4628 37.1676 28.4628" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M71.8107 37.0207C71.8107 37.0207 70.0157 32.5211 69.561 31.6236C69.1063 30.7261 68.6635 30.2714 68.6635 30.2714C68.6635 30.2714 73.6177 28.4764 73.6177 27.1241C73.6177 25.7719 71.368 22.1699 69.573 20.8296C67.7779 19.4773 66.4257 18.5798 64.1759 20.8296L61.4714 23.5341C61.4714 23.5341 59.4012 22.8041 58.7669 22.6366C58.1207 22.4571 56.5172 22.1818 56.5172 22.1818C56.5172 22.1818 57.4147 16.7848 56.0625 15.8873C54.7102 14.9898 48.8585 14.9898 47.0634 15.4326C45.2684 15.8873 43.9162 16.7848 44.3589 18.5798C44.8137 20.3749 46.154 23.5341 46.154 23.5341C46.154 23.5341 42.552 24.4316 39.4047 26.6813C36.2574 28.9311 33.1102 35.2376 34.4504 40.6346C35.8027 46.0316 40.3022 51.4406 42.0972 52.7809C43.8922 54.1332 44.8017 55.0307 44.8017 55.0307" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M34.1995 36.2634C34.1995 36.2634 36.4969 44.4242 43.7004 42.6891C50.8919 40.966 50.856 34.2891 50.856 34.2891" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M22.9983 71.783C22.9983 71.783 25.2957 79.9437 32.4992 78.2086C39.6907 76.4856 39.6548 69.8086 39.6548 69.8086" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M83.0598 71.3652C83.0598 71.3652 86.6017 77.5636 86.159 84.2046C85.7162 90.8457 84.8308 93.0594 84.8308 93.0594" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+</svg>
+
+                                                                                                        <span>
+                                        Cardiac Care
+                                    </span>
+                            </div>
+                            <div class="md-sp-arrowsvg">
+                                <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                                     xmlns="https://www.w3.org/2000/svg">
+                                    <path d="M1 0.999612L5.8 5.79961L1 10.5996" stroke="#58595B" stroke-width="2"
+                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="/hospitals-near-me/gurugram-hospital/speciality/oncology">
+                        <div class="md-all-sp ">
+                            <div class="md-all-spInner">
+                                                                                                                                                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M63.1504 49.7383H62.1504L61.1504 50.2383L59.6504 52.2383L60.1504 55.2383C60.3171 55.2383 60.7504 55.1383 61.1504 54.7383C61.6504 54.2383 61.6504 54.7383 62.1504 54.2383L63.1504 53.2383C63.6504 52.7383 63.6504 53.2383 63.6504 52.7383V51.7383L63.1504 50.7383V49.7383Z" fill="#F04E30"/>
+<path d="M30.8074 71.4883C30.8074 71.4883 26.6871 74.1029 25.7183 77.3361C24.7261 80.6394 25.835 84.0477 25.835 84.0477" stroke="#58595B" stroke-width="1.12" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M89.5542 47.6065C89.5542 47.6065 93.908 45.4121 95.1919 42.2956C96.4992 39.0974 95.7405 35.6074 95.7405 35.6074" stroke="#58595B" stroke-width="1.12" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M60.0812 107.055C68.5905 107.055 75.4887 86.0003 75.4887 60.0276C75.4887 34.055 68.5905 13 60.0812 13C51.572 13 44.6738 34.055 44.6738 60.0276C44.6738 86.0003 51.572 107.055 60.0812 107.055Z" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M100.018 84.8593C104.509 77.6321 90.2676 60.6594 68.2079 46.9499C46.1483 33.2403 24.6243 27.9854 20.1327 35.2127C15.6412 42.44 29.8829 59.4126 51.9425 73.1222C74.0021 86.8317 95.5261 92.0866 100.018 84.8593Z" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M68.5131 72.9289C90.2561 58.7224 104.109 41.431 99.4546 34.3075C94.8002 27.184 73.401 32.9259 51.6581 47.1323C29.9152 61.3388 16.0622 78.6302 20.7166 85.7537C25.371 92.8772 46.7702 87.1354 68.5131 72.9289Z" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M56.7312 60.1439C55.8324 58.9183 55.1555 57.9845 54.9103 57.611C53.8948 56.0469 54.992 53.4674 55.3656 52.5686C55.6457 51.8799 56.8363 49.6855 56.8363 49.6855" stroke="#58595B" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M63.023 60.1562C65.5208 62.8175 68.3689 65.969 68.3689 65.969L64.8438 71.1515C64.8438 71.1515 62.346 67.7899 59.8364 64.3933" stroke="#58595B" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M63.2212 49.5809C63.2212 49.5809 63.3613 50.1294 63.2796 50.9232C63.1862 51.8569 62.9061 52.5573 60.7467 55.347C58.5873 58.1366 51.3271 65.5252 51.3271 65.5252L55.3307 70.4392C55.3307 70.4392 64.9254 58.2884 65.1238 57.2962C65.3105 56.3041 64.6802 52.1488 64.085 50.9699C63.478 49.7909 62.6726 48.2152 59.9063 48.2385C58.2722 48.2502 57.3384 48.8805 56.9182 49.7092C56.8598 49.826 56.8131 49.9544 56.7664 50.0828C56.6147 50.573 56.6264 51.1216 56.7664 51.6352C57.0349 52.674 58.3305 54.6349 59.9296 56.6426" fill="#F04E30"/>
+<path d="M63.2212 49.5809C63.2212 49.5809 63.3613 50.1294 63.2796 50.9232C63.1862 51.8569 62.9061 52.5573 60.7467 55.347C58.5873 58.1366 51.3271 65.5252 51.3271 65.5252L55.3307 70.4392C55.3307 70.4392 64.9254 58.2884 65.1238 57.2962C65.3105 56.3041 64.6802 52.1488 64.085 50.9699C63.478 49.7909 62.6726 48.2152 59.9063 48.2385C58.2722 48.2502 57.3384 48.8805 56.9182 49.7092C56.8598 49.826 56.8131 49.9544 56.7664 50.0828C56.6147 50.573 56.6264 51.1216 56.7664 51.6352C57.0349 52.674 58.3305 54.6349 59.9296 56.6426" stroke="#58595B" stroke-miterlimit="10" stroke-linecap="round"/>
+</svg>
+
+                                                                                                        <span>
+                                        Angioplasty
+                                    </span>
+                            </div>
+                            <div class="md-sp-arrowsvg">
+                                <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                                     xmlns="https://www.w3.org/2000/svg">
+                                    <path d="M1 0.999612L5.8 5.79961L1 10.5996" stroke="#58595B" stroke-width="2"
+                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="/hospitals-near-me/gurugram-hospital/speciality/neurology">
+                        <div class="md-all-sp ">
+                            <div class="md-all-spInner">
+                                                                                                                                                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M37.5 102.5H26.5C26.8333 101.833 27.5 100.4 27.5 99.9995C27.5 99.5995 28.5 97.8329 29 96.9995L29.5 93.4995V89.9995L29 88.4995L27.5 87.4995L24.5 86L22.5 84.4995L19.5 82.4995L17 76.5C17.4 63.7 25 82.5 29 70.5L30 73V75L31 76.5L32 78L34.5 79L37 79.5L41 78.5L43 77L44.5 75.5L46 72.5L47 73.5L49 77L52.5 80L57.5 82V85L55.5 86L51.5 89L46.5 93L37.5 102.5Z" fill="#F04E30"/>
+<path d="M59.1412 83.661C55.8956 85.3556 53.2676 87.1077 51.415 88.4432C46.4605 92.0335 37.5567 102.646 37.5567 102.646H26.1254C26.1254 102.646 29.7587 95.1929 29.7587 92.0766C29.7587 88.9602 29.414 88.2709 29.414 88.2709C29.414 88.2709 22.8367 86.1886 20.0651 83.0722C17.2934 79.9559 15.9004 75.7912 15.9004 73.0196V69.5586" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M100.788 34.9062C100.788 34.9062 102.181 35.2509 104.952 36.6439C107.724 38.0369 119.845 44.2696 116.384 61.2442C112.951 78.0322 93.9518 76.8689 80.7971 77.5008C80.6535 77.5008 80.4956 77.5152 80.3519 77.5295C80.0935 77.5295 79.8493 77.5583 79.5908 77.5726" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M29.055 44.2726C29.055 44.2726 24.5456 41.1563 18.313 41.8456C12.0803 42.535 5.48865 46.355 3.06165 54.67C0.634653 62.985 5.30196 71.1276 7.91565 73.7269C11.032 76.8433 17.3795 79.0118 17.3795 79.0118" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M22.3049 63.1566C22.3049 63.1566 26.8143 56.2203 33.7362 58.3026C40.6726 60.385 43.7889 68.0106 46.9052 73.8986C50.0216 79.7866 61.1082 87.4123 71.8502 82.2136C82.5922 77.0149 87.1015 70.7823 86.0532 62.4673C85.0192 54.1523 80.1652 49.2983 74.2772 47.216C68.3892 45.1336 63.8799 47.5606 62.5012 49.643C61.1082 51.7253 62.5012 54.1523 62.5012 54.1523" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M29.4137 70.9551C29.4137 70.9551 29.0691 79.2701 36.6947 79.6147C44.3204 79.9594 45.6991 71.9891 45.6991 71.9891" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M53.6548 59.5098C53.6548 59.5098 53.6548 69.5624 62.3144 69.9071C70.9741 70.2518 73.0564 62.6261 73.0564 62.6261" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M85.6655 41.8997C85.6655 41.8997 86.0676 31.8614 77.4367 31.1577C68.7914 30.454 66.4075 37.9935 66.4075 37.9935" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M91.8554 47.043C91.8554 47.043 89.2705 56.0329 96.9392 58.5748C104.608 61.1167 108.428 54.8266 108.428 54.8266" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M54.359 27.6387C54.359 27.6387 56.786 38.036 46.044 41.497C35.302 44.958 32.875 37.6913 32.875 37.6913" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M45.5125 52.0677C45.5125 52.0677 42.0515 49.9854 42.3962 46.869C42.7409 43.7527 45.2253 41.7422 45.2253 41.7422" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M59.73 40.6348C59.73 40.6348 61.4677 44.4404 64.584 45.4888C67.7003 46.5228 69.2656 46.3504 69.2656 46.3504" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M63.5359 25.3862C63.5359 25.3862 70.3286 18.8807 81.9035 20.5322C90.3909 21.7385 96.681 26.6931 98.3612 29.0195C100.616 32.1359 101.32 37.4781 100.444 40.1062C99.4095 43.2225 97.1549 45.1325 97.1549 45.1325" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M10.5437 44.5134C10.5437 44.5134 10.874 35.4373 16.762 30.2386C22.65 25.04 29.931 21.9237 34.426 21.579C38.9353 21.2343 41.233 21.3636 41.233 21.3636" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M71.1176 21.3073C71.1176 21.3073 66.1343 16.2092 56.4263 16.5538C46.7183 16.8985 41.175 20.7185 38.7624 23.8348C36.3354 26.9512 35.9907 28.6888 35.9907 28.6888" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+</svg>
+
+                                                                                                        <span>
+                                        ECG
+                                    </span>
+                            </div>
+                            <div class="md-sp-arrowsvg">
+                                <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                                     xmlns="https://www.w3.org/2000/svg">
+                                    <path d="M1 0.999612L5.8 5.79961L1 10.5996" stroke="#58595B" stroke-width="2"
+                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="/hospitals-near-me/gurugram-hospital/speciality/gastroenterology">
+                        <div class="md-all-sp ">
+                            <div class="md-all-spInner">
+                                                                                                                                                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M107.967 63.1688C107.967 73.569 99.5473 82 89.1607 82C91.1063 74.8571 91.1063 68.3742 91.1063 57.974C91.1063 47.5739 78.7742 32 89.1607 32C99.5473 32 108.616 48.8831 107.967 63.1688Z" fill="#F04E30"/>
+<path d="M12.6528 103.237C12.6528 103.237 14.8662 69.9851 32.5347 74.0386C41.7228 76.1233 61.3344 87.5248 67.048 65.6484C68.1418 61.0929 71.8737 51.9949 61.5017 44.5697C57.1264 41.4298 53.549 38.4701 56.0068 15.3711" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M66.9321 16.3633C66.9321 16.3633 63.0072 42.8724 74.9106 36.4768C80.4054 33.5299 89.8123 28.228 99.5281 38.4714C107.365 46.5013 113.761 59.1768 99.6825 83.1637C92.489 95.6719 70.4967 114.499 42.1345 88.9803C37.7592 85.0683 26.6666 77.8233 23.3979 104.268" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M62.0171 91.7346C62.0171 91.7346 74.0878 93.8707 81.3713 89.4955C88.8093 85.0301 92.5412 76.8457 92.5412 76.8457" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+</svg>
+
+                                                                                                        <span>
+                                        Echocardiogram
+                                    </span>
+                            </div>
+                            <div class="md-sp-arrowsvg">
+                                <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                                     xmlns="https://www.w3.org/2000/svg">
+                                    <path d="M1 0.999612L5.8 5.79961L1 10.5996" stroke="#58595B" stroke-width="2"
+                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="/hospitals-near-me/gurugram-hospital/speciality/orthopaedics">
+                        <div class="md-all-sp ">
+                            <div class="md-all-spInner">
+                                                                                                                                                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M47.5003 86.5C43.5003 93 45.4999 107 34.9999 104C26.5 87 13.4999 86 14.4997 85C14.4997 81.2559 13.5 74.0004 31.7829 74C35.3956 74 51.0003 76 47.5003 86.5Z" fill="#F04E30"/>
+<path d="M58.5905 47.337L73.6254 31.8461C73.6254 31.8461 75.4493 29.1103 75.9053 23.6385C76.3613 18.1668 79.5531 14.063 83.2009 14.519C86.8487 14.975 89.449 23.047 92.7764 26.3744C96.4243 30.0222 106 30.4782 106 35.4939C106 40.0784 103.757 43.566 97.3362 44.1575C93.0352 44.5519 89.7325 45.279 88.8821 45.4762C88.7466 45.5131 88.6234 45.5747 88.5124 45.6733L69.5216 63.7522H65.8738L64.9618 52.8088L58.5781 53.2648V47.337H58.5905Z" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M50.8386 55.5449L31.8477 73.6238C31.7491 73.7224 31.6136 73.7963 31.478 73.821C30.6277 74.0182 27.3372 74.7453 23.0239 75.1396C16.6033 75.7189 14.3604 79.2188 14.3604 83.8032C14.3604 88.819 23.9359 89.2749 27.5837 92.9228C30.8988 96.2378 33.5114 104.322 37.1592 104.778C40.8071 105.234 43.9989 101.13 44.4549 95.6586C44.9108 90.1869 46.7348 87.451 46.7348 87.451L61.7697 71.9601L63.5936 70.1362H57.6659V62.3846H50.8262V55.5449H50.8386Z" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M46.9697 45.2906L39.9082 38.2168" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M52.3178 42.1873L51.8618 32.2051" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M43.8759 50.3945L33.8813 50.4438" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M74.3276 75.1875L81.3891 82.249" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M68.9795 78.2812L69.4231 88.2635" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M77.4214 70.0864L87.4159 70.0371" stroke="#58595B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+</svg>
+
+                                                                                                        <span>
+                                        Stress ECG
+                                    </span>
+                            </div>
+                            <div class="md-sp-arrowsvg">
+                                <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                                     xmlns="https://www.w3.org/2000/svg">
+                                    <path d="M1 0.999612L5.8 5.79961L1 10.5996" stroke="#58595B" stroke-width="2"
+                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                                    <a href="/hospitals-near-me/gurugram-hospital/speciality/urology-nephrology">
+                        <div class="md-all-sp ">
+                            <div class="md-all-spInner">
+                                                                                                                                                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M73.5 91.5L69 96.5L63.5 99.5C61 111 56.5 100.3 56.5 99.5C56.5 98.7 47.3333 93.8333 48 92L47 87L50.5 80.5L53.5 79L56.5 78L57.5 77.5H62L65.5 78.5C66.3333 78.8333 68.2 79.7 69 80.5C69.8 81.3 72.6667 83.6667 73 84.5L73.5 91.5Z" fill="#F04E30"/>
+<path d="M44.1958 30.6289L54.1271 36.7084C57.8143 38.969 62.4562 38.969 66.1434 36.7084L76.0746 30.6289" stroke="#58595B" stroke-width="2.53" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M42.0776 36.6973L50.9445 42.1183C54.3573 44.2033 56.4313 47.9234 56.4313 51.9179V72.6803" stroke="#58595B" stroke-width="2.53" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M63.8281 72.694V51.9316C63.8281 47.9371 65.9022 44.217 69.315 42.132L78.1818 36.7109" stroke="#58595B" stroke-width="2.53" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M46.2369 45.5225C46.2698 49.0122 45.8528 51.7886 44.8652 54.1589C41.8255 61.7198 33.1562 61.5882 26.0561 57.8571C17.727 52.9189 14.7202 42.9108 16.487 34.5268C18.8354 23.3884 26.6707 14.368 36.997 14.0058C49.4193 13.7534 47.883 21.7424 46.3576 25.7258" stroke="#58595B" stroke-width="2.53" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M73.9018 25.7342C72.3765 21.7507 70.8401 13.7508 83.2625 14.0142C93.5888 14.3653 101.424 23.3967 103.772 34.5242C105.539 42.9081 102.532 52.9162 94.2033 57.8544C87.1033 61.5855 78.423 61.7172 75.3943 54.1562C74.4066 51.7859 73.9896 49.0205 74.0225 45.5199" stroke="#58595B" stroke-width="2.53" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M73.6056 87.0899C71.6413 77.6305 60.1408 77.7951 60.1298 77.7951C60.1188 77.7951 48.6183 77.6305 46.654 87.0899C46.3467 88.7799 46.5881 90.5466 47.4221 92.05C51.4276 98.7879 58.2203 96.1213 58.8459 103.814C58.9007 104.483 59.4604 104.999 60.1298 104.999C60.7992 104.999 61.3588 104.483 61.4137 103.814C62.0282 96.1213 68.821 98.777 72.8374 92.05C73.6824 90.5466 73.9129 88.7799 73.6056 87.0899Z" stroke="#58595B" stroke-width="2.53" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M98.3185 42.4473C95.2568 50.4801 89.0895 55.5609 84.5244 53.8271" stroke="#58595B" stroke-width="2.2" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M20.438 42.4473C23.4997 50.4801 29.6669 55.5609 34.232 53.8271" stroke="#58595B" stroke-width="2.2" stroke-miterlimit="10" stroke-linecap="round"/>
+</svg>
+
+                                                                                                        <span>
+                                        Angiography
+                                    </span>
+                            </div>
+                            <div class="md-sp-arrowsvg">
+                                <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                                     xmlns="https://www.w3.org/2000/svg">
+                                    <path d="M1 0.999612L5.8 5.79961L1 10.5996" stroke="#58595B" stroke-width="2"
+                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                            </div>
+            <div class="common-button">
+
+            </div>
+
+        </div>
+      
+    </div>
+</div>
+
+<!-- Livewire Component wire-end:jM46Tl9mQdM8vJnRWRoc -->    </div>
+</section>
+    
+            <section class="meet-doc-section section-lightbg" id="team-section">
+            <div wire:id="doc2NqNWaQzhjAgS3ELp" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;doc2NqNWaQzhjAgS3ELp&quot;,&quot;name&quot;:&quot;meet-our-doctor&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;hospitals-near-me\/gurugram-hospital&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;c5289f91&quot;,&quot;data&quot;:{&quot;locations&quot;:{&quot;gurugram-hospital&quot;:&quot;Delhi&quot;,&quot;delhi-hospital&quot;:&quot;Delhi&quot;,&quot;patna-hospital&quot;:&quot;Delhi&quot;,&quot;indore-hospital&quot;:&quot;Indore&quot;,&quot;ranchi-hospital&quot;:&quot;Ranchi&quot;,&quot;subhash-chowk-gurugram&quot;:&quot;Subhash Chowk Delhi&quot;,&quot;dlf-cybercity&quot;:&quot;DLF Cybercity&quot;,&quot;south-delhi&quot;:&quot;Defence Colony&quot;,&quot;golf-course&quot;:&quot;Golf Course&quot;,&quot;noida-hospital&quot;:&quot;Noida&quot;,&quot;ranchi-mediclinic&quot;:&quot;Mediclinic Ranchi&quot;,&quot;irba-ranchi-hospital-jharkhand&quot;:&quot;Irba Ranchi Jharkhand&quot;},&quot;specialities&quot;:{&quot;cardiology&quot;:&quot;Cardiac Care&quot;,&quot;oncology&quot;:&quot;Angioplasty&quot;,&quot;neurology&quot;:&quot;ECG&quot;,&quot;gastroenterology&quot;:&quot;Echocardiogram&quot;,&quot;orthopaedics&quot;:&quot;Stress ECG&quot;,&quot;urology-nephrology&quot;:&quot;Angiography&quot;,&quot;liver-transplantation&quot;:&quot;Liver Transplant&quot;,&quot;lung-transplantation-chest-surgery&quot;:&quot;Lung Transplant&quot;,&quot;bone-marrow-transplant&quot;:&quot;Bone Marrow Transplant&quot;,&quot;chest-surgery&quot;:&quot;Chest Surgery&quot;,&quot;gynaecology-and-gynaeoncology&quot;:&quot;Gynaecology and GynaeOncology&quot;,&quot;paediatrics&quot;:&quot;Paediatric Care&quot;,&quot;gynaecology-obstetrics&quot;:&quot;Obstetrics &amp; Gynaecology&quot;,&quot;emergency&quot;:&quot;Emergency&quot;,&quot;plastic-surgery&quot;:&quot;Plastic, Aesthetic and Reconstructive Surgery&quot;,&quot;ent&quot;:&quot;ENT, Head and Neck Surgery&quot;,&quot;internal-medicine&quot;:&quot;Internal Medicine&quot;,&quot;pulmonology&quot;:&quot;Respiratory &amp; Sleep Medicine&quot;,&quot;vascular-surgery&quot;:&quot;Peripheral Vascular and Endovascular Sciences&quot;,&quot;endocrinology-diabetology&quot;:&quot;Endocrinology &amp; Diabetes&quot;,&quot;clinical-immunology-and-rheumatology&quot;:&quot;Rheumatology and Immunology&quot;,&quot;radiology&quot;:&quot;Radiology &amp; Imaging&quot;,&quot;ophthalmology&quot;:&quot;Ophthalmology&quot;,&quot;critical-care&quot;:&quot;Critical Care&quot;,&quot;dermatology&quot;:&quot;Dermatology&quot;,&quot;dentistry&quot;:&quot;Dentistry&quot;,&quot;ayurveda&quot;:&quot;Ayurveda&quot;,&quot;dietetics-and-nutrition&quot;:&quot;Dietetics and Nutrition&quot;,&quot;lab-pathology&quot;:&quot;Lab &amp; Pathology&quot;,&quot;breast-cancer&quot;:&quot;Breast Cancer&quot;,&quot;paediatric-cardiology&quot;:&quot;Paediatric Cardiology&quot;,&quot;clinical-preventive&quot;:&quot;Clinical &amp; Preventive Cardiology&quot;,&quot;hepatology&quot;:&quot;Hepatology&quot;,&quot;digestive-and-hepatobiliary&quot;:&quot;Gastroenterology&quot;,&quot;neurosurgery&quot;:&quot;Neurosurgery&quot;,&quot;heart-transplant&quot;:&quot;Heart Transplant&quot;,&quot;neuro&quot;:&quot;Neurology&quot;,&quot;genetics&quot;:&quot;Medical Genetics &quot;,&quot;paediatric-pulmonology&quot;:&quot;Paediatric Pulmonology&quot;,&quot;critical-care-paediatrics-picu&quot;:&quot;Critical Care Paediatrics (PICU)&quot;,&quot;neurology-paed&quot;:&quot;Paediatric Neurology&quot;,&quot;kidney-transplant&quot;:&quot;Kidney Transplant &quot;,&quot;surgery-and-urology&quot;:&quot;Paediatric Surgery &amp;  Pediatric Urology&quot;,&quot;general&quot;:&quot;General Paediatrics&quot;,&quot;neonatology-nicu&quot;:&quot;Neonatology&quot;,&quot;obstetrics&quot;:&quot;Obstetrics&quot;,&quot;fetal-medicine&quot;:&quot;Fetal Medicine&quot;,&quot;nephrology&quot;:&quot;Nephrology&quot;,&quot;urology&quot;:&quot;Urology&quot;,&quot;medical-oncology&quot;:&quot;Medical Oncology&quot;,&quot;interventional&quot;:&quot;Interventional Cardiology&quot;,&quot;electrophysiology&quot;:&quot;Electrophysiology&quot;,&quot;cardiac-surgery&quot;:&quot;Cardiac Surgery&quot;,&quot;head-neck&quot;:&quot;Head &amp; Neck Cancer Thyroid &amp; Parathyroid Surgery&quot;,&quot;radiation-oncology&quot;:&quot;Radiation Oncology&quot;,&quot;gi-surgery&quot;:&quot;GI Surgery, GI Oncology and Bariatric Surgery&quot;,&quot;paediatric-bone-marrow-transplant&quot;:&quot;Paediatric Bone Marrow Transplant&quot;,&quot;antenatal-care&quot;:&quot;Antenatal Care&quot;},&quot;banner&quot;:[],&quot;speciality&quot;:&quot;all&quot;,&quot;specialityName&quot;:null,&quot;hospital&quot;:&quot;gurugram-hospital&quot;,&quot;hospitalName&quot;:&quot;Delhi&quot;,&quot;slug&quot;:&quot;gurugram-hospital&quot;,&quot;type&quot;:&quot;hospital&quot;,&quot;getCity&quot;:null},&quot;dataMeta&quot;:{&quot;collections&quot;:[&quot;locations&quot;,&quot;specialities&quot;],&quot;models&quot;:{&quot;banner&quot;:{&quot;class&quot;:&quot;App\\Models\\Banner&quot;,&quot;id&quot;:29,&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null}}},&quot;checksum&quot;:&quot;a3a5259e962db2e9e0ac49914fce2a35d43e76cf7148f4a22cf323f6de82f0c6&quot;}}">
+    <div class="container">
+        <div class="meet-doc-content">
+            <div class="heading text-center mb-10 wow fadeInUp">Doctors, Pioneers, Life Savers</div>
+            <div class="para-wrap text-center fullcontent mb-30">
+                <p>Our superspecialist doctors provide the highest quality of care through a team-based, doctor-led model. Trained at some of the world&#039;s most renowned institutions, our highly experienced doctors are distinguished experts in their respective specialities. Our doctors work full-time and exclusively across Dr Gaurav Mohan hospitals. In addition to offering superspecialised care in their own field, the Dr Gaurav Mohan organisational structure enables every doctor to help create a culture of collaboration and multispecialty care integration.</p>
+            </div>
+            <div class="para-wrap text-center lesscontent mb-30">
+                <p>Our superspecialist doctors provide the highest quality of care through a team-based, doctor-led model. Trained at some of the world&#039;s most renowned i.....
+                    <a class="txt-link continue-reading-more" href="javascript:void(0)">Continue Reading</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+    <picture class="image-block wow fadeInUp" data-wow-delay=".7s">
+        <source media="(min-width:768px)" srcset="https://medanta.s3.ap-south-1.amazonaws.com/banners/February2025/4INsSYLr2G1UUwnzP0C7avOQTZyUpv-metaWHpraTVGV0wwZzhVUGpDaVNVSHN2MTlaaVJzWFFxLW1ldGFaRzlqZEc5eVgySmhibTVsY2k1M1pXSnctLndlYnA=-.webp"  width="1920" height="528" alt="meet-our-doctors"/>
+        <source media="(min-width:320px)" srcset="https://medanta.s3.ap-south-1.amazonaws.com/banners/January2025/MQYPhTMHJTw3GobT7FTbIA8klaasEJ-metaZG9jdG9yX2Jhbm5lcl9tb2Iud2VicA==-.webp" width="480" height="250" alt="meet-our-doctors"/>
+        <img  loading="lazy" src="https://medanta.s3.ap-south-1.amazonaws.com/banners/February2025/4INsSYLr2G1UUwnzP0C7avOQTZyUpv-metaWHpraTVGV0wwZzhVUGpDaVNVSHN2MTlaaVJzWFFxLW1ldGFaRzlqZEc5eVgySmhibTVsY2k1M1pXSnctLndlYnA=-.webp" width="1920" height="528" alt="meet-our-doctors"/>
+    </picture>
+<!-- </div> -->
+    </div>
+
+<!-- Livewire Component wire-end:doc2NqNWaQzhjAgS3ELp -->    </section>
+
+                        <section class="technology-section py-50" id="technology-section">
+                <div class="container">
+                    <div class="heading mb-10 text-center wow fadeInUp">Technology</div>
+                    <div wire:id="sRcN6PFqIpa2Iu2DQPjE" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;sRcN6PFqIpa2Iu2DQPjE&quot;,&quot;name&quot;:&quot;technology&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;hospitals-near-me\/gurugram-hospital&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;7e73dee1&quot;,&quot;data&quot;:{&quot;technologies&quot;:[],&quot;description&quot;:&quot;&quot;,&quot;title&quot;:&quot;&quot;,&quot;hospitalSlug&quot;:null,&quot;specialitySlug&quot;:null,&quot;techSlug&quot;:&quot;&quot;,&quot;flag&quot;:false},&quot;dataMeta&quot;:{&quot;modelCollections&quot;:{&quot;technologies&quot;:{&quot;class&quot;:&quot;App\\Models\\HospitalTechnology&quot;,&quot;id&quot;:[31,45,46,48,59,60,61,71,72,73,134,140,513,514,515,519,520,521,522,523,524,525,526,527,528,530,531,532,533,534,535,536,540,541,542,543,544,545,548,549,550,551,552,553,554,555,556,558,559,560,564,565,566,567,568,569,570,571,572,573,574,575,576,580,581,582,595,696,697,700,701,702,703,704,705,706,707,709,710,711,712,713,714,715,716,720,721,722,729,730,731,768,769,770,771,772,773,774,775,776,777,778,779,786,787,788,792,793,794,802,803,804,809,810,811,812,813,814,827,828,829,830,831,832,833,834,835,838,840,841,842,843,844,847,848,849,878,879,880,881,882,883,886,915,916,917,918,919,920,921,922,923,924,925,926,927,928,929,930,931,932,933,934,935,936,937,938,939,940,941,946,948,949,950,951,952,955,956,980,981,982,983,984,985,986,987,988,989,1414,1415,1416,1417],&quot;relations&quot;:[&quot;speciality&quot;],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null}}},&quot;checksum&quot;:&quot;13282d47bad1e1f89556b2c77b3522dff89279d07aee6971d63cf235862c6864&quot;}}">
+    <div id="technology-slider" class="space-row slick-arrow-style-1 slider-tb-shadow wow fadeInUp" data-wow-delay=".3s" wire:ignore>
+                                    <div class="slide-item">
+                    <div class="technology-card">
+                        <div class="thumb thumb-ratio thumb-ratio1">
+                            <img src="https://medanta.s3.ap-south-1.amazonaws.com/technologies/July2024/o4DcVgg93c8FR3yvbFTjf8dhB55pbN-metaQ0Q0NVJBIERlcGxldGlvbi5qcGc=-.jpg" alt="CD45RA Depletion" width="514" height="400">
+                        </div>
+                        <div class="card-desk" wire:click="showDescription('980')">
+                            <div class="heading-sm font600 card-title hidden-xs mb-2">
+                                <a href="javascript:void(0)">
+                                    CD45RA Depletion
+                                </a>
+                            </div>
+                            <div class="visible-xs text-center">
+                                <div class="heading-sm font600 card-title mb-2">CD45RA Depletion </div>
+                                <div class="para-wrap">
+                                                                        <p>
+                                        <span class="has-more-content">
+                                            CD45RA Depletion is a specialised technique used in allogeneic hematopoietic stem cell transplantation and cell therapy. CD45RA is a marker found on naïve T cells, which have not yet encountered antig.. </span>
+                                        
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                <div class="slide-item">
+                    <div class="technology-card">
+                        <div class="thumb thumb-ratio thumb-ratio1">
+                            <img src="https://medanta.s3.ap-south-1.amazonaws.com/technologies/June2024/0slu2GsNk9ZGKKBkg5rR9ZF1coI98j-metaQk1ULmpwZw==-.jpg" alt="Blood and Bone Marrow Stem Cell Collection" width="514" height="400">
+                        </div>
+                        <div class="card-desk" wire:click="showDescription('981')">
+                            <div class="heading-sm font600 card-title hidden-xs mb-2">
+                                <a href="javascript:void(0)">
+                                    Blood and Bone Marrow Stem Cell Collection
+                                </a>
+                            </div>
+                            <div class="visible-xs text-center">
+                                <div class="heading-sm font600 card-title mb-2">Blood and Bone Marrow Stem Cell Collection </div>
+                                <div class="para-wrap">
+                                                                        <p>
+                                        <span class="has-more-content">
+                                            Whether you are a donor or need an allogeneic transplant, blood stem cells can be collected from your bloodstream or bone marrow. 
+While the largest concentration of stem cells is in the bone marrow,.. </span>
+                                        
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                <div class="slide-item">
+                    <div class="technology-card">
+                        <div class="thumb thumb-ratio thumb-ratio1">
+                            <img src="https://medanta.s3.ap-south-1.amazonaws.com/technologies/July2024/wIxkxtA0MUgSbxV5rvusKWtlFYkkvT-metaVENSIEFscGhhLUJldGEgRGVwbGV0aW9uLmpwZw==-.jpg" alt="TCR Alpha-Beta Depletion" width="514" height="400">
+                        </div>
+                        <div class="card-desk" wire:click="showDescription('982')">
+                            <div class="heading-sm font600 card-title hidden-xs mb-2">
+                                <a href="javascript:void(0)">
+                                    TCR Alpha-Beta Depletion
+                                </a>
+                            </div>
+                            <div class="visible-xs text-center">
+                                <div class="heading-sm font600 card-title mb-2">TCR Alpha-Beta Depletion </div>
+                                <div class="para-wrap">
+                                                                        <p>
+                                        <span class="has-more-content">
+                                            TCR Alpha-Beta Depletion is an advanced technique used in haematopoietic stem cell transplantation (HSCT) to enhance the safety and efficacy of the procedure. T-cell receptors (TCRs) are proteins foun.. </span>
+                                        
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                <div class="slide-item">
+                    <div class="technology-card">
+                        <div class="thumb thumb-ratio thumb-ratio1">
+                            <img src="https://medanta.s3.ap-south-1.amazonaws.com/technologies/July2024/0E1WLNSPy8e4uWklnwK1JNgZ5zUkmp-metaQ2FyLVQgY2VsbCB0aGVyYXB5LmpwZw==-.jpg" alt="CAR T Cell Therapy" width="514" height="400">
+                        </div>
+                        <div class="card-desk" wire:click="showDescription('983')">
+                            <div class="heading-sm font600 card-title hidden-xs mb-2">
+                                <a href="javascript:void(0)">
+                                    CAR T Cell Therapy
+                                </a>
+                            </div>
+                            <div class="visible-xs text-center">
+                                <div class="heading-sm font600 card-title mb-2">CAR T Cell Therapy </div>
+                                <div class="para-wrap">
+                                                                        <p>
+                                        <span class="has-more-content">
+                                            Chimeric Antigen Receptor (CAR) T cell therapy is a highly personalised, targeted and effective therapeutic approach for half-match transplantation and cancer. It involves genetically modifying a pati.. </span>
+                                        
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                <div class="slide-item">
+                    <div class="technology-card">
+                        <div class="thumb thumb-ratio thumb-ratio1">
+                            <img src="https://medanta.s3.ap-south-1.amazonaws.com/technologies/July2024/1cuyeLxE6I0FZUTNAVddj2O19ISsHP-metaRG9ub3IgTHltcGhvY3l0ZSBJbmZ1c2lvbi5qcGc=-.jpg" alt="Donor Lymphocyte Infusion " width="514" height="400">
+                        </div>
+                        <div class="card-desk" wire:click="showDescription('984')">
+                            <div class="heading-sm font600 card-title hidden-xs mb-2">
+                                <a href="javascript:void(0)">
+                                    Donor Lymphocyte Infusion 
+                                </a>
+                            </div>
+                            <div class="visible-xs text-center">
+                                <div class="heading-sm font600 card-title mb-2">Donor Lymphocyte Infusion  </div>
+                                <div class="para-wrap">
+                                                                        <p>
+                                        <span class="has-more-content">
+                                            Donor Lymphocyte Infusion (DLI) is a valuable procedure in the post-transplant management of patients, supporting overall immune recovery, and fighting residual cancer cells and relapse. It involves i.. </span>
+                                        
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                        </div>
+
+    <div id="technology-desc" wire:ignore.self>
+        <div class="heading-sm font600 card-title mb-2"></div>
+        <div class="para-wrap">
+            <p>
+                </p>
+            </div>
+            
+    </div>
+</div>
+
+<!-- Livewire Component wire-end:sRcN6PFqIpa2Iu2DQPjE -->                </div>
+            </section>
+             
+
+                <section class="updates-section" id="updates-section">
+            <div class="container">
+                <div class="heading text-center mb-50 wow fadeInUp">Updates</div>
+                <div wire:id="Ew4XIZpIGZ5qNoeMOoDr" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;Ew4XIZpIGZ5qNoeMOoDr&quot;,&quot;name&quot;:&quot;update-location&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;hospitals-near-me\/gurugram-hospital&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;2f16a7a5&quot;,&quot;data&quot;:{&quot;updates&quot;:[]},&quot;dataMeta&quot;:{&quot;modelCollections&quot;:{&quot;updates&quot;:{&quot;class&quot;:&quot;App\\Models\\Post&quot;,&quot;id&quot;:[153,38,44,45,15],&quot;relations&quot;:[&quot;updateDetails&quot;],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null}}},&quot;checksum&quot;:&quot;f7f3bf278760abc4cede09840bc2c4aa774cecd2ea5ac446cc430d3879998f1a&quot;}}">
+    <div id="updates-slider" class="slick-arrow-style-1 wow fadeInUp " data-wow-delay=".3s">
+                    <div class="slide-item">
+                <div class="updates-card text-center">
+                    <div class="icon mb-20">
+                    <center><img src="https://medanta.s3.ap-south-1.amazonaws.com/posts/December2023/fw3hvhNjxS6hXsODBJK6wyhLZIVgov-metaVGVsZW1lZGljaW5lLnBuZw==-.png" width="100" height="100" alt="facility-launched"></center>
+                    </div>
+                    <div class="card-heading heading-md mb-10">New Clinic Launched</div>
+                    <div class="para-wrap mb-20">
+                        <p>60-minute sample collection, medicine delivery, doctor consult now at DLF Cyber Park, Delhi</p>
+                    </div>
+                                                                                                        <div class="text-center">
+                                    <a href="/updates/facility-launched" class="anchor-button">Know More <span></span> </a>
+                                </div>
+                                                                                        </div>
+            </div>
+                    <div class="slide-item">
+                <div class="updates-card text-center">
+                    <div class="icon mb-20">
+                    <center><img src="https://medanta.s3.ap-south-1.amazonaws.com/updates/October2023/95MPR1hQ5KBRTVKwxgGZnfyq7JI48l-metaZUlDVS5wbmc=-.png" width="100" height="100" alt="eicu"></center>
+                    </div>
+                    <div class="card-heading heading-md mb-10"> e-ICU </div>
+                    <div class="para-wrap mb-20">
+                        <p>Bringing expert intervention to critically unwell patients even in the remotest parts of India</p>
+                    </div>
+                                            <div class="text-center">
+                            <a href="/eicu" class="anchor-button">Know More <span></span> </a>
+                        </div>
+                                    </div>
+            </div>
+                    <div class="slide-item">
+                <div class="updates-card text-center">
+                    <div class="icon mb-20">
+                    <center><img src="https://medanta.s3.ap-south-1.amazonaws.com/posts/October2023/s4E81O623FTCYLxVATM9rA1r4xgCbW-metabGl2ZXIgKDMpLnBuZw==-.png" width="100" height="100" alt="triple-swap-liver-transplant"></center>
+                    </div>
+                    <div class="card-heading heading-md mb-10">Triple Swap Liver Transplant</div>
+                    <div class="para-wrap mb-20">
+                        <p>Behind Closed Doors is a window seat view of surgical miracles performed by our experts</p>
+                    </div>
+                                                                                                        <div class="text-center">
+                                    <a href="/updates/triple-swap-liver-transplant" class="anchor-button">Know More <span></span> </a>
+                                </div>
+                                                                                        </div>
+            </div>
+                    <div class="slide-item">
+                <div class="updates-card text-center">
+                    <div class="icon mb-20">
+                    <center><img src="https://medanta.s3.ap-south-1.amazonaws.com/posts/October2023/aqb1SEwd56YZkxUK8WCSUvmOZLLD0F-metaTHVuZ3MucG5n-.png" width="100" height="100" alt="lung transplant"></center>
+                    </div>
+                    <div class="card-heading heading-md mb-10">Lung Transplant</div>
+                    <div class="para-wrap mb-20">
+                        <p>We get a glimpse into the fast-paced happenings leading to a lung transplant</p>
+                    </div>
+                                                                                                        <div class="text-center">
+                                    <a href="/updates/lung-transplant" class="anchor-button">Know More <span></span> </a>
+                                </div>
+                                                                                        </div>
+            </div>
+                    <div class="slide-item">
+                <div class="updates-card text-center">
+                    <div class="icon mb-20">
+                    <center><img src="https://medanta.s3.ap-south-1.amazonaws.com/posts/October2023/6xUlBEaEpVCjRNz79LJEsU9tutYyoz-metaRWxkZXIgY2FyZSBwcm9ncmFtbWUucG5n-.png" width="100" height="100" alt="elder-care"></center>
+                    </div>
+                    <div class="card-heading heading-md mb-10">Elder Care Program</div>
+                    <div class="para-wrap mb-20">
+                        <p>Dr Gaurav Mohan’s Elder Care Programme gives your loved ones an empowering plan for their golden years.</p>
+                    </div>
+                                            <div class="text-center">
+                            <a href="/elder-care-program" class="anchor-button">Know More <span></span> </a>
+                        </div>
+                                    </div>
+            </div>
+            </div>
+</div>
+
+<!-- Livewire Component wire-end:Ew4XIZpIGZ5qNoeMOoDr -->            </div>
+        </section>
+        
+                    <section class="py-50" id="patientstories-section-outer">
+                <div wire:id="I7P6IxlQkcnJ4vV9BaiG" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;I7P6IxlQkcnJ4vV9BaiG&quot;,&quot;name&quot;:&quot;stories&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;hospitals-near-me\/gurugram-hospital&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;ae162e8d&quot;,&quot;data&quot;:{&quot;stories&quot;:[],&quot;type&quot;:&quot;hospital&quot;,&quot;slug&quot;:&quot;gurugram-hospital&quot;,&quot;getHospital&quot;:null,&quot;hospital&quot;:null},&quot;dataMeta&quot;:{&quot;modelCollections&quot;:{&quot;stories&quot;:{&quot;class&quot;:&quot;App\\Models\\Story&quot;,&quot;id&quot;:[8,9,12,11,10,13,14],&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null}}},&quot;checksum&quot;:&quot;2c57ee9031eaf40abe4cd71098ff7a6cbaf6f21aba1171407af0d617d19cdc81&quot;}}">
+            <section class="patientstory-section desktop-only mb-40">
+            <div class="container">
+                <div class="heading mb-30 text-center wow fadeInUp">Patient Stories</div>
+                <div class="story-video-container wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="video-col video-col-1">
+                        <div class="video-wrap">
+                            <div class="video">
+                                <div class="video-thumb ratio1">
+                                                                                                                    <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/March2025/v8UIPEcBbcE0SqUcdZlLyyNj0Wxbg6-metaMS53ZWJw-.webp' width="514" height="400" alt="Mauritian Patient Treated For Esophageal Cancer">
+                                                                        <a href="https://www.youtube.com/watch?v=arFxSlbt9V8" class="play-video">
+                                        <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Coronary Artery Disease" width="48" height="48">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-title">Mauritian Patient Treated For Esophageal Cancer</div>
+                                    <p>Mr Fazl Hosany</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="video-col video-col-2">
+                        <div class="video-wrap">
+                            <div class="video">
+                                <div class="video-thumb ratio2">
+                                                                                                                    <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/March2025/ISazAZnufT741JZXzTdpLVF0LcXtEi-metaMi53ZWJw-.webp' width="514" height="400" alt="Liver Failure">
+                                                                        <a href="https://www.youtube.com/watch?v=cOfR9N-mcY0" class="play-video">
+                                        <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Coronary Artery Disease" width="48" height="48">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-title">Liver Failure</div>
+                                    <p>Baby Bhavika</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="video-wrap">
+                            <div class="video">
+                                <div class="video-thumb ratio3">
+                                                                                                                    <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/March2025/6AcwEX5q3NS9TnkLJAefwM06XpAP2v-metaMy53ZWJw-.webp' width="514" height="400" alt="Jaw Cancer">
+                                                                        <a href="https://www.youtube.com/watch?v=tnlEB7AfJQU" class="play-video">
+                                        <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" width="48" height="48" alt="Coronary Artery Disease">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-title">Jaw Cancer</div>
+                                    <p>Dr. Abhilasha Agarwal </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="video-col video-col-2">
+                        <div class="video-wrap">
+                            <div class="video">
+                                <div class="video-thumb ratio4">
+                                                                                                                    <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/March2025/OnoF6M0cV0nPzVSVNcgXKDRTkrE9SR-metaNC53ZWJw-.webp' width="514" height="400" alt="Pre-term Babies">
+                                                                        <a href="https://www.youtube.com/watch?v=Izcsx6gtGsI" class="play-video">
+                                        <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" width="48" height="48" alt="Coronary Artery Disease">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-title">Pre-term Babies</div>
+                                    <p>Ms Sakshi</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="video-col video-col-2">
+                        <div class="video-wrap">
+                            <div class="video">
+                                <div class="video-thumb ratio3">
+                                                                                                                    <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/March2025/hqbuBBoREqnotTIifx1IclsXkr9FU9-metaNS53ZWJw-.webp' width="514" height="400" alt="Neurosurgical Treatment">
+                                                                        <a href="https://www.youtube.com/watch?v=Q4KOz-Zmh7g" class="play-video">
+                                        <img  loading="lazy" width="48" height="48" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Coronary Artery Disease">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-title">Neurosurgical Treatment</div>
+                                    <p>Mr. Devender Jeet Singh</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-wrap">
+                            <div class="video">
+                                <div class="video-thumb ratio2">
+                                                                                                                    <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/March2025/0vYz9USlYng7XdhER6WoHSGhgOKjGJ-metaNi53ZWJw-.webp' width="514" height="400" alt="Bone Marrow Transplant">
+                                                                        <a href="https://www.youtube.com/watch?v=zDxSL37jy0U" class="play-video">
+                                        <img  loading="lazy" width="48" height="48" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Coronary Artery Disease">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-title">Bone Marrow Transplant</div>
+                                    <p>Patient Father Mr Haider</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="video-col video-col-1">
+                        <div class="video-wrap">
+                            <div class="video">
+                                <div class="video-thumb ratio1">
+                                                                                                                    <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/March2025/IpDmccScEROTyXY9RuEEyXPzEMs8kA-metaNy53ZWJw-.webp' width="514" height="400" alt="Mother Saves Daughter By Donating A Kidney">
+                                                                        <a href="https://www.youtube.com/watch?v=M0jn57I0bwo" class="play-video">
+                                        <img  loading="lazy" width="48" height="48" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Coronary Artery Disease">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-title">Mother Saves Daughter By Donating A Kidney</div>
+                                    <p>Ms Paluk Sunger</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="patientstory-section below-desktop-only mb-40">
+            <div class="container">
+                <div class="heading mb-30 text-center wow fadeInUp">Patient Stories</div>
+                <div class="story-video-slider space-row slick-arrow-style-1 wow fadeInUp" data-wow-delay=".3s" id="story-video-slider">
+                                            <div class="slide-item">
+                            <div class="video-wrap">
+                                <div class="video">
+                                    <div class="video-thumb ratio1">
+                                                                                                                                <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/March2025/v8UIPEcBbcE0SqUcdZlLyyNj0Wxbg6-metaMS53ZWJw-.webp' width="514" height="400" alt="Mauritian Patient Treated For Esophageal Cancer">
+                                                                                <a href="https://www.youtube.com/watch?v=arFxSlbt9V8" class="play-video">
+                                            <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Coronary Artery Disease" width="48" height="48">
+                                        </a>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="video-title">Mauritian Patient Treated For Esophageal Cancer</div>
+                                        <p>Mr Fazl Hosany</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="slide-item">
+                            <div class="video-wrap">
+                                <div class="video">
+                                    <div class="video-thumb ratio1">
+                                                                                                                                <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/March2025/ISazAZnufT741JZXzTdpLVF0LcXtEi-metaMi53ZWJw-.webp' width="514" height="400" alt="Liver Failure">
+                                                                                <a href="https://www.youtube.com/watch?v=cOfR9N-mcY0" class="play-video">
+                                            <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Coronary Artery Disease" width="48" height="48">
+                                        </a>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="video-title">Liver Failure</div>
+                                        <p>Baby Bhavika</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="slide-item">
+                            <div class="video-wrap">
+                                <div class="video">
+                                    <div class="video-thumb ratio1">
+                                                                                                                                <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/March2025/6AcwEX5q3NS9TnkLJAefwM06XpAP2v-metaMy53ZWJw-.webp' width="514" height="400" alt="Jaw Cancer">
+                                                                                <a href="https://www.youtube.com/watch?v=tnlEB7AfJQU" class="play-video">
+                                            <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Coronary Artery Disease" width="48" height="48">
+                                        </a>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="video-title">Jaw Cancer</div>
+                                        <p>Dr. Abhilasha Agarwal </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="slide-item">
+                            <div class="video-wrap">
+                                <div class="video">
+                                    <div class="video-thumb ratio1">
+                                                                                                                                <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/March2025/OnoF6M0cV0nPzVSVNcgXKDRTkrE9SR-metaNC53ZWJw-.webp' width="514" height="400" alt="Pre-term Babies">
+                                                                                <a href="https://www.youtube.com/watch?v=Izcsx6gtGsI" class="play-video">
+                                            <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Coronary Artery Disease" width="48" height="48">
+                                        </a>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="video-title">Pre-term Babies</div>
+                                        <p>Ms Sakshi</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="slide-item">
+                            <div class="video-wrap">
+                                <div class="video">
+                                    <div class="video-thumb ratio1">
+                                                                                                                                <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/March2025/hqbuBBoREqnotTIifx1IclsXkr9FU9-metaNS53ZWJw-.webp' width="514" height="400" alt="Neurosurgical Treatment">
+                                                                                <a href="https://www.youtube.com/watch?v=Q4KOz-Zmh7g" class="play-video">
+                                            <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Coronary Artery Disease" width="48" height="48">
+                                        </a>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="video-title">Neurosurgical Treatment</div>
+                                        <p>Mr. Devender Jeet Singh</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="slide-item">
+                            <div class="video-wrap">
+                                <div class="video">
+                                    <div class="video-thumb ratio1">
+                                                                                                                                <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/March2025/0vYz9USlYng7XdhER6WoHSGhgOKjGJ-metaNi53ZWJw-.webp' width="514" height="400" alt="Bone Marrow Transplant">
+                                                                                <a href="https://www.youtube.com/watch?v=zDxSL37jy0U" class="play-video">
+                                            <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Coronary Artery Disease" width="48" height="48">
+                                        </a>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="video-title">Bone Marrow Transplant</div>
+                                        <p>Patient Father Mr Haider</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="slide-item">
+                            <div class="video-wrap">
+                                <div class="video">
+                                    <div class="video-thumb ratio1">
+                                                                                                                                <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/March2025/IpDmccScEROTyXY9RuEEyXPzEMs8kA-metaNy53ZWJw-.webp' width="514" height="400" alt="Mother Saves Daughter By Donating A Kidney">
+                                                                                <a href="https://www.youtube.com/watch?v=M0jn57I0bwo" class="play-video">
+                                            <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Coronary Artery Disease" width="48" height="48">
+                                        </a>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="video-title">Mother Saves Daughter By Donating A Kidney</div>
+                                        <p>Ms Paluk Sunger</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                    </div>
+            </div>
+        </section>
+        <div class="container text-center wow fadeInUp" data-wow-delay="0.7s">
+            
+                            
+                    </div>
+    </div>
+
+<!-- Livewire Component wire-end:I7P6IxlQkcnJ4vV9BaiG -->        </section>
+
+
+        <section id="awards-section" class="pattern-bg py-50">
+            <div class="container">
+                <div wire:id="Ad97IqD2GjFgcVxj7JID" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;Ad97IqD2GjFgcVxj7JID&quot;,&quot;name&quot;:&quot;accreditations&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;hospitals-near-me\/gurugram-hospital&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;7e1afdf0&quot;,&quot;data&quot;:{&quot;awardAndRecognitions&quot;:[],&quot;accreditations&quot;:[],&quot;slug&quot;:&quot;gurugram-hospital&quot;},&quot;dataMeta&quot;:{&quot;modelCollections&quot;:{&quot;awardAndRecognitions&quot;:{&quot;class&quot;:&quot;App\\Models\\AwardRecognition&quot;,&quot;id&quot;:[27,28,23,4,1,2,3],&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null},&quot;accreditations&quot;:{&quot;class&quot;:&quot;App\\Models\\Cms&quot;,&quot;id&quot;:[10,32,35],&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null}}},&quot;checksum&quot;:&quot;102c8325d013e19cc271520eb40d3e849e1cb2ca037cf03a1a2a01cb9be2a60c&quot;}}">
+    <!-- awards & accrediation-->
+        <div class="col-wrap dflex flexwrap">
+        <div class="col col6">
+            <div class="heading awardsrecogcentermob wow fadeInUp">Awards & Recognitions</div>
+            <div id="award-slider" class="space-row slick-arrow-style-1 wow fadeInUp" data-wow-delay=".3s">
+                                    <div class="slide-item">
+                        <div class="award-block">
+                            <div class="leaf leaf-left">
+                                <img src="https://www.sudharshanheartclinic.com/assets/images/leaf-left.png" alt="award" width="50" height="108">
+                            </div>
+                            <div class="award-year sudharshan heart clinicsmheading font500"><span>2025</span>
+                            </div>
+                            <div class="awrad-desc sudharshan heart clinicxxsheading font600">
+                                <p>Dr Gaurav Mohan Delhi Best Private Hospital In India For 6 Years in A Row - Newsweek</p>
+                            </div>
+                            <div class="leaf leaf-right">
+                                <img src="https://www.sudharshanheartclinic.com/assets/images/leaf-right.png" alt="award" width="50" height="108">
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="slide-item">
+                        <div class="award-block">
+                            <div class="leaf leaf-left">
+                                <img src="https://www.sudharshanheartclinic.com/assets/images/leaf-left.png" alt="award" width="50" height="108">
+                            </div>
+                            <div class="award-year sudharshan heart clinicsmheading font500"><span>2024</span>
+                            </div>
+                            <div class="awrad-desc sudharshan heart clinicxxsheading font600">
+                                <p>Dr Gaurav Mohan Delhi Best Private Hospital In India For 5 Years in A Row - Newsweek</p>
+                            </div>
+                            <div class="leaf leaf-right">
+                                <img src="https://www.sudharshanheartclinic.com/assets/images/leaf-right.png" alt="award" width="50" height="108">
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="slide-item">
+                        <div class="award-block">
+                            <div class="leaf leaf-left">
+                                <img src="https://www.sudharshanheartclinic.com/assets/images/leaf-left.png" alt="award" width="50" height="108">
+                            </div>
+                            <div class="award-year sudharshan heart clinicsmheading font500"><span>2023</span>
+                            </div>
+                            <div class="awrad-desc sudharshan heart clinicxxsheading font600">
+                                <p>Dr Gaurav Mohan Delhi Best Private Hospital In India For 4 Years In A Row - Newsweek</p>
+                            </div>
+                            <div class="leaf leaf-right">
+                                <img src="https://www.sudharshanheartclinic.com/assets/images/leaf-right.png" alt="award" width="50" height="108">
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="slide-item">
+                        <div class="award-block">
+                            <div class="leaf leaf-left">
+                                <img src="https://www.sudharshanheartclinic.com/assets/images/leaf-left.png" alt="award" width="50" height="108">
+                            </div>
+                            <div class="award-year sudharshan heart clinicsmheading font500"><span>2022</span>
+                            </div>
+                            <div class="awrad-desc sudharshan heart clinicxxsheading font600">
+                                <p>Dr Gaurav Mohan Delhi Among Top Hospitals In 9 Categories - Times Health Survey </p>
+                            </div>
+                            <div class="leaf leaf-right">
+                                <img src="https://www.sudharshanheartclinic.com/assets/images/leaf-right.png" alt="award" width="50" height="108">
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="slide-item">
+                        <div class="award-block">
+                            <div class="leaf leaf-left">
+                                <img src="https://www.sudharshanheartclinic.com/assets/images/leaf-left.png" alt="award" width="50" height="108">
+                            </div>
+                            <div class="award-year sudharshan heart clinicsmheading font500"><span>2021</span>
+                            </div>
+                            <div class="awrad-desc sudharshan heart clinicxxsheading font600">
+                                <p>Dr Gaurav Mohan Delhi Best Multi-Speciality Hospital in India - Times Health Survey </p>
+                            </div>
+                            <div class="leaf leaf-right">
+                                <img src="https://www.sudharshanheartclinic.com/assets/images/leaf-right.png" alt="award" width="50" height="108">
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="slide-item">
+                        <div class="award-block">
+                            <div class="leaf leaf-left">
+                                <img src="https://www.sudharshanheartclinic.com/assets/images/leaf-left.png" alt="award" width="50" height="108">
+                            </div>
+                            <div class="award-year sudharshan heart clinicsmheading font500"><span>2020</span>
+                            </div>
+                            <div class="awrad-desc sudharshan heart clinicxxsheading font600">
+                                <p>Dr Gaurav Mohan Delhi Best Hospital for Medical Tourism - India Healthcare Awards</p>
+                            </div>
+                            <div class="leaf leaf-right">
+                                <img src="https://www.sudharshanheartclinic.com/assets/images/leaf-right.png" alt="award" width="50" height="108">
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="slide-item">
+                        <div class="award-block">
+                            <div class="leaf leaf-left">
+                                <img src="https://www.sudharshanheartclinic.com/assets/images/leaf-left.png" alt="award" width="50" height="108">
+                            </div>
+                            <div class="award-year sudharshan heart clinicsmheading font500"><span>2018</span>
+                            </div>
+                            <div class="awrad-desc sudharshan heart clinicxxsheading font600">
+                                <p>Dr Gaurav Mohan Delhi Best Hospital For Neurosurgery, Neurology - India Today Awards</p>
+                            </div>
+                            <div class="leaf leaf-right">
+                                <img src="https://www.sudharshanheartclinic.com/assets/images/leaf-right.png" alt="award" width="50" height="108">
+                            </div>
+                        </div>
+                    </div>
+                            </div>
+        </div>
+                    <div class="col col6">
+                <div id="accreditations-slider-wrap">
+                    <div class="heading awardsrecogcentermob wow fadeInUp wow fadeInUp">Accreditations</div>
+                    <div id="accreditations-slider" class="space-row slick-arrow-style-1 wow fadeInUp" data-wow-delay=".3s">
+                                                    <div class="slide-item">
+                                <div class="creditations-block">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/cms/June2023/CphIm3pqWYX3OI5jvEIg0QZUalyPI9-metaYWNjcmVkaXRhdGlvbnMyLnBuZw==-.png" alt="accreditations" width="120" height="120">
+                                </div>
+                            </div>
+                                                    <div class="slide-item">
+                                <div class="creditations-block">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/cms/October2023/MLCNqyL70puRYO8r9rQchOYhIf6tYG-metaSkNJLnBuZw==-.png" alt="accreditations" width="120" height="120">
+                                </div>
+                            </div>
+                                                    <div class="slide-item">
+                                <div class="creditations-block">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/cms/October2023/9dyVJO9xNJcYuUEcBhifRFo4JtVGnt-metabmFibDExLnBuZw==-.png" alt="accreditations" width="120" height="120">
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            </div>
+    </div>
+
+<!-- Livewire Component wire-end:Ad97IqD2GjFgcVxj7JID -->            </div>
+        </section>
+
+    <section class="py-50 map-section" id="map-section">
+        <div class="map-container">
+            <div class="map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d219.2711381068468!2d77.04057497368804!3d28.43921942507714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d186ec89f751b%3A0xdc2ab32fc4675cac!2sDr Gaurav Mohan%20-%20The%20Medicity!5e0!3m2!1sen!2sin!4v1692676663981!5m2!1sen!2sin"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="location-card">
+                <div class="heading mb-20 wow fadeInUp">Get Directions</div>
+                <div class="direction-frm mb-30 wow fadeInUp" data-wow-delay=".3s">
+                    <form action="https://www.sudharshanheartclinic.com/get-direction" target="_blank" method="post">
+                        <input type="hidden" name="_token" value="qyKEBEY2hOs8PY68ynJcIwizTbxwHpR0s4xL4lcx" autocomplete="off">                        <input type="text" name="from_address" placeholder="From where"/>
+                        <input type="hidden" name="destination_address" value="CH Baktawar Singh Road, Sector 38, Delhi, Haryana 122001" placeholder="From where"/>
+                        <button type="submit">Get Directions</button>
+                    </form>
+                </div>
+                <div class="location-contact wow fadeInUp" data-wow-delay=".5s">
+                    <div class="contact-row address">
+                        <div class="icon">
+                            <svg width="20" height="24" viewBox="0 0 20 24" fill="none"
+                                 xmlns="https://www.w3.org/2000/svg">
+                                <path
+                                    d="M19 10C19 17 10 23 10 23C10 23 1 17 1 10C1 7.61305 1.94821 5.32387 3.63604 3.63604C5.32387 1.94821 7.61305 1 10 1C12.3869 1 14.6761 1.94821 16.364 3.63604C18.0518 5.32387 19 7.61305 19 10Z"
+                                    stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path
+                                    d="M10 13C11.6569 13 13 11.6569 13 10C13 8.34315 11.6569 7 10 7C8.34315 7 7 8.34315 7 10C7 11.6569 8.34315 13 10 13Z"
+                                    stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        CH Baktawar Singh Road, Sector 38, Delhi, Haryana 122001
+                    </div>
+                    <div class="contact-row phone">
+                        <div class="icon">
+                            <svg width="23" height="24" viewBox="0 0 23 24" fill="none"
+                                 xmlns="https://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.9381 5.53613C14.9149 5.7267 15.8125 6.20439 16.5162 6.90807C17.2199 7.61175 17.6976 8.5094 17.8881 9.48613M13.9381 1.53613C15.9674 1.76157 17.8597 2.67031 19.3044 4.11314C20.749 5.55597 21.6601 7.44714 21.8881 9.47613M20.8881 17.4561V20.4561C20.8892 20.7346 20.8322 21.0103 20.7206 21.2655C20.6091 21.5207 20.4454 21.7497 20.2402 21.938C20.035 22.1263 19.7927 22.2696 19.5289 22.3588C19.265 22.4481 18.9855 22.4812 18.7081 22.4561C15.631 22.1218 12.6751 21.0703 10.0781 19.3861C7.66194 17.8508 5.61345 15.8023 4.07812 13.3861C2.38809 10.7773 1.33636 7.80713 1.00812 4.71613C0.983127 4.4396 1.01599 4.16089 1.10462 3.89776C1.19324 3.63462 1.33569 3.39282 1.52288 3.18775C1.71008 2.98269 1.93792 2.81884 2.19191 2.70665C2.44589 2.59447 2.72046 2.53639 2.99812 2.53613H5.99812C6.48342 2.53136 6.95391 2.70321 7.32188 3.01967C7.68985 3.33612 7.93019 3.77558 7.99812 4.25613C8.12474 5.2162 8.35957 6.15886 8.69812 7.06613C8.83266 7.42406 8.86178 7.81305 8.78202 8.18701C8.70227 8.56098 8.51698 8.90424 8.24812 9.17613L6.97812 10.4461C8.40167 12.9497 10.4746 15.0226 12.9781 16.4461L14.2481 15.1761C14.52 14.9073 14.8633 14.722 15.2372 14.6422C15.6112 14.5625 16.0002 14.5916 16.3581 14.7261C17.2654 15.0647 18.2081 15.2995 19.1681 15.4261C19.6539 15.4947 20.0975 15.7393 20.4146 16.1136C20.7318 16.4879 20.9003 16.9657 20.8881 17.4561Z"
+                                    stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <a href="tel:+91-880-000-1068">+91-880-000-1068</a>
+                                            </div>
+
+                                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hospital-section py-50" id="hospitals-section">
+    <div class="container">
+            <div class="heading mb-10 text-center wow fadeInUp">Dr Gaurav Mohan Network</div>
+        <div wire:id="oFT6DXY94dXluwSfrfcw" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;oFT6DXY94dXluwSfrfcw&quot;,&quot;name&quot;:&quot;hospital-network&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;hospitals-near-me\/gurugram-hospital&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;fd4071af&quot;,&quot;data&quot;:{&quot;hospitals&quot;:[],&quot;getLanding&quot;:false},&quot;dataMeta&quot;:{&quot;modelCollections&quot;:{&quot;hospitals&quot;:{&quot;class&quot;:&quot;App\\Models\\Hospital&quot;,&quot;id&quot;:[1,2,3,4,5,12,14],&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null}}},&quot;checksum&quot;:&quot;54775e1830800f99e1320d4f85199d0888fd8667738b146c5c250f8764dafc95&quot;}}">
+    <div class="slider-mobile-layout space-row slick-arrow-style-1 eqslides-height wow fadeInUp" data-wow-delay=".3s" id="hospital-slider">
+                                <div class="slide-item">
+                <div class="hospital-card hospital-card eqheight">
+                    <div class="thumb thumb-ratio thumb-ratio1">
+                                                    <a href="/hospitals-near-me/gurugram-hospital">
+                                <img loading="lazy" src="https://medanta.s3.ap-south-1.amazonaws.com/hospitals/February2025/KRKHMv9Fxr54fLXKN0OjZzxiiwFTBq-metaT2JSZkdhUTI1bnJwWldCdkJKMWxzdHBCVG91cEdNLW1ldGFSM1Z5ZFdkeVlXMHVhbkJuLS5qcGc=-.jpg" alt="gurugram-hospital" width="514" height="400">
+                            </a>
+                                            </div>
+                    <div class="card-desc text-center">
+                        <div class="location mb-20">
+                            <span class="location-icon">
+                                <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="https://www.w3.org/2000/svg">
+                            <path d="M13 7.6665C13 12.3332 7 16.3332 7 16.3332C7 16.3332 1 12.3332 1 7.6665C1 6.07521 1.63214 4.54908 2.75736 3.42386C3.88258 2.29864 5.4087 1.6665 7 1.6665C8.5913 1.6665 10.1174 2.29864 11.2426 3.42386C12.3679 4.54908 13 6.07521 13 7.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 9.6665C8.10457 9.6665 9 8.77107 9 7.6665C9 6.56193 8.10457 5.6665 7 5.6665C5.89543 5.6665 5 6.56193 5 7.6665C5 8.77107 5.89543 9.6665 7 9.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            </span>Delhi</div>
+                        <div class="heading-md mb-30">Dr Gaurav Mohan - The Medicity, Delhi</div>
+                                                                                    <div class="action-cta dflex space-between centered-items">
+                                    <a href="/hospitals-near-me/gurugram-hospital" class="anchor-button">Know More <span></span></a>
+                                </div>
+                                                                        </div>
+                </div>
+            </div>
+                                <div class="slide-item">
+                <div class="hospital-card hospital-card eqheight">
+                    <div class="thumb thumb-ratio thumb-ratio1">
+                                                    <a href="/hospitals-near-me/delhi-hospital">
+                                <img loading="lazy" src="https://medanta.s3.ap-south-1.amazonaws.com/hospitals/September2023/7SQ9q1Q1OCZRgZRErb64rLCNhnUGSi-metabHVja25vdy5qcGc=-.jpg" alt="delhi-hospital" width="514" height="400">
+                            </a>
+                                            </div>
+                    <div class="card-desc text-center">
+                        <div class="location mb-20">
+                            <span class="location-icon">
+                                <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="https://www.w3.org/2000/svg">
+                            <path d="M13 7.6665C13 12.3332 7 16.3332 7 16.3332C7 16.3332 1 12.3332 1 7.6665C1 6.07521 1.63214 4.54908 2.75736 3.42386C3.88258 2.29864 5.4087 1.6665 7 1.6665C8.5913 1.6665 10.1174 2.29864 11.2426 3.42386C12.3679 4.54908 13 6.07521 13 7.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 9.6665C8.10457 9.6665 9 8.77107 9 7.6665C9 6.56193 8.10457 5.6665 7 5.6665C5.89543 5.6665 5 6.56193 5 7.6665C5 8.77107 5.89543 9.6665 7 9.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            </span>Delhi</div>
+                        <div class="heading-md mb-30">Dr Gaurav Mohan Super Speciality Hospital, Delhi</div>
+                                                                                    <div class="action-cta dflex space-between centered-items">
+                                    <a href="/hospitals-near-me/delhi-hospital" class="anchor-button">Know More <span></span></a>
+                                </div>
+                                                                        </div>
+                </div>
+            </div>
+                                <div class="slide-item">
+                <div class="hospital-card hospital-card eqheight">
+                    <div class="thumb thumb-ratio thumb-ratio1">
+                                                    <a href="/hospitals-near-me/patna-hospital">
+                                <img loading="lazy" src="https://medanta.s3.ap-south-1.amazonaws.com/hospitals/February2025/YelIyqoA5uGHAsU26kWk9EH54Aumyv-metaUGF0bmEgSG9zcGl0YWwgSW1hZ2UgKDIpLmpwZw==-.jpg" alt="delhi-hospital" width="514" height="400">
+                            </a>
+                                            </div>
+                    <div class="card-desc text-center">
+                        <div class="location mb-20">
+                            <span class="location-icon">
+                                <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="https://www.w3.org/2000/svg">
+                            <path d="M13 7.6665C13 12.3332 7 16.3332 7 16.3332C7 16.3332 1 12.3332 1 7.6665C1 6.07521 1.63214 4.54908 2.75736 3.42386C3.88258 2.29864 5.4087 1.6665 7 1.6665C8.5913 1.6665 10.1174 2.29864 11.2426 3.42386C12.3679 4.54908 13 6.07521 13 7.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 9.6665C8.10457 9.6665 9 8.77107 9 7.6665C9 6.56193 8.10457 5.6665 7 5.6665C5.89543 5.6665 5 6.56193 5 7.6665C5 8.77107 5.89543 9.6665 7 9.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            </span>Delhi</div>
+                        <div class="heading-md mb-30">Jay Prabha Dr Gaurav Mohan Super Specialty Hospital, Delhi</div>
+                                                                                    <div class="action-cta dflex space-between centered-items">
+                                    <a href="/hospitals-near-me/patna-hospital" class="anchor-button">Know More <span></span></a>
+                                </div>
+                                                                        </div>
+                </div>
+            </div>
+                                <div class="slide-item">
+                <div class="hospital-card hospital-card eqheight">
+                    <div class="thumb thumb-ratio thumb-ratio1">
+                                                    <a href="/hospitals-near-me/indore-hospital">
+                                <img loading="lazy" src="https://medanta.s3.ap-south-1.amazonaws.com/hospitals/April2025/sdE5SGg6gM0Y4fqeIaLSlnZO7bE8Rq-metaSW5kb3JlIGhvc3BpdGFsIDEuanBn-.jpg" alt="delhi-hospital" width="514" height="400">
+                            </a>
+                                            </div>
+                    <div class="card-desc text-center">
+                        <div class="location mb-20">
+                            <span class="location-icon">
+                                <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="https://www.w3.org/2000/svg">
+                            <path d="M13 7.6665C13 12.3332 7 16.3332 7 16.3332C7 16.3332 1 12.3332 1 7.6665C1 6.07521 1.63214 4.54908 2.75736 3.42386C3.88258 2.29864 5.4087 1.6665 7 1.6665C8.5913 1.6665 10.1174 2.29864 11.2426 3.42386C12.3679 4.54908 13 6.07521 13 7.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 9.6665C8.10457 9.6665 9 8.77107 9 7.6665C9 6.56193 8.10457 5.6665 7 5.6665C5.89543 5.6665 5 6.56193 5 7.6665C5 8.77107 5.89543 9.6665 7 9.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            </span>Indore</div>
+                        <div class="heading-md mb-30">Dr Gaurav Mohan Super Speciality Hospital, Indore</div>
+                                                                                    <div class="action-cta dflex text-center centered-items">
+                                    <a href="/hospitals-near-me/indore-hospital" class="anchor-button">Know More <span></span></a>
+                                    
+                                </div>
+                                                                        </div>
+                </div>
+            </div>
+                                <div class="slide-item">
+                <div class="hospital-card hospital-card eqheight">
+                    <div class="thumb thumb-ratio thumb-ratio1">
+                                                    <a href="/hospitals-near-me/ranchi-hospital">
+                                <img loading="lazy" src="https://medanta.s3.ap-south-1.amazonaws.com/hospitals/April2025/W745nIg3xEkkTksRkH6pFvEAgCyo7D-metaRjdnUkJWYWNqVU1qM1lTaHllazBwZTVHV0lxUDJDLW1ldGFVbUZ1WTJocElEVXhOQ0FnZUNBME1EQXVjRzVuLS5wbmc=-.png" alt="Ranchi-hospital" width="514" height="400">
+                            </a>
+                                            </div>
+                    <div class="card-desc text-center">
+                        <div class="location mb-20">
+                            <span class="location-icon">
+                                <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="https://www.w3.org/2000/svg">
+                            <path d="M13 7.6665C13 12.3332 7 16.3332 7 16.3332C7 16.3332 1 12.3332 1 7.6665C1 6.07521 1.63214 4.54908 2.75736 3.42386C3.88258 2.29864 5.4087 1.6665 7 1.6665C8.5913 1.6665 10.1174 2.29864 11.2426 3.42386C12.3679 4.54908 13 6.07521 13 7.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 9.6665C8.10457 9.6665 9 8.77107 9 7.6665C9 6.56193 8.10457 5.6665 7 5.6665C5.89543 5.6665 5 6.56193 5 7.6665C5 8.77107 5.89543 9.6665 7 9.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            </span>Ranchi</div>
+                        <div class="heading-md mb-30">Dr Gaurav Mohan Abdur Razzaque Ansari Memorial Weavers&#039; Hospital, Ranchi</div>
+                                                                                    <div class="action-cta dflex text-center centered-items">
+                                    <a href="/hospitals-near-me/ranchi-hospital" class="anchor-button">Know More <span></span></a>
+                                    
+                                </div>
+                                                                        </div>
+                </div>
+            </div>
+                                <div class="slide-item">
+                <div class="hospital-card hospital-card eqheight">
+                    <div class="thumb thumb-ratio thumb-ratio1">
+                                                    <a href="/hospitals-near-me/noida-hospital">
+                                <img loading="lazy" src="https://medanta.s3.ap-south-1.amazonaws.com/hospitals/September2025/tueLPci3oHXKmxX7Uz2mnvpMD4M6PE-metaNDgwX3hfMzIwLndlYnA=-.webp" alt="Dr Gaurav Mohan Noida" width="514" height="400">
+                            </a>
+                                            </div>
+                    <div class="card-desc text-center">
+                        <div class="location mb-20">
+                            <span class="location-icon">
+                                <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="https://www.w3.org/2000/svg">
+                            <path d="M13 7.6665C13 12.3332 7 16.3332 7 16.3332C7 16.3332 1 12.3332 1 7.6665C1 6.07521 1.63214 4.54908 2.75736 3.42386C3.88258 2.29864 5.4087 1.6665 7 1.6665C8.5913 1.6665 10.1174 2.29864 11.2426 3.42386C12.3679 4.54908 13 6.07521 13 7.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 9.6665C8.10457 9.6665 9 8.77107 9 7.6665C9 6.56193 8.10457 5.6665 7 5.6665C5.89543 5.6665 5 6.56193 5 7.6665C5 8.77107 5.89543 9.6665 7 9.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            </span>Noida</div>
+                        <div class="heading-md mb-30">Dr Gaurav Mohan Noida</div>
+                                                                                    <div class="action-cta dflex text-center centered-items">
+                                    <a href="/hospitals-near-me/noida-hospital" class="anchor-button">Know More <span></span></a>
+                                    
+                                </div>
+                                                                        </div>
+                </div>
+            </div>
+                                <div class="slide-item">
+                <div class="hospital-card hospital-card eqheight">
+                    <div class="thumb thumb-ratio thumb-ratio1">
+                                                    <a href="/hospitals-near-me/irba-ranchi-hospital-jharkhand">
+                                <img loading="lazy" src="https://medanta.s3.ap-south-1.amazonaws.com/hospitals/July2025/ljh7WzTlU1LEoUnHPU6t3GUUiiGVnV-metadGVaQXR6RTBaTnhiU0hFelI5aHNzTFJHYWtDcW9lLW1ldGFhMVppZHpkUVVFZEtaSFkwY0VSeVJqRTBWa2hZZFRSSlVYQXlhRVZRTFcxbGRHRk5WRWw2VEcxd2QxcDNQVDB0TG1wd1p3PT0tLmpwZw==-.jpg" alt="Small Image" width="514" height="400">
+                            </a>
+                                            </div>
+                    <div class="card-desc text-center">
+                        <div class="location mb-20">
+                            <span class="location-icon">
+                                <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="https://www.w3.org/2000/svg">
+                            <path d="M13 7.6665C13 12.3332 7 16.3332 7 16.3332C7 16.3332 1 12.3332 1 7.6665C1 6.07521 1.63214 4.54908 2.75736 3.42386C3.88258 2.29864 5.4087 1.6665 7 1.6665C8.5913 1.6665 10.1174 2.29864 11.2426 3.42386C12.3679 4.54908 13 6.07521 13 7.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 9.6665C8.10457 9.6665 9 8.77107 9 7.6665C9 6.56193 8.10457 5.6665 7 5.6665C5.89543 5.6665 5 6.56193 5 7.6665C5 8.77107 5.89543 9.6665 7 9.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            </span>Dr Gaurav Mohan Hospital, Ranchi</div>
+                        <div class="heading-md mb-30">Dr Gaurav Mohan Hospital, Ranchi</div>
+                                                                                    <div class="action-cta dflex text-center centered-items">
+                                    <a href="/hospitals-near-me/irba-ranchi-hospital-jharkhand" class="anchor-button">Know More <span></span></a>
+                                    
+                                </div>
+                                                                        </div>
+                </div>
+            </div>
+            </div>
+</div>
+</div>
+</section>
+
+    
+</body>
+
+
+
+
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Add contact page specific JavaScript here -->
+{% endblock %}

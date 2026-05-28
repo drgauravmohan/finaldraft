@@ -1,0 +1,2524 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - Sudharshan Heart Clinic Clone{% endblock %}
+
+{% block meta_description %}Get in touch with Sudharshan Heart Clinic Clone - We're here to help{% endblock %}
+
+{% block extra_css %}
+<!-- Add contact page specific CSS here -->
+<!-- <link rel="stylesheet" href="{% static 'base/css/contact.css' %}"> -->
+{% endblock %}
+
+{% block content %}
+<style>
+     /* patientservice section */
+     .patientservice-desktop-card {
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .patientservice-card-row {
+        display: flex;
+    }
+
+    .patientservice-card-row:nth-child(even) .patientservice-card .card-img {
+        order: 2;
+    }
+
+    .patientservice-card-row:nth-child(even) .patientservice-card .card-desc {
+        order: 1;
+    }
+
+    .patientservice-card .card-desc {
+        background-color: #f6f6f6;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .patientservice-slider {
+        display: none;
+    }
+
+    @media screen and (min-width:1200px) {
+        .patientservice-card {
+            display: flex;
+            width: 50%;
+        }
+
+        .patientservice-card .card-img {
+            width: 50%;
+            line-height:0;
+        }
+
+        .patientservice-card .card-desc {
+            width: 50%;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    @media screen and (max-width:1199px) {
+        .patientservice-desktop-card {
+            display: none;
+        }
+
+        .patientservice-slider {
+            display: block;
+        }
+
+        .patientservice-slider .patientservice-card {
+            background-color: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+    }
+
+    /* end of patientservice section */
+
+    .disease-search {
+        width: 500px;
+        max-width: 100%;
+        margin: auto;
+        margin-bottom: 40px;
+    }
+
+    .disease-search .form-field-wrap {
+        position: relative;
+    }
+
+    .disease-search input {
+        border-radius: 35px;
+        padding: 3px 25px;
+        padding-right: 95px;
+        font-size: 13px;
+        font-weight: 700;
+        width: 100%;
+        color: #58595B;
+        height: 62px;
+        border: 1px solid #E0E0E0;
+        font-family: 'Montserrat', sans-serif;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .disease-search button[type="submit"] {
+        background-color: var(--primary);
+        border-radius: 25px;
+        outline: 0;
+        padding: 0;
+        position: absolute;
+        height: 42px;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: 0;
+        width: 70px;
+    }
+
+    .disease-filter-list-container {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .disease-filter-list-container .most-searched-disease {
+        width: 66.67%;
+        padding-right: 100px;
+    }
+
+    .disease-filter-list-container .find-disease {
+        width: 33.33%;
+    }
+
+
+    .most-searched-disease .searched-disease-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.most-searched-disease .searched-disease-list::-webkit-scrollbar-track {
+  background-color: #f6f6f6;
+}
+
+.most-searched-disease .searched-disease-list::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+}
+    .most-searched-disease ul {
+        margin: 0 -50px;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .most-searched-disease ul li {
+        width: 50%;
+        padding: 0 50px;
+        font-size: 15px;
+        font-weight: 500;
+
+    }
+
+    .most-searched-disease ul li a {
+        display: block;
+        padding: 14px 0;
+        border-bottom: 1px dashed #A9A9A9;
+    }
+    .most-searched-disease ul li a span{
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .most-searched-disease ul li svg{
+        width: 6px;
+        opacity: 0;
+        margin-left: -10px;
+        transition: 0.3s;
+        visibility: hidden;
+    }
+    .most-searched-disease ul li:hover svg{
+        margin-left: 0;
+        opacity: 1;
+        visibility: visible;
+    }
+    .most-searched-disease ul li a:hover {
+        color: var(--primary);
+        border-color: var(--primary);
+    }
+
+    .find-disease ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 30px;
+        grid-template-columns: repeat(7, 1fr);
+    }
+
+    .find-disease ul li {
+        position: relative;
+        display: block;
+        padding-bottom: 100%;
+    }
+
+    .find-disease ul li button {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-family: 'Montserrat', sans-serif;
+        right: 0;
+        bottom: 0;
+        box-shadow: 0px 0px 22px #ddd;
+        text-align: center;
+        border-radius: 50%;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        outline: 0;
+        background-color: #fff;
+        color: #58595B;
+        cursor: pointer;
+    }
+    .find-disease ul li button:disabled{
+        background:#e7e7e7 !important;
+        color:var(--text) !important;
+        cursor: not-allowed;
+    }
+
+    .find-disease ul li button.active,
+    .find-disease ul li button:hover {
+        background-color: var(--primary);
+        color: #fff;
+    }
+
+    .technology-card-wrap {
+        background-color: #fff;
+        box-shadow: 0 3px 17px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .technology-card-wrap .card-txt {
+        padding: 30px;
+        width: 60%;
+    }
+
+    .technology-card-wrap .card-img {
+        width: 40%;
+    }
+
+    .technology-card-wrap .card-img img {
+        border-radius: 20px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .two-post-card-holder .post-card .anchor-button span {
+        background-color: #fff;
+    }
+
+    .two-post-card-holder .post-card .anchor-button span::after {
+        border-color: #58595B;
+    }
+
+    .health-blog-container .mobile-post {
+        display: none;
+    }
+
+    .feature-health-blog .thumb-ratio.thumb-ratio1 {
+        padding-bottom: 68%;
+    }
+
+    .health-blog-container .desktop-post {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        margin-top: 40px;
+    }
+
+    .health-blog-container .health-blog-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .health-blog {
+        position: relative;
+    }
+
+    .health-blog .figure img {
+        border-radius: 20px;
+    }
+    .health-blog:after{
+        border-radius: 20px;
+        background:#000;
+        opacity: 0.4;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        position: absolute;
+        content:'';
+    }
+
+    .health-blog .figure-caption {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 25px;
+        z-index: 55;
+    }
+
+    .health-blog .figure-caption .heading-sm,
+    .health-blog .figure-caption .heading-md {
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .health-blog .figure-caption a {
+        color: #fff;
+    }
+
+    .knowledge-center-tabs .knowledge-center-content{
+        opacity: 0;
+        position: fixed;
+        z-index: -9999;
+    }
+    .knowledge-center-tabs .knowledge-center-content.active{
+        opacity: 1;
+        position: static;
+        z-index:auto;
+    }
+
+    @media screen and (min-width:1200px) {
+    .technologycards-slider{
+        margin-top: 10px;
+    }
+}
+    @media screen and (max-width:1599px) {
+        .most-searched-disease ul li{
+            font-size: 14px;
+        }
+        .find-disease ul{
+            gap: 20px;
+        }
+    }
+    @media screen and (max-width:1199px) {
+        .technology-card-wrap .card-txt,
+        .technology-card-wrap .card-img {
+            width: 100%;
+        }
+
+        .technology-card-wrap .card-txt {
+            order: 2;
+        }
+
+        .technology-card-wrap .card-img {
+            order: 1;
+            position: relative;
+            padding-bottom: 50%;
+        }
+
+        .technology-card-wrap .card-img img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .most-searched-disease ul{
+            margin: 0 -20px;
+        }
+        .most-searched-disease ul li{
+            padding: 0 20px;
+        }
+        .find-disease ul{
+            grid-template-columns: repeat(5, 1fr)
+        }
+        .disease-filter-list-container .most-searched-disease{
+            padding-right: 40px;
+        }
+        .disease-search input{
+            height: 48px;
+        }
+        .disease-search button[type="submit"]{
+            height: 32px;
+        }
+        .health-blog .figure-caption{
+            padding: 20px;
+        }
+    }
+
+    @media screen and (max-width:991px) {
+            .health-blog-container .desktop-post{
+                grid-template-columns: repeat(1, 1fr);
+            }
+    }
+    @media screen and (max-width:767px) {
+        .technology-card-wrap .card-txt {
+            padding: 25px;
+        }
+        .health-blog-container .mobile-post {
+            display: block;
+        }
+
+        .health-blog-container .desktop-post {
+            display: none;
+        }
+        .disease-filter-list-container .most-searched-disease{
+            width: 100%;
+            padding-right: 0;
+        }
+        .disease-filter-list-container .find-disease{
+            width: 100%;
+            margin-top: 30px;
+        }
+        .disease-filter-list-container .find-disease .heading-sm,
+        .disease-filter-list-container .most-searched-disease .heading-sm{
+            text-align: center;
+        }
+        .most-searched-disease ul li{
+            width: 100%;
+            font-size:13px;
+        }
+        .most-searched-disease .searched-disease-list{
+        padding-right:5px;
+        overflow: hidden;
+  overflow-y: auto;
+  max-height: 240px;
+    }
+
+
+    .knowledge-center-tabs .eqslides-height .slick-track{
+            display:block;
+        }
+        .knowledge-center-tabs .eqslides-height .slick-track .eqheight{
+            height:auto !important;
+        }
+
+    }
+</style>
+
+  <!----------CSS Start------------------------->
+    <style>
+      body {
+        padding-top: 82px;
+      }
+
+      .site-header {
+        height: 82px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background: #fff;
+        padding: 15px 0;
+      }
+      .logo {
+        margin-bottom: -3px;
+        line-height: 0;
+      }
+      .logo svg {
+        max-width: 100%;
+      }
+
+      .site-header nav .close-menu {
+        width: 32px;
+        height: 32px;
+        border: 0;
+        outline: 0;
+        text-align: center;
+        background-color: var(--primary);
+        color: #fff;
+        font-weight: 600;
+        position: absolute;
+        left: 300px;
+        top: 10px;
+        display: none;
+      }
+
+      .site-header nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+      }
+
+      .site-header nav .menu {
+        display: flex;
+      }
+
+      .site-header nav .menu > li {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text);
+        margin: 0 15px;
+      }
+
+      .site-header nav .menu > li a {
+        display: block;
+        white-space: nowrap;
+        color: inherit;
+        padding: 18px 0;
+      }
+
+      .site-header nav .menu li.has-submenu {
+        position: relative;
+        padding-right: 18px;
+      }
+
+      .site-header nav .menu > li.has-submenu ul {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        border-radius: 15px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.14);
+        background-color: #fff;
+        padding: 10px 20px;
+        z-index: 999;
+        width: 280px;
+      }
+
+      .site-header nav .menu > li.has-submenu .open-dropdown,
+      .site-header nav .menu > li.has-submenu .thirdopen-dropdown {
+        position: absolute;
+        right: 0;
+        background: transparent;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        top: 14px;
+        width: 12px;
+        height: 24px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .site-header nav .menu > li.has-submenu .open-dropdown svg,
+      .site-header nav .menu li.has-submenu .thirdopen-dropdown svg {
+        width: 10px;
+        height: auto;
+      }
+
+      .site-header nav .menu li.third-level .open-dropdown {
+        top: 14px;
+        pointer-events: none;
+      }
+
+      .site-header nav .menu li.third-level ul {
+        left: 260px;
+        top: 0;
+        display: none;
+        border-top-left-radius: 0;
+      }
+
+      .site-header nav .menu > li.has-submenu ul li a {
+        color: var(--text);
+        white-space: normal;
+        padding: 10px 0;
+      }
+
+      @media screen and (min-width: 1200px) {
+        .site-header nav .menu > li.has-submenu ul li a:hover,
+        .site-header nav .menu > li:hover a {
+          color: var(--primary);
+        }
+
+        .site-header nav .menu > li.has-submenu:hover > ul,
+        .site-header nav .menu li.third-level:hover > ul {
+          display: block;
+        }
+
+        .site-header nav .menu li.third-level .open-dropdown,
+        .site-header nav .menu li.third-level .thirdopen-dropdown {
+          transform: rotate(-90deg);
+          top: 14px;
+        }
+
+        .site-header nav .menu li.third-level ul:before {
+          left: -40px;
+          top: 0;
+          width: 40px;
+          content: "";
+          position: absolute;
+          height: 100%;
+        }
+
+        .site-header nav .menu li.third-level ul li.third-level ul {
+          left: auto;
+          top: 0px;
+          border-top-left-radius: 15px;
+          right: 100%;
+        }
+      }
+
+      .site-header nav .menu > li.has-submenu ul li {
+        border-bottom: 1px solid rgba(88, 89, 91, 0.5);
+      }
+
+      .site-header nav .menu > li.has-submenu ul li:last-child {
+        border-bottom: 0;
+      }
+
+      .site-header nav .menu > li.has-submenu ul li a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 50px;
+      }
+
+      .site-header nav .menu > li.has-submenu ul li a .icon {
+        width: 26px;
+        flex: 0 0 26px;
+      }
+
+      .header-contact-number {
+        display: flex;
+        gap: 10px;
+      }
+
+      .header-contact-number a.whatsapp-btn {
+        display: none;
+      }
+
+      .header-contact-number a {
+        font-weight: 700;
+        display: flex;
+        padding: 10px 18px;
+        background-color: var(--primary);
+        border-radius: 40px;
+        border: 1px solid var(--primary);
+        color: #58595b;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .header-contact-number a img {
+        width: 24px;
+        height: 24px;
+        margin: auto;
+      }
+      .header-contact-number a.whatsapp-btn img,
+      .header-contact-number a.feedback-btn img,
+      .header-contact-number a.emergency-btn img {
+        display: block;
+      }
+      .header-contact-number a .txt {
+        display: none;
+        font-size: 10px;
+      }
+      .header-contact-number .reqcallback-btn span {
+        font-size: 12px;
+        color: #fff;
+        margin-left: 10px;
+      }
+
+      .header-contact-number a.feedback-btn,
+      .header-contact-number a.emergency-btn {
+        background-color: transparent;
+      }
+
+      .chatbot-waiting {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: rgba(255, 255, 255, 0.85)
+          url(../../../assets/images/icons/loading.svg) no-repeat center center;
+        background-size: 60px auto;
+      }
+
+      #sendResumModal .frm-holder .theme-button {
+        width: 100%;
+        display: block;
+      }
+
+      @media screen and (min-width: 1200px) {
+        .header-contact-number a.contact-btn,
+        .header-contact-number a.emergency-btn {
+          display: none;
+        }
+      }
+
+      @media screen and (min-width: 1820px) {
+        .header-contact-number a .txt {
+          display: block;
+          margin-left: 5px;
+          font-size: 12px;
+        }
+        .header-contact-number a.reqcallback-btn {
+          color: #fff;
+        }
+      }
+
+      @media screen and (max-width: 1699px) {
+        .site-header nav .menu > li {
+          margin: 0 10px;
+        }
+      }
+
+      @media screen and (max-width: 1599px) {
+        .site-header nav .menu > li {
+          font-size: 14px;
+        }
+        .site-header nav .menu li.third-level .open-dropdown,
+        .site-header nav .menu li.third-level .thirdopen-dropdown {
+          top: 14px;
+        }
+      }
+
+      @media screen and (max-width: 1399px) {
+        .logo {
+          width: 115px;
+        }
+        .site-header nav .menu > li {
+          font-size: 12px;
+          margin: 0 7px;
+        }
+        .site-header nav .menu li.third-level .open-dropdown,
+        .site-header nav .menu li.third-level .thirdopen-dropdown {
+          top: 12px;
+        }
+      }
+
+      @media screen and (max-width: 1199px) {
+        body {
+          padding-top: 62px;
+        }
+
+        .site-header {
+          border-bottom: 1px solid #d9d9d9;
+          padding: 7px 0;
+          height: 62px;
+        }
+        .site-header nav {
+          display: none;
+          position: fixed;
+          left: 0;
+          top: 62px;
+          right: 0;
+          bottom: 76px;
+          z-index: 999;
+          background-color: #fff;
+          overflow: auto;
+        }
+
+        .site-header nav.is-opened {
+          display: block;
+        }
+
+        .site-header nav .close-menu {
+          display: block;
+        }
+
+        .site-header nav .menu > li.has-submenu ul li.active > a,
+        .site-header nav .menu > li.active > a {
+          color: var(--primary);
+        }
+
+        .site-header nav .menu > li.has-submenu.active > ul {
+          display: block;
+        }
+
+        .site-header nav .menu > li.has-submenu.active li.third-level ul {
+          display: none;
+        }
+
+        .site-header nav .menu > li.has-submenu.active li.third-level.active ul {
+          display: block;
+        }
+
+        .site-header nav .menu > li.has-submenu.active li.third-level ul {
+          display: none;
+        }
+
+        .site-header nav .menu > li.has-submenu.active li.third-level.active ul {
+          display: block;
+        }
+
+        .site-header
+          nav
+          .menu
+          > li.has-submenu.active
+          li.third-level
+          ul
+          li.third-level
+          ul {
+          display: none;
+        }
+
+        .site-header
+          nav
+          .menu
+          > li.has-submenu.active
+          li.third-level.active
+          ul
+          li.third-level.active
+          ul {
+          display: block;
+        }
+
+        .site-header
+          nav
+          .menu
+          > li.has-submenu.active
+          li.third-level.active
+          ul
+          li.third-level.active
+          ul
+          li.third-level
+          ul {
+          display: none;
+        }
+        .site-header
+          nav
+          .menu
+          > li.has-submenu.active
+          li.third-level.active
+          ul
+          li.third-level.active
+          ul
+          li.third-level.active
+          ul {
+          display: block;
+        }
+
+        .site-header nav .menu {
+          display: block;
+          padding: 5px 20px;
+          overflow: auto;
+        }
+
+        .site-header nav .menu > li {
+          margin: 0;
+          font-size: 13px;
+          border-bottom: 1px solid #dadada;
+        }
+
+        .site-header nav .menu li.has-submenu {
+          padding-right: 0;
+        }
+        .site-header nav .menu li.has-submenu a.open-submenu {
+          padding-right: 30px;
+        }
+
+        nav .menu > li a {
+          padding: 16px 0;
+        }
+
+        nav .menu > li.has-submenu .open-dropdown {
+          top: 12px;
+          pointer-events: none;
+        }
+
+        nav .menu > li.has-submenu.active > .open-dropdown svg path,
+        nav li.third-level.active > .open-dropdown svg path {
+          stroke: var(--primary);
+        }
+
+        .site-header nav .menu > li.has-submenu ul {
+          position: static;
+          width: auto;
+          box-shadow: none;
+          margin-bottom: 15px;
+          padding: 0;
+        }
+        .site-header nav .menu > li.has-submenu.active ul {
+          display: block;
+        }
+
+        .site-header nav .menu > li.has-submenu ul li a .icon {
+          width: 32px;
+          flex: 0 0 32px;
+        }
+        .header-contact-number a {
+          padding: 10px 15px;
+        }
+
+        .header-contact-number a.reqcallback-btn {
+          display: none;
+        }
+      }
+
+
+      @media screen and (max-width: 767px) {
+        .header-contact-number {
+          gap: 0;
+        }
+        .header-contact-number a.whatsapp-btn {
+          display: block;
+        }
+        .header-contact-number a.feedback-btn {
+          display: none;
+        }
+        .site-header {
+          padding: 10px 0 7px 0;
+        }
+
+        .header-contact-number a {
+          background-color: transparent;
+          border: 0;
+          display: block;
+          padding: 0;
+          margin-left: 15px;
+          text-align: center;
+        }
+        .header-contact-number a .txt {
+          display: block;
+        }
+        .header-contact-number a img {
+          margin-bottom: 5px;
+        }
+        .logo {
+          width: 100px;
+        }
+
+        .cookies {
+          flex-wrap: wrap;
+        }
+        .cookies p {
+          margin: 0 0 15px;
+          width: 100%;
+        }
+        .cookies .list-details {
+          justify-content: center;
+          width: 100%;
+        }
+
+        .header-contact-number a{width: auto; margin: 0 auto;}
+        .header-contact-number a.emergency-btn{width: 70px;}
+
+
+        .emergency-txt-grp {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .flip-box {
+          width: 100px;
+          height: 24px;
+          perspective: 1000px;
+        }
+
+        .flipper {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          transform-style: preserve-3d;
+          animation: rotateText 4s infinite linear;
+        }
+
+        .flip-text {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #f04e30;
+          font-size: 10px;
+          margin-top: -5px;
+        }
+
+        .front {
+          transform: rotateY(0deg);
+        }
+
+        .back {
+          transform: rotateY(180deg);
+        }
+
+        @keyframes rotateText {
+          0% {
+            transform: rotateY(0deg);
+          }
+          50% {
+            transform: rotateY(180deg);
+          }
+          100% {
+            transform: rotateY(360deg);
+          }
+        }
+
+
+      }
+
+    .emergency-btn-box-mb {
+        display: none !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0px;
+        text-decoration: none;
+        width: 70px;
+    }
+
+    @keyframes flipLoop {
+        0% {
+            transform: rotateY(0deg);
+        }
+
+        45% {
+            transform: rotateY(0deg);
+        }
+
+        50% {
+            transform: rotateY(180deg);
+        }
+
+        95% {
+            transform: rotateY(180deg);
+        }
+
+        100% {
+            transform: rotateY(360deg);
+        }
+    }
+
+    .emergency-side {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        gap: 0px;
+        flex-direction: column;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+    .emergency-side.emergency-front {
+        background-color: #ffffff;
+        border: 1px solid #EE4F39;
+    }
+
+    .emergency-side.emergency-front .emergency-text {
+        color: #58595B;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .emergency-side.emergency-back {
+        background-color: #EE4F39;
+        font-size: 12px;
+        font-weight: 700;
+        transform: rotateY(180deg);
+    }
+
+    .emergency-side.emergency-back .emergency-text {
+        color: #FFFFFF;
+    }
+
+    .emergency-svg-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+    }
+
+  .emergency-svg-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        background-color: #e9493093;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        animation: pulse-scale 2s infinite;
+        z-index: 0;
+    }
+
+    .emergency-svg-wrapper svg {
+        /* animation: svg-vibrate 2s infinite; */
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes pulse-scale {
+        0% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.7;
+        }
+
+        50% {
+            transform: translate(-50%, -50%) scale(1.3);
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.7;
+        }
+    }
+
+    @keyframes svg-vibrate {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(1px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .emergency-info-box span {
+        font-size: 10px;
+        color: #58595B;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+    .emergency-info-box {
+        position: relative;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+    }
+
+    .emergency-info-box .emergency-number {
+        animation: blink1 5s infinite;
+    }
+
+    .emergency-info-box .emergency-back {
+        transform: rotateY(180deg);
+    }
+
+    .emergency-info-box .emergency-text {
+        animation: blink2 5s infinite;
+        transform: translateX(-50%) rotateY(180deg);
+    }
+
+    @keyframes blink1 {
+        0% {
+            transform: translateX(-50%) rotateY(0deg);
+            opacity: 1;
+        }
+
+        40% {
+            transform: translateX(-50%) rotateY(0deg);
+            opacity: 1;
+        }
+
+        50% {
+            transform: translateX(-50%) rotateY(90deg);
+            opacity: 0;
+        }
+
+        51% {
+            transform: translateX(-50%) rotateY(270deg);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(-50%) rotateY(360deg);
+            opacity: 0;
+        }
+    }
+
+    @keyframes blink2 {
+        0% {
+            transform: translateX(-50%) rotateY(180deg);
+            opacity: 0;
+        }
+
+        49% {
+            transform: translateX(-50%) rotateY(180deg);
+            opacity: 0;
+        }
+
+        50% {
+            transform: translateX(-50%) rotateY(270deg);
+            opacity: 0;
+        }
+
+        51% {
+            transform: translateX(-50%) rotateY(360deg);
+            opacity: 1;
+        }
+
+        90% {
+            transform: translateX(-50%) rotateY(360deg);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateX(-50%) rotateY(540deg);
+            opacity: 0;
+        }
+    }
+
+    @media screen and (max-width:767px) {
+        .header-contact-number a.emergency-btn-box-mb {
+            display: flex !important;
+            width: 80px;
+        }
+    }
+    </style>
+  <!----------CSS End------------------------->
+
+  <style >[wire\:loading], [wire\:loading\.delay], [wire\:loading\.inline-block], [wire\:loading\.inline], [wire\:loading\.block], [wire\:loading\.flex], [wire\:loading\.table], [wire\:loading\.grid], [wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short], [wire\:loading\.delay\.long], [wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest] {display:none;}[wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {animation-duration: 50000s;animation-name: livewireautofill;}@keyframes livewireautofill { from {} }</style>
+<body>
+  <style>
+    .sticky-btn-fixed{padding: 12px; top: 35%;}
+    .sticky-btn-fixed a{text-align: center;}
+    .sticky-btn-fixed a span{color: #fff; font-size: 12px; font-weight: 600; display: block; text-align: center;}
+</style>
+
+
+
+  <div class="modal" id="Marmosetloadmodal">
+    <div class="close close-model-layer" data-close="modal"></div>
+    <div class="modal__dialog">
+      <div wire:id="pZgbDuEEPsh0jw4gLGKg" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;pZgbDuEEPsh0jw4gLGKg&quot;,&quot;name&quot;:&quot;request-callbacks&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;health-library&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;c5071b27&quot;,&quot;data&quot;:{&quot;name&quot;:null,&quot;email&quot;:null,&quot;mobile&quot;:null,&quot;type&quot;:&quot;home-navbar&quot;,&quot;token&quot;:&quot;&quot;,&quot;captcha&quot;:0,&quot;recaptcha&quot;:null,&quot;userIp&quot;:null,&quot;userAgent&quot;:null,&quot;currentPageUrl&quot;:&quot;https:\/\/www.sudharshan heart clinic.org\/health-library&quot;,&quot;utm_source&quot;:&quot;Website&quot;,&quot;utm_medium&quot;:null,&quot;utm_campaign&quot;:null,&quot;getSubSource&quot;:&quot;Website - health-library&quot;,&quot;utm_term&quot;:null},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;9ddd820f18a02588a6f174128cdb3da6200bdd07f3262a91e027975ffc5a8988&quot;}}">
+    <a class="close close-modal" data-close="modal" id="closeModal"></a>
+    <div class="modal__content">
+    <div class="modal-body">
+        <h2 class="reacllHeading">Request Call Back</h2>
+        <div class="btn-modal text-right">
+            <form wire:submit.prevent="submit">
+                <div >
+                                    </div>
+                <label for="fname">Name *</label>
+                <input type="text" id="fname" name="fname" value="" wire:model.lazy="name" placeholder="Enter Your Name">
+                
+                <label for="lname">Mobile Number *</label>
+                <input type="number" id="lname" name="lname" value="" wire:model.lazy="mobile" placeholder="Enter Your Mobile Number">
+                
+                <label for="lname">Email</label>
+                <input type="text" id="lname" name="lname" value="" wire:model.lazy="email" placeholder="Enter Your Email">
+                
+                <input type="hidden" name="type" wire:model="type" value="home-navbar">
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                <br> <br>
+                <button type="submit" class="submitpopupbt" wire:click="loading">Submit</button>
+                <div class="form-loader loading" wire:loading wire:target="loading">
+                    <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                        <g transform="rotate(0 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(30 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(60 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(90 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(120 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(150 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(180 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(210 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(240 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(270 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(300 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(330 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                    </svg>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <script>
+        window.addEventListener('close-modal', function(event) {
+            const delay = event.detail.delay;
+            setTimeout(function() {
+                var $closeModal = document.querySelector('#closeModal');
+                $closeModal.click();
+            }, 5000);
+        });
+    </script>
+    
+        <script type="text/javascript">
+             window.addEventListener('postUpdated', event => {
+                var $closeModal = document.querySelector('#closeModal');
+                $closeModal.click();
+            })
+            var onCallback = function (){
+                // alert('ue');
+                console.log('gcaptch')
+                console.log(grecaptcha.getResponse());
+                window.livewire.find('pZgbDuEEPsh0jw4gLGKg').set('recaptcha',grecaptcha.getResponse());
+            }
+            window.addEventListener('reset-recaptcha', event => {
+                grecaptcha.reset();
+            })
+        </script>
+    
+</div>
+
+<!-- Livewire Component wire-end:pZgbDuEEPsh0jw4gLGKg -->    </div>
+  </div>
+
+  <!-- Upload Resume Model -->
+  <div class="modal" id="sendResumModal">
+    <div class="close close-model-layer" data-close="modal"></div>
+    <div class="modal__dialog">
+      <a class="close close-modal" data-close="modal"></a>
+      <div class="modal__content">
+        <div class="modal-body">
+          <div class="frm-holder">
+            <div wire:id="6lIDu9VKFx5fvA5WcFeu" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;6lIDu9VKFx5fvA5WcFeu&quot;,&quot;name&quot;:&quot;jop-application-list&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;health-library&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;62240f24&quot;,&quot;data&quot;:{&quot;name&quot;:null,&quot;email&quot;:null,&quot;mobile&quot;:null,&quot;resume&quot;:null,&quot;userIp&quot;:null,&quot;userAgent&quot;:null,&quot;currentPageUrl&quot;:&quot;https:\/\/www.sudharshan heart clinic.org\/health-library&quot;,&quot;utm_source&quot;:&quot;Website&quot;,&quot;utm_medium&quot;:null,&quot;utm_campaign&quot;:null,&quot;utm_term&quot;:null},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;d7ddb8445b46d100813bd9abced6b4897b7fc2c98827cb3a486786204c66dd1c&quot;}}">
+            <form wire:submit.prevent="save()">
+
+        <div class="field">
+            <label>Name *</label>
+            <input type="text" class="inputbox" wire:model.defer="name" placeholder="Enter Your Name" onkeydown="return /[a-zA-Z ]/i.test(event.key)">
+            <br>
+        </div>
+        <div class="field">
+            <label>Mobile Number *</label>
+            <input type="number" class="inputbox"  wire:model.defer="mobile" placeholder="Enter Your Number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);">
+            <br>
+        </div>
+        <div class="field">
+            <label>Email *</label>
+            <input type="email" class="inputbox"  wire:model.defer="email" placeholder="Enter Your Email">
+            <br>
+        </div>
+
+        <div class="field mb-20">
+            <label>Resume (accepted only pdf, docx) *</label>
+            <div class="upload-file" wire:ignore>
+                <input type="file" class="inputbox" id="resume" name="resume" wire:model.defer="resume"/>
+            </div>
+            <br>
+        </div>
+        <button type="submit" class="theme-button">Submit</button>
+        <div class="form-loader loading" wire:loading wire:target="save">
+            <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                <g transform="rotate(0 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(30 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(60 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(90 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(120 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(150 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(180 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(210 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(240 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(270 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(300 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(330 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g>
+            </svg>
+        </div>
+    </form>
+     <script>
+        window.addEventListener('resetFileInput', event => {
+            document.getElementById('resume').value = null;
+        });
+    </script>
+</div>
+
+<!-- Livewire Component wire-end:6lIDu9VKFx5fvA5WcFeu -->          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sticky-links">
+    <div class="container">
+        <ul>
+            <li><a href="#diseases-section">Diseases & Conditions</a></li>
+            <li><a href="#healthlibrary-section">Health Library Provides</a></li>
+            <li><a href="#healthcare-section">Healthcare Easier</a></li>
+            <li><a href="#technology-section">Technology</a></li>
+            <li><a href="#knowledge-section">Knowledge Center</a></li>
+            <li><a href="#healthwellness-section">Health and Wellness Blog</a></li>
+            <li><a href="#event-section">Events</a></li>
+        </ul>
+    </div>
+</div>
+<main>
+    <section class="innerpage-banner">
+        <picture class="img-wrap">
+            <source media="(min-width: 768px)" srcset="https://medanta.s3.ap-south-1.amazonaws.com/banners/November2023/Gzsv220MFP5FXDvabHFdkmpLZgwaJa-metaYmFubmVyLmpwZw==-.jpg" width="1920"
+                height="500" alt="Health Library" />
+            <source media="(min-width: 320px)" srcset="https://medanta.s3.ap-south-1.amazonaws.com/banners/November2023/SPxNlPaHf9rrW1gE8LNt8exaVud4Rl-metabW9iIGJhbm5lci5qcGc=-.jpg" width="480"
+                height="320" alt="Health Library" />
+            <img src="https://medanta.s3.ap-south-1.amazonaws.com/banners/November2023/Gzsv220MFP5FXDvabHFdkmpLZgwaJa-metaYmFubmVyLmpwZw==-.jpg" width="1920" height="500" alt="Health Library" />
+        </picture>
+        <div class="banner-caption text-center">
+            <h1 class="banner-title clr-white">Health Library</h1>
+        </div>
+    </section>
+    <div wire:id="AMRiFrbTsJxRVYkAOSzM" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;AMRiFrbTsJxRVYkAOSzM&quot;,&quot;name&quot;:&quot;health-lib&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;health-library&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;dispatches&quot;:[{&quot;event&quot;:&quot;refresh-js&quot;,&quot;data&quot;:null}],&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;2d45bc82&quot;,&quot;data&quot;:{&quot;banner&quot;:[],&quot;library&quot;:[],&quot;downloads&quot;:[],&quot;events&quot;:[],&quot;blogs&quot;:[],&quot;videos&quot;:[],&quot;caseStudies&quot;:[],&quot;health_wellness_blog&quot;:[],&quot;ailments&quot;:[],&quot;search_text&quot;:null,&quot;sortCahr&quot;:&quot;&quot;,&quot;charArr&quot;:[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;,&quot;f&quot;,&quot;g&quot;,&quot;h&quot;,&quot;i&quot;,&quot;j&quot;,&quot;k&quot;,&quot;l&quot;,&quot;m&quot;,&quot;n&quot;,&quot;o&quot;,&quot;p&quot;,&quot;q&quot;,&quot;r&quot;,&quot;s&quot;,&quot;t&quot;,&quot;u&quot;,&quot;v&quot;,&quot;w&quot;,&quot;x&quot;,&quot;y&quot;,&quot;z&quot;],&quot;availableChars&quot;:null,&quot;specialities&quot;:[573,572,571,570,569],&quot;availableCharsArr&quot;:[],&quot;availableDeseaseCharsArr&quot;:{&quot;0&quot;:&quot;a&quot;,&quot;1&quot;:&quot;b&quot;,&quot;2&quot;:&quot;c&quot;,&quot;3&quot;:&quot;d&quot;,&quot;4&quot;:&quot;e&quot;,&quot;5&quot;:&quot;f&quot;,&quot;6&quot;:&quot;g&quot;,&quot;7&quot;:&quot;h&quot;,&quot;8&quot;:&quot;i&quot;,&quot;9&quot;:&quot;j&quot;,&quot;10&quot;:&quot;k&quot;,&quot;11&quot;:&quot;l&quot;,&quot;12&quot;:&quot;m&quot;,&quot;13&quot;:&quot;n&quot;,&quot;14&quot;:&quot;o&quot;,&quot;15&quot;:&quot;p&quot;,&quot;17&quot;:&quot;r&quot;,&quot;18&quot;:&quot;s&quot;,&quot;19&quot;:&quot;t&quot;,&quot;20&quot;:&quot;u&quot;,&quot;21&quot;:&quot;v&quot;}},&quot;dataMeta&quot;:{&quot;modelCollections&quot;:{&quot;banner&quot;:{&quot;class&quot;:&quot;App\\Models\\Banner&quot;,&quot;id&quot;:[402],&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null},&quot;downloads&quot;:{&quot;class&quot;:&quot;App\\Models\\DownloadData&quot;,&quot;id&quot;:[49,48,47,46],&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null},&quot;events&quot;:{&quot;class&quot;:&quot;App\\Models\\Event&quot;,&quot;id&quot;:[13,41,42,43],&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null},&quot;blogs&quot;:{&quot;class&quot;:&quot;App\\Models\\Blog&quot;,&quot;id&quot;:[3268,3264,3263,3262],&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null},&quot;videos&quot;:{&quot;class&quot;:&quot;App\\Models\\Videos&quot;,&quot;id&quot;:[852,851,849,848,690],&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null},&quot;caseStudies&quot;:{&quot;class&quot;:&quot;App\\Models\\CaseStudy&quot;,&quot;id&quot;:[36,35,34,33,32],&quot;relations&quot;:[&quot;studyCategory&quot;],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null},&quot;health_wellness_blog&quot;:{&quot;class&quot;:&quot;App\\Models\\Blog&quot;,&quot;id&quot;:[30,31,32,33,34],&quot;relations&quot;:[&quot;categories&quot;],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null},&quot;ailments&quot;:{&quot;class&quot;:&quot;App\\Models\\ProcedureTreatment&quot;,&quot;id&quot;:[348,378,381,385,390,391,394,398,403,433,453,472,482,493,356,404,445,446,448,467],&quot;relations&quot;:[&quot;speciality&quot;,&quot;hospital&quot;],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null}},&quot;models&quot;:{&quot;library&quot;:{&quot;class&quot;:&quot;App\\Models\\HealthLibrary&quot;,&quot;id&quot;:1,&quot;relations&quot;:[&quot;healthCareEasier&quot;,&quot;healthLibraryProvides&quot;],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null}},&quot;collections&quot;:[&quot;specialities&quot;]},&quot;checksum&quot;:&quot;2029598df2448f1cff45d4ba4f73b4c731ea5224745bf7b59bef339097dfbfe6&quot;}}">
+   
+        <section class="py-50 section-lightbg" id="healthlibrary-section">
+        <div class="container">
+            <div class="section-head text-center wow fadeInUp">
+                <div class="heading mb-10">Health Library Provides</div>
+            </div>
+            <div
+                class="health-library-slider space-row slick-arrow-style-1 slider-tb-shadow eqslides-height wow fadeInUp">
+                                    <div class="slide-item">
+                        <div class="white-dots-card hover-effect eqheight">
+                            <div class="icon">
+                                <div class="icon-default">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/library/November2023/aF35PeVVsjlC5yIJhwBnc1seWgDYxs-metaRGllc2Vhc2VzLnBuZw==-.png"
+                                        alt="Disease &amp; Conditions" width="100" height="100">
+                                </div>
+                                <div class="icon-hover">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/library/November2023/hXf3bZXhAvX0H9IhlNA5grTaIuyTgx-metaRGllc2Vhc2VzIHdoaXRlLnBuZw==-.png"
+                                        alt="Disease &amp; Conditions" width="100" height="100">
+                                </div>
+                            </div>
+                            <div class="card-caption text-center">
+                                <div class="title mb-10 font700"><a href="/ailments">Disease &amp; Conditions</a></div>
+                                <a href="/ailments" class="anchor-button">Know More <span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="slide-item">
+                        <div class="white-dots-card hover-effect eqheight">
+                            <div class="icon">
+                                <div class="icon-default">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/library/November2023/FSFo2Fvb4pxCvCloz7AoFX51QNxJAu-metaVHJlYXRtZW50ICYgcHJvY2VkdXJlcyBncmV5LnBuZw==-.png"
+                                        alt="Treatment &amp; Procedures" width="100" height="100">
+                                </div>
+                                <div class="icon-hover">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/library/November2023/hY0cqwwfx5vx6nEQjYsBdUhXjPZGow-metaVHJlYXRtZW50ICYgcHJvY2VkdXJlcyB3aGl0ZS5wbmc=-.png"
+                                        alt="Treatment &amp; Procedures" width="100" height="100">
+                                </div>
+                            </div>
+                            <div class="card-caption text-center">
+                                <div class="title mb-10 font700"><a href="/treatment">Treatment &amp; Procedures</a></div>
+                                <a href="/treatment" class="anchor-button">Know More <span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="slide-item">
+                        <div class="white-dots-card hover-effect eqheight">
+                            <div class="icon">
+                                <div class="icon-default">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/library/November2023/eOT36VUVxAzLyuW2299T9i2IZubfiu-metaVGVjaG5vbG9neSAmIGRldmljZXMucG5n-.png"
+                                        alt="Technology &amp; Devices" width="100" height="100">
+                                </div>
+                                <div class="icon-hover">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/library/November2023/AIY1wny5osGeLfbW0pUel15SkDqb4b-metaVGVjaG5vbG9neSAmIGRldmljZXMgbW9iLnBuZw==-.png"
+                                        alt="Technology &amp; Devices" width="100" height="100">
+                                </div>
+                            </div>
+                            <div class="card-caption text-center">
+                                <div class="title mb-10 font700"><a href="/technology">Technology &amp; Devices</a></div>
+                                <a href="/technology" class="anchor-button">Know More <span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="slide-item">
+                        <div class="white-dots-card hover-effect eqheight">
+                            <div class="icon">
+                                <div class="icon-default">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/library/November2023/NPkWPFEn0H0jTHCXbdOKQ9R5J8R3fg-metaRGlhZ25vc3RpY3MgJiBUZXN0aW5nLnBuZw==-.png"
+                                        alt="Diagnostics &amp; Testing" width="100" height="100">
+                                </div>
+                                <div class="icon-hover">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/library/November2023/fVm3n0hTnNKJ9cummXeYHB670U7MYf-metaRGlhZ25vc3RpY3MgJiBUZXN0aW5nIHdoaXRlLnBuZw==-.png"
+                                        alt="Diagnostics &amp; Testing" width="100" height="100">
+                                </div>
+                            </div>
+                            <div class="card-caption text-center">
+                                <div class="title mb-10 font700"><a href="/sudharshan heart clinic-labs">Diagnostics &amp; Testing</a></div>
+                                <a href="/sudharshan heart clinic-labs" class="anchor-button">Know More <span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                            </div>
+        </div>
+    </section>
+            <section class="py-50" id="healthcare-section">
+        <div class="container">
+            <div class="heading mb-40 text-center wow fadeInUp">We’re Here To Make Managing Your Healthcare Easier
+            </div>
+            <div class="patientservice-desktop-card wow fadeInUp">
+                                    <div class="patientservice-card-row">
+                                                <div class="patientservice-card">
+                            <div class="card-img">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/library/November2023/w0OdI9n8s0tU03GXlhCd92h8l6uv3P-metaZG9jdG9ycy5qcGc=-.jpg" width="414" height="366" alt="Our Doctors">
+                            </div>
+                            <div class="card-desc">
+                                <div class="heading-md mb-20">Our Doctors</div>
+                                <a href="/doctor-listing" class="anchor-button">Know More <span></span></a>
+                            </div>
+                        </div>
+                                                <div class="patientservice-card">
+                            <div class="card-img">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/library/November2023/rXQBqn1dXJpgSE1sxduzc4K0es1IEd-metaT3VyIFNwZWNpYWxpdGllcy5qcGc=-.jpg" width="414" height="366" alt="Our Specialities">
+                            </div>
+                            <div class="card-desc">
+                                <div class="heading-md mb-20">Our Specialities</div>
+                                <a href="/hospitals-near-me/gurugram-hospital/speciality" class="anchor-button">Know More <span></span></a>
+                            </div>
+                        </div>
+                                            </div>
+                                    <div class="patientservice-card-row">
+                                                <div class="patientservice-card">
+                            <div class="card-img">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/library/November2023/cBLyESUeMsi5qnwQWJTYqgJk4I8D79-metadHJlYW10bWVudHMuanBn-.jpg" width="414" height="366" alt="Treatments">
+                            </div>
+                            <div class="card-desc">
+                                <div class="heading-md mb-20">Treatments</div>
+                                <a href="/treatment" class="anchor-button">Know More <span></span></a>
+                            </div>
+                        </div>
+                                                <div class="patientservice-card">
+                            <div class="card-img">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/library/November2023/1TobZqE2vI5geByF0vU9wO9cPr6jju-metaQWlsbWVudHMuanBn-.jpg" width="414" height="366" alt="Ailments">
+                            </div>
+                            <div class="card-desc">
+                                <div class="heading-md mb-20">Ailments</div>
+                                <a href="/ailments" class="anchor-button">Know More <span></span></a>
+                            </div>
+                        </div>
+                                            </div>
+                            </div>
+            <div class="patientservice-slider space-row slick-arrow-style-1 eqslides-height wow fadeInUp">
+                                        <div class="slide-item">
+                        <div class="patientservice-card eqheight">
+
+                                <div class="card-img thumb-ratio thumb-ratio2">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/library/November2023/w0OdI9n8s0tU03GXlhCd92h8l6uv3P-metaZG9jdG9ycy5qcGc=-.jpg" width="414" height="366" alt="Our Doctors">
+                                </div>
+                                <div class="card-desc">
+                                    <div class="heading-md mb-20">Our Doctors</div>
+                                    <a href="/doctor-listing" class="anchor-button">Know More <span></span></a>
+                                </div>
+
+                        </div>
+                    </div>
+                                        <div class="slide-item">
+                        <div class="patientservice-card eqheight">
+
+                                <div class="card-img thumb-ratio thumb-ratio2">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/library/November2023/rXQBqn1dXJpgSE1sxduzc4K0es1IEd-metaT3VyIFNwZWNpYWxpdGllcy5qcGc=-.jpg" width="414" height="366" alt="Our Specialities">
+                                </div>
+                                <div class="card-desc">
+                                    <div class="heading-md mb-20">Our Specialities</div>
+                                    <a href="/hospitals-near-me/gurugram-hospital/speciality" class="anchor-button">Know More <span></span></a>
+                                </div>
+
+                        </div>
+                    </div>
+                                        <div class="slide-item">
+                        <div class="patientservice-card eqheight">
+
+                                <div class="card-img thumb-ratio thumb-ratio2">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/library/November2023/cBLyESUeMsi5qnwQWJTYqgJk4I8D79-metadHJlYW10bWVudHMuanBn-.jpg" width="414" height="366" alt="Treatments">
+                                </div>
+                                <div class="card-desc">
+                                    <div class="heading-md mb-20">Treatments</div>
+                                    <a href="/treatment" class="anchor-button">Know More <span></span></a>
+                                </div>
+
+                        </div>
+                    </div>
+                                        <div class="slide-item">
+                        <div class="patientservice-card eqheight">
+
+                                <div class="card-img thumb-ratio thumb-ratio2">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/library/November2023/1TobZqE2vI5geByF0vU9wO9cPr6jju-metaQWlsbWVudHMuanBn-.jpg" width="414" height="366" alt="Ailments">
+                                </div>
+                                <div class="card-desc">
+                                    <div class="heading-md mb-20">Ailments</div>
+                                    <a href="/ailments" class="anchor-button">Know More <span></span></a>
+                                </div>
+
+                        </div>
+                    </div>
+                                </div>
+        </div>
+    </section>
+            <section class="py-50 section-lightbg" id="technology-section">
+        <div class="container desktop-right-top-btn-container">
+            <div class="heading mb-20 text-center">Technology</div>
+            <div class="technologycards-slider space-row slick-arrow-style-1 slider-tb-shadow eqslides-height">
+                                    <div class="slide-item">
+                        <div class="technology-card-wrap eqheight">
+                            <div class="card-txt">
+                                <div class="heading-md font700 mb-10">256 Slice CT</div>
+                                <div class="para-wrap mb-20">
+                                    <p>Sudharshan Heart Clinic offers latest state-of-the-art diagnosis, by using 256 Slice CT, one of the latest technolog....</p>
+                                </div>
+                                                                <a href="/hospitals-near-me/gurugram-hospital/speciality/radiology/technology/256-slice-ct" class="anchor-button">Know More <span></span></a>
+                                                            </div>
+                            <div class="card-img">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/technologies/February2024/wbDSmZ5ZlTlQ4ZY7l7zjkW8pxHV7Jw-metaMjU2LVNsaWNlLUNUXzUxNHg0MDAuanBn-.jpg" width="280" height="300" alt="256-slice-ct">
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="slide-item">
+                        <div class="technology-card-wrap eqheight">
+                            <div class="card-txt">
+                                <div class="heading-md font700 mb-10">3.0 Tesla MRI</div>
+                                <div class="para-wrap mb-20">
+                                    <p>An MRI (Magnetic Resource Imaging) is a scanning process that produces accurate and comprehensive im....</p>
+                                </div>
+                                                                <a href="/hospitals-near-me/gurugram-hospital/speciality/radiology/technology/3-0-tesla-mri" class="anchor-button">Know More <span></span></a>
+                                                            </div>
+                            <div class="card-img">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/technologies/January2024/IGapZws4Dv62JAxR6K9vewae6vGfP5-metaMy4wLVRlc2xhLU1SSV81MTR4NDAwU3BlY2lhbGl0eSBwYWdlLmpwZw==-.jpg" width="280" height="300" alt="3.0 Tesla MRI">
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="slide-item">
+                        <div class="technology-card-wrap eqheight">
+                            <div class="card-txt">
+                                <div class="heading-md font700 mb-10">Artemis MRI/ TRUS Fusion Prostate Biopsy solution</div>
+                                <div class="para-wrap mb-20">
+                                    <p>TRUS stands for Transrectal Ultrasonography. It is a medium for capturing and creating the outlook i....</p>
+                                </div>
+                                                                <a href="/hospitals-near-me/gurugram-hospital/speciality/oncology/technology/trus-biopsy" class="anchor-button">Know More <span></span></a>
+                                                            </div>
+                            <div class="card-img">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/technologies/October2023/728KSZSapXetCOcJPIbf8ohqO6VBx0-metaTWFnbmV0aWMgUmVzb25hbmNlIEltYWdpbmcgTVJJIFNwaW5lLmpwZw==-.jpg" width="280" height="300" alt="Artemis MRI/ TRUS Fusion Prostate Biopsy solution">
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="slide-item">
+                        <div class="technology-card-wrap eqheight">
+                            <div class="card-txt">
+                                <div class="heading-md font700 mb-10">CT Scan on Wheels</div>
+                                <div class="para-wrap mb-20">
+                                    <p>Computed Topography which is also known as CT Scan is the process of imaging with the use of X-rays....</p>
+                                </div>
+                                                                <a href="/hospitals-near-me/gurugram-hospital/speciality/radiology/technology/ct-scan-on-wheels" class="anchor-button">Know More <span></span></a>
+                                                            </div>
+                            <div class="card-img">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/technologies/January2024/gvpj6DPzEVTyLeV5V4R0sHfPfR6H5e-metaQ1RfNTE0eDQwMC5qcGc=-.jpg" width="280" height="300" alt="CT Scan on Wheels">
+                            </div>
+                        </div>
+                    </div>
+                            </div>
+            <div class="text-center desktop-right-top-btn wow fadeInUp" data-wow-delay=".3s">
+                <a href="/technology" class="anchor-button">View All technology <span></span> </a>
+            </div>
+        </div>
+    </section>
+        <section class="py-50" id="knowledge-section">
+        <div class="container desktop-right-top-btn-container">
+            <div class="heading mb-30 text-center wow fadeInUp">Knowledge Center</div>
+            <div class="location-filter knowledge-tabs-btn text-center mb-20">
+                <button class="theme-button" type="button" id="knowledge-center-tab1">Blogs</button>                <button class="theme-button button-outline" type="button" id="knowledge-center-tab2">Videos</button>
+                <button class="theme-button button-outline" type="button" id="knowledge-center-tab3">Case
+                    Studies</button>
+            </div>
+            <div class="knowledge-center-tabs">
+                                <div class="knowledge-center-content active" id="knowledge-center-tab1">
+                    <div class="knowledge-center-slider space-row slick-arrow-style-1 slider-tb-shadow eqslides-height">
+                                                <div class="slide-item">
+                            <div class="post-card eqheight">
+                                <div class="thumb thumb-ratio thumb-ratio1">
+                                                                       
+                                    <img  width="514" height="400" src="https://medanta.s3.ap-south-1.amazonaws.com/blogs/November2025/KDG7MEmGDJRy5QLErBWIpnI3VZiF8k-metadW5pdmVyc2FsX2Jsb29kX2Rvbm9yX3doaWNoX2Jsb29kX2dyb3VwX2Nhbl9iZV9kb25hdGVkX3RvX2V2ZXJ5b25lXy53ZWJw-.webp" alt="Universal Blood Donor: Which Blood Group Can Be Donated to Everyone?" style="object-fit:fill;">
+                                </div>
+                                <div class="card-desk">
+                                    <span class="post-category mb-10 font600">Article</span>
+                                    <div class="heading-sm card-title mb-10 font600">Universal Blood Donor: Which Blood Group Can Be Donated to Everyone?</div>
+                                    <div class="para-wrap">
+                                        <p><a href="/patient-education-blog/universal-blood-donor-which-blood-group-can-be-donated-to-everyone"
+                                                class="txt-link">Continue Reading</a> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="slide-item">
+                            <div class="post-card eqheight">
+                                <div class="thumb thumb-ratio thumb-ratio1">
+                                                                       
+                                    <img  width="514" height="400" src="https://medanta.s3.ap-south-1.amazonaws.com/blogs/November2025/ycJR38zbs0M5fDuSItjw72NtKT56go-metaYmlvcHN5X25lZWRsZV9pbmNpc2lvbmFsX2V4Y2lzaW9uYWxfbGlxdWlkX3VzZWRfZm9yX2FsbF9zb2xpZF90dW1vdXJzLndlYnA=-.webp" alt="Biopsy (Needle, Incisional, Excisional, Liquid) – Used for All Solid Tumours" style="object-fit:fill;">
+                                </div>
+                                <div class="card-desk">
+                                    <span class="post-category mb-10 font600">Article</span>
+                                    <div class="heading-sm card-title mb-10 font600">Biopsy (Needle, Incisional, Excisional, Liquid) – Used for All Solid Tumours</div>
+                                    <div class="para-wrap">
+                                        <p><a href="/patient-education-blog/biopsy-needle-incisional-excisional-liquid-used-for-all-solid-tumours"
+                                                class="txt-link">Continue Reading</a> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="slide-item">
+                            <div class="post-card eqheight">
+                                <div class="thumb thumb-ratio thumb-ratio1">
+                                                                       
+                                    <img  width="514" height="400" src="https://medanta.s3.ap-south-1.amazonaws.com/blogs/November2025/rXJdFO27Is9Hi5OVHEEd8d1FwQJVTh-metad2hhdF9pc19zY2lhdGljYV9zeW1wdG9tc19jYXVzZXNfYW5kX3RyZWF0bWVudC53ZWJw-.webp" alt="What is Sciatica: Symptoms, Causes and Treatment" style="object-fit:fill;">
+                                </div>
+                                <div class="card-desk">
+                                    <span class="post-category mb-10 font600">Article</span>
+                                    <div class="heading-sm card-title mb-10 font600">What is Sciatica: Symptoms, Causes and Treatment</div>
+                                    <div class="para-wrap">
+                                        <p><a href="/patient-education-blog/what-is-sciatica-symptoms-causes-and-treatment"
+                                                class="txt-link">Continue Reading</a> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="slide-item">
+                            <div class="post-card eqheight">
+                                <div class="thumb thumb-ratio thumb-ratio1">
+                                                                       
+                                    <img  width="514" height="400" src="https://medanta.s3.ap-south-1.amazonaws.com/blogs/November2025/QadQcDh6EijrCJf4UASXglloeIAjt3-metaYW5hcGxhc3RpY190aHlyb2lkX2NhcmNpbm9tYS53ZWJw-.webp" alt="Anaplastic Thyroid Carcinoma" style="object-fit:fill;">
+                                </div>
+                                <div class="card-desk">
+                                    <span class="post-category mb-10 font600">Article</span>
+                                    <div class="heading-sm card-title mb-10 font600">Anaplastic Thyroid Carcinoma</div>
+                                    <div class="para-wrap">
+                                        <p><a href="/patient-education-blog/anaplastic-thyroid-carcinoma"
+                                                class="txt-link">Continue Reading</a> </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            </div>
+                    <div class="text-center desktop-right-top-btn wow fadeInUp" data-wow-delay=".3s">
+                        <a href="/patient-education" class="anchor-button">View All<span></span> </a>
+                    </div>
+                </div>
+                                                <div class="knowledge-center-content" id="knowledge-center-tab2">
+                    <div class="knowledge-center-slider space-row slick-arrow-style-1 slider-tb-shadow eqslides-height">
+                                                                            <div class="slide-item">
+                            <div class="video-card">
+                                <div class="video-thumb">
+                                    <div class="thumb-ratio thumb-ratio1">
+                                        <img src="https://medanta.s3.ap-south-1.amazonaws.com/about/April2025/Ma7WjkYirTdLgy3GXpSyHoIWOsloVl-metadmlkZW9fMS5qcGc=-.jpg" width="514" height="400" alt="Robotic Radical Thymectomy for MG with Thymoma An Assortment of videos">
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=C1nfZmSp88w" class="play-video" tabindex="0">
+                                        <img src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="" width="48" height="48">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-heading heading-sm text-center font700">Robotic Radical Thymectomy for MG with Thymoma An Assortment of videos</div>
+                                </div>
+                            </div>
+                        </div>
+                                                                            <div class="slide-item">
+                            <div class="video-card">
+                                <div class="video-thumb">
+                                    <div class="thumb-ratio thumb-ratio1">
+                                        <img src="https://medanta.s3.ap-south-1.amazonaws.com/about/April2025/NHdLkm9aL9UvSLKNw8qUTxlkCOfChl-metadmlkZW9fMi5qcGc=-.jpg" width="514" height="400" alt="Robotic Extended Thymectomy for MG No Thymoma Step by Step">
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=DzFqF5q09EQ" class="play-video" tabindex="0">
+                                        <img src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="" width="48" height="48">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-heading heading-sm text-center font700">Robotic Extended Thymectomy for MG No Thymoma Step by Step</div>
+                                </div>
+                            </div>
+                        </div>
+                                                                            <div class="slide-item">
+                            <div class="video-card">
+                                <div class="video-thumb">
+                                    <div class="thumb-ratio thumb-ratio1">
+                                        <img src="https://www.sudharshanheartclinic.com/assets/images/placeholder.jpg" width="514" height="400" alt="">
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=PJTCxybal_I" class="play-video" tabindex="0">
+                                        <img src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="" width="48" height="48">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-heading heading-sm text-center font700"></div>
+                                </div>
+                            </div>
+                        </div>
+                                                                            <div class="slide-item">
+                            <div class="video-card">
+                                <div class="video-thumb">
+                                    <div class="thumb-ratio thumb-ratio1">
+                                        <img src="https://www.sudharshanheartclinic.com/assets/images/placeholder.jpg" width="514" height="400" alt="">
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=p1jHaC3dCdk" class="play-video" tabindex="0">
+                                        <img src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="" width="48" height="48">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-heading heading-sm text-center font700"></div>
+                                </div>
+                            </div>
+                        </div>
+                                                                            <div class="slide-item">
+                            <div class="video-card">
+                                <div class="video-thumb">
+                                    <div class="thumb-ratio thumb-ratio1">
+                                        <img src="https://www.sudharshanheartclinic.com/assets/images/placeholder.jpg" width="514" height="400" alt="MIS-C and its relation to COVID | Sudharshan Heart Clinic">
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=T_7hKLWUuho" class="play-video" tabindex="0">
+                                        <img src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="" width="48" height="48">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-heading heading-sm text-center font700">MIS-C and its relation to COVID | Sudharshan Heart Clinic</div>
+                                </div>
+                            </div>
+                        </div>
+                                            </div>
+                    <div class="text-center desktop-right-top-btn wow fadeInUp" data-wow-delay=".3s">
+                        <a href="/videos" class="anchor-button">View All<span></span> </a>
+                    </div>
+                </div>
+                                                <div class="knowledge-center-content" id="knowledge-center-tab3">
+                    <div class="knowledge-center-slider space-row slick-arrow-style-1 slider-tb-shadow eqslides-height">
+                                                <div class="slide-item">
+                            <div class="post-card eqheight">
+                                <div class="thumb thumb-ratio thumb-ratio1">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/case-studies/January2024/ntJdB5uw0cXX49ZKu4qpz9iMNhyaHG-metabWFkaWJ1bGFyLWphdy1hZHZhbmNlbWVudC53ZWJw-.webp"
+                                        alt="Gurgaon doctors reconstruct Delhi doctor&#039;s jaw using 3D technology" width="514" height="400">
+                                </div>
+                                <div class="card-desk">
+                                                                        <span class="post-category mb-10 font600">Oncology</span>
+                                                                        <div class="heading-sm card-title mb-10 font600">Gurgaon doctors reconstruct Delhi doctor&#039;s jaw using 3D technology</div>
+                                    <div class="para-wrap">
+                                        <p>
+                                            
+                                            <a href="/case-studies/gurgaon-doctors-reconstruct-delhi-doctors-jaw-using-3d-technology" class="txt-link">Continue reading</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="slide-item">
+                            <div class="post-card eqheight">
+                                <div class="thumb thumb-ratio thumb-ratio1">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/case-studies/January2024/r3E6tb58b1X9EHnd3ZOZ2KChuLaxEC-metaSW5kaWdvU3lzdGVtLUxpZ2h0bmluZzEyLW1vYmlsZS1IZXJvQDJ4LndlYnA=-.webp"
+                                        alt="Sudharshan Heart Clinic, 1st hospital in India to use Advanced AI-enabled Penumbra Lightning technology, successfully treats 25 patients for pulmonary embolism (Lung clots)" width="514" height="400">
+                                </div>
+                                <div class="card-desk">
+                                                                        <span class="post-category mb-10 font600">Peripheral Vascular and Endovascular Sciences</span>
+                                                                        <div class="heading-sm card-title mb-10 font600">Sudharshan Heart Clinic, 1st hospital in India to use Advanced AI-enabled Penumbra Lightning technology, successfully treats 25 patients for pulmonary embolism (Lung clots)</div>
+                                    <div class="para-wrap">
+                                        <p>
+                                            
+                                            <a href="/case-studies/sudharshan heart clinic-1st-hospital-in-india-to-use-advanced-ai-enabled-penumbra-lightning-technology-successfully-treats-25-patients-for-pulmonary-embolism-lung-clots" class="txt-link">Continue reading</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="slide-item">
+                            <div class="post-card eqheight">
+                                <div class="thumb thumb-ratio thumb-ratio1">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/case-studies/January2024/na8na3vUFs6DH5lq3rSlr0NIhOz4x2-metaZG93bmxvYWQgKDIpLmpwZw==-.jpg"
+                                        alt="Connectomics-based Brain-Pacemaker Surgery: A Game-Changer" width="514" height="400">
+                                </div>
+                                <div class="card-desk">
+                                                                        <span class="post-category mb-10 font600">Neurology</span>
+                                                                        <div class="heading-sm card-title mb-10 font600">Connectomics-based Brain-Pacemaker Surgery: A Game-Changer</div>
+                                    <div class="para-wrap">
+                                        <p>
+                                            
+                                            <a href="/case-studies/connectomics-based-brain-pacemaker-surgery-a-game-changer" class="txt-link">Continue reading</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="slide-item">
+                            <div class="post-card eqheight">
+                                <div class="thumb thumb-ratio thumb-ratio1">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/case-studies/January2024/DBrODhji5qRRQtyZJeemAYDLuvsX9q-metaZG93bmxvYWQgKDEpLmpwZw==-.jpg"
+                                        alt="Sudharshan Heart Clinic Pioneers the Irreversible Electroporation Technology to Treat Cancer Patients Unfit for Surgery" width="514" height="400">
+                                </div>
+                                <div class="card-desk">
+                                                                        <span class="post-category mb-10 font600">Radiology</span>
+                                                                        <div class="heading-sm card-title mb-10 font600">Sudharshan Heart Clinic Pioneers the Irreversible Electroporation Technology to Treat Cancer Patients Unfit for Surgery</div>
+                                    <div class="para-wrap">
+                                        <p>
+                                            
+                                            <a href="/case-studies/sudharshan heart clinic-pioneers-the-irreversible-electroporation-technology-to-treat-cancer-patients-unfit-for-surgery" class="txt-link">Continue reading</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                <div class="slide-item">
+                            <div class="post-card eqheight">
+                                <div class="thumb thumb-ratio thumb-ratio1">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/case-studies/January2024/gIQdC0LzBEAF4Db1WARmZP7WyiUGF3-metaVHJpY2xpcC1wcm9jZWR1cmVfcmVwYWlyaW5nLXRyaWN1c3BpZC12YWx2ZS5qcGc=-.jpg"
+                                        alt="Asia’s First Tricuspid Valve Clipping Treatment " width="514" height="400">
+                                </div>
+                                <div class="card-desk">
+                                                                        <span class="post-category mb-10 font600">Cardiac Science</span>
+                                                                        <div class="heading-sm card-title mb-10 font600">Asia’s First Tricuspid Valve Clipping Treatment </div>
+                                    <div class="para-wrap">
+                                        <p>
+                                            
+                                            <a href="/case-studies/asias-first-tricuspid-valve-clipping-treatment" class="txt-link">Continue reading</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            </div>
+                    <div class="text-center desktop-right-top-btn wow fadeInUp" data-wow-delay=".3s">
+                        <a href="/case-studies" class="anchor-button">View All<span></span> </a>
+                    </div>
+                </div>
+                            </div>
+        </div>
+    </section>
+            <section class="py-50 section-lightbg" id="healthwellness-section">
+        <div class="container desktop-right-top-btn-container">
+            <div class="heading mb-20 text-center wow fadeInUp">Health And Wellness Blog</div>
+            <div class="health-blog-container">
+                <div class="desktop-post">
+                    <div class="feature-health-blog">
+                        <div class="health-blog">
+                            <div class="figure thumb-ratio thumb-ratio1">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/blogs/August2025/RYzvJgd4F621ceDCXqs5DHTe3417Ie-metad2hhdHlvdXNob3VsZGtub3dhYm91dG1pdHJhbHZhbHZlcmVndXJnaXRhdGlvbi53ZWJw-.webp"  width="840" height="700" alt="what you should know about mitral valve regurgitation" style="object-fit: fill;">
+                            </div>
+                            <div class="figure-caption">
+                                <div class="heading-md mb-20">
+                                    <a href="/patient-education-blog/what-you-should-know-about-mitral-valve-regurgitation">What You Should Know About Mitral Valve Regurgitation?</a>
+                                </div>
+                                <a href="/patient-education-blog/what-you-should-know-about-mitral-valve-regurgitation" class="theme-button">Continue Reading</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="health-blog-list">
+                                                                                                                                                                                            <div class="health-blog">
+                                <div class="figure thumb-ratio thumb-ratio1">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/blogs/August2025/r5BAkE2U32RW068pjIRsW2Yf2GnIld-metaNWNhdXNlc29maGVhcnRmYWlsdXJleW91c2hvdWxka25vd2Fib3V0MXgud2VicA==-.webp" width="374" height="336" alt="5-causes-of-heart-failure-you-should-know-about" style="object-fit: fill;">
+                                </div>
+                                <div class="figure-caption">
+                                    <div class="heading-sm">
+                                        <a href="/patient-education-blog/5-causes-of-heart-failure-you-should-know-about">5 Causes Of Heart Failure You Should Know About</a>
+                                    </div>
+                                </div>
+                            </div>
+                                                                                                                                        <div class="health-blog">
+                                <div class="figure thumb-ratio thumb-ratio1">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/blogs/August2025/DafJWJvNwmD1lLLVMwgD3deAveUi1e-metaN3RpcHN0b3JlZHVjZXlvdXJjYW5jZXJyaXNrMXgud2VicA==-.webp" width="374" height="336" alt="7-tips-to-reduce-your-cancer-risk" style="object-fit: fill;">
+                                </div>
+                                <div class="figure-caption">
+                                    <div class="heading-sm">
+                                        <a href="/patient-education-blog/7-tips-to-reduce-your-cancer-risk">7 Tips To Reduce Your Cancer Risk</a>
+                                    </div>
+                                </div>
+                            </div>
+                                                                                                                                        <div class="health-blog">
+                                <div class="figure thumb-ratio thumb-ratio1">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/blogs/August2025/9VGYvjFAB5QbbL7OmLcb0OZSbViZpL-metaMTBlYXJseXNpZ25zb2ZoZWFydGRpc2Vhc2V5b3VzaG91bGRub3RpZ25vcmUxeC53ZWJw-.webp" width="374" height="336" alt="10-possible-heart-symptoms-you-should-not-ignore" style="object-fit: fill;">
+                                </div>
+                                <div class="figure-caption">
+                                    <div class="heading-sm">
+                                        <a href="/patient-education-blog/10-possible-heart-symptoms-you-should-not-ignore">10 Early Signs of Heart Disease You Should Not Ignore</a>
+                                    </div>
+                                </div>
+                            </div>
+                                                                                                                                        <div class="health-blog">
+                                <div class="figure thumb-ratio thumb-ratio1">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/blogs/August2025/y5tnVslfd6fr0HdCqFvuZzdelfPzTl-metaaGVhcnRwcm9ibGVtd2hhdGFyZXRoZXdhcm5pbmdzaWduc29mYWhlYXJ0YmxvY2sxeC53ZWJw-.webp" width="374" height="336" alt="signs-of-a-heart-block" style="object-fit: fill;">
+                                </div>
+                                <div class="figure-caption">
+                                    <div class="heading-sm">
+                                        <a href="/patient-education-blog/signs-of-a-heart-block">Heart Problem: What Are The Warning Signs Of A Heart Block</a>
+                                    </div>
+                                </div>
+                            </div>
+                                                    
+                    </div>
+                </div>
+                <div class="mobile-post">
+                    <div class="health-blog-slider space-row slick-arrow-style-1 slider-tb-shadow eqslides-height">
+                                                                                <div class="slide-item">
+                                <div class="health-blog eqheight">
+                                    <div class="figure thumb-ratio thumb-ratio1">
+                                        <img src="https://medanta.s3.ap-south-1.amazonaws.com/blogs/August2025/RYzvJgd4F621ceDCXqs5DHTe3417Ie-metad2hhdHlvdXNob3VsZGtub3dhYm91dG1pdHJhbHZhbHZlcmVndXJnaXRhdGlvbi53ZWJw-.webp" width="374" height="336" alt="what you should know about mitral valve regurgitation" style="object-fit: fill;"> 
+                                    </div>
+                                    <div class="figure-caption">
+                                        <div class="heading-sm">
+                                            <a href="/patient-education-blog/what-you-should-know-about-mitral-valve-regurgitation">What You Should Know About Mitral Valve Regurgitation?</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                                                                <div class="slide-item">
+                                <div class="health-blog eqheight">
+                                    <div class="figure thumb-ratio thumb-ratio1">
+                                        <img src="https://medanta.s3.ap-south-1.amazonaws.com/blogs/August2025/r5BAkE2U32RW068pjIRsW2Yf2GnIld-metaNWNhdXNlc29maGVhcnRmYWlsdXJleW91c2hvdWxka25vd2Fib3V0MXgud2VicA==-.webp" width="374" height="336" alt="5-causes-of-heart-failure-you-should-know-about" style="object-fit: fill;"> 
+                                    </div>
+                                    <div class="figure-caption">
+                                        <div class="heading-sm">
+                                            <a href="/patient-education-blog/5-causes-of-heart-failure-you-should-know-about">5 Causes Of Heart Failure You Should Know About</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                                                                <div class="slide-item">
+                                <div class="health-blog eqheight">
+                                    <div class="figure thumb-ratio thumb-ratio1">
+                                        <img src="https://medanta.s3.ap-south-1.amazonaws.com/blogs/August2025/DafJWJvNwmD1lLLVMwgD3deAveUi1e-metaN3RpcHN0b3JlZHVjZXlvdXJjYW5jZXJyaXNrMXgud2VicA==-.webp" width="374" height="336" alt="7-tips-to-reduce-your-cancer-risk" style="object-fit: fill;"> 
+                                    </div>
+                                    <div class="figure-caption">
+                                        <div class="heading-sm">
+                                            <a href="/patient-education-blog/7-tips-to-reduce-your-cancer-risk">7 Tips To Reduce Your Cancer Risk</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                                                                <div class="slide-item">
+                                <div class="health-blog eqheight">
+                                    <div class="figure thumb-ratio thumb-ratio1">
+                                        <img src="https://medanta.s3.ap-south-1.amazonaws.com/blogs/August2025/9VGYvjFAB5QbbL7OmLcb0OZSbViZpL-metaMTBlYXJseXNpZ25zb2ZoZWFydGRpc2Vhc2V5b3VzaG91bGRub3RpZ25vcmUxeC53ZWJw-.webp" width="374" height="336" alt="10-possible-heart-symptoms-you-should-not-ignore" style="object-fit: fill;"> 
+                                    </div>
+                                    <div class="figure-caption">
+                                        <div class="heading-sm">
+                                            <a href="/patient-education-blog/10-possible-heart-symptoms-you-should-not-ignore">10 Early Signs of Heart Disease You Should Not Ignore</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                                                                <div class="slide-item">
+                                <div class="health-blog eqheight">
+                                    <div class="figure thumb-ratio thumb-ratio1">
+                                        <img src="https://medanta.s3.ap-south-1.amazonaws.com/blogs/August2025/y5tnVslfd6fr0HdCqFvuZzdelfPzTl-metaaGVhcnRwcm9ibGVtd2hhdGFyZXRoZXdhcm5pbmdzaWduc29mYWhlYXJ0YmxvY2sxeC53ZWJw-.webp" width="374" height="336" alt="signs-of-a-heart-block" style="object-fit: fill;"> 
+                                    </div>
+                                    <div class="figure-caption">
+                                        <div class="heading-sm">
+                                            <a href="/patient-education-blog/signs-of-a-heart-block">Heart Problem: What Are The Warning Signs Of A Heart Block</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+    
+    <script>
+        window.addEventListener('refresh-js', event => {
+            $('.health-library-slider').slick({
+                speed: 300,
+                slidesToShow: 4,
+                arrows: true,
+                slidesToScroll: 1,
+                prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}' /></button>",
+                nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+                responsive: [
+                    {
+                        breakpoint: 1199,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 991,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+
+            $('.technologycards-slider').slick({
+                speed: 300,
+                slidesToShow: 2,
+                arrows: true,
+                slidesToScroll: 1,
+                prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}' /></button>",
+                nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+                responsive: [
+                    {
+                        breakpoint: 1199,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+            $('.patientservice-slider').slick({
+                speed: 300,
+                slidesToShow: 3,
+                arrows: true,
+                slidesToScroll: 1,
+                prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}' /></button>",
+                nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+                responsive: [
+                    {
+                        breakpoint: 1199,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+            $('.knowledge-center-slider').slick({
+                speed: 300,
+                slidesToShow: 3,
+                arrows: true,
+                slidesToScroll: 1,
+                prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}' /></button>",
+                nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+                responsive: [
+                    {
+                        breakpoint: 1199,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+
+            $('.event-post-slider').slick({
+                speed: 300,
+                slidesToShow: 3,
+                arrows: true,
+                slidesToScroll: 1,
+                prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}' /></button>",
+                nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+                responsive: [
+                    {
+                        breakpoint: 1199,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+            $('.download-post-slider').slick({
+                speed: 300,
+                slidesToShow: 4,
+                arrows: true,
+                slidesToScroll: 1,
+                prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}' /></button>",
+                nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+                responsive: [
+                    {
+                        breakpoint: 1199,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+            $('.health-blog-slider').slick({
+                speed: 300,
+                slidesToShow: 1,
+                arrows: true,
+                slidesToScroll: 1,
+                prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}' /></button>",
+                nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+            });
+
+            $('.knowledge-tabs-btn .theme-button').click(function () {
+                var id = $(this).attr('id');
+                $('.knowledge-tabs-btn .theme-button').addClass('button-outline');
+                $(this).removeClass('button-outline');
+                $('.knowledge-center-content.active').removeClass('active');
+                $('.knowledge-center-content#' + id).addClass('active');
+                $('.knowledge-center-slider').slick('refresh');
+            });
+
+        })
+
+    </script>
+</div>
+
+<!-- Livewire Component wire-end:AMRiFrbTsJxRVYkAOSzM --></main>
+
+
+
+  <script src="https://www.sudharshanheartclinic.com/assets/js/jquery.min.js"></script>
+  <script src="https://www.sudharshanheartclinic.com/assets/js/jquery-ui.js"></script>
+  <script src="https://www.sudharshanheartclinic.com/assets/js/slick.min.js"></script>
+  <script src="https://www.sudharshanheartclinic.com/assets/js/wow.min.js"></script>
+  <script src="https://www.sudharshanheartclinic.com/assets/js/jquery.magnific-popup.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" defer></script> -->
+  <script src="https://www.sudharshanheartclinic.com/assets/js/custom.js?v=2.2"></script>
+
+
+  <script>
+    $(document).ready(function () {
+        $('.health-library-slider').slick({
+            speed: 300,
+            slidesToShow: 4,
+            arrows: true,
+            slidesToScroll: 1,
+            prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}' /></button>",
+            nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+            responsive: [
+                {
+                    breakpoint: 1199,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 991,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+
+        $('.technologycards-slider').slick({
+            speed: 300,
+            slidesToShow: 2,
+            arrows: true,
+            slidesToScroll: 1,
+            prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}' /></button>",
+            nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+            responsive: [
+                {
+                    breakpoint: 1199,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+        $('.patientservice-slider').slick({
+            speed: 300,
+            slidesToShow: 3,
+            arrows: true,
+            slidesToScroll: 1,
+            prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}' /></button>",
+            nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+            responsive: [
+                {
+                    breakpoint: 1199,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+        $('.knowledge-center-slider').slick({
+            speed: 300,
+            slidesToShow: 3,
+            arrows: true,
+            slidesToScroll: 1,
+            prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}' /></button>",
+            nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+            responsive: [
+                {
+                    breakpoint: 1199,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+
+        $('.event-post-slider').slick({
+            speed: 300,
+            slidesToShow: 3,
+            arrows: true,
+            slidesToScroll: 1,
+            prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}' /></button>",
+            nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+            responsive: [
+                {
+                    breakpoint: 1199,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+        $('.download-post-slider').slick({
+            speed: 300,
+            slidesToShow: 4,
+            arrows: true,
+            slidesToScroll: 1,
+            prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}' /></button>",
+            nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+            responsive: [
+                {
+                    breakpoint: 1199,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+        $('.health-blog-slider').slick({
+            speed: 300,
+            slidesToShow: 1,
+            arrows: true,
+            slidesToScroll: 1,
+            prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}' /></button>",
+            nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+           });
+
+           $('.knowledge-tabs-btn .theme-button').click(function () {
+            var id = $(this).attr('id');
+            $('.knowledge-tabs-btn .theme-button').addClass('button-outline');
+            $(this).removeClass('button-outline');
+            $('.knowledge-center-content.active').removeClass('active');
+            $('.knowledge-center-content#' + id).addClass('active');
+            $('.knowledge-center-slider').slick('refresh');
+        });
+
+    });
+
+</script>
+  
+  <script src="/livewire/livewire.js?id=90730a3b0e7144480175" data-turbo-eval="false" data-turbolinks-eval="false" ></script><script data-turbo-eval="false" data-turbolinks-eval="false" >window.livewire = new Livewire();window.Livewire = window.livewire;window.livewire_app_url = '';window.livewire_token = '1d7g3KbcxCPKW6WZYthI9S9Y8j2h9RV4sP05kG7B';window.deferLoadingAlpine = function (callback) {window.addEventListener('livewire:load', function () {callback();});};let started = false;window.addEventListener('alpine:initializing', function () {if (! started) {window.livewire.start();started = true;}});document.addEventListener("DOMContentLoaded", function () {if (! started) {window.livewire.start();started = true;}});</script>
+</body>
+
+
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Add contact page specific JavaScript here -->
+{% endblock %}

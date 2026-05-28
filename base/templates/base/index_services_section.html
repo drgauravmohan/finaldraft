@@ -1,0 +1,34 @@
+            <div class="sp-wrapper sp-center-filter">
+                {% for service in services %}
+                    <a href="{% url 'service_detail' slug=service.slug %}">
+                        <div class="md-all-sp {% if forloop.first %}active{% endif %}">
+                            <div class="md-all-spInner">
+                                {% if service.logo_image %}
+                                    <img src="{{ service.logo_image.url }}" alt="{{ service.name }}" width="120" height="120" loading="lazy"/>
+                                {% elif service.icon %}
+                                    <img src="{{ service.icon.url }}" alt="{{ service.name }}" width="120" height="120" loading="lazy"/>
+                                {% else %}
+                                    <!-- Default SVG icon if no image is provided -->
+                                    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="60" cy="60" r="50" stroke="#58595B" stroke-width="2" fill="none"/>
+                                        <text x="60" y="70" text-anchor="middle" font-size="16" fill="#58595B">{{ service.name|slice:":3" }}</text>
+                                    </svg>
+                                {% endif %}
+                                
+                                <span>
+                                    {{ service.name }}
+                                </span>
+                            </div>
+                            <div class="md-sp-arrowsvg">
+                                <svg width="7" height="12" viewBox="0 0 7 12" fill="none"
+                                     xmlns="https://www.w3.org/2000/svg">
+                                    <path d="M1 0.999612L5.8 5.79961L1 10.5996" stroke="#58595B" stroke-width="2"
+                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                {% empty %}
+                    <p>No services available at the moment.</p>
+                {% endfor %}
+            </div>

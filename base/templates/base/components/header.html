@@ -1,0 +1,200 @@
+{% load static %}
+<!-- Header Section -->
+<header class="site-header">
+    <div class="container dflex space-between centered-items">
+        <div class="logo">
+          <a href="/">
+            <style>
+              .logo {
+                font-size: 24px;
+                font-weight: 600;
+              }
+            </style>
+            Dr Gaurav Mohan.
+          </a>
+      </div>
+      <div wire:id="ZmZpLKCmekEgezlc10Dq" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;ZmZpLKCmekEgezlc10Dq&quot;,&quot;name&quot;:&quot;header&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;\/&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;8788e961&quot;,&quot;data&quot;:{&quot;hospitals&quot;:[],&quot;mediclinics&quot;:null,&quot;specialities&quot;:[],&quot;stackholderTabs&quot;:null},&quot;dataMeta&quot;:{&quot;modelCollections&quot;:{&quot;hospitals&quot;:{&quot;class&quot;:&quot;App\\Models\\Hospital&quot;,&quot;id&quot;:[1,2,3,4,12],&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null},&quot;specialities&quot;:{&quot;class&quot;:&quot;App\\Models\\Speciality&quot;,&quot;id&quot;:[110,112,137,138,9,111],&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:&quot;Kalnoy\\Nestedset\\Collection&quot;}}},&quot;checksum&quot;:&quot;b3ae940942a2f4b6812cc18ed09b12b25ddbb7043a8ea881030dd6e34bca2679&quot;}}">
+    <style>
+        .quick-call{display: none;}
+        @media (max-width: 767px) {
+            .quick-call {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: 1px solid #f04e30;
+                margin: 10px 20px;
+            }
+            .quick-link__content{}
+            .quick-link__content p{color: #58595b; font-size: 14px; font-weight: 500; margin: 0 0 10px;}
+            .quick-link__content a{color: #f04e30; font-size: 17px; font-weight: 600;}
+            .navu-icon img{width: 100%; height: auto;}
+        }
+    </style>
+    <nav>
+        <ul class="menu">
+            <li class="has-submenu">
+                <a href="#" class="open-submenu">Locations</a>
+                <button type="button" class="open-dropdown">
+                    <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="https://www.w3.org/2000/svg">
+                        <path d="M11 1L6 6L1 1" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                </button>
+                <ul>
+                                            <li>
+                            <a href="/hospitals-near-me/gurugram-hospital">
+                                <img class="icon" width="26" height="26" loading="lazy" src="https://medanta.s3.ap-south-1.amazonaws.com/hospitals/January2024/rRYbW6Ah4XKY0c6se2UgwXkV4p6NXb-metaR1VSVUdSQU0ucG5n-.png" alt="gurugram">
+                                Gurugram
+                            </a>
+                        </li>
+            </ul>
+        </li>
+        <li class="has-submenu">
+            <a href="#" class="open-submenu">Services</a>
+            <button type="button" class="open-dropdown" aria-label="Open submenu">
+                <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="https://www.w3.org/2000/svg">
+                    <path d="M11 1L6 6L1 1" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <ul>
+                {% for service in all_services %}
+                <li>
+                    <a href="{% url 'base:service-detail' service.slug %}">
+                        {% if service.icon %}
+                        <img class="icon" width="26" height="26" loading="lazy" src="{{ service.icon.url }}" alt="{{ service.name }}">
+                        {% endif %}
+                        {{ service.name }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="has-submenu">
+            <a href="#" class="open-submenu">Health Library</a>
+            <button type="button" class="open-dropdown" aria-label="Open submenu">
+                <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="https://www.w3.org/2000/svg">
+                    <path d="M11 1L6 6L1 1" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <ul>
+                <li><a href="/health-library"><img class="icon" width="26" height="26" loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/Health-Library.png" alt="Health Library">Health Library</a></li>
+            </ul>
+        </li>
+       
+        <li class="has-submenu">
+            <a href="#" class="open-submenu">International Patients</a>
+            <button type="button" class="open-dropdown" aria-label="Open submenu">
+                <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="https://www.w3.org/2000/svg">
+                    <path d="M11 1L6 6L1 1" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+                </button>
+                <ul>
+                    <li><a href="/international-patient"><img class="icon" width="26" height="26" loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/international-patients-menu-icon.png" alt=""> International Patients</a></li>
+                </ul>
+            </li>
+
+        
+        <li class="has-submenu">
+            <a href="#" class="open-submenu">Contact Us</a>
+            <button type="button" class="open-dropdown" aria-label="Open submenu">
+                <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="https://www.w3.org/2000/svg">
+                    <path d="M11 1L6 6L1 1" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <ul>
+                <li><a href="/contact-us"><img class="icon" width="26" height="26" loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/contact-us.png" alt="Contact Us"> Contact Us</a></li>
+                <li><a href="tel:+91-88-0000-1068"><img class="icon" width="26" height="26" loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/Call.png" alt="Call Us"> +91-88-0000-1068</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div class="quick-call">
+        <div class="quick-link__content">
+            <p class="quick-link__text">Emergency </p>
+            <a class="quick-link__link" href="tel:1068">
+                1068
+            </a>
+        </div>
+    </nav>
+</div>
+
+<!-- Livewire Component wire-end:ZmZpLKCmekEgezlc10Dq -->      <div class="header-contact-number">
+          <a href="https://api.whatsapp.com/send?phone=" class="whatsapp-btn">
+            <img src="https://www.sudharshanheartclinic.com/assets/images/icons/whatsappnew.png" alt="Whatsapp" width="50" height="50">
+            <span class="txt">WhatsApp</span>
+          </a>
+                  <a class="feedback-btn" href="/contact-us?type=feedback">
+            <img src="https://www.sudharshanheartclinic.com/assets/images/icons/message-icon.png" alt="feedback">
+            <span class="txt">Feedback</span>
+          </a>
+        
+        <!--
+          <a class="reqcallback-btn" href="javascript:void(0);" data-toggle="modal" data-target="#Marmosetloadmodal">
+          <img src="https://www.sudharshanheartclinic.com/assets/images/icons/phone-icon.png" class="hidden-xs" alt="phone">
+          <img src="https://www.sudharshanheartclinic.com/assets/images/icons/phone-grey-icon.png" class="visible-xs" alt="phone">
+          <span class="txt"><span class="hidden-xs">Request Call Back</span><span class="visible-xs">CallBack</span></span>
+          </a>
+        -->
+
+        <!-- <a class="emergency-btn" href="tel:1068">
+          <img src="https://www.sudharshanheartclinic.com/assets/images/icons/emergency_header.png" alt="Emergency" width="50" height="50">
+          <div class="emergency-txt-grp">
+            <div class="flip-box">
+              <div class="flipper">
+                <span class="flip-text front">Emergency</span>
+                <span class="flip-text back">1068</span>
+              </div>
+            </div>
+          </div>
+        </a> -->
+
+        <a href="tel:1068" class="emergency-btn-box-mb">
+          <div class="emergency-svg-wrapper">
+            <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="12" fill="#E94830" />
+              <path d="M16.4306 15.1873H16.015V12.4035C16.015 11.9129 15.9168 11.4368 15.7231 10.9885C15.6299 10.7731 15.5147 10.5653 15.3806 10.371C15.2477 10.1785 15.0952 9.99761 14.9272 9.83318C14.7591 9.66875 14.5743 9.51946 14.3776 9.38946C14.1791 9.25817 13.9668 9.1454 13.7466 9.05427C13.2886 8.86467 12.8021 8.76853 12.3008 8.76853C11.7995 8.76853 11.3131 8.86467 10.855 9.05427C10.6349 9.1454 10.4226 9.25817 10.224 9.38946C10.0274 9.51946 9.84247 9.66875 9.67446 9.83318C9.50644 9.99761 9.3539 10.1785 9.22106 10.371C9.08691 10.5653 8.97168 10.7731 8.87857 10.9885C8.68483 11.4368 8.58659 11.9129 8.58659 12.4035V15.1873H8.17108C7.90361 15.1873 7.68604 15.4003 7.68604 15.662V16.5253C7.68604 16.7871 7.90361 17 8.17108 17H16.4306C16.698 17 16.9156 16.7871 16.9156 16.5253V15.662C16.9156 15.4003 16.698 15.1873 16.4306 15.1873ZM9.06409 12.4035C9.06409 10.6568 10.5161 9.23584 12.3008 9.23584C14.0855 9.23584 15.5375 10.6568 15.5375 12.4035V15.1873H9.06409V12.4035ZM16.4381 16.5253C16.4381 16.5294 16.4347 16.5327 16.4306 16.5327H8.17108C8.16691 16.5327 8.16353 16.5294 8.16353 16.5253V15.662C8.16353 15.6579 8.16691 15.6546 8.17108 15.6546H16.4306C16.4347 15.6546 16.4381 15.6579 16.4381 15.662V16.5253Z" fill="white" stroke="white" stroke-width="0.3" />
+              <path
+              d="M12.3019 5H12.3019C12.1702 5 12.0635 5.10447 12.0635 5.23334V7.84636C12.0635 7.97523 12.1702 8.0797 12.3019 8.0797H12.3019C12.4336 8.0797 12.5404 7.97523 12.5404 7.84636V5.23334C12.5404 5.10447 12.4336 5 12.3019 5Z"
+              fill="white" stroke="white" stroke-width="0.3" />
+              <path
+              d="M9.88602 8.44543C9.94373 8.56126 10.0865 8.60936 10.2049 8.55288C10.3232 8.49637 10.3724 8.35667 10.3147 8.24085L9.14422 5.89229C9.0865 5.77647 8.94373 5.72836 8.82538 5.78485C8.70702 5.84136 8.65787 5.98105 8.71558 6.09688L9.88602 8.4454V8.44543Z"
+              fill="white" stroke="white" stroke-width="0.3" />
+              <path
+              d="M8.53032 9.95011C8.6114 9.84855 8.593 9.70191 8.48923 9.62256L6.38525 8.01384C6.28148 7.9345 6.13164 7.9525 6.05056 8.05406C5.96948 8.15562 5.98788 8.30226 6.09166 8.38161L8.1956 9.99033C8.29937 10.0697 8.44921 10.0517 8.53029 9.95011H8.53032Z"
+              fill="white" stroke="white" stroke-width="0.3" />
+              <path
+              d="M14.3981 8.55286C14.5165 8.60938 14.6593 8.56124 14.717 8.44541L15.8874 6.09689C15.9452 5.98107 15.896 5.84134 15.7776 5.78486C15.6593 5.72835 15.5165 5.77648 15.4588 5.89231L14.2883 8.24083C14.2306 8.35666 14.2798 8.49638 14.3981 8.55286Z"
+              fill="white" stroke="white" stroke-width="0.3" />
+              <path
+              d="M18.5532 8.05406C18.4722 7.9525 18.3223 7.9345 18.2185 8.01384L16.1146 9.62256C16.0108 9.70191 15.9924 9.84855 16.0735 9.95011C16.1546 10.0517 16.3044 10.0697 16.4082 9.99033L18.5121 8.38161C18.6159 8.30226 18.6343 8.15562 18.5532 8.05406Z"
+              fill="white" stroke="white" stroke-width="0.3" />
+              <path
+              d="M13.5697 10.7488C13.3862 10.5661 13.1723 10.4226 12.9341 10.3224C12.6874 10.2186 12.4254 10.166 12.1554 10.166C12.0315 10.166 11.9312 10.2659 11.9312 10.3892C11.9312 10.5125 12.0315 10.6124 12.1554 10.6124C13.0108 10.6124 13.7067 11.3052 13.7067 12.1567C13.7067 12.28 13.8071 12.38 13.9309 12.38C14.0548 12.38 14.1552 12.28 14.1552 12.1567C14.1552 11.8879 14.1023 11.6271 13.998 11.3815C13.8974 11.1444 13.7533 10.9315 13.5697 10.7488Z"
+              fill="white" stroke="white" stroke-width="0.3" />
+            </svg>
+          </div>
+
+          <div class="emergency-info-box">
+            <span class="emergency-number" style="padding-top: 2px;">1068</span>
+            <span class="emergency-text" style="padding-top: 2px;">Emergency</span>
+          </div>
+        </a>
+
+        <!-- <a class="emergency-btn" href="tel:1068">
+          <img src="https://www.sudharshanheartclinic.com/assets/images/icons/emergency_header.png" alt="Emergency" width="50" height="50">
+          <span class="txt">Emergency</span>
+        </a> -->
+        <a class="reqcallback-btn" href="javascript:void(0);" data-toggle="modal" data-target="#Marmosetloadmodal">
+          <img src="https://www.sudharshanheartclinic.com/assets/images/icons/phone-icon.png" alt="Phone">
+          <span>Request Call Back</span>
+        </a>
+                                <a class="contact-btn" href="/contact-us">
+              <img src="https://www.sudharshanheartclinic.com/assets/images/icons/phone-icon.png" class="hidden-xs" alt="phone">
+              <img src="https://www.sudharshanheartclinic.com/assets/images/icons/phone-grey-icon.png" class="visible-xs" alt="phone">
+              <span class="txt">Contact</span>
+            </a>
+                </div>
+    </div>
+  </header>

@@ -1,0 +1,2310 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - Sudharshan Heart Clinic Clone{% endblock %}
+
+{% block meta_description %}Get in touch with Sudharshan Heart Clinic Clone - We're here to help{% endblock %}
+
+{% block extra_css %}
+<!-- Add contact page specific CSS here -->
+<!-- <link rel="stylesheet" href="{% static 'base/css/contact.css' %}"> -->
+{% endblock %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=1" />
+
+  <title>{{ service.meta_title|default:service.name }} | Sudharshan Heart Clinic</title>
+      <meta name="robots" content="">
+    <link rel="manifest" href="https://www.sudharshanheartclinic.com/manifest.json">
+    <meta name="theme-color" content="#000000">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Sudharshan Heart Clinic">
+    <link rel="shortcut icon" href="https://www.sudharshanheartclinic.com/assets/images/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="https://www.sudharshanheartclinic.com/assets/images/icons/favicon.ico" type="image/x-icon">
+  <!-- <link preload rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Oswald:wght@200&display=swap" as="style"> -->
+  <link preload rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" />
+  <!-- <link preload rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css"> -->
+  <link preload rel="stylesheet" href="https://www.sudharshanheartclinic.com/assets/css/animate.css?v=1.0" />
+  <link preload rel="stylesheet" href="https://www.sudharshanheartclinic.com/assets/css/slick.css?v=1.0" />
+  <link preload rel="stylesheet" href="https://www.sudharshanheartclinic.com/assets/css/style.css?v=4.0">
+  <link preload rel="stylesheet" href="https://www.sudharshanheartclinic.com/assets/css/common_components.css?v=2.0">
+
+    <meta name="description" content="{{ service.meta_description }}">
+    <meta name="keywords" content="{{ service.meta_keywords }}">
+    <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+
+    <meta property="og:site_name" content="@Sudharshan Heart Clinic">
+    <meta property="og:title" content="{{ service.meta_title|default:service.name }}">
+    <meta property="og:description" content="{{ service.meta_description }}">
+    <meta property="og:url" content="https://www.sudharshanheartclinic.com/hospitals-near-me/gurugram-hospital/speciality/neurology">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://medanta.s3.ap-south-1.amazonaws.com/spacialities/February2024/8Td7D5xojb7OC3ABPvKP2qQqjaCNsU-metaTmV1cm9zY2llbmNlcy5wbmc=-.png">
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Sudharshan Heart Clinic">
+    <meta name="twitter:title" content="Neurology Specialist at Sudharshan Heart Clinic Gurugram | Expert Neurologists">
+    <meta name="twitter:description" content="Sudharshan Heart Clinic is the Best Neurology Hospital in Gurgaon, led by expert Neurologists offering advanced treatment for ✔ Stroke, ✔ Epilepsy, ✔ Parkinson’s, ✔ Brain Tumors, and ✔ Nerve Disorders. ">
+    <meta name="twitter:image" content="https://medanta.s3.ap-south-1.amazonaws.com/spacialities/February2024/8Td7D5xojb7OC3ABPvKP2qQqjaCNsU-metaTmV1cm9zY2llbmNlcy5wbmc=-.png">
+    <meta name="twitter:url" content="https://www.sudharshanheartclinic.com/hospitals-near-me/gurugram-hospital/speciality/neurology">
+    <meta name="twitter:image" content="https://medanta.s3.ap-south-1.amazonaws.com/spacialities/February2024/8Td7D5xojb7OC3ABPvKP2qQqjaCNsU-metaTmV1cm9zY2llbmNlcy5wbmc=-.png">
+
+
+            <script type="application/ld+json" class="schemantra">
+{
+    "@context": "https://schema.org",
+    "@type": "Hospital",
+    "name": "Sudharshan Heart Clinic Hospitals",
+    "@id": "Sudharshan Heart Clinic Hospital",
+    "actionableFeedbackPolicy": "https://www.sudharshanheartclinic.com/",
+    "address": "CH Baktawar Singh Road, Sector 38, Gurugram, Haryana 122001",
+    "areaServed": [
+        "Gurugram"
+    ],
+    "currenciesAccepted": "INR",
+    "description": "Sudharshan Heart Clinic Gurugram is founded by Dr. Naresh Trehan, a world-renowned cardiovascular and cardiothoracic surgeon. It was conceived with the mission to deliver advanced yet affordable medical services.For Six years in a row, Sudharshan Heart Clinic Gurugram has ranked as the Best Private Hospital in India (2020, 2021, 2022, 2023, 2024 and 2025). It also featured in the list of top 250 World's Best Hospitals Survey 2024 by Newsweek.The hospital is equipped to make quality healthcare a reality for countless patients with an infrastructure built according to the guidelines for healthcare facilities by the American Institute of Architects. To ensure quality healthcare we have:43-acre campus30+ medical specialities900+ doctors40 operation theatres1,391 operational beds270+ ICU bedsJCI and NABH accreditationNABL accreditation",
+    "image": "https://www.sudharshanheartclinic.com/public/assets/images/sudharshan heart clinic_logo.png",
+    "isAcceptingNewPatients": true,
+    "knowsLanguage": [
+        "English",
+        "Hindi"
+    ],
+    "location": "Gurugram,Haryana",
+    "logo": "https://www.sudharshanheartclinic.com/public/assets/images/sudharshan heart clinic_logo.png",
+    "map": "https://www.google.com/maps/dir//Sudharshan Heart Clinic+-+The+Medicity+CH+Baktawar+Singh+Rd+Medicity,+Islampur+Colony,+Sector+38+Gurugram,+Haryana+122001/@28.4391555,77.0407063,19.7z/data=!4m8!4m7!1m0!1m5!1m1!1s0x390d186ec89f751b:0xdc2ab32fc4675cac!2m2!1d77.040637!2d28.439238?entry=ttu",
+    "telephone": "+91-880-000-1068"
+}
+</script>
+    
+      <!-- Google tag (gtag.js) -->
+      <script src="https://www.sudharshanheartclinic.com/assets/js/gtag.js"></script>
+
+    <!-- Google Tag Manager (No render-blocking) -->
+      <script>
+        function loadGTM() {
+          var script = document.createElement("script");
+          script.src = "https://www.googletagmanager.com/gtm.js?id=GTM-5CFH576";
+          script.async = true;
+          script.defer = true;
+          document.head.appendChild(script);
+        }
+
+        window.addEventListener("scroll", loadGTM, { once: true });
+        window.addEventListener("mousemove", loadGTM, { once: true });
+        window.addEventListener("touchstart", loadGTM, { once: true });
+      </script>
+
+    <!-- Google Analytics (Loaded after user interaction) -->
+      <script>
+        function loadGA() {
+          var script = document.createElement("script");
+          script.src = "https://www.googletagmanager.com/gtag/js?id=G-5JMGQEEJM9";
+          script.async = true;
+          document.head.appendChild(script);
+
+          script.onload = function () {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){ dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-5JMGQEEJM9', { 'anonymize_ip': true, 'send_page_view': false });
+          };
+        }
+
+        window.addEventListener("scroll", loadGA, { once: true });
+        window.addEventListener("mousemove", loadGA, { once: true });
+        window.addEventListener("touchstart", loadGA, { once: true });
+      </script>
+
+    <!-- Google Site Verification -->
+      <meta name="google-site-verification" content="BDsm9d29X5zYu8zkSzSuLrPS5_8B-e-o3UsaJi64cB0" /> 
+      <link rel="stylesheet" href="https://www.sudharshanheartclinic.com/assets/css/topbar-sticky-links.css" />
+    <style>
+
+        /* heart-institute-section styling */
+
+        main .content-section{
+                background-color:#fff !important;
+            }
+        main .content-section:nth-child(odd){
+                background-color:#f6f6f6 !important;
+            }
+
+            .heart-institute-section{
+                background: url(../../assets/images/icons/pattern-bg.png) repeat top left;
+            }
+            .heart-institute-section .action-btn-mobile{
+                display: none;
+            }
+            .institute-features{
+                display:none;
+            }
+            .institute-features .feature-block{
+                position: relative;
+                padding-left: 40px;
+            }
+            .institute-features .feature-block:before{
+                border: 2px solid #F04E30;
+                width: 20px;
+                height: 20px;
+                background-color: #fff;
+                position: absolute;
+                content: '';
+                border-radius: 50%;
+                left: 0;
+                top: 5px;
+            }
+
+            .heart-institute-section .button{
+                margin-top:10px;
+            }
+            .heart-institute-section .action-btn-desktop .button.button-white{ margin-left:15px}
+            #specialityEnquire .reacllHeading {
+                text-align: center;
+                font-size: 28px;
+                color: #222f3e;
+                margin-top: 0
+            }
+
+            #specialityEnquire form label {
+                font-size: 16px;
+                font-weight: 600;
+                color: #212529;
+                padding: 10px 0;
+                display: block
+            }
+
+            #specialityEnquire form input {
+                border: 0;
+                border-bottom: 1px solid #5e5e5e;
+                padding: 0 0 10px;
+                font-size: 14px;
+                color: #5e5e5e;
+                font-weight: 500;
+                margin-bottom: 15px;
+                width: 100%;
+                font-family: Montserrat, sans-serif;
+            }
+
+            #specialityEnquire form .submitpopupbt {
+                width: 100%;
+                border: 0;
+                background-color: var(--primary);
+                color: #fff;
+                font-size: 13px;
+                font-weight: 700;
+                padding: 18px;
+                border-radius: 52px;
+                cursor: pointer;
+                font-family: Montserrat,sans-serif
+            }
+
+            #specialityEnquire form textarea{
+                border: 0;
+                border-bottom: 1px solid #5e5e5e;
+                width: 100%;
+                resize: none;
+                outline: none;
+                font-family: Montserrat, sans-serif;
+                color: #5e5e5e;
+                font-size: 14px;
+                font-weight: 500;
+               
+            }
+
+             form .errmsg{font-weight: 400;}
+
+
+            @media screen and (max-width:1199px){
+                .heart-institute-section .col-wrap .col.col5,
+                .heart-institute-section .col-wrap .col.col7{
+                    width: 100%;
+                }
+                .heart-institute-section .heading{
+                    text-align: center;
+                }
+            .heart-institute-section .action-btn-mobile{
+                display: block;
+                text-align: center;
+                margin-top:30px;
+            }
+            .heart-institute-section .action-btn-mobile .button{
+                margin:5px;
+            }
+            .heart-institute-section .action-btn-desktop{
+                display: none;
+            }
+            .heart-institute-section .img-block{
+                text-align: center;
+                margin-top: 30px;
+            }
+            }
+            @media screen and (max-width:767px){
+        .institute-features{
+                margin: 15px 0;
+                display:block;
+            }
+            .institute-features .slick-list{
+                padding-right: 100px;
+            }
+            .institute-features .feature-block{
+                padding-right:20px;
+            }
+            .heart-institute-section .img-block{
+                margin-top:10px;
+            }
+
+            .modal__content .modal-body{max-height: 75vh;}
+            }
+        /* end of heart-institute-section styling */
+
+        /* chairman section */
+        .chairman-info .sudharshan heart clinicxsheading{
+            width: 310px;
+            max-width: 100%;
+        }
+        .chairman-image{
+            line-height: 0;
+            position: relative;
+        }
+
+        .chairman-image img{
+        width: 75%;
+        position: relative;
+        z-index: 1;
+        display:inline-block;
+        }
+        .chairman-image:before{
+            left: 0;
+            right: 0;
+            top: 45%;
+            transform: translateY(-50%);
+            width: 70%;
+            margin: auto;
+            padding-bottom: 70%;
+            background-color: var(--primary);
+            border-radius: 50%;
+            content: '';
+            position: absolute;
+        }
+        .chairman-image:after{
+            left: 0;
+            right: 0;
+            top: 45%;
+            transform: translateY(-50%);
+            width: calc(70% + 30px);
+            margin: auto;
+            padding-bottom: calc(70% + 30px);
+            border-radius: 50%;
+            content: '';
+            position: absolute;
+            border: 1px dashed #505050;
+        }
+        .chairman-message{
+            font-style:italic;
+        }
+
+        .chairman-info .sudharshan heart clinicxsheading.doc-location small{
+            display:flex;
+            align-items:center;
+            gap:5px;
+        }
+        .chairman-info .sudharshan heart clinicxsheading.doc-location small svg{
+            width:12px;
+        }
+        .chairman-slider.slick-initialized .slick-slide{display: flex !important;}
+        .chairman-slider.slick-arrow-style-1 .slick-arrow.slick-prev{left: -50px;}
+        @media screen and (max-width:1599px){
+            .chairman-info .sudharshan heart clinicxsheading{
+            width: 225px;
+            }
+        }
+        @media screen and (max-width:1199px){
+            #chairman-message-section{
+                padding-bottom: 50px !important;
+            }
+            #chairman-message-section .col-wrap .col.col3{
+                width: 100%;
+            }
+            .chairman-info,.chairman-message{
+            text-align: center;
+        }
+        .chairman-info{
+            margin: auto;
+            border-top: 1px solid #D9D9D9;
+            padding-top: 20px;
+        }
+        .chairman-info .sudharshan heart clinicxsheading{
+            width: auto;
+        }
+        .chairman-info .sudharshan heart clinicxsheading.doc-location small{
+            display:inline-flex;
+            margin:5px;
+        }
+        .chairman-slider.slick-arrow-style-1 .slick-arrow.slick-prev{left: 0px;}
+        }
+        @media screen and (max-width:767px){
+            #chairman-message-section{
+                padding-bottom: 30px !important;
+            }
+        }
+
+        /*end of chairman section */
+
+        /* heart team section */
+    #team-section-1 .heart-section-title{
+            font-weight: 700;
+            font-size: 60px;
+            margin-bottom:10px;
+        }
+        #team-section-1 .heart-section-title + .sudharshan heart clinicxsheading{
+            width: 520px;
+            max-width: 100%;
+            margin: auto;
+        }
+
+        @media screen and (max-width:1599px){
+            #team-section-1 .heart-section-title{
+                font-size: 50px;
+            }
+        }
+        @media screen and (max-width:1199px){
+            #team-section-1 .heart-section-title{
+                font-size: 40px;
+            }
+        }
+        @media screen and (max-width:767px){
+            #team-section-1 .heart-section-title{
+                font-size: 30px;
+            }
+        }
+
+        /* end of heart team section */
+
+        /* start sub-speciality-card */
+        .sub-speciality-card{
+            box-shadow: 0 4px 19px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 30px;
+            background: url(../../assets/images/icons/pattern-bg.png) repeat top left #f8f8f8;
+        }
+        .sub-speciality-card:not(.nohover):hover{
+            background: url(../../assets/images/icons/pattern-bgwhite.png) repeat top left var(--primary);
+        }
+        .sub-speciality-card:not(.nohover):hover .speciality-title{
+            color: #fff;
+        }
+        .sub-speciality-card .speciality-icon{
+            width: 82px;
+            margin:0 auto 20px auto;
+        }
+        .sub-speciality-card .speciality-icon img{
+            width:82px;
+            height:82px;
+            object-fit:contain;
+        }
+        .sub-speciality-card .speciality-icon svg{
+        width:82px;
+        height:82px;
+    }
+        .sub-speciality-card:not(.nohover):hover .speciality-icon .icon-default,
+        .sub-speciality-card .speciality-icon .icon-hover{
+            display: none;
+        }
+        .sub-speciality-card:not(.nohover):hover .speciality-icon .icon-hover{
+            display: block;
+        }
+        .sub-speciality-card .speciality-title{
+            width: 250px;
+            max-width: 100%;
+            margin: auto;
+        }
+        .sub-speciality-card .speciality-title a{
+            color: inherit;
+        }
+        .sub-speciality-card .speciality-title.sudharshan heart clinicsmheading{
+            line-height:1.3;
+            font-size:19px;
+            height: auto;
+            overflow: hidden;
+            overflow-y: auto;
+            margin: 0;
+        }
+
+
+        /** */
+        .eqslides-height .slick-track{margin: 0;}
+        .sub-speciality-card .speciality-title.sudharshan heart clinicsmheading{width: 100%;}
+
+        @media screen and (max-width:1599px){
+            .sub-speciality-card .speciality-title.sudharshan heart clinicsmheading {
+                font-size:17px;
+            }
+        }
+
+        @media screen and (max-width:1199px){
+            .sub-speciality-card .speciality-title.sudharshan heart clinicsmheading {
+                    font-size:15px;
+                }
+        }
+        @media screen and (max-width:1199px){
+            .sub-speciality-card{
+                padding: 25px;
+            }
+        }
+        @media screen and (max-width:767px){
+        .sub-speciality-card .speciality-icon,
+        .sub-speciality-card .speciality-icon img,
+        .sub-speciality-card .speciality-icon svg{
+        width:54px;
+        height:54px;
+    }
+    .sub-speciality-card .speciality-title.sudharshan heart clinicsmheading{
+        font-size:14px;
+    }
+        }
+        /* end of sub-speciality-card */
+
+
+
+        /* infrastructure section */
+        .infrastructure-section{
+            background: url(../../assets/images/icons/pattern-bg.png) repeat;
+        }
+        .infrastructure-includes ul{
+            margin: 0 auto;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        .infrastructure-includes ul li{
+            padding: 10px;
+            width: 200px;
+            max-width: 100%;
+        }
+        .infrastructure-content ul{
+            margin: 0;
+        }
+
+        /* end of infrastructure */
+
+            /*treatment styling */
+            .treatment-section .heading-group{
+                width: 500px;
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        /* end of treatment styling */
+
+        .text-wrapper .sudharshan heart clinicxxssheading{line-height: 1.5;}
+        .text-wrapper .sudharshan heart clinicmdheading{font-weight: 600;}
+        #rescheduleAlertModal .modal__dialog{width: 1280px;}
+
+        .text-wrapper .sudharshan heart clinicxxsheading{font-weight: 600;}
+        ul.ul-know li{list-style: disc;}
+        ul.ul-know {padding-left: 15px;}
+        #rescheduleAlertModal .modal-body{padding: 0 10px;}
+
+        #sub-specialisations-section1 .speciality-title{height: auto !important; overflow-y: auto !important;}
+
+        .successmsg{margin: 0 auto; padding: 10px;}
+        .btn-modal{margin-top: 0;}
+        #specialityEnquire .reacllHeading{margin-bottom: 10px;}
+        #specialityEnquire form input{margin-bottom: 5px;}
+        #specialityEnquire form .submitpopupbt{padding: 10px;}
+
+
+
+        @media screen and (max-width:767px){
+            .text-wrapper .sudharshan heart clinicxxsheading{font-size: 14px;}
+            #rescheduleAlertModal .modal__content{padding: 20px;}
+
+            .eqslides-height .slick-track{margin: 0 auto !important;}
+            .space-row1.slick-slider .slick-list{padding-right: 0 !important;}
+
+
+        }
+
+    </style>
+
+  <!----------CSS Start------------------------->
+    <style>
+      body {
+        padding-top: 82px;
+      }
+
+      .site-header {
+        height: 82px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background: #fff;
+        padding: 15px 0;
+      }
+      .logo {
+        margin-bottom: -3px;
+        line-height: 0;
+      }
+      .logo svg {
+        max-width: 100%;
+      }
+
+      .site-header nav .close-menu {
+        width: 32px;
+        height: 32px;
+        border: 0;
+        outline: 0;
+        text-align: center;
+        background-color: var(--primary);
+        color: #fff;
+        font-weight: 600;
+        position: absolute;
+        left: 300px;
+        top: 10px;
+        display: none;
+      }
+
+      .site-header nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+      }
+
+      .site-header nav .menu {
+        display: flex;
+      }
+
+      .site-header nav .menu > li {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text);
+        margin: 0 15px;
+      }
+
+      .site-header nav .menu > li a {
+        display: block;
+        white-space: nowrap;
+        color: inherit;
+        padding: 18px 0;
+      }
+
+      .site-header nav .menu li.has-submenu {
+        position: relative;
+        padding-right: 18px;
+      }
+
+      .site-header nav .menu > li.has-submenu ul {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        border-radius: 15px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.14);
+        background-color: #fff;
+        padding: 10px 20px;
+        z-index: 999;
+        width: 280px;
+      }
+
+      .site-header nav .menu > li.has-submenu .open-dropdown,
+      .site-header nav .menu > li.has-submenu .thirdopen-dropdown {
+        position: absolute;
+        right: 0;
+        background: transparent;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        top: 14px;
+        width: 12px;
+        height: 24px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .site-header nav .menu > li.has-submenu .open-dropdown svg,
+      .site-header nav .menu li.has-submenu .thirdopen-dropdown svg {
+        width: 10px;
+        height: auto;
+      }
+
+      .site-header nav .menu li.third-level .open-dropdown {
+        top: 14px;
+        pointer-events: none;
+      }
+
+      .site-header nav .menu li.third-level ul {
+        left: 260px;
+        top: 0;
+        display: none;
+        border-top-left-radius: 0;
+      }
+
+      .site-header nav .menu > li.has-submenu ul li a {
+        color: var(--text);
+        white-space: normal;
+        padding: 10px 0;
+      }
+
+      @media screen and (min-width: 1200px) {
+        .site-header nav .menu > li.has-submenu ul li a:hover,
+        .site-header nav .menu > li:hover a {
+          color: var(--primary);
+        }
+
+        .site-header nav .menu > li.has-submenu:hover > ul,
+        .site-header nav .menu li.third-level:hover > ul {
+          display: block;
+        }
+
+        .site-header nav .menu li.third-level .open-dropdown,
+        .site-header nav .menu li.third-level .thirdopen-dropdown {
+          transform: rotate(-90deg);
+          top: 14px;
+        }
+
+        .site-header nav .menu li.third-level ul:before {
+          left: -40px;
+          top: 0;
+          width: 40px;
+          content: "";
+          position: absolute;
+          height: 100%;
+        }
+
+        .site-header nav .menu li.third-level ul li.third-level ul {
+          left: auto;
+          top: 0px;
+          border-top-left-radius: 15px;
+          right: 100%;
+        }
+      }
+
+      .site-header nav .menu > li.has-submenu ul li {
+        border-bottom: 1px solid rgba(88, 89, 91, 0.5);
+      }
+
+      .site-header nav .menu > li.has-submenu ul li:last-child {
+        border-bottom: 0;
+      }
+
+      .site-header nav .menu > li.has-submenu ul li a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 50px;
+      }
+
+      .site-header nav .menu > li.has-submenu ul li a .icon {
+        width: 26px;
+        flex: 0 0 26px;
+      }
+
+      .header-contact-number {
+        display: flex;
+        gap: 10px;
+      }
+
+      .header-contact-number a.whatsapp-btn {
+        display: none;
+      }
+
+      .header-contact-number a {
+        font-weight: 700;
+        display: flex;
+        padding: 10px 18px;
+        background-color: var(--primary);
+        border-radius: 40px;
+        border: 1px solid var(--primary);
+        color: #58595b;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .header-contact-number a img {
+        width: 24px;
+        height: 24px;
+        margin: auto;
+      }
+      .header-contact-number a.whatsapp-btn img,
+      .header-contact-number a.feedback-btn img,
+      .header-contact-number a.emergency-btn img {
+        display: block;
+      }
+      .header-contact-number a .txt {
+        display: none;
+        font-size: 10px;
+      }
+      .header-contact-number .reqcallback-btn span {
+        font-size: 12px;
+        color: #fff;
+        margin-left: 10px;
+      }
+
+      .header-contact-number a.feedback-btn,
+      .header-contact-number a.emergency-btn {
+        background-color: transparent;
+      }
+
+      .chatbot-waiting {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: rgba(255, 255, 255, 0.85)
+          url(../../../assets/images/icons/loading.svg) no-repeat center center;
+        background-size: 60px auto;
+      }
+
+      #sendResumModal .frm-holder .theme-button {
+        width: 100%;
+        display: block;
+      }
+
+      @media screen and (min-width: 1200px) {
+        .header-contact-number a.contact-btn,
+        .header-contact-number a.emergency-btn {
+          display: none;
+        }
+      }
+
+      @media screen and (min-width: 1820px) {
+        .header-contact-number a .txt {
+          display: block;
+          margin-left: 5px;
+          font-size: 12px;
+        }
+        .header-contact-number a.reqcallback-btn {
+          color: #fff;
+        }
+      }
+
+      @media screen and (max-width: 1699px) {
+        .site-header nav .menu > li {
+          margin: 0 10px;
+        }
+      }
+
+      @media screen and (max-width: 1599px) {
+        .site-header nav .menu > li {
+          font-size: 14px;
+        }
+        .site-header nav .menu li.third-level .open-dropdown,
+        .site-header nav .menu li.third-level .thirdopen-dropdown {
+          top: 14px;
+        }
+      }
+
+      @media screen and (max-width: 1399px) {
+        .logo {
+          width: 115px;
+        }
+        .site-header nav .menu > li {
+          font-size: 12px;
+          margin: 0 7px;
+        }
+        .site-header nav .menu li.third-level .open-dropdown,
+        .site-header nav .menu li.third-level .thirdopen-dropdown {
+          top: 12px;
+        }
+      }
+
+      @media screen and (max-width: 1199px) {
+        body {
+          padding-top: 62px;
+        }
+
+        .site-header {
+          border-bottom: 1px solid #d9d9d9;
+          padding: 7px 0;
+          height: 62px;
+        }
+        .site-header nav {
+          display: none;
+          position: fixed;
+          left: 0;
+          top: 62px;
+          right: 0;
+          bottom: 76px;
+          z-index: 999;
+          background-color: #fff;
+          overflow: auto;
+        }
+
+        .site-header nav.is-opened {
+          display: block;
+        }
+
+        .site-header nav .close-menu {
+          display: block;
+        }
+
+        .site-header nav .menu > li.has-submenu ul li.active > a,
+        .site-header nav .menu > li.active > a {
+          color: var(--primary);
+        }
+
+        .site-header nav .menu > li.has-submenu.active > ul {
+          display: block;
+        }
+
+        .site-header nav .menu > li.has-submenu.active li.third-level ul {
+          display: none;
+        }
+
+        .site-header nav .menu > li.has-submenu.active li.third-level.active ul {
+          display: block;
+        }
+
+        .site-header nav .menu > li.has-submenu.active li.third-level ul {
+          display: none;
+        }
+
+        .site-header nav .menu > li.has-submenu.active li.third-level.active ul {
+          display: block;
+        }
+
+        .site-header
+          nav
+          .menu
+          > li.has-submenu.active
+          li.third-level
+          ul
+          li.third-level
+          ul {
+          display: none;
+        }
+
+        .site-header
+          nav
+          .menu
+          > li.has-submenu.active
+          li.third-level.active
+          ul
+          li.third-level.active
+          ul {
+          display: block;
+        }
+
+        .site-header
+          nav
+          .menu
+          > li.has-submenu.active
+          li.third-level.active
+          ul
+          li.third-level.active
+          ul
+          li.third-level
+          ul {
+          display: none;
+        }
+        .site-header
+          nav
+          .menu
+          > li.has-submenu.active
+          li.third-level.active
+          ul
+          li.third-level.active
+          ul
+          li.third-level.active
+          ul {
+          display: block;
+        }
+
+        .site-header nav .menu {
+          display: block;
+          padding: 5px 20px;
+          overflow: auto;
+        }
+
+        .site-header nav .menu > li {
+          margin: 0;
+          font-size: 13px;
+          border-bottom: 1px solid #dadada;
+        }
+
+        .site-header nav .menu li.has-submenu {
+          padding-right: 0;
+        }
+        .site-header nav .menu li.has-submenu a.open-submenu {
+          padding-right: 30px;
+        }
+
+        nav .menu > li a {
+          padding: 16px 0;
+        }
+
+        nav .menu > li.has-submenu .open-dropdown {
+          top: 12px;
+          pointer-events: none;
+        }
+
+        nav .menu > li.has-submenu.active > .open-dropdown svg path,
+        nav li.third-level.active > .open-dropdown svg path {
+          stroke: var(--primary);
+        }
+
+        .site-header nav .menu > li.has-submenu ul {
+          position: static;
+          width: auto;
+          box-shadow: none;
+          margin-bottom: 15px;
+          padding: 0;
+        }
+        .site-header nav .menu > li.has-submenu.active ul {
+          display: block;
+        }
+
+        .site-header nav .menu > li.has-submenu ul li a .icon {
+          width: 32px;
+          flex: 0 0 32px;
+        }
+        .header-contact-number a {
+          padding: 10px 15px;
+        }
+
+        .header-contact-number a.reqcallback-btn {
+          display: none;
+        }
+      }
+
+
+      @media screen and (max-width: 767px) {
+        .header-contact-number {
+          gap: 0;
+        }
+        .header-contact-number a.whatsapp-btn {
+          display: block;
+        }
+        .header-contact-number a.feedback-btn {
+          display: none;
+        }
+        .site-header {
+          padding: 10px 0 7px 0;
+        }
+
+        .header-contact-number a {
+          background-color: transparent;
+          border: 0;
+          display: block;
+          padding: 0;
+          margin-left: 15px;
+          text-align: center;
+        }
+        .header-contact-number a .txt {
+          display: block;
+        }
+        .header-contact-number a img {
+          margin-bottom: 5px;
+        }
+        .logo {
+          width: 100px;
+        }
+
+        .cookies {
+          flex-wrap: wrap;
+        }
+        .cookies p {
+          margin: 0 0 15px;
+          width: 100%;
+        }
+        .cookies .list-details {
+          justify-content: center;
+          width: 100%;
+        }
+
+        .header-contact-number a{width: auto; margin: 0 auto;}
+        .header-contact-number a.emergency-btn{width: 70px;}
+
+
+        .emergency-txt-grp {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .flip-box {
+          width: 100px;
+          height: 24px;
+          perspective: 1000px;
+        }
+
+        .flipper {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          transform-style: preserve-3d;
+          animation: rotateText 4s infinite linear;
+        }
+
+        .flip-text {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #f04e30;
+          font-size: 10px;
+          margin-top: -5px;
+        }
+
+        .front {
+          transform: rotateY(0deg);
+        }
+
+        .back {
+          transform: rotateY(180deg);
+        }
+
+        @keyframes rotateText {
+          0% {
+            transform: rotateY(0deg);
+          }
+          50% {
+            transform: rotateY(180deg);
+          }
+          100% {
+            transform: rotateY(360deg);
+          }
+        }
+
+
+      }
+
+    .emergency-btn-box-mb {
+        display: none !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0px;
+        text-decoration: none;
+        width: 70px;
+    }
+
+    @keyframes flipLoop {
+        0% {
+            transform: rotateY(0deg);
+        }
+
+        45% {
+            transform: rotateY(0deg);
+        }
+
+        50% {
+            transform: rotateY(180deg);
+        }
+
+        95% {
+            transform: rotateY(180deg);
+        }
+
+        100% {
+            transform: rotateY(360deg);
+        }
+    }
+
+    .emergency-side {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        gap: 0px;
+        flex-direction: column;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+    .emergency-side.emergency-front {
+        background-color: #ffffff;
+        border: 1px solid #EE4F39;
+    }
+
+    .emergency-side.emergency-front .emergency-text {
+        color: #58595B;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .emergency-side.emergency-back {
+        background-color: #EE4F39;
+        font-size: 12px;
+        font-weight: 700;
+        transform: rotateY(180deg);
+    }
+
+    .emergency-side.emergency-back .emergency-text {
+        color: #FFFFFF;
+    }
+
+    .emergency-svg-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+    }
+
+  .emergency-svg-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        background-color: #e9493093;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        animation: pulse-scale 2s infinite;
+        z-index: 0;
+    }
+
+    .emergency-svg-wrapper svg {
+        /* animation: svg-vibrate 2s infinite; */
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes pulse-scale {
+        0% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.7;
+        }
+
+        50% {
+            transform: translate(-50%, -50%) scale(1.3);
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.7;
+        }
+    }
+
+    @keyframes svg-vibrate {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(1px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .emergency-info-box span {
+        font-size: 10px;
+        color: #58595B;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+    .emergency-info-box {
+        position: relative;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+    }
+
+    .emergency-info-box .emergency-number {
+        animation: blink1 5s infinite;
+    }
+
+    .emergency-info-box .emergency-back {
+        transform: rotateY(180deg);
+    }
+
+    .emergency-info-box .emergency-text {
+        animation: blink2 5s infinite;
+        transform: translateX(-50%) rotateY(180deg);
+    }
+
+    @keyframes blink1 {
+        0% {
+            transform: translateX(-50%) rotateY(0deg);
+            opacity: 1;
+        }
+
+        40% {
+            transform: translateX(-50%) rotateY(0deg);
+            opacity: 1;
+        }
+
+        50% {
+            transform: translateX(-50%) rotateY(90deg);
+            opacity: 0;
+        }
+
+        51% {
+            transform: translateX(-50%) rotateY(270deg);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(-50%) rotateY(360deg);
+            opacity: 0;
+        }
+    }
+
+    @keyframes blink2 {
+        0% {
+            transform: translateX(-50%) rotateY(180deg);
+            opacity: 0;
+        }
+
+        49% {
+            transform: translateX(-50%) rotateY(180deg);
+            opacity: 0;
+        }
+
+        50% {
+            transform: translateX(-50%) rotateY(270deg);
+            opacity: 0;
+        }
+
+        51% {
+            transform: translateX(-50%) rotateY(360deg);
+            opacity: 1;
+        }
+
+        90% {
+            transform: translateX(-50%) rotateY(360deg);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateX(-50%) rotateY(540deg);
+            opacity: 0;
+        }
+    }
+
+    @media screen and (max-width:767px) {
+        .header-contact-number a.emergency-btn-box-mb {
+            display: flex !important;
+            width: 80px;
+        }
+    }
+    </style>
+  <!----------CSS End------------------------->
+
+  <style >[wire\:loading], [wire\:loading\.delay], [wire\:loading\.inline-block], [wire\:loading\.inline], [wire\:loading\.block], [wire\:loading\.flex], [wire\:loading\.table], [wire\:loading\.grid], [wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short], [wire\:loading\.delay\.long], [wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest] {display:none;}[wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {animation-duration: 50000s;animation-name: livewireautofill;}@keyframes livewireautofill { from {} }</style>
+</head>
+
+<body>
+  
+
+  <style>
+    .sticky-btn-fixed{padding: 12px; top: 35%;}
+    .sticky-btn-fixed a{text-align: center;}
+    .sticky-btn-fixed a span{color: #fff; font-size: 12px; font-weight: 600; display: block; text-align: center;}
+</style>
+
+
+  <div class="modal" id="Marmosetloadmodal">
+    <div class="close close-model-layer" data-close="modal"></div>
+    <div class="modal__dialog">
+      <div wire:id="C5i54E2lq6d7dpJpEGt6" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;C5i54E2lq6d7dpJpEGt6&quot;,&quot;name&quot;:&quot;request-callbacks&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;hospitals-near-me\/gurugram-hospital\/speciality\/neurology&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;49f25c36&quot;,&quot;data&quot;:{&quot;name&quot;:null,&quot;email&quot;:null,&quot;mobile&quot;:null,&quot;type&quot;:&quot;home-navbar&quot;,&quot;token&quot;:&quot;&quot;,&quot;captcha&quot;:0,&quot;recaptcha&quot;:null,&quot;userIp&quot;:null,&quot;userAgent&quot;:null,&quot;currentPageUrl&quot;:&quot;https:\/\/www.sudharshan heart clinic.org\/hospitals-near-me\/gurugram-hospital\/speciality\/neurology&quot;,&quot;utm_source&quot;:&quot;Website&quot;,&quot;utm_medium&quot;:null,&quot;utm_campaign&quot;:null,&quot;getSubSource&quot;:&quot;Website - neurology&quot;,&quot;utm_term&quot;:null},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;20584249ccda32cbdb3d82fd7ecb0e8fa96581a01ba21c2b245ba397ad760c51&quot;}}">
+    <a class="close close-modal" data-close="modal" id="closeModal"></a>
+    <div class="modal__content">
+    <div class="modal-body">
+        <h2 class="reacllHeading">Request Call Back</h2>
+        <div class="btn-modal text-right">
+            <form wire:submit.prevent="submit">
+                <div >
+                                    </div>
+                <label for="fname">Name *</label>
+                <input type="text" id="fname" name="fname" value="" wire:model.lazy="name" placeholder="Enter Your Name">
+                
+                <label for="lname">Mobile Number *</label>
+                <input type="number" id="lname" name="lname" value="" wire:model.lazy="mobile" placeholder="Enter Your Mobile Number">
+                
+                <label for="lname">Email</label>
+                <input type="text" id="lname" name="lname" value="" wire:model.lazy="email" placeholder="Enter Your Email">
+                
+                <input type="hidden" name="type" wire:model="type" value="home-navbar">
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                <br> <br>
+                <button type="submit" class="submitpopupbt" wire:click="loading">Submit</button>
+                <div class="form-loader loading" wire:loading wire:target="loading">
+                    <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                        <g transform="rotate(0 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(30 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(60 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(90 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(120 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(150 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(180 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(210 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(240 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(270 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(300 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(330 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                    </svg>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <script>
+        window.addEventListener('close-modal', function(event) {
+            const delay = event.detail.delay;
+            setTimeout(function() {
+                var $closeModal = document.querySelector('#closeModal');
+                $closeModal.click();
+            }, 5000);
+        });
+    </script>
+    
+        <script type="text/javascript">
+             window.addEventListener('postUpdated', event => {
+                var $closeModal = document.querySelector('#closeModal');
+                $closeModal.click();
+            })
+            var onCallback = function (){
+                // alert('ue');
+                console.log('gcaptch')
+                console.log(grecaptcha.getResponse());
+                window.livewire.find('C5i54E2lq6d7dpJpEGt6').set('recaptcha',grecaptcha.getResponse());
+            }
+            window.addEventListener('reset-recaptcha', event => {
+                grecaptcha.reset();
+            })
+        </script>
+    
+</div>
+
+<!-- Livewire Component wire-end:C5i54E2lq6d7dpJpEGt6 -->    </div>
+  </div>
+
+  <!-- Upload Resume Model -->
+  <div class="modal" id="sendResumModal">
+    <div class="close close-model-layer" data-close="modal"></div>
+    <div class="modal__dialog">
+      <a class="close close-modal" data-close="modal"></a>
+      <div class="modal__content">
+        <div class="modal-body">
+          <div class="frm-holder">
+            <div wire:id="dRHlWFjGpRbdKoL4Z1Cz" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;dRHlWFjGpRbdKoL4Z1Cz&quot;,&quot;name&quot;:&quot;jop-application-list&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;hospitals-near-me\/gurugram-hospital\/speciality\/neurology&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;62240f24&quot;,&quot;data&quot;:{&quot;name&quot;:null,&quot;email&quot;:null,&quot;mobile&quot;:null,&quot;resume&quot;:null,&quot;userIp&quot;:null,&quot;userAgent&quot;:null,&quot;currentPageUrl&quot;:&quot;https:\/\/www.sudharshan heart clinic.org\/hospitals-near-me\/gurugram-hospital\/speciality\/neurology&quot;,&quot;utm_source&quot;:&quot;Website&quot;,&quot;utm_medium&quot;:null,&quot;utm_campaign&quot;:null,&quot;utm_term&quot;:null},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;1175c0ce6b8080215eddb9094221ee9520a14e924b51078ad5728ed3f24b947b&quot;}}">
+            <form wire:submit.prevent="save()">
+
+        <div class="field">
+            <label>Name *</label>
+            <input type="text" class="inputbox" wire:model.defer="name" placeholder="Enter Your Name" onkeydown="return /[a-zA-Z ]/i.test(event.key)">
+            <br>
+        </div>
+        <div class="field">
+            <label>Mobile Number *</label>
+            <input type="number" class="inputbox"  wire:model.defer="mobile" placeholder="Enter Your Number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);">
+            <br>
+        </div>
+        <div class="field">
+            <label>Email *</label>
+            <input type="email" class="inputbox"  wire:model.defer="email" placeholder="Enter Your Email">
+            <br>
+        </div>
+
+        <div class="field mb-20">
+            <label>Resume (accepted only pdf, docx) *</label>
+            <div class="upload-file" wire:ignore>
+                <input type="file" class="inputbox" id="resume" name="resume" wire:model.defer="resume"/>
+            </div>
+            <br>
+        </div>
+        <button type="submit" class="theme-button">Submit</button>
+        <div class="form-loader loading" wire:loading wire:target="save">
+            <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                <g transform="rotate(0 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(30 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(60 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(90 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(120 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(150 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(180 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(210 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(240 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(270 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(300 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(330 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g>
+            </svg>
+        </div>
+    </form>
+     <script>
+        window.addEventListener('resetFileInput', event => {
+            document.getElementById('resume').value = null;
+        });
+    </script>
+</div>
+
+<!-- Livewire Component wire-end:dRHlWFjGpRbdKoL4Z1Cz -->          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      <div class="sticky-links">
+        <div class="container">
+            <ul>
+                <li><a href="#overview-section">Overview</a></li>
+                                <li><a href="#chairman-message-section">Message from Doctor</a></li>
+                                                <li><a href="#team-section-1">Comprehensive Neuro Science Team</a></li>
+                                
+                                                                <li><a href="#treatment-section">Treatment</a></li>
+                                                                        <li><a href="#ailment-section">Ailment</a></li>
+                                                            <li><a href="#technology-section">Latest Technology</a></li>
+                                                                    <li><a href="#sub-specialisations-section1">Sub-Specialization</a></li>
+                                                                <li><a href="#patientstories-section">Success Stories</a></li>
+                                
+                            </ul>
+        </div>
+    </div>
+        <main>
+        <section class="py-50 heart-institute-section content-section" id="overview-section">
+            <div class="container">
+                <div class="col-wrap dflex flexwrap centered-items">
+                                        <div class="col col5">
+                        <h1 class="heading sudharshan heart clinicxlheading mb-10">{{service.name}}</h1>
+                        <div class="action-btn-desktop">
+                            <a class="button" href="javascript:void(0);" data-toggle="modal" data-target="#specialityEnquire" class="button">Enquire Now</a>
+                        </div>
+                    </div>
+
+                    <div class="col col7" style="position: relative;">
+                        <div class="img-block">
+                            <div class="hidden-xs">
+                                {% if service.banner_image_desktop %}
+                                <img src="{{ service.banner_image_desktop.url }}" width="1580" height="1174" alt="{{ service.name }}">
+                                {% endif %}
+                            </div>
+                            <div class="visible-xs">
+                                {% if service.banner_image_mobile %}
+                                <img src="{{ service.banner_image_mobile.url }}" width="500" height="500" alt="{{ service.name }}">
+                                {% elif service.banner_image_desktop %}
+                                <img src="{{ service.banner_image_desktop.url }}" width="500" height="500" alt="{{ service.name }}">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="institute-features">
+                            {% for feature in features %}
+                            <div class="feature-block">
+                                <div class="sudharshan heart clinicxxsheading font700 clr-dark">{{ feature.title }}</div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="action-btn-mobile">
+                            
+                            <a class="button" href="javascript:void(0);" data-toggle="modal" data-target="#specialityEnquire" class="button">Enquire Now</a>
+                            
+                                <a href="https://www.sudharshanheartclinic.com/doctor-listing/neurology-doctors-in-gurugram" class="button button-white">Find A doctor</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        {% if doctors %}
+        <section class="py-50 pb-0 content-section" id="chairman-message-section">
+            <div class="container">
+                <div class="heading font700 mb-30 alt text-center clr-dark wow fadeInUp"></div>
+                <div class="chairman-slider slick-arrow-style-1">
+                    {% for doctor in doctors %}
+                    <div class="col-wrap dflex flexwrap centered-items wow fadeInUp" data-wow-delay=".3s">
+                        <div class="col col3">
+                            <div class="chairman-message">
+                                <div class="para-wrap">
+                                    <p>{{ doctor.message }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col3">
+                            <div class="chairman-image text-center">
+                                {% if doctor.image %}
+                                <img src="{{ doctor.image.url }}" alt="{{ doctor.name }}" width="544" height="715">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col col3">
+                            <div class="chairman-info">
+                                <div class="heading-lg clr-dark mb-10 font700">{{ doctor.name }}</div>
+                                <div class="sudharshan heart clinicxsheading clr-primary font700 mb-20">{{ doctor.title }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        
+        {% if teams %}
+        <section class="py-50 content-section" id="team-section-1">
+            <div class="container">
+                {% if teams.0.title %}
+                <div class="heart-section-title text-center clr-primary wow fadeInUp">'{{ teams.0.title }}'</div>
+                {% endif %}
+                {% if teams.0.subtitle %}
+                <div class="sudharshan heart clinicxsheading font600 text-center mb-30 alt clr-dark wow fadeInUp" data-wow-delay=".3s">{{ teams.0.subtitle }}</div>
+                {% endif %}
+                <div id="heart-slider" class="space-row slick-arrow-style-1 slider-tb-shadow eqslides-height wow fadeInUp" data-wow-delay=".5s">
+                    {% for team in teams %}
+                    <div class="slide-item">
+                        <div class="post-card eqheight">
+                            <div class="thumb thumb-ratio thumb-ratio1">
+                                {% if team.image %}
+                                <img src="{{ team.image.url }}" width="514" height="400" alt="{{ team.title }}">
+                                {% endif %}
+                            </div>
+                            <div class="card-desk">
+                                <div class="para-wrap">
+                                    <p class="m-0">{{ team.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        
+        
+
+        
+        
+        {% if treatments %}
+        <section class="py-50 treatment-section content-section customtabs-section-2" id="treatment-section">
+            <div class="container desktop-right-top-btn-container">
+                <div class="heading-group">
+                    <div class="heading mb-10 clr-dark text-center wow fadeInUp">Our Treatments</div>
+                    <div class="sudharshan heart clinicxsheading font500 text-center mb-40 wow fadeInUp" data-wow-delay=".5s">Comprehensive Treatment Options</div>
+                </div>
+                <div class="col-wrap dflex flexwrap custom-tabs-col-container wow fadeInUp" data-wow-delay=".3s">
+                    <div class="col col3">
+                        <div class="custom-tabs tab-style2">
+                            <ul>
+                                {% for treatment in treatments %}
+                                <li><a class="custom-tab sudharshan heart clinicxxsheading font500 clr-dark {% if forloop.first %}active{% endif %}"
+                                       href="#ttab{{ forloop.counter }}">{{ treatment.name }} <span
+                                        class="icon"><svg width="8" height="14" viewBox="0 0 8 14" fill="none"
+                                                          xmlns="https://www.w3.org/2000/svg">
+                                <path d="M0.999999 13L7 7L1 1" stroke="#454545" stroke-width="2" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                                </svg>
+                                </span></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col col7">
+                        <div class="custom-tab-content">
+                            {% for treatment in treatments %}
+                            <div class="custom-tab-panel {% if forloop.first %}active{% endif %}" id="ttab{{ forloop.counter }}">
+                                <a href="#ttab{{ forloop.counter }}"
+                                   class="custom-tab tab-style2 sudharshan heart clinicxxsheading font500 clr-dark {% if forloop.first %}active{% endif %}">{{ treatment.name }}
+                                    <span class="icon"><svg width="8" height="14" viewBox="0 0 8 14" fill="none"
+                                                            xmlns="https://www.w3.org/2000/svg">
+                                <path d="M0.999999 13L7 7L1 1" stroke="#454545" stroke-width="2" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                                </svg>
+                                </span></a>
+                                <div class="content treatment-content">
+                                    <div class="col-wrap dflex flexwrap centered-items">
+                                        <div class="col col6">
+                                            <div class="img-wrap bordered-img">
+                                                {% if treatment.image %}
+                                                <img src="{{ treatment.image.url }}" alt="{{ treatment.name }}" width="340" height="340">
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="col col6">
+                                            <div class="para-wrap">
+                                                {{ treatment.description|safe }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="desktop-right-top-btn text-center wow fadeInUp" data-wow-delay=".5s">
+                    <!-- <a href="https://www.sudharshanheartclinic.com/treatment" class="anchor-button all-ailments-btn">View All Treatments<span></span></a> -->
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        {% if ailments %}
+        <section class="py-50 treatment-section content-section customtabs-section-2" id="ailment-section">
+            <div class="container desktop-right-top-btn-container">
+                <div class="heading-group">
+                    <div class="heading mb-10 clr-dark text-center wow fadeInUp">Ailments</div>
+                    <div class="sudharshan heart clinicxsheading font500 text-center mb-40 wow fadeInUp" data-wow-delay=".5s">Conditions We Treat</div>
+                </div>
+                <div class="col-wrap dflex flexwrap custom-tabs-col-container wow fadeInUp" data-wow-delay=".3s">
+                    <div class="col col3">
+                        <div class="custom-tabs tab-style2">
+                            <ul>
+                                {% for ailment in ailments %}
+                                <li><a class="custom-tab sudharshan heart clinicxxsheading font500 clr-dark {% if forloop.first %}active{% endif %}"
+                                       href="#atab{{ forloop.counter }}">{{ ailment.name }} <span
+                                        class="icon"><svg width="8" height="14" viewBox="0 0 8 14" fill="none"
+                                                          xmlns="https://www.w3.org/2000/svg">
+                                <path d="M0.999999 13L7 7L1 1" stroke="#454545" stroke-width="2" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                                </svg>
+                                </span></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col col7">
+                        <div class="custom-tab-content">
+                            {% for ailment in ailments %}
+                            <div class="custom-tab-panel {% if forloop.first %}active{% endif %}" id="atab{{ forloop.counter }}">
+                                <a href="#atab{{ forloop.counter }}"
+                                   class="custom-tab tab-style2 sudharshan heart clinicxxsheading font500 clr-dark {% if forloop.first %}active{% endif %}">{{ ailment.name }}
+                                    <span class="icon"><svg width="8" height="14" viewBox="0 0 8 14" fill="none"
+                                                            xmlns="https://www.w3.org/2000/svg">
+                                <path d="M0.999999 13L7 7L1 1" stroke="#454545" stroke-width="2" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                                </svg>
+                                </span></a>
+                                <div class="content treatment-content">
+                                    <div class="col-wrap dflex flexwrap centered-items">
+                                        <div class="col col6">
+                                            <div class="img-wrap bordered-img">
+                                                {% if ailment.image %}
+                                                <img src="{{ ailment.image.url }}" alt="{{ ailment.name }}" width="340" height="340">
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="col col6">
+                                            <div class="para-wrap">
+                                                {{ ailment.description|safe }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="desktop-right-top-btn text-center wow fadeInUp" data-wow-delay=".5s">
+                    <!-- <a href="https://www.sudharshanheartclinic.com/ailments" class="anchor-button all-ailments-btn">View All Ailments<span></span></a> -->
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        {% if technologies %}
+        <section class="technology-section py-50 content-section" id="technology-section">
+                <div class="container">
+                    <div class="heading mb-10 text-center font700 wow fadeInUp">Latest Technology Utilisation</div>
+                    <div class="sudharshan heart clinicxsheading mb-10 text-center font500 wow fadeInUp" data-wow-delay=".3s">Our neurology department utilises cutting-edge technology like:</div>
+            <div id="technology-slider" class="space-row slick-arrow-style-1 slider-tb-shadow wow fadeInUp" data-wow-delay=".3s">
+                {% for tech in technologies %}
+                <div class="slide-item">
+                    <div class="technology-card">
+                        <div class="thumb thumb-ratio thumb-ratio1">
+                            {% if tech.image %}
+                            <img src="{{ tech.image.url }}" alt="{{ tech.name }}" width="514" height="400">
+                            {% endif %}
+                        </div>
+                        <div class="card-desk">
+                            <div class="heading-sm font600 card-title mb-2">
+                                <a href="javascript:void(0)">{{ tech.name }}</a>
+                            </div>
+                            <div class="para-wrap">
+                                <p>{{ tech.short_description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        </section>
+        {% endif %}
+
+        {% if subspecializations %}
+        <section class="py-50 content-section" id="sub-specialisations-section1">
+            <div class="container">
+                <div class="heading mb-20 font700 text-center clr-dark wow fadeInUp">Know More About Our Sub-Specialization</div>
+                <div class="accordion-wrapper wow fadeInUp" data-wow-delay=".3s">
+                    {% for subspec in subspecializations %}
+                    <div class="accordion-item">
+                        <h3 class="sudharshan heart clinicsmheading font600 clr-dark">{{ subspec.title }}</h3>
+                        <div class="accordion-content">
+                            <div class="para-wrap">{{ subspec.description|safe }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        
+        
+                <section class="py-50 content-section" id="patientstories-section">
+            <div wire:id="t7mKpTGPB8cV6o9cfpL5" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;t7mKpTGPB8cV6o9cfpL5&quot;,&quot;name&quot;:&quot;stories&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;hospitals-near-me\/gurugram-hospital\/speciality\/neurology&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;cae593fc&quot;,&quot;data&quot;:{&quot;stories&quot;:[],&quot;type&quot;:&quot;speciality&quot;,&quot;slug&quot;:&quot;neurology&quot;,&quot;getHospital&quot;:&quot;gurugram-hospital&quot;,&quot;hospital&quot;:&quot;gurugram-hospital&quot;},&quot;dataMeta&quot;:{&quot;modelCollections&quot;:{&quot;stories&quot;:{&quot;class&quot;:&quot;App\\Models\\Story&quot;,&quot;id&quot;:[142,136,137,138,139,140,141],&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null}}},&quot;checksum&quot;:&quot;7edf6f633b859cc27e990bb22a7dbadd7c040b5cf5b8993a0f17fc883708d370&quot;}}">
+            <section class="patientstory-section desktop-only mb-40">
+            <div class="container">
+                <div class="heading mb-30 text-center wow fadeInUp">Patient Stories</div>
+                <div class="story-video-container wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="video-col video-col-1">
+                        <div class="video-wrap">
+                            <div class="video">
+                                <div class="video-thumb ratio1">
+                                                                                                                    <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/January2024/EsulkL8ZmIuzHSf5XzQmABJsuJKGrL-metaMS5qcGc=-.jpg' width="514" height="400" alt="brain aneurysm">
+                                                                        <a href="https://www.youtube.com/watch?v=zaWQ0OQmOnc&amp;list=PLpbaUHWhwhBIFYi_hCEVxoT2cx3LK39Fh&amp;index=23" class="play-video">
+                                        <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="brain aneurysm" width="48" height="48">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-title">Brain Aneurysm</div>
+                                    <p>Dr. Sanjeev Bansal</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="video-col video-col-2">
+                        <div class="video-wrap">
+                            <div class="video">
+                                <div class="video-thumb ratio2">
+                                                                                                                    <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/January2024/fnzt0ts6tlW0bKPzAvuwKwgqvuDeDX-metaMi5qcGc=-.jpg' width="514" height="400" alt="Stroke">
+                                                                        <a href="https://youtu.be/LDw12SCzbbc?si=TTJkjHc1DAMUoFy0" class="play-video">
+                                        <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Stroke Recovery" width="48" height="48">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-title">Stroke Recovery</div>
+                                    <p>Mr. Jagdish</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="video-wrap">
+                            <div class="video">
+                                <div class="video-thumb ratio3">
+                                                                                                                    <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/January2024/Y2TaXqKoa0ngXLIOBGWjcIcpOA5b4S-metaMy5qcGc=-.jpg' width="514" height="400" alt="ब्रेन स्ट्रोक">
+                                                                        <a href="https://www.youtube.com/watch?v=3FKsWCfLFvA&amp;list=PLpbaUHWhwhBIFYi_hCEVxoT2cx3LK39Fh&amp;index=34" class="play-video">
+                                        <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" width="48" height="48" alt="ब्रेन स्ट्रोक">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-title">ब्रेन स्ट्रोक</div>
+                                    <p>Rajveer Singh</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="video-col video-col-2">
+                        <div class="video-wrap">
+                            <div class="video">
+                                <div class="video-thumb ratio4">
+                                                                                                                    <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/January2024/xNwjYJcQU46pDN78MmrBAKcxzw0ckE-metaNC5qcGc=-.jpg' width="514" height="400" alt="arteriovenous malformation">
+                                                                        <a href="https://www.youtube.com/watch?v=RDFp_EecJbg&amp;list=PLpbaUHWhwhBIFYi_hCEVxoT2cx3LK39Fh&amp;index=30" class="play-video">
+                                        <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" width="48" height="48" alt="Arteriovenous Malformation">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-title">Arteriovenous Malformation</div>
+                                    <p>Ms. Ilene</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="video-col video-col-2">
+                        <div class="video-wrap">
+                            <div class="video">
+                                <div class="video-thumb ratio3">
+                                                                                                                    <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/January2024/d9oDPkQq2OZms6PVjwZ5M4pLxA9pqo-metaNS5qcGc=-.jpg' width="514" height="400" alt="stroke">
+                                                                        <a href="https://www.youtube.com/watch?v=QQE2woeXF4U&amp;list=PLpbaUHWhwhBIFYi_hCEVxoT2cx3LK39Fh&amp;index=31" class="play-video">
+                                        <img  loading="lazy" width="48" height="48" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Stroke">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-title">Stroke</div>
+                                    <p>Mrs. Nirmal Anand</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-wrap">
+                            <div class="video">
+                                <div class="video-thumb ratio2">
+                                                                                                                    <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/January2024/uzrespyLAgeCoH6nhrnKMO0wSjj3kx-metaNi5qcGc=-.jpg' width="514" height="400" alt="ब्रेन ट्यूमर">
+                                                                        <a href="https://www.youtube.com/watch?v=ocFI234Q53k&amp;list=PLpbaUHWhwhBIFYi_hCEVxoT2cx3LK39Fh&amp;index=6" class="play-video">
+                                        <img  loading="lazy" width="48" height="48" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="ब्रेन ट्यूमर">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-title">ब्रेन ट्यूमर</div>
+                                    <p>श्री धनंजय सिन्हा</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="video-col video-col-1">
+                        <div class="video-wrap">
+                            <div class="video">
+                                <div class="video-thumb ratio1">
+                                                                                                                    <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/January2024/HcpP0Ph5YxT4KU80Itd6IbN9I5hX8W-metaNy5qcGc=-.jpg' width="514" height="400" alt="गुइलेन-बैरे सिंड्रोम (gbs)">
+                                                                        <a href="https://www.youtube.com/watch?v=jAaNyCPjAWU&amp;list=PLpbaUHWhwhBIFYi_hCEVxoT2cx3LK39Fh&amp;index=10" class="play-video">
+                                        <img  loading="lazy" width="48" height="48" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="गुइलेन-बैरे सिंड्रोम (GBS)">
+                                    </a>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="video-title">गुइलेन-बैरे सिंड्रोम (GBS)</div>
+                                    <p>Ms. Aditri</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="patientstory-section below-desktop-only mb-40">
+            <div class="container">
+                <div class="heading mb-30 text-center wow fadeInUp">Patient Stories</div>
+                <div class="story-video-slider space-row slick-arrow-style-1 wow fadeInUp" data-wow-delay=".3s" id="story-video-slider">
+                                            <div class="slide-item">
+                            <div class="video-wrap">
+                                <div class="video">
+                                    <div class="video-thumb ratio1">
+                                                                                                                                <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/January2024/EsulkL8ZmIuzHSf5XzQmABJsuJKGrL-metaMS5qcGc=-.jpg' width="514" height="400" alt="brain aneurysm">
+                                                                                <a href="https://www.youtube.com/watch?v=zaWQ0OQmOnc&amp;list=PLpbaUHWhwhBIFYi_hCEVxoT2cx3LK39Fh&amp;index=23" class="play-video">
+                                            <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Brain Aneurysm" width="48" height="48">
+                                        </a>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="video-title">Brain Aneurysm</div>
+                                        <p>Dr. Sanjeev Bansal</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="slide-item">
+                            <div class="video-wrap">
+                                <div class="video">
+                                    <div class="video-thumb ratio1">
+                                                                                                                                <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/January2024/fnzt0ts6tlW0bKPzAvuwKwgqvuDeDX-metaMi5qcGc=-.jpg' width="514" height="400" alt="Stroke">
+                                                                                <a href="https://youtu.be/LDw12SCzbbc?si=TTJkjHc1DAMUoFy0" class="play-video">
+                                            <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Stroke Recovery" width="48" height="48">
+                                        </a>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="video-title">Stroke Recovery</div>
+                                        <p>Mr. Jagdish</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="slide-item">
+                            <div class="video-wrap">
+                                <div class="video">
+                                    <div class="video-thumb ratio1">
+                                                                                                                                <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/January2024/Y2TaXqKoa0ngXLIOBGWjcIcpOA5b4S-metaMy5qcGc=-.jpg' width="514" height="400" alt="ब्रेन स्ट्रोक">
+                                                                                <a href="https://www.youtube.com/watch?v=3FKsWCfLFvA&amp;list=PLpbaUHWhwhBIFYi_hCEVxoT2cx3LK39Fh&amp;index=34" class="play-video">
+                                            <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="ब्रेन स्ट्रोक" width="48" height="48">
+                                        </a>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="video-title">ब्रेन स्ट्रोक</div>
+                                        <p>Rajveer Singh</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="slide-item">
+                            <div class="video-wrap">
+                                <div class="video">
+                                    <div class="video-thumb ratio1">
+                                                                                                                                <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/January2024/xNwjYJcQU46pDN78MmrBAKcxzw0ckE-metaNC5qcGc=-.jpg' width="514" height="400" alt="arteriovenous malformation">
+                                                                                <a href="https://www.youtube.com/watch?v=RDFp_EecJbg&amp;list=PLpbaUHWhwhBIFYi_hCEVxoT2cx3LK39Fh&amp;index=30" class="play-video">
+                                            <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Arteriovenous Malformation" width="48" height="48">
+                                        </a>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="video-title">Arteriovenous Malformation</div>
+                                        <p>Ms. Ilene</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="slide-item">
+                            <div class="video-wrap">
+                                <div class="video">
+                                    <div class="video-thumb ratio1">
+                                                                                                                                <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/January2024/d9oDPkQq2OZms6PVjwZ5M4pLxA9pqo-metaNS5qcGc=-.jpg' width="514" height="400" alt="stroke">
+                                                                                <a href="https://www.youtube.com/watch?v=QQE2woeXF4U&amp;list=PLpbaUHWhwhBIFYi_hCEVxoT2cx3LK39Fh&amp;index=31" class="play-video">
+                                            <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="Stroke" width="48" height="48">
+                                        </a>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="video-title">Stroke</div>
+                                        <p>Mrs. Nirmal Anand</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="slide-item">
+                            <div class="video-wrap">
+                                <div class="video">
+                                    <div class="video-thumb ratio1">
+                                                                                                                                <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/January2024/uzrespyLAgeCoH6nhrnKMO0wSjj3kx-metaNi5qcGc=-.jpg' width="514" height="400" alt="ब्रेन ट्यूमर">
+                                                                                <a href="https://www.youtube.com/watch?v=ocFI234Q53k&amp;list=PLpbaUHWhwhBIFYi_hCEVxoT2cx3LK39Fh&amp;index=6" class="play-video">
+                                            <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="ब्रेन ट्यूमर" width="48" height="48">
+                                        </a>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="video-title">ब्रेन ट्यूमर</div>
+                                        <p>श्री धनंजय सिन्हा</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="slide-item">
+                            <div class="video-wrap">
+                                <div class="video">
+                                    <div class="video-thumb ratio1">
+                                                                                                                                <img  loading="lazy" src='https://medanta.s3.ap-south-1.amazonaws.com/stories/January2024/HcpP0Ph5YxT4KU80Itd6IbN9I5hX8W-metaNy5qcGc=-.jpg' width="514" height="400" alt="गुइलेन-बैरे सिंड्रोम (gbs)">
+                                                                                <a href="https://www.youtube.com/watch?v=jAaNyCPjAWU&amp;list=PLpbaUHWhwhBIFYi_hCEVxoT2cx3LK39Fh&amp;index=10" class="play-video">
+                                            <img  loading="lazy" src="https://www.sudharshanheartclinic.com/assets/images/icons/play-icon.png" alt="गुइलेन-बैरे सिंड्रोम (GBS)" width="48" height="48">
+                                        </a>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="video-title">गुइलेन-बैरे सिंड्रोम (GBS)</div>
+                                        <p>Ms. Aditri</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                    </div>
+            </div>
+        </section>
+        <div class="container text-center wow fadeInUp" data-wow-delay="0.7s">
+            
+                            
+                    </div>
+    </div>
+
+<!-- Livewire Component wire-end:t7mKpTGPB8cV6o9cfpL5 -->        </section>
+
+        
+        
+        
+
+    </main>
+
+       <!-- Reschedule Modal -->
+       <div class="modal" id="rescheduleAlertModal">
+        <div class="close close-model-layer" data-close="modal"></div>
+        <div class="modal__dialog">
+            <a class="close close-modal" data-close="modal" id="closeModal"></a>
+            <div class="modal__content">
+                <div class="modal-body">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="specialityEnquire">
+        <div class="close close-model-layer" data-close="modal"></div>
+        <div class="modal__dialog">
+          <div wire:id="mTCT6Uc7sE9kgph1ErvT" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;mTCT6Uc7sE9kgph1ErvT&quot;,&quot;name&quot;:&quot;speciality-callback&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;hospitals-near-me\/gurugram-hospital\/speciality\/neurology&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;f7e8d8b9&quot;,&quot;data&quot;:{&quot;name&quot;:null,&quot;email&quot;:null,&quot;mobile&quot;:null,&quot;message&quot;:null,&quot;type&quot;:&quot;speciality&quot;,&quot;token&quot;:&quot;&quot;,&quot;captcha&quot;:0,&quot;recaptcha&quot;:null,&quot;userIp&quot;:null,&quot;userAgent&quot;:null,&quot;currentPageUrl&quot;:&quot;https:\/\/www.sudharshan heart clinic.org\/hospitals-near-me\/gurugram-hospital\/speciality\/neurology&quot;,&quot;utm_source&quot;:&quot;Website&quot;,&quot;utm_medium&quot;:null,&quot;utm_campaign&quot;:null,&quot;getSubSource&quot;:&quot;Website - neurology&quot;,&quot;utm_term&quot;:null},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;765cfde196506639e1c6c9884d0e0f3a7abc1094d1e7d3b43a34d8bbdeb80089&quot;}}">
+    <a class="close close-modal" data-close="modal" id="closeModal"></a>
+    <div class="modal__content">
+    <div class="modal-body">
+        <h2 class="reacllHeading">Request Call Back</h2>
+        <div class="btn-modal text-right">
+            <form wire:submit.prevent="submit">
+                <div >
+                                    </div>
+                <label for="fname">Name *</label>
+                <input type="text" id="fname" name="fname" value="" wire:model.lazy="name" placeholder="Enter Your Name">
+                
+                <label for="lname">Mobile Number *</label>
+                <input type="number" id="lname" name="lname" value="" wire:model.lazy="mobile" placeholder="Enter Your Mobile Number">
+                
+                <label for="lname">Email</label>
+                <input type="text" id="lname" name="lname" value="" wire:model.lazy="email" placeholder="Enter Your Email">
+                
+                <label for="message">Message</label>
+                    <textarea 
+                        id="message"
+                        name="message"
+                        wire:model.lazy="message"
+                        placeholder="Enter your message"
+                        class="inputbox"
+                    ></textarea>
+                    
+                <input type="hidden" name="type" wire:model="type" value="speciality">
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                <br> <br>
+                <button type="submit" class="submitpopupbt" wire:click="loading">Submit</button>
+                <div class="form-loader loading" wire:loading wire:target="loading">
+                    <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                        <g transform="rotate(0 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(30 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(60 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(90 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(120 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(150 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(180 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(210 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(240 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(270 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(300 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(330 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                    </svg>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <script>
+       document.addEventListener('livewire:load', function () {
+            window.addEventListener('close-modal', function (event) {
+                const delay = event.detail?.delay ?? 5000;
+                setTimeout(() => {
+                    const closeModalBtn = document.querySelector('#closeModal');
+                    if (closeModalBtn) {
+                        // closeModalBtn.click();
+                        $('#specialityEnquire').removeClass('open');
+                        console.log("✅ Modal close triggered.");
+                    } else {
+                        console.warn("⚠️ Close modal button (#closeModal) not found.");
+                    }
+                }, delay);
+            });
+        });
+    </script>
+    
+        <script type="text/javascript">
+             window.addEventListener('postUpdated', event => {
+                var $closeModal = document.querySelector('#closeModal');
+                $closeModal.click();
+            })
+            var onCallback = function (){
+                // alert('ue');
+                console.log('gcaptch')
+                console.log(grecaptcha.getResponse());
+                window.livewire.find('mTCT6Uc7sE9kgph1ErvT').set('recaptcha',grecaptcha.getResponse());
+            }
+            window.addEventListener('reset-recaptcha', event => {
+                grecaptcha.reset();
+            })
+        </script>
+    
+</div>
+
+<!-- Livewire Component wire-end:mTCT6Uc7sE9kgph1ErvT -->        </div>
+    </div>
+
+  <script src="https://www.sudharshanheartclinic.com/assets/js/jquery.min.js"></script>
+  <script src="https://www.sudharshanheartclinic.com/assets/js/jquery-ui.js"></script>
+  <script src="https://www.sudharshanheartclinic.com/assets/js/slick.min.js"></script>
+  <script src="https://www.sudharshanheartclinic.com/assets/js/wow.min.js"></script>
+  <script src="https://www.sudharshanheartclinic.com/assets/js/jquery.magnific-popup.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" defer></script> -->
+  <script src="https://www.sudharshanheartclinic.com/assets/js/custom.js?v=2.2"></script>
+ 
+  
+  
+  <script src="/livewire/livewire.js?id=90730a3b0e7144480175" data-turbo-eval="false" data-turbolinks-eval="false" ></script><script data-turbo-eval="false" data-turbolinks-eval="false" >window.livewire = new Livewire();window.Livewire = window.livewire;window.livewire_app_url = '';window.livewire_token = 'qyKEBEY2hOs8PY68ynJcIwizTbxwHpR0s4xL4lcx';window.deferLoadingAlpine = function (callback) {window.addEventListener('livewire:load', function () {callback();});};let started = false;window.addEventListener('alpine:initializing', function () {if (! started) {window.livewire.start();started = true;}});document.addEventListener("DOMContentLoaded", function () {if (! started) {window.livewire.start();started = true;}});</script>
+</body>
+
+</html>
+
+
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Add contact page specific JavaScript here -->
+{% endblock %}

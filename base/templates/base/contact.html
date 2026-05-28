@@ -1,0 +1,1945 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - Sudharshan Heart Clinic Clone{% endblock %}
+
+{% block meta_description %}Get in touch with Sudharshan Heart Clinic Clone - We're here to help{% endblock %}
+
+{% block extra_css %}
+<!-- Add contact page specific CSS here -->
+<!-- <link rel="stylesheet" href="{% static 'base/css/contact.css' %}"> -->
+{% endblock %}
+
+{% block content %}
+
+<head>
+  
+<style>
+    /* contact form section */
+    .contact-frm-section .heading,
+    .contact-frm-section .para-wrap {
+        color: #fff;
+    }
+    .innerpage-banner{
+        display: none;
+    }
+
+    .contact-frm-section .frm-caption {
+        width: 640px;
+        max-width: 100%;
+        margin: auto;
+    }
+
+    .contact-frm-wrapper {
+        width: 94%;
+        margin: auto;
+    }
+
+    .contact-frm-wrapper .contact-detail {
+        width: 35%;
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: saturate(180%) blur(10px);
+    }
+
+    .contact-frm-wrapper .contact-detail .heading-md {
+        padding: 54px 30px 15px 30px;
+    }
+
+    .contact-frm-wrapper .contact-detail ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .contact-frm-wrapper .contact-detail li {
+        border-bottom: 1px solid #C8C8C8;
+        padding: 18px 30px;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .contact-frm-wrapper .contact-detail li .sharing-link{
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .contact-frm-wrapper .contact-detail li a {
+        color: inherit;
+    }
+
+    .contact-frm-wrapper .contact-detail li strong {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 700;
+    }
+
+    .contact-frm-wrapper .contact-detail li .icon {
+        flex: none;
+    }
+
+    .contact-frm-wrapper .contact-detail li .icon svg {
+        width: 48px;
+        height: 48px;
+        ;
+    }
+
+    .contact-frm-wrapper .contact-detail li:last-child {
+        border-bottom: 0;
+    }
+
+    .contact-frm-wrapper .contact-frm-container {
+        width: 65%;
+        padding-left: 50px;
+    }
+
+    .contact-frm-wrapper .contact-frm-box {
+        padding: 30px;
+        height: 100%;
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: saturate(180%) blur(10px);
+    }
+
+    .contact-frm-wrapper .contact-frm-box .frm-holder {
+        width: 90%;
+        margin: auto;
+    }
+    .contact-frm-wrapper .contact-frm-box .frm-holder .frm{
+        display: none;
+    }
+    .contact-frm-wrapper .contact-frm-box .frm-holder .frm.opened{
+        display: block;
+    }
+
+    .frm-holder form {
+        margin: 0;
+    }
+
+    .frm-holder .field-row {
+        margin: 0 -30px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .frm-holder .field-row .field {
+        width: 50%;
+        padding: 0 30px;
+        margin-bottom: 25px;
+    }
+
+    .frm-tabs {
+        overflow: hidden;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .frm-tabs .theme-button {
+        min-width: 1px;
+        margin: 5px;
+    }
+
+    @media screen and (max-width:1599px) {
+        .contact-frm-wrapper .contact-detail li {
+            font-size: 16px;
+        }
+    }
+
+    @media screen and (max-width:1399px) {
+        .contact-frm-wrapper .contact-detail {
+            width: 40%;
+        }
+
+        .contact-frm-wrapper .contact-frm-container {
+            width: 60%;
+            padding-left: 30px;
+        }
+
+        .frm-holder .field-row {
+            margin: 0 -15px;
+        }
+
+        .frm-holder .field-row .field {
+            padding: 0 15px;
+        }
+
+        .contact-frm-wrapper .contact-frm-box .frm-holder {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width:1199px) {
+        .contact-frm-wrapper {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width:991px) {
+        .contact-frm-section {
+            background: transparent !important;
+            padding: 0 !important;
+        }
+
+        .contact-frm-section .heading{
+            display: none;
+        }
+        .contact-frm-section .para-wrap {
+        color: #58595B;
+    }
+    .innerpage-banner{
+        display: block;
+        margin-bottom: 30px;
+    }
+
+        .contact-frm-wrapper .contact-detail {
+            width: 100%;
+            background-color: #F6F6F6;
+        }
+
+        .contact-frm-wrapper .contact-frm-container {
+            padding-left: 0;
+            width: 100%;
+        }
+
+        .contact-frm-wrapper .contact-frm-box {
+            background-color: #F6F6F6;
+            margin-top: 30px;
+            height: auto;
+        }
+
+        .contact-frm-wrapper .contact-detail li {
+            font-size: 14px;
+        }
+        .contact-frm-wrapper .contact-detail ul{
+            padding:0 0 15px 0;
+        }
+
+        .contact-frm-wrapper .contact-detail .heading-md {
+            padding-top: 30px;
+        }
+
+    }
+
+    @media screen and (max-width:767px) {
+        .frm-holder .field-row .field {
+            width: 100%;
+        }
+
+        .contact-frm-wrapper .contact-frm-box {
+            padding: 20px;
+        }
+
+        .contact-frm-wrapper .contact-detail .heading-md {
+            padding: 20px 20px 10px 20px;
+        }
+
+        .contact-frm-wrapper .contact-detail li {
+            padding: 15px 20px;
+            font-size:13px;
+        }
+
+    }
+
+    /* end contact form section */
+
+    /* map location */
+    .location-list-container .location-list-wrap {
+        width: 35%;
+        padding-right: 50px;
+        margin-left: -20px;
+    }
+
+    .location-list-container .location-list {
+        max-height: 750px;
+        overflow: hidden;
+        overflow-y: auto;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .location-list-container .location-list::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .location-list-container .location-list::-webkit-scrollbar-track {
+        background: #F4F6F7;
+        border-radius: 12px;
+    }
+
+    .location-list-container .location-list::-webkit-scrollbar-thumb {
+        background: #B2B3B3;
+        border-radius: 12px;
+    }
+
+    .location-list-container .map-wrap {
+        width: 65%;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .location-list-container .map-wrap iframe {
+        height: 100%;
+        width: 100%;
+    }
+
+    .location-card {
+        background-color: #fff;
+        box-shadow: 0 3px 17px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 30px;
+    }
+
+    .location-card .location-img img {
+        height: 180px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .location-card .location-desc {
+        padding: 25px;
+    }
+
+    .location-card .location-desc .contact-links a {
+        display: flex;
+        gap: 7px;
+        justify-content: center;
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+
+    .twitter{
+        width:20px;
+    }
+
+    @media screen and (max-width:1399px) {
+        .location-list-container .location-list-wrap {
+            width: 40%;
+            padding-right: 30px;
+        }
+
+        .location-list-container .map-wrap {
+            width: 60%;
+        }
+    }
+
+    @media screen and (max-width:1199px) {
+        .location-list-container .location-list-wrap {
+            width: 45%;
+        }
+
+        .location-list-container .map-wrap {
+            width: 55%;
+        }
+    }
+
+    @media screen and (max-width:991px) {
+        .location-list-container .location-list {
+            max-height: none;
+            padding: 0;
+        }
+
+        .location-card {
+            margin-bottom: 0;
+        }
+
+        .location-list-container .location-list-wrap {
+            width: 100%;
+            padding-right: 0;
+            margin-left: 0;
+        }
+
+        .location-list-container .map-wrap {
+            width: 100%;
+        }
+
+        .location-list {
+            margin: 0 -10px;
+        }
+
+        .location-list .location-card-wrap {
+            padding: 15px;
+        }
+
+        .map-wrap {
+            position: relative;
+            padding-bottom: 56.25%;
+            margin-top: 20px;
+        }
+
+        .map-wrap iframe {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    @media screen and (max-width:767px) {
+        .location-card .location-desc {
+            padding: 20px;
+        }
+    }
+
+    /* end of map location */
+</style>
+
+  <!----------CSS Start------------------------->
+    <style>
+      body {
+        padding-top: 82px;
+      }
+
+      .site-header {
+        height: 82px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background: #fff;
+        padding: 15px 0;
+      }
+      .logo {
+        margin-bottom: -3px;
+        line-height: 0;
+      }
+      .logo svg {
+        max-width: 100%;
+      }
+
+      .site-header nav .close-menu {
+        width: 32px;
+        height: 32px;
+        border: 0;
+        outline: 0;
+        text-align: center;
+        background-color: var(--primary);
+        color: #fff;
+        font-weight: 600;
+        position: absolute;
+        left: 300px;
+        top: 10px;
+        display: none;
+      }
+
+      .site-header nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+      }
+
+      .site-header nav .menu {
+        display: flex;
+      }
+
+      .site-header nav .menu > li {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text);
+        margin: 0 15px;
+      }
+
+      .site-header nav .menu > li a {
+        display: block;
+        white-space: nowrap;
+        color: inherit;
+        padding: 18px 0;
+      }
+
+      .site-header nav .menu li.has-submenu {
+        position: relative;
+        padding-right: 18px;
+      }
+
+      .site-header nav .menu > li.has-submenu ul {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        border-radius: 15px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.14);
+        background-color: #fff;
+        padding: 10px 20px;
+        z-index: 999;
+        width: 280px;
+      }
+
+      .site-header nav .menu > li.has-submenu .open-dropdown,
+      .site-header nav .menu > li.has-submenu .thirdopen-dropdown {
+        position: absolute;
+        right: 0;
+        background: transparent;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        top: 14px;
+        width: 12px;
+        height: 24px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .site-header nav .menu > li.has-submenu .open-dropdown svg,
+      .site-header nav .menu li.has-submenu .thirdopen-dropdown svg {
+        width: 10px;
+        height: auto;
+      }
+
+      .site-header nav .menu li.third-level .open-dropdown {
+        top: 14px;
+        pointer-events: none;
+      }
+
+      .site-header nav .menu li.third-level ul {
+        left: 260px;
+        top: 0;
+        display: none;
+        border-top-left-radius: 0;
+      }
+
+      .site-header nav .menu > li.has-submenu ul li a {
+        color: var(--text);
+        white-space: normal;
+        padding: 10px 0;
+      }
+
+      @media screen and (min-width: 1200px) {
+        .site-header nav .menu > li.has-submenu ul li a:hover,
+        .site-header nav .menu > li:hover a {
+          color: var(--primary);
+        }
+
+        .site-header nav .menu > li.has-submenu:hover > ul,
+        .site-header nav .menu li.third-level:hover > ul {
+          display: block;
+        }
+
+        .site-header nav .menu li.third-level .open-dropdown,
+        .site-header nav .menu li.third-level .thirdopen-dropdown {
+          transform: rotate(-90deg);
+          top: 14px;
+        }
+
+        .site-header nav .menu li.third-level ul:before {
+          left: -40px;
+          top: 0;
+          width: 40px;
+          content: "";
+          position: absolute;
+          height: 100%;
+        }
+
+        .site-header nav .menu li.third-level ul li.third-level ul {
+          left: auto;
+          top: 0px;
+          border-top-left-radius: 15px;
+          right: 100%;
+        }
+      }
+
+      .site-header nav .menu > li.has-submenu ul li {
+        border-bottom: 1px solid rgba(88, 89, 91, 0.5);
+      }
+
+      .site-header nav .menu > li.has-submenu ul li:last-child {
+        border-bottom: 0;
+      }
+
+      .site-header nav .menu > li.has-submenu ul li a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 50px;
+      }
+
+      .site-header nav .menu > li.has-submenu ul li a .icon {
+        width: 26px;
+        flex: 0 0 26px;
+      }
+
+      .header-contact-number {
+        display: flex;
+        gap: 10px;
+      }
+
+      .header-contact-number a.whatsapp-btn {
+        display: none;
+      }
+
+      .header-contact-number a {
+        font-weight: 700;
+        display: flex;
+        padding: 10px 18px;
+        background-color: var(--primary);
+        border-radius: 40px;
+        border: 1px solid var(--primary);
+        color: #58595b;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .header-contact-number a img {
+        width: 24px;
+        height: 24px;
+        margin: auto;
+      }
+      .header-contact-number a.whatsapp-btn img,
+      .header-contact-number a.feedback-btn img,
+      .header-contact-number a.emergency-btn img {
+        display: block;
+      }
+      .header-contact-number a .txt {
+        display: none;
+        font-size: 10px;
+      }
+      .header-contact-number .reqcallback-btn span {
+        font-size: 12px;
+        color: #fff;
+        margin-left: 10px;
+      }
+
+      .header-contact-number a.feedback-btn,
+      .header-contact-number a.emergency-btn {
+        background-color: transparent;
+      }
+
+      .chatbot-waiting {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: rgba(255, 255, 255, 0.85)
+          url(../../../assets/images/icons/loading.svg) no-repeat center center;
+        background-size: 60px auto;
+      }
+
+      #sendResumModal .frm-holder .theme-button {
+        width: 100%;
+        display: block;
+      }
+
+      @media screen and (min-width: 1200px) {
+        .header-contact-number a.contact-btn,
+        .header-contact-number a.emergency-btn {
+          display: none;
+        }
+      }
+
+      @media screen and (min-width: 1820px) {
+        .header-contact-number a .txt {
+          display: block;
+          margin-left: 5px;
+          font-size: 12px;
+        }
+        .header-contact-number a.reqcallback-btn {
+          color: #fff;
+        }
+      }
+
+      @media screen and (max-width: 1699px) {
+        .site-header nav .menu > li {
+          margin: 0 10px;
+        }
+      }
+
+      @media screen and (max-width: 1599px) {
+        .site-header nav .menu > li {
+          font-size: 14px;
+        }
+        .site-header nav .menu li.third-level .open-dropdown,
+        .site-header nav .menu li.third-level .thirdopen-dropdown {
+          top: 14px;
+        }
+      }
+
+      @media screen and (max-width: 1399px) {
+        .logo {
+          width: 115px;
+        }
+        .site-header nav .menu > li {
+          font-size: 12px;
+          margin: 0 7px;
+        }
+        .site-header nav .menu li.third-level .open-dropdown,
+        .site-header nav .menu li.third-level .thirdopen-dropdown {
+          top: 12px;
+        }
+      }
+
+      @media screen and (max-width: 1199px) {
+        body {
+          padding-top: 62px;
+        }
+
+        .site-header {
+          border-bottom: 1px solid #d9d9d9;
+          padding: 7px 0;
+          height: 62px;
+        }
+        .site-header nav {
+          display: none;
+          position: fixed;
+          left: 0;
+          top: 62px;
+          right: 0;
+          bottom: 76px;
+          z-index: 999;
+          background-color: #fff;
+          overflow: auto;
+        }
+
+        .site-header nav.is-opened {
+          display: block;
+        }
+
+        .site-header nav .close-menu {
+          display: block;
+        }
+
+        .site-header nav .menu > li.has-submenu ul li.active > a,
+        .site-header nav .menu > li.active > a {
+          color: var(--primary);
+        }
+
+        .site-header nav .menu > li.has-submenu.active > ul {
+          display: block;
+        }
+
+        .site-header nav .menu > li.has-submenu.active li.third-level ul {
+          display: none;
+        }
+
+        .site-header nav .menu > li.has-submenu.active li.third-level.active ul {
+          display: block;
+        }
+
+        .site-header nav .menu > li.has-submenu.active li.third-level ul {
+          display: none;
+        }
+
+        .site-header nav .menu > li.has-submenu.active li.third-level.active ul {
+          display: block;
+        }
+
+        .site-header
+          nav
+          .menu
+          > li.has-submenu.active
+          li.third-level
+          ul
+          li.third-level
+          ul {
+          display: none;
+        }
+
+        .site-header
+          nav
+          .menu
+          > li.has-submenu.active
+          li.third-level.active
+          ul
+          li.third-level.active
+          ul {
+          display: block;
+        }
+
+        .site-header
+          nav
+          .menu
+          > li.has-submenu.active
+          li.third-level.active
+          ul
+          li.third-level.active
+          ul
+          li.third-level
+          ul {
+          display: none;
+        }
+        .site-header
+          nav
+          .menu
+          > li.has-submenu.active
+          li.third-level.active
+          ul
+          li.third-level.active
+          ul
+          li.third-level.active
+          ul {
+          display: block;
+        }
+
+        .site-header nav .menu {
+          display: block;
+          padding: 5px 20px;
+          overflow: auto;
+        }
+
+        .site-header nav .menu > li {
+          margin: 0;
+          font-size: 13px;
+          border-bottom: 1px solid #dadada;
+        }
+
+        .site-header nav .menu li.has-submenu {
+          padding-right: 0;
+        }
+        .site-header nav .menu li.has-submenu a.open-submenu {
+          padding-right: 30px;
+        }
+
+        nav .menu > li a {
+          padding: 16px 0;
+        }
+
+        nav .menu > li.has-submenu .open-dropdown {
+          top: 12px;
+          pointer-events: none;
+        }
+
+        nav .menu > li.has-submenu.active > .open-dropdown svg path,
+        nav li.third-level.active > .open-dropdown svg path {
+          stroke: var(--primary);
+        }
+
+        .site-header nav .menu > li.has-submenu ul {
+          position: static;
+          width: auto;
+          box-shadow: none;
+          margin-bottom: 15px;
+          padding: 0;
+        }
+        .site-header nav .menu > li.has-submenu.active ul {
+          display: block;
+        }
+
+        .site-header nav .menu > li.has-submenu ul li a .icon {
+          width: 32px;
+          flex: 0 0 32px;
+        }
+        .header-contact-number a {
+          padding: 10px 15px;
+        }
+
+        .header-contact-number a.reqcallback-btn {
+          display: none;
+        }
+      }
+
+
+      @media screen and (max-width: 767px) {
+        .header-contact-number {
+          gap: 0;
+        }
+        .header-contact-number a.whatsapp-btn {
+          display: block;
+        }
+        .header-contact-number a.feedback-btn {
+          display: none;
+        }
+        .site-header {
+          padding: 10px 0 7px 0;
+        }
+
+        .header-contact-number a {
+          background-color: transparent;
+          border: 0;
+          display: block;
+          padding: 0;
+          margin-left: 15px;
+          text-align: center;
+        }
+        .header-contact-number a .txt {
+          display: block;
+        }
+        .header-contact-number a img {
+          margin-bottom: 5px;
+        }
+        .logo {
+          width: 100px;
+        }
+
+        .cookies {
+          flex-wrap: wrap;
+        }
+        .cookies p {
+          margin: 0 0 15px;
+          width: 100%;
+        }
+        .cookies .list-details {
+          justify-content: center;
+          width: 100%;
+        }
+
+        .header-contact-number a{width: auto; margin: 0 auto;}
+        .header-contact-number a.emergency-btn{width: 70px;}
+
+
+        .emergency-txt-grp {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .flip-box {
+          width: 100px;
+          height: 24px;
+          perspective: 1000px;
+        }
+
+        .flipper {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          transform-style: preserve-3d;
+          animation: rotateText 4s infinite linear;
+        }
+
+        .flip-text {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #f04e30;
+          font-size: 10px;
+          margin-top: -5px;
+        }
+
+        .front {
+          transform: rotateY(0deg);
+        }
+
+        .back {
+          transform: rotateY(180deg);
+        }
+
+        @keyframes rotateText {
+          0% {
+            transform: rotateY(0deg);
+          }
+          50% {
+            transform: rotateY(180deg);
+          }
+          100% {
+            transform: rotateY(360deg);
+          }
+        }
+
+
+      }
+
+    .emergency-btn-box-mb {
+        display: none !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0px;
+        text-decoration: none;
+        width: 70px;
+    }
+
+    @keyframes flipLoop {
+        0% {
+            transform: rotateY(0deg);
+        }
+
+        45% {
+            transform: rotateY(0deg);
+        }
+
+        50% {
+            transform: rotateY(180deg);
+        }
+
+        95% {
+            transform: rotateY(180deg);
+        }
+
+        100% {
+            transform: rotateY(360deg);
+        }
+    }
+
+    .emergency-side {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        gap: 0px;
+        flex-direction: column;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+    .emergency-side.emergency-front {
+        background-color: #ffffff;
+        border: 1px solid #EE4F39;
+    }
+
+    .emergency-side.emergency-front .emergency-text {
+        color: #58595B;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .emergency-side.emergency-back {
+        background-color: #EE4F39;
+        font-size: 12px;
+        font-weight: 700;
+        transform: rotateY(180deg);
+    }
+
+    .emergency-side.emergency-back .emergency-text {
+        color: #FFFFFF;
+    }
+
+    .emergency-svg-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+    }
+
+  .emergency-svg-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        background-color: #e9493093;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        animation: pulse-scale 2s infinite;
+        z-index: 0;
+    }
+
+    .emergency-svg-wrapper svg {
+        /* animation: svg-vibrate 2s infinite; */
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes pulse-scale {
+        0% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.7;
+        }
+
+        50% {
+            transform: translate(-50%, -50%) scale(1.3);
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.7;
+        }
+    }
+
+    @keyframes svg-vibrate {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(1px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .emergency-info-box span {
+        font-size: 10px;
+        color: #58595B;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+    .emergency-info-box {
+        position: relative;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+    }
+
+    .emergency-info-box .emergency-number {
+        animation: blink1 5s infinite;
+    }
+
+    .emergency-info-box .emergency-back {
+        transform: rotateY(180deg);
+    }
+
+    .emergency-info-box .emergency-text {
+        animation: blink2 5s infinite;
+        transform: translateX(-50%) rotateY(180deg);
+    }
+
+    @keyframes blink1 {
+        0% {
+            transform: translateX(-50%) rotateY(0deg);
+            opacity: 1;
+        }
+
+        40% {
+            transform: translateX(-50%) rotateY(0deg);
+            opacity: 1;
+        }
+
+        50% {
+            transform: translateX(-50%) rotateY(90deg);
+            opacity: 0;
+        }
+
+        51% {
+            transform: translateX(-50%) rotateY(270deg);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(-50%) rotateY(360deg);
+            opacity: 0;
+        }
+    }
+
+    @keyframes blink2 {
+        0% {
+            transform: translateX(-50%) rotateY(180deg);
+            opacity: 0;
+        }
+
+        49% {
+            transform: translateX(-50%) rotateY(180deg);
+            opacity: 0;
+        }
+
+        50% {
+            transform: translateX(-50%) rotateY(270deg);
+            opacity: 0;
+        }
+
+        51% {
+            transform: translateX(-50%) rotateY(360deg);
+            opacity: 1;
+        }
+
+        90% {
+            transform: translateX(-50%) rotateY(360deg);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateX(-50%) rotateY(540deg);
+            opacity: 0;
+        }
+    }
+
+    @media screen and (max-width:767px) {
+        .header-contact-number a.emergency-btn-box-mb {
+            display: flex !important;
+            width: 80px;
+        }
+    }
+    </style>
+  <!----------CSS End------------------------->
+
+  <style >[wire\:loading], [wire\:loading\.delay], [wire\:loading\.inline-block], [wire\:loading\.inline], [wire\:loading\.block], [wire\:loading\.flex], [wire\:loading\.table], [wire\:loading\.grid], [wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short], [wire\:loading\.delay\.long], [wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest] {display:none;}[wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {animation-duration: 50000s;animation-name: livewireautofill;}@keyframes livewireautofill { from {} }</style>
+</head>
+
+<body>
+  
+
+  <style>
+    .sticky-btn-fixed{padding: 12px; top: 35%;}
+    .sticky-btn-fixed a{text-align: center;}
+    .sticky-btn-fixed a span{color: #fff; font-size: 12px; font-weight: 600; display: block; text-align: center;}
+</style>
+
+ {{header}}
+
+
+  <div class="modal" id="Marmosetloadmodal">
+    <div class="close close-model-layer" data-close="modal"></div>
+    <div class="modal__dialog">
+      <div wire:id="Q52i0ielkUVSe2lz34VZ" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;Q52i0ielkUVSe2lz34VZ&quot;,&quot;name&quot;:&quot;request-callbacks&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;contact-us&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;35ca3c6b&quot;,&quot;data&quot;:{&quot;name&quot;:null,&quot;email&quot;:null,&quot;mobile&quot;:null,&quot;type&quot;:&quot;home-navbar&quot;,&quot;token&quot;:&quot;&quot;,&quot;captcha&quot;:0,&quot;recaptcha&quot;:null,&quot;userIp&quot;:null,&quot;userAgent&quot;:null,&quot;currentPageUrl&quot;:&quot;https:\/\/www.sudharshan heart clinic.org\/contact-us&quot;,&quot;utm_source&quot;:&quot;Website&quot;,&quot;utm_medium&quot;:null,&quot;utm_campaign&quot;:null,&quot;getSubSource&quot;:&quot;Website - contact-us&quot;,&quot;utm_term&quot;:null},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;dfc260940f1b9096d52f4f129b5f154622cbcd05908a15c8a1583eccd31be130&quot;}}">
+    <a class="close close-modal" data-close="modal" id="closeModal"></a>
+      <a class="close close-modal" data-close="modal" id="closeModal"></a>
+    <div class="modal__content">
+    <div class="modal-body">
+        <h2 class="reacllHeading">Request Call Back</h2>
+        <div class="btn-modal text-right">
+            <form id="request-callback-form">
+                    <label for="fname">Name *</label>
+                    <input type="text" id="fname" name="name" placeholder="Enter Your Name" required>
+                    
+                    <label for="lname">Mobile Number *</label>
+                    <input type="text" id="lname" name="mobile" placeholder="Enter Your Mobile Number" required>
+                    
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter Your Email">
+                    
+                    <input type="hidden" name="form_type" value="Request Call Back">
+                    
+                    <br> <br>
+                    <button type="submit" class="submitpopupbt">Submit</button>
+                    <div class="form-message" style="display:none; margin-top:10px;"></div>
+            </form>
+        </div>
+    </div>
+    </div>
+        <script>
+            document.getElementById('request-callback-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var form = this;
+                var formData = new FormData(form);
+                var data = {};
+                formData.forEach((value, key) => data[key] = value);
+                
+                var btn = form.querySelector('button[type="submit"]');
+                var originalText = btn.innerText;
+                btn.innerText = 'Submitting...';
+                btn.disabled = true;
+                
+                fetch('/wp-json/sudharshan heart clinic/v1/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        form.querySelector('.form-message').innerText = 'Thank you! We will call you back.';
+                        form.querySelector('.form-message').style.display = 'block';
+                        form.querySelector('.form-message').style.color = 'green';
+                        form.reset();
+                        setTimeout(function() {
+                            document.querySelector('#closeModal').click();
+                        }, 3000);
+                    } else {
+                        form.querySelector('.form-message').innerText = 'Something went wrong. Please try again.';
+                        form.querySelector('.form-message').style.display = 'block';
+                        form.querySelector('.form-message').style.color = 'red';
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    form.querySelector('.form-message').innerText = 'An error occurred.';
+                    form.querySelector('.form-message').style.display = 'block';
+                    form.querySelector('.form-message').style.color = 'red';
+                })
+                .finally(() => {
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                });
+            });
+        </script>
+    
+</div>
+
+<!-- Livewire Component wire-end:Q52i0ielkUVSe2lz34VZ -->    </div>
+  </div>
+
+  <!-- Upload Resume Model -->
+  <div class="modal" id="sendResumModal">
+    <div class="close close-model-layer" data-close="modal"></div>
+    <div class="modal__dialog">
+      <a class="close close-modal" data-close="modal"></a>
+      <div class="modal__content">
+        <div class="modal-body">
+          <div class="frm-holder">
+            <div wire:id="vFoxe45HiXxj9f7nsqfU" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;vFoxe45HiXxj9f7nsqfU&quot;,&quot;name&quot;:&quot;jop-application-list&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;contact-us&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;62240f24&quot;,&quot;data&quot;:{&quot;name&quot;:null,&quot;email&quot;:null,&quot;mobile&quot;:null,&quot;resume&quot;:null,&quot;userIp&quot;:null,&quot;userAgent&quot;:null,&quot;currentPageUrl&quot;:&quot;https:\/\/www.sudharshan heart clinic.org\/contact-us&quot;,&quot;utm_source&quot;:&quot;Website&quot;,&quot;utm_medium&quot;:null,&quot;utm_campaign&quot;:null,&quot;utm_term&quot;:null},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;40720e04d097580a77bad3c36c63a580f72114b9189f219f3f51f3bc1357e9eb&quot;}}">
+            <form id="resume-upload-form">
+
+        <div class="field">
+            <label>Name *</label>
+            <input type="text" class="inputbox" name="name" placeholder="Enter Your Name" required>
+            <br>
+        </div>
+        <div class="field">
+            <label>Mobile Number *</label>
+            <input type="text" class="inputbox" name="mobile" placeholder="Enter Your Number" required>
+            <br>
+        </div>
+        <div class="field">
+            <label>Email *</label>
+            <input type="email" class="inputbox" name="email" placeholder="Enter Your Email" required>
+            <br>
+        </div>
+
+        <div class="field mb-20">
+            <label>Resume (accepted only pdf, docx) *</label>
+            <div class="upload-file">
+                <input type="file" class="inputbox" id="resume" name="resume" accept=".pdf,.docx,.doc" required/>
+            </div>
+            <br>
+        </div>
+        
+        <input type="hidden" name="form_type" value="Resume Upload">
+        
+        <button type="submit" class="theme-button">Submit</button>
+        <div class="form-message" style="display:none; margin-top:10px;"></div>
+    </form>
+    <script>
+        document.getElementById('resume-upload-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var form = this;
+            var formData = new FormData(form);
+            
+            var btn = form.querySelector('button[type="submit"]');
+            var originalText = btn.innerText;
+            btn.innerText = 'Submitting...';
+            btn.disabled = true;
+            
+            fetch('/wp-json/sudharshan heart clinic/v1/submit', {
+                method: 'POST',
+                body: formData, // FormData handles Content-Type automatically
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    form.querySelector('.form-message').innerText = 'Thank you! Your resume has been uploaded.';
+                    form.querySelector('.form-message').style.display = 'block';
+                    form.querySelector('.form-message').style.color = 'green';
+                    form.reset();
+                } else {
+                    form.querySelector('.form-message').innerText = 'Something went wrong. Please try again.';
+                    form.querySelector('.form-message').style.display = 'block';
+                    form.querySelector('.form-message').style.color = 'red';
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                form.querySelector('.form-message').innerText = 'An error occurred.';
+                form.querySelector('.form-message').style.display = 'block';
+                form.querySelector('.form-message').style.color = 'red';
+            })
+            .finally(() => {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            });
+        });
+    </script>
+</div>
+
+<!-- Livewire Component wire-end:vFoxe45HiXxj9f7nsqfU -->          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="innerpage-banner">
+    <div class="img-wrap">
+        <img src="https://sudharshan heart clinic.org/assets/images/contact-banner-xs.jpg" alt="Contact Us" width="480" height="320">
+    </div>
+    <div class="banner-caption text-center">
+        <div class="banner-title clr-white">Contact us</div>
+    </div>
+</section>
+<section class="py-50 contact-frm-section"
+    style="background: url(https://www.sudharshanheartclinic.com/assets/images/contact-banner-lg.jpg) no-repeat; background-size: cover;">
+    <div class="container">
+        <div class="frm-caption">
+            <h1 class="heading text-center mb-20">Contact Us</h1>
+            <div class="para-wrap font600 text-center mb-40">
+                <p>We would love to hear from you! Please fill in the required details and our team will get in touch with you.</p>
+            </div>
+        </div>
+        <div class="contact-frm-wrapper dflex flexwrap">
+            <div class="contact-detail">
+                <div class="heading-md">Contact Details</div>
+                <ul>
+                    <li>
+                        <div class="icon">
+                            <svg width="51" height="51" viewBox="0 0 51 51" fill="none"
+                                xmlns="https://www.w3.org/2000/svg">
+                                <circle cx="25.5" cy="25.5" r="25.5" fill="#F04E30" />
+                                <path
+                                    d="M19.1088 18.6869L19.908 18.0806C20.6576 17.5126 21.7145 17.6433 22.3777 18.3857L23.6984 19.8646C24.273 20.5087 24.4065 21.455 24.0284 22.2036L22.974 24.2877C23.3905 25.171 24.0073 25.9687 24.8233 26.6808C25.6037 27.373 26.5113 27.9009 27.4925 28.2332L29.1734 26.9233C29.8102 26.4279 30.6954 26.4367 31.3676 26.9456L32.936 28.1303C33.7187 28.7222 33.9947 29.8168 33.5826 30.6918L33.1416 31.6294C32.7019 32.5627 31.8159 33.1541 30.8163 33.1803C28.4548 33.2437 25.805 31.9177 22.8636 29.2035C19.9179 26.4851 18.3031 23.87 18.0212 21.3615C17.9023 20.3059 18.3155 19.2882 19.1088 18.6869Z"
+                                    fill="white" />
+                            </svg>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Phone Number</strong>
+                            <a href="tel:+91-88-0000-1068">+91-88-0000-1068</a>
+                        </div>
+                    </li>
+                    <!-- <li>
+                        <div class="icon">
+                            <svg width="51" height="51" viewBox="0 0 51 51" fill="none"
+                                xmlns="https://www.w3.org/2000/svg">
+                                <circle cx="25.5" cy="25.5" r="25.5" fill="#F04E30" />
+                                <g clip-path="url(#clip0_0_1)">
+                                    <path
+                                        d="M17.0625 25C17.2826 25 17.473 25.0804 17.6338 25.2412C17.7946 25.402 17.875 25.5924 17.875 25.8125C17.875 26.0326 17.7946 26.223 17.6338 26.3838C17.473 26.5446 17.2826 26.625 17.0625 26.625C16.8424 26.625 16.652 26.5446 16.4912 26.3838C16.3304 26.223 16.25 26.0326 16.25 25.8125C16.25 25.5924 16.3304 25.402 16.4912 25.2412C16.652 25.0804 16.8424 25 17.0625 25ZM32.5 16.875C33.4056 16.875 34.2731 17.0824 35.1025 17.4971C35.8643 17.8779 36.4948 18.3773 36.9941 18.9951C37.4935 19.613 37.8913 20.2985 38.1875 21.0518C38.4837 21.805 38.6953 22.5879 38.8223 23.4004C38.9492 24.2129 39.0085 25.0169 39 25.8125C39 26.5996 38.9408 27.4036 38.8223 28.2246C38.7038 29.0456 38.4964 29.8285 38.2002 30.5732C37.904 31.318 37.502 31.9993 36.9941 32.6172C36.4863 33.235 35.8558 33.7386 35.1025 34.1279C34.2731 34.5426 33.4056 34.75 32.5 34.75H30.875V38H17.875V34.75H13V23.375C13 23.1465 13.0423 22.9349 13.127 22.7402C13.2116 22.5456 13.3258 22.3763 13.4697 22.2324C13.6136 22.0885 13.7871 21.9701 13.9902 21.877C14.1934 21.7839 14.4049 21.7415 14.625 21.75H17.875V12H30.875V16.875H32.5ZM19.5 21.75H29.25V13.625H19.5V21.75ZM29.25 29.875H19.5V36.375H29.25V29.875ZM32.5 28.25V23.375H14.625V33.125H17.875V28.25H32.5ZM32.5 33.125C33.1263 33.125 33.6807 33.015 34.1631 32.7949C34.6455 32.5749 35.0687 32.2786 35.4326 31.9062C35.7965 31.5339 36.1012 31.1022 36.3467 30.6113C36.5921 30.1204 36.791 29.6042 36.9434 29.0625C37.0957 28.5208 37.2057 27.9707 37.2734 27.4121C37.3411 26.8535 37.375 26.3203 37.375 25.8125C37.375 25.3047 37.3411 24.7715 37.2734 24.2129C37.2057 23.6543 37.0999 23.1042 36.9561 22.5625C36.8122 22.0208 36.6133 21.5046 36.3594 21.0137C36.1055 20.5228 35.8008 20.0911 35.4453 19.7188C35.0898 19.3464 34.6667 19.0501 34.1758 18.8301C33.6849 18.61 33.1263 18.5 32.5 18.5H31.6875C31.4674 18.5 31.277 18.5804 31.1162 18.7412C30.9554 18.902 30.875 19.0924 30.875 19.3125V20.9375C30.875 21.1745 30.93 21.348 31.04 21.458C31.1501 21.568 31.2855 21.6484 31.4463 21.6992C31.6071 21.75 31.7848 21.7712 31.9795 21.7627C32.1742 21.7542 32.3477 21.75 32.5 21.75C32.7285 21.75 32.9401 21.7923 33.1348 21.877C33.3294 21.9616 33.4987 22.0758 33.6426 22.2197C33.7865 22.3636 33.9049 22.5371 33.998 22.7402C34.0911 22.9434 34.1335 23.1549 34.125 23.375V28.25C34.125 28.4785 34.0827 28.6901 33.998 28.8848C33.9134 29.0794 33.7992 29.2487 33.6553 29.3926C33.5114 29.5365 33.3379 29.6549 33.1348 29.748C32.9316 29.8411 32.7201 29.8835 32.5 29.875H31.9922C31.806 29.875 31.6283 29.8919 31.459 29.9258C31.2897 29.9596 31.1501 30.0358 31.04 30.1543C30.93 30.2728 30.875 30.4505 30.875 30.6875V32.3125C30.875 32.5326 30.9554 32.723 31.1162 32.8838C31.277 33.0446 31.4674 33.125 31.6875 33.125H32.5Z"
+                                        fill="white" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_0_1">
+                                        <rect width="26" height="26" fill="white" transform="translate(13 12)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Fax</strong>
+                            <a href="tel:911244834111">+911244834111</a>
+                        </div>
+                    </li> -->
+                    
+                    <li>
+                        <div class="icon">
+                            <svg width="51" height="51" viewBox="0 0 51 51" fill="none"
+                                xmlns="https://www.w3.org/2000/svg">
+                                <circle cx="25.5" cy="25.5" r="25.5" fill="#F04E30" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M28.0342 20.5266L22.5563 23.2658C21.8236 22.1377 20.5527 21.3913 19.1087 21.3913C16.8412 21.3913 15 23.2325 15 25.5C15 27.7675 16.8412 29.6087 19.1087 29.6087C20.5527 29.6087 21.8236 28.8623 22.5563 27.7342L28.0342 30.4734C27.8716 30.9157 27.7826 31.3932 27.7826 31.8913C27.7826 34.1588 29.6238 36 31.8913 36C34.1588 36 36 34.1588 36 31.8913C36 29.6238 34.1588 27.7826 31.8913 27.7826C30.4473 27.7826 29.1764 28.529 28.4437 29.6571L22.9659 26.918C23.1284 26.4756 23.2174 25.9981 23.2174 25.5C23.2174 25.0019 23.1284 24.5244 22.9659 24.082L28.4437 21.3429C29.1764 22.471 30.4473 23.2174 31.8913 23.2174C34.1588 23.2174 36 21.3762 36 19.1087C36 16.8412 34.1588 15 31.8913 15C29.6238 15 27.7826 16.8412 27.7826 19.1087C27.7826 19.6068 27.8716 20.0843 28.0342 20.5266ZM31.8913 28.6957C33.6548 28.6957 35.087 30.1278 35.087 31.8913C35.087 33.6548 33.6548 35.087 31.8913 35.087C30.1278 35.087 28.6957 33.6548 28.6957 31.8913C28.6957 30.1278 30.1278 28.6957 31.8913 28.6957ZM19.1087 22.3043C20.8722 22.3043 22.3043 23.7365 22.3043 25.5C22.3043 27.2635 20.8722 28.6957 19.1087 28.6957C17.3452 28.6957 15.913 27.2635 15.913 25.5C15.913 23.7365 17.3452 22.3043 19.1087 22.3043ZM31.8913 15.913C33.6548 15.913 35.087 17.3452 35.087 19.1087C35.087 20.8722 33.6548 22.3043 31.8913 22.3043C30.1278 22.3043 28.6957 20.8722 28.6957 19.1087C28.6957 17.3452 30.1278 15.913 31.8913 15.913Z"
+                                    fill="white" stroke="white" />
+                            </svg>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Follow us</strong>
+                            <div class="sharing-link">
+                                <a href="https://www.facebook.com//" target="_blank"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="https://www.w3.org/2000/svg">
+                                    <path d="M21.8385 10.9994C21.8385 5.01935 16.9852 0.166016 11.0052 0.166016C5.02521 0.166016 0.171875 5.01935 0.171875 10.9994C0.171875 16.2427 3.89854 20.6085 8.83854 21.616V14.2494H6.67188V10.9994H8.83854V8.29102C8.83854 6.20018 10.5394 4.49935 12.6302 4.49935H15.3385V7.74935H13.1719C12.576 7.74935 12.0885 8.23685 12.0885 8.83268V10.9994H15.3385V14.2494H12.0885V21.7785C17.5594 21.2369 21.8385 16.6219 21.8385 10.9994Z" fill="#444545"/>
+                                    </svg>
+                                </a>
+                                <a href="https://twitter.com/" target="_blank"><svg class="twitter" width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="https://www.w3.org/2000/svg">
+<path d="M0.785947 0.236816L9.66598 12.11L0.72998 21.7636H2.74127L10.5649 13.3116L16.8859 21.7636H23.73L14.3501 9.2226L22.6678 0.236816H20.6565L13.4516 8.02069L7.62998 0.236816H0.785947ZM3.74364 1.71817H6.88776L20.7719 20.2822H17.6278L3.74364 1.71817Z" fill="#444545"></path>
+        Twitter
+    </svg>
+                                </a>
+                                <a href="https://www.instagram.com/?hl=en" target="_blank"><svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="https://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.05273 0.066C8.33236 0.012 8.74036 0 12 0C15.2596 0 15.6676 0.013 16.9462 0.066C18.2247 0.119 19.0975 0.306 19.8611 0.577C20.6607 0.854 21.3862 1.287 21.9862 1.847C22.5971 2.396 23.0684 3.06 23.3695 3.794C23.6662 4.494 23.8691 5.294 23.928 6.464C23.9869 7.639 24 8.013 24 11C24 13.988 23.9858 14.362 23.928 15.535C23.8702 16.705 23.6662 17.505 23.3695 18.205C23.0684 18.9391 22.5963 19.6042 21.9862 20.154C21.3862 20.714 20.6607 21.146 19.8611 21.422C19.0975 21.694 18.2247 21.88 16.9484 21.934C15.6676 21.988 15.2596 22 12 22C8.74036 22 8.33236 21.987 7.05273 21.934C5.77636 21.881 4.90364 21.694 4.14 21.422C3.33919 21.146 2.61362 20.7133 2.01382 20.154C1.40332 19.6047 0.930889 18.9399 0.629455 18.206C0.333818 17.506 0.130909 16.706 0.072 15.536C0.0130909 14.361 0 13.987 0 11C0 8.012 0.0141818 7.638 0.072 6.466C0.129818 5.294 0.333818 4.494 0.629455 3.794C0.931334 3.06008 1.40413 2.39531 2.01491 1.846C2.61386 1.2865 3.3387 0.853443 4.13891 0.577C4.90255 0.306 5.77527 0.12 7.05164 0.066H7.05273ZM16.8491 2.046C15.5836 1.993 15.204 1.982 12 1.982C8.796 1.982 8.41636 1.993 7.15091 2.046C5.98036 2.095 5.34545 2.274 4.92218 2.425C4.36255 2.625 3.96218 2.862 3.54218 3.247C3.14405 3.60205 2.83765 4.03428 2.64545 4.512C2.48073 4.9 2.28545 5.482 2.232 6.555C2.17418 7.715 2.16218 8.063 2.16218 11C2.16218 13.937 2.17418 14.285 2.232 15.445C2.28545 16.518 2.48073 17.1 2.64545 17.488C2.83745 17.965 3.144 18.398 3.54218 18.753C3.92945 19.118 4.40182 19.399 4.92218 19.575C5.34545 19.726 5.98036 19.905 7.15091 19.954C8.41636 20.007 8.79491 20.018 12 20.018C15.2051 20.018 15.5836 20.007 16.8491 19.954C18.0196 19.905 18.6545 19.726 19.0778 19.575C19.6375 19.375 20.0378 19.138 20.4578 18.753C20.856 18.398 21.1625 17.965 21.3545 17.488C21.5193 17.1 21.7145 16.518 21.768 15.445C21.8258 14.285 21.8378 13.937 21.8378 11C21.8378 8.063 21.8258 7.715 21.768 6.555C21.7145 5.482 21.5193 4.9 21.3545 4.512C21.1364 3.999 20.8778 3.632 20.4578 3.247C20.0705 2.88207 19.5989 2.60121 19.0778 2.425C18.6545 2.274 18.0196 2.095 16.8491 2.046ZM10.4673 14.391C11.3233 14.7176 12.2764 14.7617 13.1639 14.5157C14.0514 14.2697 14.8182 13.7489 15.3334 13.0422C15.8485 12.3356 16.0801 11.4869 15.9884 10.6411C15.8968 9.79534 15.4876 9.00497 14.8309 8.405C14.4123 8.02148 13.906 7.72781 13.3487 7.54515C12.7914 7.36248 12.1968 7.29536 11.6078 7.34862C11.0188 7.40187 10.45 7.57418 9.94233 7.85313C9.43468 8.13208 9.00081 8.51074 8.67197 8.96185C8.34312 9.41296 8.12748 9.92529 8.04056 10.462C7.95365 10.9986 7.99762 11.5463 8.16932 12.0655C8.34101 12.5847 8.63616 13.0626 9.03351 13.4647C9.43087 13.8668 9.92054 14.1832 10.4673 14.391ZM7.63855 7.002C8.2113 6.47697 8.89126 6.0605 9.6396 5.77636C10.3879 5.49222 11.19 5.34597 12 5.34597C12.81 5.34597 13.6121 5.49222 14.3604 5.77636C15.1087 6.0605 15.7887 6.47697 16.3615 7.002C16.9342 7.52702 17.3885 8.15032 17.6985 8.8363C18.0085 9.52228 18.168 10.2575 18.168 11C18.168 11.7425 18.0085 12.4777 17.6985 13.1637C17.3885 13.8497 16.9342 14.473 16.3615 14.998C15.2047 16.0583 13.6359 16.654 12 16.654C10.3641 16.654 8.79528 16.0583 7.63855 14.998C6.48182 13.9377 5.83197 12.4995 5.83197 11C5.83197 9.50046 6.48182 8.06234 7.63855 7.002ZM19.536 6.188C19.6779 6.06527 19.7916 5.91768 19.8701 5.75397C19.9487 5.59027 19.9907 5.41377 19.9935 5.23493C19.9964 5.05609 19.9601 4.87855 19.8867 4.71281C19.8134 4.54707 19.7045 4.39651 19.5665 4.27004C19.4285 4.14357 19.2643 4.04376 19.0835 3.97652C18.9027 3.90928 18.709 3.87598 18.5139 3.87858C18.3188 3.88119 18.1263 3.91965 17.9477 3.9917C17.7691 4.06374 17.6081 4.1679 17.4742 4.298C17.2138 4.55103 17.0712 4.88712 17.0768 5.23493C17.0823 5.58274 17.2355 5.91488 17.5038 6.16084C17.7721 6.40681 18.1345 6.54723 18.5139 6.5523C18.8933 6.55737 19.26 6.42669 19.536 6.188Z" fill="#444545"/>
+                                    </svg>
+                                </a>
+                                <a href="https://www.youtube.com/user/" target="_blank"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="https://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_637_3414)">
+                                    <path d="M25.7413 7.79999C25.7413 7.79999 25.4878 6.00762 24.7062 5.22112C23.7166 4.18599 22.6083 4.17949 22.1013 4.11937C18.4662 3.85449 13.0062 3.85449 13.0062 3.85449H12.9964C12.9964 3.85449 7.53806 3.85449 3.90131 4.11937C3.39269 4.18112 2.28606 4.18599 1.29644 5.22112C0.514812 6.00762 0.266188 7.79999 0.266188 7.79999C0.266188 7.79999 0.0078125 9.90274 0.0078125 12.0104V13.9815C0.0078125 16.0842 0.266188 18.1919 0.266188 18.1919C0.266188 18.1919 0.519687 19.9842 1.29644 20.7724C2.28606 21.8075 3.58606 21.7734 4.16619 21.8839C6.24781 22.0821 13.0078 22.1422 13.0078 22.1422C13.0078 22.1422 18.4727 22.1325 22.1078 21.8725C22.6164 21.8124 23.7231 21.8059 24.7127 20.7707C25.4943 19.9842 25.7478 18.1902 25.7478 18.1902C25.7478 18.1902 26.0062 16.0875 26.0062 13.9799V12.0087C26.0013 9.90599 25.7429 7.79837 25.7429 7.79837L25.7413 7.79999ZM10.3136 16.3719V9.06424L17.3368 12.7302L10.3136 16.3719Z" fill="#444545"/>
+                                    </g>
+                                    <defs>
+                                    <clipPath id="clip0_637_3414">
+                                    <rect width="26" height="26" fill="white"/>
+                                    </clipPath>
+                                    </defs>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="contact-frm-container">
+                <div class="contact-frm-box">
+                    <div class="frm-tabs mb-30 text-center">
+                        <button class="theme-button" id="btn-enquiry" type="button" onclick="showTab('enquiry-form')">Enquiry</button>
+                        <button class="theme-button button-outline" id="btn-feedback" type="button" onclick="showTab('feedback-form')">Feedback</button>
+                    </div>
+                    <div class="frm-holder">
+                        <!-- Enquiry Form -->
+                        <div id="enquiry-form" class="frm opened">
+                            <form class="contact-form" data-type="Enquiry">
+                                <div class="field-row">
+                                    <div class="field">
+                                        <label>Name *</label>
+                                        <input type="text" name="name" class="inputbox" placeholder="Enter Your Name" required>
+                                    </div>
+                                    <div class="field">
+                                        <label>E-mail *</label>
+                                        <input type="email" name="email" class="inputbox" placeholder="Enter Your E-mail" required>
+                                    </div>
+                                    <div class="field">
+                                        <label>Mobile No. *</label>
+                                        <input type="text" name="mobile" class="inputbox" placeholder="Enter Your Phone Number" required>
+                                    </div>
+                                    <div class="field">
+                                        <label>Hospital *</label>
+                                        <select class="inputbox time" name="hospital" required>
+                                            <option value="">Select Hospital</option>
+                                            <option value="Dr Gaurav Mohan Gurugram">Dr Gaurav Mohan Gurugram</option>
+                                            <option value="Dr Gaurav Mohan Lucknow">Dr Gaurav Mohan Lucknow</option>
+                                            <option value="Dr Gaurav Mohan Patna">Dr Gaurav Mohan Patna</option>
+                                            <option value="Dr Gaurav Mohan Indore">Dr Gaurav Mohan Indore</option>
+                                            <option value="Dr Gaurav Mohan Ranchi">Dr Gaurav Mohan Ranchi</option>
+                                            <option value="Dr Gaurav Mohan Noida">Dr Gaurav Mohan Noida</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label>Your Message *</label>
+                                    <textarea name="remark" placeholder="Enter Your Message Here" class="inputbox" required></textarea>
+                                </div>
+                                <div class="frm-submit text-center">
+                                    <button type="submit" class="theme-button">Submit</button>
+                                    <div class="form-message" style="display:none; margin-top:10px;"></div>
+                                </div>
+                            </form>
+                        </div>                        <!-- Feedback Form -->
+                        <div id="feedback-form" class="frm" style="display:none;">
+                            <form class="contact-form" data-type="Feedback">
+                                <div class="field">
+                                    <label>Feedback *</label>
+                                    <textarea name="remark" placeholder="Enter Your Feedback Here" class="inputbox" required></textarea>
+                                </div>
+                                <div class="heading-sm font700 mb-20">
+                                    I want Dr Gaurav Mohan team to respond to my feedback
+                                </div>
+                                <div class="field-row">
+                                    <div class="field">
+                                        <label>Name *</label>
+                                        <input type="text" name="name" class="inputbox" placeholder="Enter Your Name" required>
+                                    </div>
+                                    <div class="field">
+                                        <label>Mobile No. *</label>
+                                        <input type="text" name="mobile" class="inputbox" placeholder="Enter Your Phone Number" required>
+                                    </div>
+                                    <div class="field">
+                                        <label>E-mail *</label>
+                                        <input type="email" name="email" class="inputbox" placeholder="Enter Your E-mail" required>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <script>
+                    function showTab(tabId) {
+                        // Hide all forms
+                        document.querySelectorAll('.frm').forEach(el => el.style.display = 'none');
+                        document.querySelectorAll('.frm-tabs .theme-button').forEach(el => el.classList.add('button-outline'));
+                        
+                        // Show selected form
+                        document.getElementById(tabId).style.display = 'block';
+                        
+                        // Update buttons
+                        var btnId = 'btn-' + tabId.replace('-form', '');
+                        if(tabId === 'other-form') btnId = 'btn-other';
+                        
+                        var btn = document.getElementById(btnId);
+                        if(btn) btn.classList.remove('button-outline');
+                    }
+
+                    document.querySelectorAll('.contact-form').forEach(form => {
+                        form.addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            var form = this;
+                            var formData = new FormData(form);
+                            var data = {};
+                            formData.forEach((value, key) => data[key] = value);
+                            data['form_type'] = 'Contact Us - ' + form.getAttribute('data-type');
+                            
+                            var btn = form.querySelector('button[type="submit"]');
+                            var originalText = btn.innerText;
+                            btn.innerText = 'Submitting...';
+                            btn.disabled = true;
+                            
+                            fetch('/wp-json/sudharshan heart clinic/v1/submit', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(data),
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    form.querySelector('.form-message').innerText = 'Thank you! Your message has been submitted.';
+                                    form.querySelector('.form-message').style.display = 'block';
+                                    form.querySelector('.form-message').style.color = 'green';
+                                    form.reset();
+                                } else {
+                                    form.querySelector('.form-message').innerText = 'Something went wrong. Please try again.';
+                                    form.querySelector('.form-message').style.display = 'block';
+                                    form.querySelector('.form-message').style.color = 'red';
+                                }
+                            })
+                            .catch((error) => {
+                                console.error('Error:', error);
+                                form.querySelector('.form-message').innerText = 'An error occurred.';
+                                form.querySelector('.form-message').style.display = 'block';
+                                form.querySelector('.form-message').style.color = 'red';
+                            })
+                            .finally(() => {
+                                btn.innerText = originalText;
+                                btn.disabled = false;
+                            });
+                        });
+                    });
+                    </script>                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-50 section-bottom-border">
+    <div wire:id="Y5EioacGY4l1bUJ2AX0g" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;Y5EioacGY4l1bUJ2AX0g&quot;,&quot;name&quot;:&quot;find-us-here&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;contact-us&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;cd44f0d2&quot;,&quot;data&quot;:{&quot;hospitals&quot;:[],&quot;locatUshospitals&quot;:[],&quot;selectedLocation&quot;:&quot;All&quot;,&quot;embededLink&quot;:&quot;https:\/\/www.google.com\/maps\/d\/u\/0\/embed?mid=1Zf0pNiIE_GKjySCi46Y6LXQl_iYQiPg&amp;ehbc=2E312F&amp;noprof=1&quot;,&quot;page_name&quot;:&quot;contact-us&quot;,&quot;selectedType&quot;:null,&quot;selectedLoctionId&quot;:null,&quot;locatUsSelectedLocationName&quot;:null},&quot;dataMeta&quot;:{&quot;modelCollections&quot;:{&quot;hospitals&quot;:{&quot;class&quot;:&quot;App\\Models\\Hospital&quot;,&quot;id&quot;:[1,2,3,4,5,12,14],&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null}}},&quot;checksum&quot;:&quot;222dbb5365414905ec26f0fcbaaa966727f1fd809723e6368a717381bd155755&quot;}}">
+    <style>
+        iframe .i4ewOd-pzNkMb-haAclf {
+            display: none;
+        }
+        .findus-filter{
+            width: 500px;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <div class="container">
+        <div class="heading text-center mb-20 wow fadeInUp">Find Us Here</div>
+        <style>
+            .map { 
+                /* make the map rounded and aslo give it a quick shadow so it blends with the over all UI */
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+        </style>
+     
+        <iframe width="100%" class="map" height="600" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345097975!2d144.9556513159045!3d-37.81732797975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDQ5JzAyLjQiUyAxNDTCsDU3JzIyLjMiRQ!5e0!3m2!1sen!2sus!4v1614111111111" style="border:0;" allowfullscreen=""
+            loading="lazy" id="myIframe" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <script>
+        // Wait for the iframe to load
+        var iframe = document.getElementById("myIframe");
+        iframe.onload = function () {
+
+            // Access the iframe's content
+            var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+            // Find the div by its class name and hide it
+            var div = iframeDocument.querySelector(".i4ewOd-pzNkMb-haAclf");
+
+            if (div) {
+                div.style.display = "none";
+            }
+        };
+    </script>
+</div>
+
+<!-- Livewire Component wire-end:Y5EioacGY4l1bUJ2AX0g --></section>
+
+
+
+{{footer}}
+
+  <div class="mobile-sticky-links">
+    <ul>
+      <li>
+        <a class="toggle-menu" href="#">
+          <div class="icon open-icon">
+            <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="https://www.w3.org/2000/svg">
+              <path d="M1 7H19" stroke="#F04E30" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M1 1H19" stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M1 13H19" stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="icon close-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="https://www.w3.org/2000/svg">
+              <path
+                d="M20.9615 2.86865L20.9614 2.86858L20.9531 2.87687L13.2675 10.5892L12.8105 11.0479L13.2674 11.5067L20.9416 19.2127C21.1616 19.4534 21.2816 19.7701 21.2758 20.0977C21.27 20.4286 21.1363 20.7439 20.9036 20.9773C20.671 21.2107 20.3576 21.344 20.0295 21.3498C19.7049 21.3555 19.3902 21.236 19.1505 21.0156L11.4713 13.3097L11.0111 12.8479L10.5507 13.3095L2.86624 21.0129C2.62651 21.2334 2.31181 21.353 1.98711 21.3472C1.65903 21.3414 1.3456 21.2081 1.11297 20.9748C0.880274 20.7413 0.74663 20.426 0.74081 20.0951C0.73505 19.7676 0.854928 19.4509 1.07487 19.2103L8.75412 11.5069L9.21135 11.0482L8.75435 10.5893L1.07129 2.87446L1.06309 2.86622L1.05459 2.85828C0.929846 2.74168 0.829673 2.60095 0.760152 2.44443C0.690629 2.28791 0.653214 2.11886 0.650198 1.9474C0.647182 1.77593 0.678629 1.60566 0.742613 1.44675C0.806593 1.28785 0.901769 1.14365 1.02236 1.02268C1.14294 0.901719 1.28646 0.806474 1.4443 0.742521C1.60213 0.678569 1.77112 0.647188 1.94119 0.650198C2.11127 0.653208 2.27906 0.69055 2.43457 0.760057C2.59008 0.829565 2.73018 0.929844 2.84645 1.05502L2.85426 1.06342L2.86235 1.07154L10.5505 8.78386L11.0108 9.24557L11.4711 8.78394L19.1619 1.07162L19.1619 1.07169L19.1696 1.0637C19.2868 0.94208 19.4269 0.845209 19.5816 0.778636C19.7363 0.712065 19.9026 0.677094 20.0708 0.675708C20.2389 0.674322 20.4058 0.706548 20.5615 0.770556C20.7173 0.834568 20.8589 0.929111 20.9781 1.04877C21.0972 1.16843 21.1916 1.31082 21.2555 1.46768C21.3194 1.62454 21.3515 1.79267 21.3499 1.96223C21.3484 2.13179 21.3132 2.29929 21.2465 2.45494C21.1797 2.61059 21.0828 2.75121 20.9615 2.86865Z"
+                fill="#F04E30" stroke="white" stroke-width="1.3" />
+            </svg>
+          </div>
+          Menu
+        </a>
+      </li>
+      <li>
+        <a href="/doctor-listing">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+              xmlns="https://www.w3.org/2000/svg">
+              <path
+                d="M3.83862 11.6841C6.07056 13.8948 8.80637 15.307 8.80637 15.307C8.80637 15.307 16.6128 11.2796 16.6128 6.17702C16.6128 3.72154 14.7322 1.70605 12.408 1.70605"
+                stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M5.20484 1.70972C2.88065 1.70972 1 3.7252 1 6.18068C1 7.50068 1.52161 8.74617 2.29516 9.87101"
+                stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M6.32257 3.12903C6.91049 3.12903 7.38709 2.65243 7.38709 2.06452C7.38709 1.4766 6.91049 1 6.32257 1C5.73466 1 5.25806 1.4766 5.25806 2.06452C5.25806 2.65243 5.73466 3.12903 6.32257 3.12903Z"
+                stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M11.2903 3.12903C11.8783 3.12903 12.3549 2.65243 12.3549 2.06452C12.3549 1.4766 11.8783 1 11.2903 1C10.7024 1 10.2258 1.4766 10.2258 2.06452C10.2258 2.65243 10.7024 3.12903 11.2903 3.12903Z"
+                stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M19.8064 16.9677V17.5C19.8064 20.5232 17.3296 23 14.3064 23C11.2832 23 8.8064 20.5232 8.8064 17.5V15.5483"
+                stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M18.387 18.05C17.3367 17.5284 16.6128 16.4461 16.6128 15.1935C16.6128 13.43 18.0428 12 19.8063 12C21.5699 12 22.9999 13.43 22.9999 15.1935C22.9999 16.4461 22.276 17.5284 21.2257 18.05"
+                stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M19.8066 16.613C20.5904 16.613 21.2259 15.9775 21.2259 15.1936C21.2259 14.4098 20.5904 13.7743 19.8066 13.7743C19.0227 13.7743 18.3872 14.4098 18.3872 15.1936C18.3872 15.9775 19.0227 16.613 19.8066 16.613Z"
+                fill="#F04E30" stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M1 9.87098H4.19355L5.25806 8.09679L7.03226 11.6452L9.16129 5.61292L10.9355 9.87098H12.7097"
+                stroke="#58595B" stroke-linecap="square" stroke-linejoin="round" />
+            </svg>
+          </div>
+          Doctors
+        </a>
+      </li>
+      <li>
+        <a href="https://www.sudharshan heart cliniceclinic.org/">
+          <div class="icon"><svg width="23" height="23" viewBox="0 0 23 23" fill="none"
+              xmlns="https://www.w3.org/2000/svg">
+              <path
+                d="M17.7283 12.0005C16.3305 12.0005 14.9898 12.58 14.0013 13.6114C13.0129 14.6429 12.4575 16.0419 12.4575 17.5005C12.4575 18.9591 13.0129 20.358 14.0013 21.3895C14.9898 22.4209 16.3305 23.0004 17.7283 23.0004C19.1262 23.0004 20.4669 22.4209 21.4554 21.3895C22.4438 20.358 22.9992 18.9591 22.9992 17.5005C22.9992 16.0419 22.4438 14.6429 21.4554 13.6114C20.4669 12.58 19.1262 12.0005 17.7283 12.0005ZM17.7283 22.0004C16.5845 22.0004 15.4877 21.5264 14.6789 20.6825C13.8701 19.8386 13.4159 18.694 13.4159 17.5005C13.4159 16.3069 13.8701 15.1624 14.6789 14.3184C15.4876 13.4745 16.5845 13.0005 17.7283 13.0005C18.8722 13.0005 19.969 13.4745 20.7778 14.3184C21.5866 15.1623 22.0408 16.3069 22.0408 17.5005C22.0408 18.694 21.5866 19.8385 20.7778 20.6825C19.9691 21.5264 18.8722 22.0004 17.7283 22.0004Z"
+                fill="#58595B" />
+              <path
+                d="M19.2531 15.7596L16.9292 18.1795L16.2055 17.4244V17.4246C16.1157 17.3299 15.9931 17.2767 15.8654 17.2767C15.7376 17.2767 15.6152 17.3299 15.5251 17.4246C15.3393 17.6195 15.3393 17.9345 15.5251 18.1297L16.5937 19.2396C16.7805 19.4334 17.0824 19.4334 17.2693 19.2396L19.9335 16.4646C20.1201 16.2685 20.119 15.9517 19.9311 15.757C19.7432 15.5625 19.4397 15.5635 19.2532 15.7596L19.2531 15.7596Z"
+                fill="#58595B" />
+              <path
+                d="M11.1789 20H1.91665C1.66246 20 1.41874 19.8948 1.23906 19.7071C1.05918 19.5196 0.958295 19.2653 0.958295 19V8.00007H14.8541C15.1188 8.00007 15.3333 7.77624 15.3333 7.50007C15.3333 7.2239 15.1188 7.00007 14.8541 7.00007H0.958295V4.00009C0.958295 3.73486 1.05918 3.48054 1.23906 3.29304C1.41874 3.10535 1.66244 3.00007 1.91665 3.00007H4.0729V3.50007C4.0729 3.89792 4.22432 4.27937 4.49385 4.56082C4.76357 4.84206 5.12913 5.00007 5.5104 5.00007H5.98957C6.37084 5.00007 6.7364 4.84206 7.00612 4.56082C7.27565 4.27937 7.42708 3.89792 7.42708 3.50007V3.00007H13.6562V3.50007C13.6562 3.89792 13.8077 4.27937 14.0772 4.56082C14.3469 4.84206 14.7125 5.00007 15.0938 5.00007H15.5729C15.9542 5.00007 16.3197 4.84206 16.5895 4.56082C16.859 4.27937 17.0104 3.89792 17.0104 3.50007V3.00007H19.1667C19.4209 3.00007 19.6646 3.10535 19.8443 3.29304C20.0241 3.48054 20.125 3.73484 20.125 4.00009V7.00007H17.9783C17.7136 7.00007 17.4991 7.2239 17.4991 7.50007C17.4991 7.77624 17.7136 8.00007 17.9783 8.00007H20.125V10.97C20.125 11.2461 20.3395 11.4699 20.6042 11.4699C20.8689 11.4699 21.0834 11.2461 21.0834 10.97V3.99999C21.0834 3.46954 20.8814 2.96094 20.522 2.58575C20.1625 2.21075 19.675 2 19.1667 2H17.0104V1.5C17.0104 1.10215 16.859 0.720706 16.5895 0.439258C16.3198 0.158009 15.9542 0 15.5729 0H15.0938C14.7125 0 14.3469 0.158009 14.0772 0.439258C13.8077 0.720701 13.6563 1.10215 13.6563 1.5V2H7.4271V1.5C7.4271 1.10215 7.27567 0.720706 7.00614 0.439258C6.73642 0.158009 6.37086 0 5.98959 0H5.51042C5.12915 0 4.76359 0.158009 4.49387 0.439258C4.22434 0.720701 4.07291 1.10215 4.07291 1.5V2H1.91667C1.40832 2 0.92091 2.21074 0.561344 2.58575C0.201969 2.96094 0 3.46954 0 3.99999V18.9999C0 19.5304 0.201959 20.039 0.561344 20.4142C0.920905 20.7892 1.40832 20.9999 1.91667 20.9999H11.179C11.4436 20.9999 11.6581 20.7761 11.6581 20.4999C11.6581 20.2237 11.4436 20 11.1789 20ZM14.6145 1.50012C14.6145 1.22395 14.829 1.00012 15.0937 1.00012H15.5728C15.6999 1.00012 15.8218 1.05286 15.9116 1.14661C16.0015 1.24036 16.052 1.36751 16.052 1.50012V3.50011C16.052 3.63273 16.0015 3.75988 15.9116 3.85362C15.8218 3.94737 15.6999 4.00011 15.5728 4.00011H15.0937C14.829 4.00011 14.6145 3.77628 14.6145 3.50011V1.50012ZM5.03118 1.50012C5.03118 1.22395 5.24568 1.00012 5.51035 1.00012H5.98951C6.1166 1.00012 6.23845 1.05286 6.3283 1.14661C6.41814 1.24036 6.46868 1.36751 6.46868 1.50012V3.50011C6.46868 3.63273 6.41814 3.75988 6.3283 3.85362C6.23845 3.94737 6.1166 4.00011 5.98951 4.00011H5.51035C5.24568 4.00011 5.03118 3.77628 5.03118 3.50011V1.50012Z"
+                fill="#58595B" />
+              <path
+                d="M11.4992 11.0007C11.4992 11.5531 11.0702 12.0007 10.5409 12.0007C10.0115 12.0007 9.58252 11.5531 9.58252 11.0007C9.58252 10.4484 10.0115 10.0007 10.5409 10.0007C11.0702 10.0007 11.4992 10.4484 11.4992 11.0007Z"
+                fill="#F04E30" />
+              <path
+                d="M5.75187 11.0007C5.75187 11.5531 5.32287 12.0007 4.79354 12.0007C4.26421 12.0007 3.83521 11.5531 3.83521 11.0007C3.83521 10.4484 4.26421 10.0007 4.79354 10.0007C5.32287 10.0007 5.75187 10.4484 5.75187 11.0007Z"
+                fill="#F04E30" />
+              <path
+                d="M5.75187 16.4995C5.75187 17.0519 5.32287 17.4995 4.79354 17.4995C4.26421 17.4995 3.83521 17.0518 3.83521 16.4995C3.83521 15.9472 4.26421 15.4995 4.79354 15.4995C5.32287 15.4995 5.75187 15.9472 5.75187 16.4995Z"
+                fill="#F04E30" />
+            </svg>
+
+          </div>
+          Book Apt.
+        </a>
+      </li>
+                    <li class="chat isdisabled">
+          <a href="javascript:void(0)" onclick="chatHandler()">
+            <div class="icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="https://www.w3.org/2000/svg">
+              <path d="M18.8333 13.2222C18.8333 13.7625 18.6187 14.2806 18.2367 14.6626C17.8547 15.0446 17.3366 15.2593 16.7963 15.2593H4.57407L0.5 19.3333V3.03704C0.5 2.49678 0.714616 1.97865 1.09663 1.59663C1.47865 1.21462 1.99678 1 2.53704 1H16.7963C17.3366 1 17.8547 1.21462 18.2367 1.59663C18.6187 1.97865 18.8333 2.49678 18.8333 3.03704V13.2222Z" stroke="#58595B" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>    </div>
+            Chat
+          </a>
+        </li>
+        <li>
+            <a data-toggle="modal" data-target="#Marmosetloadmodal" href="javascript:void(0);">
+              <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+               xmlns="https://www.w3.org/2000/svg">
+               <path
+               d="M21.9468 17.7355V20.8892C21.948 21.182 21.8879 21.4717 21.7704 21.74C21.6529 22.0082 21.4805 22.249 21.2644 22.4469C21.0482 22.6449 20.793 22.7956 20.5152 22.8893C20.2373 22.9831 19.9429 23.018 19.6507 22.9916C16.4098 22.6401 13.2966 21.5348 10.5613 19.7644C8.01656 18.1504 5.85903 15.997 4.24197 13.4571C2.46198 10.7147 1.35426 7.59233 1.00855 4.34302C0.982229 4.05233 1.01684 3.75935 1.11019 3.48273C1.20353 3.20612 1.35356 2.95194 1.55072 2.73637C1.74788 2.5208 1.98785 2.34856 2.25535 2.23063C2.52286 2.11269 2.81204 2.05165 3.10448 2.05137H6.26417C6.77531 2.04635 7.27084 2.22701 7.65839 2.55967C8.04595 2.89233 8.29909 3.3543 8.37063 3.85947C8.50399 4.8687 8.75132 5.85964 9.10789 6.81339C9.2496 7.18964 9.28026 7.59856 9.19626 7.99167C9.11226 8.38479 8.91711 8.74564 8.63394 9.03145L7.29633 10.3665C8.79567 12.9983 10.9789 15.1773 13.6157 16.6738L14.9533 15.3388C15.2397 15.0561 15.6012 14.8613 15.9951 14.7775C16.389 14.6937 16.7987 14.7243 17.1756 14.8657C18.1312 15.2216 19.124 15.4685 20.1352 15.6016C20.6468 15.6736 21.1141 15.9308 21.4481 16.3243C21.7821 16.7177 21.9596 17.22 21.9468 17.7355Z"
+               stroke="#58595B" stroke-linecap="round" stroke-linejoin="round" />
+               <path
+               d="M14.6267 5.20487C15.6554 5.40519 16.6009 5.90735 17.342 6.64707C18.0831 7.38679 18.5863 8.33042 18.787 9.35718M14.6267 1C16.764 1.23698 18.757 2.19226 20.2786 3.70899C21.8001 5.22573 22.7598 7.21376 22.9999 9.34667"
+               stroke="#F04E30" stroke-linecap="round" stroke-linejoin="round" />
+             </svg>
+           </div>
+           CallBack
+         </a>
+       </li>
+          </ul>
+  </div>
+
+  <!-- footer-special -->
+  <div wire:ignore.self class="modal" id="deleteMemberModal">
+    <div class="close close-model-layer" data-close="modal"></div>
+    <div class="modal__dialog">
+      <a class="close close-modal" data-close="modal" id="closeModal"></a>
+      <div class="modal__content">
+        <div class="modal-body">
+          <div class="action-button dflex centered-items">
+            <img src="https://www.sudharshanheartclinic.com/assets/images/new_disclaimer.jpg" alt="Back to top" width="600" height="600">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div id="backtotop">
+    <span id="backtotop-value"><img src="https://www.sudharshanheartclinic.com/assets/images/icons/upwards-arrow.png" alt="Back to top" width="50" height="50"></span>
+  </div>
+
+  <script src="/wp-content/uploads/assets/js/jquery.min.js"></script>
+  <script src="/wp-content/uploads/assets/js/jquery-ui.js"></script>
+  <script src="/wp-content/uploads/assets/js/slick.min.js"></script>
+  <script src="/wp-content/uploads/assets/js/wow.min.js"></script>
+  <script src="/wp-content/uploads/assets/js/jquery.magnific-popup.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" defer></script> -->
+  <script src="/wp-content/uploads/assets/js/custom.js?v=2.2"></script>
+ 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let url = window.location.href;
+
+        // Pages that should allow "/hi/"
+        let allowedHiPages = [
+            "https://sudharshan heart clinic-uat.lyxelandflamingotech.in/hi/patient-education"
+        ];
+
+        // If current URL starts with "/hi/" but is not in allowed list → remove it
+        if (url.includes("/hi/") && !allowedHiPages.includes(url)) {
+            let newUrl = url.replace("/hi/", "/");
+            window.location.href = newUrl;
+        }
+
+        // If current URL is allowed hi page → do nothing
+    });
+  </script>
+
+  <!-- cookies js -->
+  <script>
+
+    $(document).ready(function() {
+      $('.cookies').hide();
+
+      function checkCookieConsent() {
+        return document.cookie.split('; ').find(row => row.startsWith('cookieConsent='));
+      }
+
+      // Show the popup if no consent cookie is found
+      if (!checkCookieConsent()) {
+        $('.cookies').show();
+      }
+    });
+    // Handle Accept button click
+    $('#acceptCookies').on('click', function() {
+        document.cookie = "cookieConsent=accepted; path=/; max-age=" + (60 * 60 * 24); // 1 day
+        $.ajax({
+          url: '/api/cookie-consent',
+          method: 'POST',
+          data: {
+            consent: 1,
+            _token: "5dYINsZpZ05CtXhtepG45r4WKhvKsckzD9JRpeXl" // Include CSRF token
+          },
+          success: function(response) {
+            $('.cookies').hide();
+          },
+          error: function(xhr) {
+            console.error('Failed to save consent:', xhr.responseText);
+          }
+        });
+      });
+      // Handle Reject button click
+    $('#rejectCookies').on('click', function() {
+        document.cookie = "cookieConsent=rejected; path=/; max-age=" + (60 * 60 * 24); // 1 day
+        $.ajax({
+          url: '/api/cookie-consent',
+          method: 'POST',
+          data: {
+            consent: 0,
+            _token: "5dYINsZpZ05CtXhtepG45r4WKhvKsckzD9JRpeXl" // Include CSRF token
+          },
+          success: function(response) {
+            $('.cookies').hide();
+          },
+          error: function(xhr) {
+            console.error('Failed to save consent:', xhr.responseText);
+          }
+        });
+      });
+
+  </script>
+  <!-- Sitelink search box schema-->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Dr Gaurav Mohan",
+      "url": "https://www.sudharshanheartclinic.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.sudharshanheartclinic.com/?s={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+
+  <!--- Medical Organisation -->
+
+  <script type="application/ld+json" class="schemantra.com">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalOrganization",
+      "@id": "Dr Gaurav Mohan Hospital"
+    }
+  </script>
+
+  <script>
+    $(document).ready(function(){
+    $('.location-list').slick({
+        speed: 300,
+        prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='/wp-content/uploads/2025/11/vector-left-1.png' /></button>",
+        nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='/wp-content/uploads/2025/11/vector-right-1.png' /></button>",
+        responsive: [
+            {
+                breakpoint: 9999,
+                settings: "unslick"
+            },
+            {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+
+    $(window).on('resize', function (e) {
+    $('.location-list').slick('refresh');
+});
+
+    $('.frm-tabs .theme-button').click(function(e){
+        e.preventDefault();
+        var idd = $(this).attr('id');
+        $('.contact-frm-box .frm-holder .frm.opened').removeClass('opened');
+        $('.frm-tabs .theme-button').addClass('button-outline');
+        $(this).removeClass('button-outline');
+        $('.contact-frm-box .frm-holder .frm#'+idd).addClass('opened');
+    });
+});
+
+</script>
+  
+  
+
+</body>
+
+
+
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Add contact page specific JavaScript here -->
+{% endblock %}

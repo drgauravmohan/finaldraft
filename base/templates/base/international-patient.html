@@ -1,0 +1,2057 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - Sudharshan Heart Clinic Clone{% endblock %}
+
+{% block meta_description %}Get in touch with Sudharshan Heart Clinic Clone - We're here to help{% endblock %}
+
+{% block extra_css %}
+<!-- Add contact page specific CSS here -->
+<!-- <link rel="stylesheet" href="{% static 'base/css/contact.css' %}"> -->
+{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ 
+<style>
+    .map-statics-section .map-statics {
+        padding: 50px;
+        background: url(../../assets/images/icons/pattern-bgorange.jpg) repeat top left;
+        border-radius: 20px;
+    }
+
+    .map-statics-section .map-statics .frm-holder {
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 25px;
+        position: relative;
+    }
+
+    .map-statics-section .map-statics .frm-holder .theme-button {
+        width: 100%;
+    }
+
+    @media screen and (max-width:1199px) {
+        .map-statics-section .map-statics {
+            padding: 25px;
+        }
+
+        .map-statics-section .map-statics .col-wrap .col.col7 {
+            width: 60%;
+        }
+
+        .map-statics-section .map-statics .col-wrap .col.col5 {
+            width: 40%;
+        }
+
+        .featured-stories .desktop-right-top-btn {
+            position: static;
+            margin-top: 25px;
+        }
+    }
+
+    @media screen and (max-width:767px) {
+
+        .map-statics-section .map-statics .col-wrap .col.col7,
+        .map-statics-section .map-statics .col-wrap .col.col5 {
+            width: 100%;
+        }
+
+        .map-statics-section .map-statics .frm-holder {
+            margin-top: 30px;
+        }
+    }
+
+    .speciality-and-procedure-tabs .specialities-and-tabs-content {
+        opacity: 0;
+        position: fixed;
+        z-index: -9999;
+    }
+
+    .speciality-and-procedure-tabs .specialities-and-tabs-content.active {
+        opacity: 1;
+        position: static;
+        z-index: auto;
+    }
+
+    #awards-section .col-wrap {
+        align-items: flex-start;
+    }
+
+    /* patientservice section */
+    .patientservice-desktop-card {
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .patientservice-card-row {
+        display: flex;
+    }
+
+    .patientservice-card-row:nth-child(even) .patientservice-card .card-img {
+        order: 2;
+    }
+
+    .patientservice-card-row:nth-child(even) .patientservice-card .card-desc {
+        order: 1;
+    }
+
+    .patientservice-card .card-desc {
+        background-color: #fff;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .patientservice-slider {
+        display: none;
+    }
+
+    @media screen and (min-width:1200px) {
+        .patientservice-card {
+            display: flex;
+            width: 50%;
+        }
+
+        .patientservice-card .card-img {
+            width: 50%;
+            line-height:0;
+        }
+
+        .patientservice-card .card-desc {
+            width: 50%;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    @media screen and (max-width:1199px) {
+        .patientservice-desktop-card {
+            display: none;
+        }
+
+        .patientservice-slider {
+            display: block;
+        }
+
+        .patientservice-slider .patientservice-card {
+            background-color: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .patientservice-card .card-desc{
+        padding:20px;
+    }
+    }
+
+
+    /* end of patientservice section */
+    /* start sub-speciality-card */
+    .sub-speciality-card {
+        box-shadow: 0 4px 19px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 30px;
+        background: url(../../assets/images/icons/pattern-bg.png) repeat top left #f8f8f8;
+    }
+
+    .sub-speciality-card:not(.nohover):hover {
+        background: url(../../assets/images/icons/pattern-bgwhite.png) repeat top left var(--primary);
+    }
+
+    .sub-speciality-card:not(.nohover):hover .speciality-title {
+        color: #fff;
+    }
+
+    .sub-speciality-card .speciality-icon {
+        width: 82px;
+        margin: 0 auto 20px auto;
+    }
+
+    .sub-speciality-card .speciality-icon img {
+        width: 82px;
+        height: 82px;
+        object-fit: contain;
+    }
+    .sub-speciality-card .speciality-icon svg{
+    width:82px;
+    height:82px;
+ }
+
+    .sub-speciality-card:not(.nohover):hover .speciality-icon .icon-default,
+    .sub-speciality-card .speciality-icon .icon-hover {
+        display: none;
+    }
+
+    .sub-speciality-card:not(.nohover):hover .speciality-icon .icon-hover {
+        display: block;
+    }
+
+    .sub-speciality-card .speciality-title {
+        width: 250px;
+        max-width: 100%;
+        margin: auto;
+    }
+
+    .sub-speciality-card .speciality-title a {
+        color: inherit;
+    }
+
+    .sub-speciality-card .speciality-title.sudharshan heart clinicsmheading {
+        line-height: 1.3;
+        font-size: 19px;
+    }
+
+    @media screen and (max-width:1599px) {
+        .sub-speciality-card .speciality-title.sudharshan heart clinicsmheading {
+            font-size: 17px;
+        }
+    }
+
+    @media screen and (max-width:1199px) {
+        #sub-specialisations-slider1 .slick-list {
+            padding-right: 100px;
+        }
+
+        .sub-speciality-card .speciality-title.sudharshan heart clinicsmheading {
+            font-size: 15px;
+        }
+    }
+
+    @media screen and (max-width:1199px) {
+        .sub-speciality-card {
+            padding: 25px;
+        }
+    }
+    @media screen and (max-width:767px) {
+        .sub-speciality-card .speciality-icon,
+    .sub-speciality-card .speciality-icon img {
+        width: 54px;
+        height: 54px;
+    }
+    .sub-speciality-card .speciality-title.sudharshan heart clinicsmheading{
+        font-size:13px;
+    }
+}
+
+    /* end of sub-speciality-card */
+</style>
+
+  <!----------CSS Start------------------------->
+    <style>
+      body {
+        padding-top: 82px;
+      }
+
+      .site-header {
+        height: 82px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background: #fff;
+        padding: 15px 0;
+      }
+      .logo {
+        margin-bottom: -3px;
+        line-height: 0;
+      }
+      .logo svg {
+        max-width: 100%;
+      }
+
+      .site-header nav .close-menu {
+        width: 32px;
+        height: 32px;
+        border: 0;
+        outline: 0;
+        text-align: center;
+        background-color: var(--primary);
+        color: #fff;
+        font-weight: 600;
+        position: absolute;
+        left: 300px;
+        top: 10px;
+        display: none;
+      }
+
+      .site-header nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+      }
+
+      .site-header nav .menu {
+        display: flex;
+      }
+
+      .site-header nav .menu > li {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text);
+        margin: 0 15px;
+      }
+
+      .site-header nav .menu > li a {
+        display: block;
+        white-space: nowrap;
+        color: inherit;
+        padding: 18px 0;
+      }
+
+      .site-header nav .menu li.has-submenu {
+        position: relative;
+        padding-right: 18px;
+      }
+
+      .site-header nav .menu > li.has-submenu ul {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        border-radius: 15px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.14);
+        background-color: #fff;
+        padding: 10px 20px;
+        z-index: 999;
+        width: 280px;
+      }
+
+      .site-header nav .menu > li.has-submenu .open-dropdown,
+      .site-header nav .menu > li.has-submenu .thirdopen-dropdown {
+        position: absolute;
+        right: 0;
+        background: transparent;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        top: 14px;
+        width: 12px;
+        height: 24px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .site-header nav .menu > li.has-submenu .open-dropdown svg,
+      .site-header nav .menu li.has-submenu .thirdopen-dropdown svg {
+        width: 10px;
+        height: auto;
+      }
+
+      .site-header nav .menu li.third-level .open-dropdown {
+        top: 14px;
+        pointer-events: none;
+      }
+
+      .site-header nav .menu li.third-level ul {
+        left: 260px;
+        top: 0;
+        display: none;
+        border-top-left-radius: 0;
+      }
+
+      .site-header nav .menu > li.has-submenu ul li a {
+        color: var(--text);
+        white-space: normal;
+        padding: 10px 0;
+      }
+
+      @media screen and (min-width: 1200px) {
+        .site-header nav .menu > li.has-submenu ul li a:hover,
+        .site-header nav .menu > li:hover a {
+          color: var(--primary);
+        }
+
+        .site-header nav .menu > li.has-submenu:hover > ul,
+        .site-header nav .menu li.third-level:hover > ul {
+          display: block;
+        }
+
+        .site-header nav .menu li.third-level .open-dropdown,
+        .site-header nav .menu li.third-level .thirdopen-dropdown {
+          transform: rotate(-90deg);
+          top: 14px;
+        }
+
+        .site-header nav .menu li.third-level ul:before {
+          left: -40px;
+          top: 0;
+          width: 40px;
+          content: "";
+          position: absolute;
+          height: 100%;
+        }
+
+        .site-header nav .menu li.third-level ul li.third-level ul {
+          left: auto;
+          top: 0px;
+          border-top-left-radius: 15px;
+          right: 100%;
+        }
+      }
+
+      .site-header nav .menu > li.has-submenu ul li {
+        border-bottom: 1px solid rgba(88, 89, 91, 0.5);
+      }
+
+      .site-header nav .menu > li.has-submenu ul li:last-child {
+        border-bottom: 0;
+      }
+
+      .site-header nav .menu > li.has-submenu ul li a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 50px;
+      }
+
+      .site-header nav .menu > li.has-submenu ul li a .icon {
+        width: 26px;
+        flex: 0 0 26px;
+      }
+
+      .header-contact-number {
+        display: flex;
+        gap: 10px;
+      }
+
+      .header-contact-number a.whatsapp-btn {
+        display: none;
+      }
+
+      .header-contact-number a {
+        font-weight: 700;
+        display: flex;
+        padding: 10px 18px;
+        background-color: var(--primary);
+        border-radius: 40px;
+        border: 1px solid var(--primary);
+        color: #58595b;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .header-contact-number a img {
+        width: 24px;
+        height: 24px;
+        margin: auto;
+      }
+      .header-contact-number a.whatsapp-btn img,
+      .header-contact-number a.feedback-btn img,
+      .header-contact-number a.emergency-btn img {
+        display: block;
+      }
+      .header-contact-number a .txt {
+        display: none;
+        font-size: 10px;
+      }
+      .header-contact-number .reqcallback-btn span {
+        font-size: 12px;
+        color: #fff;
+        margin-left: 10px;
+      }
+
+      .header-contact-number a.feedback-btn,
+      .header-contact-number a.emergency-btn {
+        background-color: transparent;
+      }
+
+      .chatbot-waiting {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: rgba(255, 255, 255, 0.85)
+          url(../../../assets/images/icons/loading.svg) no-repeat center center;
+        background-size: 60px auto;
+      }
+
+      #sendResumModal .frm-holder .theme-button {
+        width: 100%;
+        display: block;
+      }
+
+      @media screen and (min-width: 1200px) {
+        .header-contact-number a.contact-btn,
+        .header-contact-number a.emergency-btn {
+          display: none;
+        }
+      }
+
+      @media screen and (min-width: 1820px) {
+        .header-contact-number a .txt {
+          display: block;
+          margin-left: 5px;
+          font-size: 12px;
+        }
+        .header-contact-number a.reqcallback-btn {
+          color: #fff;
+        }
+      }
+
+      @media screen and (max-width: 1699px) {
+        .site-header nav .menu > li {
+          margin: 0 10px;
+        }
+      }
+
+      @media screen and (max-width: 1599px) {
+        .site-header nav .menu > li {
+          font-size: 14px;
+        }
+        .site-header nav .menu li.third-level .open-dropdown,
+        .site-header nav .menu li.third-level .thirdopen-dropdown {
+          top: 14px;
+        }
+      }
+
+      @media screen and (max-width: 1399px) {
+        .logo {
+          width: 115px;
+        }
+        .site-header nav .menu > li {
+          font-size: 12px;
+          margin: 0 7px;
+        }
+        .site-header nav .menu li.third-level .open-dropdown,
+        .site-header nav .menu li.third-level .thirdopen-dropdown {
+          top: 12px;
+        }
+      }
+
+      @media screen and (max-width: 1199px) {
+        body {
+          padding-top: 62px;
+        }
+
+        .site-header {
+          border-bottom: 1px solid #d9d9d9;
+          padding: 7px 0;
+          height: 62px;
+        }
+        .site-header nav {
+          display: none;
+          position: fixed;
+          left: 0;
+          top: 62px;
+          right: 0;
+          bottom: 76px;
+          z-index: 999;
+          background-color: #fff;
+          overflow: auto;
+        }
+
+        .site-header nav.is-opened {
+          display: block;
+        }
+
+        .site-header nav .close-menu {
+          display: block;
+        }
+
+        .site-header nav .menu > li.has-submenu ul li.active > a,
+        .site-header nav .menu > li.active > a {
+          color: var(--primary);
+        }
+
+        .site-header nav .menu > li.has-submenu.active > ul {
+          display: block;
+        }
+
+        .site-header nav .menu > li.has-submenu.active li.third-level ul {
+          display: none;
+        }
+
+        .site-header nav .menu > li.has-submenu.active li.third-level.active ul {
+          display: block;
+        }
+
+        .site-header nav .menu > li.has-submenu.active li.third-level ul {
+          display: none;
+        }
+
+        .site-header nav .menu > li.has-submenu.active li.third-level.active ul {
+          display: block;
+        }
+
+        .site-header
+          nav
+          .menu
+          > li.has-submenu.active
+          li.third-level
+          ul
+          li.third-level
+          ul {
+          display: none;
+        }
+
+        .site-header
+          nav
+          .menu
+          > li.has-submenu.active
+          li.third-level.active
+          ul
+          li.third-level.active
+          ul {
+          display: block;
+        }
+
+        .site-header
+          nav
+          .menu
+          > li.has-submenu.active
+          li.third-level.active
+          ul
+          li.third-level.active
+          ul
+          li.third-level
+          ul {
+          display: none;
+        }
+        .site-header
+          nav
+          .menu
+          > li.has-submenu.active
+          li.third-level.active
+          ul
+          li.third-level.active
+          ul
+          li.third-level.active
+          ul {
+          display: block;
+        }
+
+        .site-header nav .menu {
+          display: block;
+          padding: 5px 20px;
+          overflow: auto;
+        }
+
+        .site-header nav .menu > li {
+          margin: 0;
+          font-size: 13px;
+          border-bottom: 1px solid #dadada;
+        }
+
+        .site-header nav .menu li.has-submenu {
+          padding-right: 0;
+        }
+        .site-header nav .menu li.has-submenu a.open-submenu {
+          padding-right: 30px;
+        }
+
+        nav .menu > li a {
+          padding: 16px 0;
+        }
+
+        nav .menu > li.has-submenu .open-dropdown {
+          top: 12px;
+          pointer-events: none;
+        }
+
+        nav .menu > li.has-submenu.active > .open-dropdown svg path,
+        nav li.third-level.active > .open-dropdown svg path {
+          stroke: var(--primary);
+        }
+
+        .site-header nav .menu > li.has-submenu ul {
+          position: static;
+          width: auto;
+          box-shadow: none;
+          margin-bottom: 15px;
+          padding: 0;
+        }
+        .site-header nav .menu > li.has-submenu.active ul {
+          display: block;
+        }
+
+        .site-header nav .menu > li.has-submenu ul li a .icon {
+          width: 32px;
+          flex: 0 0 32px;
+        }
+        .header-contact-number a {
+          padding: 10px 15px;
+        }
+
+        .header-contact-number a.reqcallback-btn {
+          display: none;
+        }
+      }
+
+
+      @media screen and (max-width: 767px) {
+        .header-contact-number {
+          gap: 0;
+        }
+        .header-contact-number a.whatsapp-btn {
+          display: block;
+        }
+        .header-contact-number a.feedback-btn {
+          display: none;
+        }
+        .site-header {
+          padding: 10px 0 7px 0;
+        }
+
+        .header-contact-number a {
+          background-color: transparent;
+          border: 0;
+          display: block;
+          padding: 0;
+          margin-left: 15px;
+          text-align: center;
+        }
+        .header-contact-number a .txt {
+          display: block;
+        }
+        .header-contact-number a img {
+          margin-bottom: 5px;
+        }
+        .logo {
+          width: 100px;
+        }
+
+        .cookies {
+          flex-wrap: wrap;
+        }
+        .cookies p {
+          margin: 0 0 15px;
+          width: 100%;
+        }
+        .cookies .list-details {
+          justify-content: center;
+          width: 100%;
+        }
+
+        .header-contact-number a{width: auto; margin: 0 auto;}
+        .header-contact-number a.emergency-btn{width: 70px;}
+
+
+        .emergency-txt-grp {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .flip-box {
+          width: 100px;
+          height: 24px;
+          perspective: 1000px;
+        }
+
+        .flipper {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          transform-style: preserve-3d;
+          animation: rotateText 4s infinite linear;
+        }
+
+        .flip-text {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #f04e30;
+          font-size: 10px;
+          margin-top: -5px;
+        }
+
+        .front {
+          transform: rotateY(0deg);
+        }
+
+        .back {
+          transform: rotateY(180deg);
+        }
+
+        @keyframes rotateText {
+          0% {
+            transform: rotateY(0deg);
+          }
+          50% {
+            transform: rotateY(180deg);
+          }
+          100% {
+            transform: rotateY(360deg);
+          }
+        }
+
+
+      }
+
+    .emergency-btn-box-mb {
+        display: none !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0px;
+        text-decoration: none;
+        width: 70px;
+    }
+
+    @keyframes flipLoop {
+        0% {
+            transform: rotateY(0deg);
+        }
+
+        45% {
+            transform: rotateY(0deg);
+        }
+
+        50% {
+            transform: rotateY(180deg);
+        }
+
+        95% {
+            transform: rotateY(180deg);
+        }
+
+        100% {
+            transform: rotateY(360deg);
+        }
+    }
+
+    .emergency-side {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        gap: 0px;
+        flex-direction: column;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+    .emergency-side.emergency-front {
+        background-color: #ffffff;
+        border: 1px solid #EE4F39;
+    }
+
+    .emergency-side.emergency-front .emergency-text {
+        color: #58595B;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .emergency-side.emergency-back {
+        background-color: #EE4F39;
+        font-size: 12px;
+        font-weight: 700;
+        transform: rotateY(180deg);
+    }
+
+    .emergency-side.emergency-back .emergency-text {
+        color: #FFFFFF;
+    }
+
+    .emergency-svg-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+    }
+
+  .emergency-svg-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        background-color: #e9493093;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        animation: pulse-scale 2s infinite;
+        z-index: 0;
+    }
+
+    .emergency-svg-wrapper svg {
+        /* animation: svg-vibrate 2s infinite; */
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes pulse-scale {
+        0% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.7;
+        }
+
+        50% {
+            transform: translate(-50%, -50%) scale(1.3);
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.7;
+        }
+    }
+
+    @keyframes svg-vibrate {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(1px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .emergency-info-box span {
+        font-size: 10px;
+        color: #58595B;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+    .emergency-info-box {
+        position: relative;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+    }
+
+    .emergency-info-box .emergency-number {
+        animation: blink1 5s infinite;
+    }
+
+    .emergency-info-box .emergency-back {
+        transform: rotateY(180deg);
+    }
+
+    .emergency-info-box .emergency-text {
+        animation: blink2 5s infinite;
+        transform: translateX(-50%) rotateY(180deg);
+    }
+
+    @keyframes blink1 {
+        0% {
+            transform: translateX(-50%) rotateY(0deg);
+            opacity: 1;
+        }
+
+        40% {
+            transform: translateX(-50%) rotateY(0deg);
+            opacity: 1;
+        }
+
+        50% {
+            transform: translateX(-50%) rotateY(90deg);
+            opacity: 0;
+        }
+
+        51% {
+            transform: translateX(-50%) rotateY(270deg);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(-50%) rotateY(360deg);
+            opacity: 0;
+        }
+    }
+
+    @keyframes blink2 {
+        0% {
+            transform: translateX(-50%) rotateY(180deg);
+            opacity: 0;
+        }
+
+        49% {
+            transform: translateX(-50%) rotateY(180deg);
+            opacity: 0;
+        }
+
+        50% {
+            transform: translateX(-50%) rotateY(270deg);
+            opacity: 0;
+        }
+
+        51% {
+            transform: translateX(-50%) rotateY(360deg);
+            opacity: 1;
+        }
+
+        90% {
+            transform: translateX(-50%) rotateY(360deg);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateX(-50%) rotateY(540deg);
+            opacity: 0;
+        }
+    }
+
+    @media screen and (max-width:767px) {
+        .header-contact-number a.emergency-btn-box-mb {
+            display: flex !important;
+            width: 80px;
+        }
+    }
+    </style>
+  <!----------CSS End------------------------->
+
+  <style >[wire\:loading], [wire\:loading\.delay], [wire\:loading\.inline-block], [wire\:loading\.inline], [wire\:loading\.block], [wire\:loading\.flex], [wire\:loading\.table], [wire\:loading\.grid], [wire\:loading\.inline-flex] {display: none;}[wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short], [wire\:loading\.delay\.long], [wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest] {display:none;}[wire\:offline] {display: none;}[wire\:dirty]:not(textarea):not(input):not(select) {display: none;}input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {animation-duration: 50000s;animation-name: livewireautofill;}@keyframes livewireautofill { from {} }</style>
+</head>
+
+<body>
+
+
+  <style>
+    .sticky-btn-fixed{padding: 12px; top: 35%;}
+    .sticky-btn-fixed a{text-align: center;}
+    .sticky-btn-fixed a span{color: #fff; font-size: 12px; font-weight: 600; display: block; text-align: center;}
+</style>
+
+
+  <div class="modal" id="Marmosetloadmodal">
+    <div class="close close-model-layer" data-close="modal"></div>
+    <div class="modal__dialog">
+      <div wire:id="CnnM7VCNk2ynQnxsEezu" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;CnnM7VCNk2ynQnxsEezu&quot;,&quot;name&quot;:&quot;request-callbacks&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;international-patient&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;cff3fa65&quot;,&quot;data&quot;:{&quot;name&quot;:null,&quot;email&quot;:null,&quot;mobile&quot;:null,&quot;type&quot;:&quot;home-navbar&quot;,&quot;token&quot;:&quot;&quot;,&quot;captcha&quot;:0,&quot;recaptcha&quot;:null,&quot;userIp&quot;:null,&quot;userAgent&quot;:null,&quot;currentPageUrl&quot;:&quot;https:\/\/www.sudharshan heart clinic.org\/international-patient&quot;,&quot;utm_source&quot;:&quot;Website&quot;,&quot;utm_medium&quot;:null,&quot;utm_campaign&quot;:null,&quot;getSubSource&quot;:&quot;Website - international-patient&quot;,&quot;utm_term&quot;:null},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;75f2ed20a5eabe457ceaed43f0f88f8504030e1e86092a58ae6a0efb4951f5c0&quot;}}">
+    <a class="close close-modal" data-close="modal" id="closeModal"></a>
+    <div class="modal__content">
+    <div class="modal-body">
+        <h2 class="reacllHeading">Request Call Back</h2>
+        <div class="btn-modal text-right">
+            <form wire:submit.prevent="submit">
+                <div >
+                                    </div>
+                <label for="fname">Name *</label>
+                <input type="text" id="fname" name="fname" value="" wire:model.lazy="name" placeholder="Enter Your Name">
+                
+                <label for="lname">Mobile Number *</label>
+                <input type="number" id="lname" name="lname" value="" wire:model.lazy="mobile" placeholder="Enter Your Mobile Number">
+                
+                <label for="lname">Email</label>
+                <input type="text" id="lname" name="lname" value="" wire:model.lazy="email" placeholder="Enter Your Email">
+                
+                <input type="hidden" name="type" wire:model="type" value="home-navbar">
+                
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                <br> <br>
+                <button type="submit" class="submitpopupbt" wire:click="loading">Submit</button>
+                <div class="form-loader loading" wire:loading wire:target="loading">
+                    <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                        <g transform="rotate(0 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(30 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(60 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(90 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(120 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(150 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(180 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(210 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(240 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(270 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(300 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g><g transform="rotate(330 50 50)">
+                            <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                    </svg>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <script>
+        window.addEventListener('close-modal', function(event) {
+            const delay = event.detail.delay;
+            setTimeout(function() {
+                var $closeModal = document.querySelector('#closeModal');
+                $closeModal.click();
+            }, 5000);
+        });
+    </script>
+    
+        <script type="text/javascript">
+             window.addEventListener('postUpdated', event => {
+                var $closeModal = document.querySelector('#closeModal');
+                $closeModal.click();
+            })
+            var onCallback = function (){
+                // alert('ue');
+                console.log('gcaptch')
+                console.log(grecaptcha.getResponse());
+                window.livewire.find('CnnM7VCNk2ynQnxsEezu').set('recaptcha',grecaptcha.getResponse());
+            }
+            window.addEventListener('reset-recaptcha', event => {
+                grecaptcha.reset();
+            })
+        </script>
+    
+</div>
+
+<!-- Livewire Component wire-end:CnnM7VCNk2ynQnxsEezu -->    </div>
+  </div>
+
+  <!-- Upload Resume Model -->
+  <div class="modal" id="sendResumModal">
+    <div class="close close-model-layer" data-close="modal"></div>
+    <div class="modal__dialog">
+      <a class="close close-modal" data-close="modal"></a>
+      <div class="modal__content">
+        <div class="modal-body">
+          <div class="frm-holder">
+            <div wire:id="R7sAC54epfSVpsUhPfI7" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;R7sAC54epfSVpsUhPfI7&quot;,&quot;name&quot;:&quot;jop-application-list&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;international-patient&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;62240f24&quot;,&quot;data&quot;:{&quot;name&quot;:null,&quot;email&quot;:null,&quot;mobile&quot;:null,&quot;resume&quot;:null,&quot;userIp&quot;:null,&quot;userAgent&quot;:null,&quot;currentPageUrl&quot;:&quot;https:\/\/www.sudharshan heart clinic.org\/international-patient&quot;,&quot;utm_source&quot;:&quot;Website&quot;,&quot;utm_medium&quot;:null,&quot;utm_campaign&quot;:null,&quot;utm_term&quot;:null},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;322f60823045514d72b6e0b557c4cde2164766ce841f910ee337b09f53b417f8&quot;}}">
+            <form wire:submit.prevent="save()">
+
+        <div class="field">
+            <label>Name *</label>
+            <input type="text" class="inputbox" wire:model.defer="name" placeholder="Enter Your Name" onkeydown="return /[a-zA-Z ]/i.test(event.key)">
+            <br>
+        </div>
+        <div class="field">
+            <label>Mobile Number *</label>
+            <input type="number" class="inputbox"  wire:model.defer="mobile" placeholder="Enter Your Number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);">
+            <br>
+        </div>
+        <div class="field">
+            <label>Email *</label>
+            <input type="email" class="inputbox"  wire:model.defer="email" placeholder="Enter Your Email">
+            <br>
+        </div>
+
+        <div class="field mb-20">
+            <label>Resume (accepted only pdf, docx) *</label>
+            <div class="upload-file" wire:ignore>
+                <input type="file" class="inputbox" id="resume" name="resume" wire:model.defer="resume"/>
+            </div>
+            <br>
+        </div>
+        <button type="submit" class="theme-button">Submit</button>
+        <div class="form-loader loading" wire:loading wire:target="save">
+            <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                <g transform="rotate(0 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(30 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(60 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(90 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(120 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(150 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(180 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(210 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(240 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(270 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(300 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(330 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g>
+            </svg>
+        </div>
+    </form>
+     <script>
+        window.addEventListener('resetFileInput', event => {
+            document.getElementById('resume').value = null;
+        });
+    </script>
+</div>
+
+<!-- Livewire Component wire-end:R7sAC54epfSVpsUhPfI7 -->          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<div class="sticky-links">
+    <div class="container">
+        <ul>
+            <li><a href="#statistics-section">Statistics</a></li>
+            <li><a href="#stats-section">Stats</a></li>
+            <li><a href="#patient-service-section">International Patient Services</a></li>
+            <li><a href="#specialities-and-procedures-section">Our Specialities and Procedures</a></li>
+            <li><a href="#journey-section">Journey</a></li>
+           
+            <li><a href="#patient-stories-section">Patient Stories</a></li>
+          
+            <li><a href="#awards-section">Awards & Accreditations</a></li>
+            <li><a href="#hospitals-section">Sudharshan Heart Clinic Network</a></li>
+        </ul>
+    </div>
+</div>
+<main>
+    <section class="map-statics-section" id="statistics-section">
+        <div class="container">
+            <div class="map-statics">
+                <div class="language-wrap"></div>
+                <div class="col-wrap space-lg dflex centered-items flexwrap">
+                    <div class="col col7">
+                        <div class="map-container text-center">
+                            <img src="https://medanta.s3.ap-south-1.amazonaws.com/banners/October2023/6zMYdqeIQflNpFRqbNXgFCqrtF90GB-metaSlVJYk82NHdDM0dpUDJaOEhzQ0pPMUp4dlZLSml1LW1ldGFiV0Z3TG5CdVp3PT0tLnBuZw==-.png" alt="International Patient Main">
+                        </div>
+                    </div>
+                    <div class="col col5">
+                        <div class="query-form frm-holder">
+                            <div class="heading-md font600 mb-20">Query Form</div>
+                            <div wire:id="thXtdsnzu8Hg8HlB2XLC" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;thXtdsnzu8Hg8HlB2XLC&quot;,&quot;name&quot;:&quot;international-patient-mains-query&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;international-patient&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;944f0ce0&quot;,&quot;data&quot;:{&quot;name&quot;:null,&quot;email&quot;:null,&quot;mobile&quot;:null,&quot;type&quot;:&quot;international-patient-mains&quot;,&quot;form_type&quot;:&quot;international-patient-mains-query-form&quot;,&quot;token&quot;:&quot;&quot;,&quot;captcha&quot;:0,&quot;recaptcha&quot;:null,&quot;userIp&quot;:null,&quot;userAgent&quot;:null,&quot;currentPageUrl&quot;:&quot;https:\/\/www.sudharshan heart clinic.org\/international-patient&quot;,&quot;utm_source&quot;:&quot;Website&quot;,&quot;utm_medium&quot;:null,&quot;utm_campaign&quot;:null,&quot;utm_term&quot;:null},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;01af3f76cdfee7d5dee4ee5b34593ce9d01bf06971d046f776d1431cfe85cc95&quot;}}">
+
+    <form wire:submit.prevent="submit">
+        <div >
+                    </div>
+        <div class="field">
+            <label>Name *</label>
+            <input type="text" class="inputbox" wire:model.lazy="name" placeholder="Enter Your Name"/>
+                    </div>
+        <div class="field">
+            <label>Mobile number *</label>
+            <input type="number" class="inputbox" wire:model.lazy="mobile" placeholder="Enter Your Mobile Number"/>
+                    </div>
+        <div class="field mb-30">
+            <label>Email *</label>
+            <input type="email" class="inputbox" wire:model.lazy="email" placeholder="Enter Your Email"/>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+        <button type="submit" class="theme-button submitpopupbt">Submit</button>
+        <div class="form-loader loading" wire:loading wire:target="submit">
+            <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                <g transform="rotate(0 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(30 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(60 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(90 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(120 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(150 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(180 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(210 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(240 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(270 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(300 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g><g transform="rotate(330 50 50)">
+                    <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#fe718d">
+                        <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>
+                    </rect>
+                </g>
+            </svg>
+        </div>
+    </form>
+    <script type="text/javascript">
+        var onCallback1 = function (){
+            // alert('ue');
+            console.log('gcaptch')
+            console.log(grecaptcha.getResponse());
+            window.livewire.find('thXtdsnzu8Hg8HlB2XLC').set('recaptcha',grecaptcha.getResponse());
+        }
+
+        window.addEventListener('reset-recaptcha1', event => {
+            grecaptcha.reset();
+        })
+
+    </script>
+</div>
+
+
+<!-- Livewire Component wire-end:thXtdsnzu8Hg8HlB2XLC -->
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <section class="py-50 content-section" id="stats-section">
+        <div class="section-head text-center mb-20 wow fadeInUp">
+            <h1 class="heading">International Patients</h1>
+        </div>
+        <div class="container-slider">
+            <div id="sub-specialisations-slider"
+                class="space-row1 slick-arrow-style-2 slider-tb-shadow eqslides-height wow fadeInUp"
+                data-wow-delay=".3s">
+                                <div class="slide-item">
+                    <div class="sub-speciality-card nohover eqheight">
+                        <div class="speciality-icon">
+                            <div class="icon-default">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/opinion/October2023/TeifOpS4BMLb29cXpO7dNM1IhtsLo7-metaQXZlcmFnZSBJbnRlcm5hdGlvbmFsIFBhdGllbnRzIFBlciBZZWFyLnBuZw==-.png" alt="20K" width="100" height="100">
+                            </div>
+                        </div>
+                        <div class="sudharshan heart cliniclgheading text-center font700 clr-primary mb-10">1200+</div>
+                        <div class="speciality-title sudharshan heart clinicsmheading font600 clr-dark text-center">   Happy Patients
+                        </div>
+                    </div>
+                </div>
+                                <div class="slide-item">
+                    <div class="sub-speciality-card nohover eqheight">
+                        <div class="speciality-icon">
+                            <div class="icon-default">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/opinion/October2023/SK8s5vBlkV0EOkhNabKidUcgN2jTis-metaQ291bnRyaWVzIDEucG5n-.png" alt="130+" width="100" height="100">
+                            </div>
+                        </div>
+                        <div class="sudharshan heart cliniclgheading text-center font700 clr-primary mb-10">800+</div>
+                        <div class="speciality-title sudharshan heart clinicsmheading font600 clr-dark text-center">    Angiography
+                        </div>
+                    </div>
+                </div>
+                                <div class="slide-item">
+                    <div class="sub-speciality-card nohover eqheight">
+                        <div class="speciality-icon">
+                            <div class="icon-default">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/opinion/October2023/he0GX8YgM5qBBnsnhAY4pu68gRaAIT-metaSG9zcGl0YWwgaW4gSW5kaWEucG5n-.png" alt="06" width="100" height="100">
+                            </div>
+                        </div>
+                        <div class="sudharshan heart cliniclgheading text-center font700 clr-primary mb-10">500</div>
+                        <div class="speciality-title sudharshan heart clinicsmheading font600 clr-dark text-center">    Angioplasty
+                        </div>
+                    </div>
+                </div>
+                                <div class="slide-item">
+                    <div class="sub-speciality-card nohover eqheight">
+                        <div class="speciality-icon">
+                            <div class="icon-default">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/opinion/October2023/Q0ZfJN7o1ZbpQpIJEbDCcxKb6GynkP-metaTWVkaWNhbCBTcGVjaWFsaXRpZXMucG5n-.png" alt="30+" width="100" height="100">
+                            </div>
+                        </div>
+                        <div class="sudharshan heart cliniclgheading text-center font700 clr-primary mb-10">107+</div>
+                        <div class="speciality-title sudharshan heart clinicsmheading font600 clr-dark text-center">    Awards & Certifications
+                        </div>
+                    </div>
+                </div>
+                            </div>
+        </div>
+    </section>
+    
+
+        <section class="py-50 section-lightbg" id="patient-service-section">
+        <div class="container">
+            <div class="heading mb-40 text-center">International Patient Services</div>
+            <div class="patientservice-desktop-card">
+                                    <div class="patientservice-card-row">
+                                                <div class="patientservice-card">
+                            <div class="card-img">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/international-patient-services/November2023/qas39APQl0THXQmWmpmgIfjQY3VDnW-metaRXN0aW1hdGUuanBn-.jpg" width="414" height="366" alt="Request An Estimate">
+                            </div>
+                            <div class="card-desc">
+                                <div class="heading-md mb-20">Request An Estimate</div>
+                                <a href="/international-patient/services/request-an-estimate" class="anchor-button">Know More <span></span></a>
+                            </div>
+                        </div>
+                                                <div class="patientservice-card">
+                            <div class="card-img">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/international-patient-services/October2023/1PbYpVMFiCka4LjwRutLGWZh8Q7izA-metaUGxhbiBZb3VyIFZpc2l0LmpwZw==-.jpg" width="414" height="366" alt="Plan Your Visit">
+                            </div>
+                            <div class="card-desc">
+                                <div class="heading-md mb-20">Plan Your Visit</div>
+                                <a href="/plan-your-trip" class="anchor-button">Know More <span></span></a>
+                            </div>
+                        </div>
+                                            </div>
+                                    <div class="patientservice-card-row">
+                                                <div class="patientservice-card">
+                            <div class="card-img">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/international-patient-services/November2023/GYy18oyp5qaHJ1Y3ZqUitQThqN8Ok3-metaSGVscCAmIERlc2suanBn-.jpg" width="414" height="366" alt="Help Desk &amp; FAQ’s">
+                            </div>
+                            <div class="card-desc">
+                                <div class="heading-md mb-20">Help Desk &amp; FAQ’s</div>
+                                <a href="/international-patient-help-desk" class="anchor-button">Know More <span></span></a>
+                            </div>
+                        </div>
+                                                <div class="patientservice-card">
+                            <div class="card-img">
+                                <img src="https://medanta.s3.ap-south-1.amazonaws.com/international-patient-services/October2023/W1hUbnynMMvDRjsWgKhmnLl4IA6s6X-metaTWFzayBncm91cCAoMSkuanBn-.jpg" width="414" height="366" alt="Insurance Partner Network">
+                            </div>
+                            <div class="card-desc">
+                                <div class="heading-md mb-20">Insurance Partner Network</div>
+                                <a href="/insurance-partner" class="anchor-button">Know More <span></span></a>
+                            </div>
+                        </div>
+                                            </div>
+                            </div>
+            <div class="patientservice-slider space-row slick-arrow-style-1 eqslides-height">
+                                    <div class="slide-item">
+                        <div class="patientservice-card eqheight">
+
+                                <div class="card-img">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/international-patient-services/November2023/qas39APQl0THXQmWmpmgIfjQY3VDnW-metaRXN0aW1hdGUuanBn-.jpg" width="414" height="366" alt="Request An Estimate">
+                                </div>
+                                <div class="card-desc">
+                                    <div class="heading-md mb-20">Request An Estimate</div>
+                                    <a href="/international-patient/services/request-an-estimate" class="anchor-button">Know More <span></span></a>
+                                </div>
+
+                        </div>
+                    </div>
+                                    <div class="slide-item">
+                        <div class="patientservice-card eqheight">
+
+                                <div class="card-img">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/international-patient-services/October2023/1PbYpVMFiCka4LjwRutLGWZh8Q7izA-metaUGxhbiBZb3VyIFZpc2l0LmpwZw==-.jpg" width="414" height="366" alt="Plan Your Visit">
+                                </div>
+                                <div class="card-desc">
+                                    <div class="heading-md mb-20">Plan Your Visit</div>
+                                    <a href="/plan-your-trip" class="anchor-button">Know More <span></span></a>
+                                </div>
+
+                        </div>
+                    </div>
+                                    <div class="slide-item">
+                        <div class="patientservice-card eqheight">
+
+                                <div class="card-img">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/international-patient-services/November2023/GYy18oyp5qaHJ1Y3ZqUitQThqN8Ok3-metaSGVscCAmIERlc2suanBn-.jpg" width="414" height="366" alt="Help Desk &amp; FAQ’s">
+                                </div>
+                                <div class="card-desc">
+                                    <div class="heading-md mb-20">Help Desk &amp; FAQ’s</div>
+                                    <a href="/international-patient-help-desk" class="anchor-button">Know More <span></span></a>
+                                </div>
+
+                        </div>
+                    </div>
+                                    <div class="slide-item">
+                        <div class="patientservice-card eqheight">
+
+                                <div class="card-img">
+                                    <img src="https://medanta.s3.ap-south-1.amazonaws.com/international-patient-services/October2023/W1hUbnynMMvDRjsWgKhmnLl4IA6s6X-metaTWFzayBncm91cCAoMSkuanBn-.jpg" width="414" height="366" alt="Insurance Partner Network">
+                                </div>
+                                <div class="card-desc">
+                                    <div class="heading-md mb-20">Insurance Partner Network</div>
+                                    <a href="/insurance-partner" class="anchor-button">Know More <span></span></a>
+                                </div>
+
+                        </div>
+                    </div>
+                            </div>
+        </div>
+    </section>
+    
+    
+
+        <section class="py-50 section-lightbg association-process-section" id="journey-section">
+        <div class="container">
+            <div class="section-head text-center wow fadeInUp">
+                <div class="heading text-center mb-20">Your Treatment Journey At Sudharshan Heart Clinic Hospitals</div>
+                <p>Here’s what your treatment journey will look like at Sudharshan Heart Clinic:</p>
+            </div>
+        </div>
+        <div class="container-slider">
+            <div id="association-process-slider"
+                class="space-row1 slick-arrow-style-2 slider-tb-shadow eqslides-height wow fadeInUp"
+                data-wow-delay=".3s">
+                                                <div class="slide-item">
+                    <div class="white-dots-card solid-white eqheight">
+                        <div class="card-header mb-20">
+                            <div class="count heading-lg font-700">
+                                1.
+                            </div>
+                            <div class="title font700">Case Assessment
+                            </div>
+                        </div>
+                        <div class="para-wrap">
+                            <p><p>Our clinical team thoroughly analyses your medical history based on the case summaries provided by you before your arrival.</p></p>
+                        </div>
+                        <div class="icon">
+                            <img width="100" height="100" src="https://medanta.s3.ap-south-1.amazonaws.com/cms/October2023/qnv60OdD1zO2lSvrOti9adWxQNrtUZ-metaSGF2ZSB5b3VyIG1lZGljYWwgaGlzdG9yeSBhbmFseXNlZC5wbmc=-.png" alt="Case Assessment">
+                        </div>
+                    </div>
+                </div>
+                                <div class="slide-item">
+                    <div class="white-dots-card solid-white eqheight">
+                        <div class="card-header mb-20">
+                            <div class="count heading-lg font-700">
+                                2.
+                            </div>
+                            <div class="title font700">Teleconsultation (if required)
+                            </div>
+                        </div>
+                        <div class="para-wrap">
+                            <p><p>A teleconsultation between you and our clinician is conducted to discuss your case and address any initial concerns before your physical visit.</p></p>
+                        </div>
+                        <div class="icon">
+                            <img width="100" height="100" src="https://medanta.s3.ap-south-1.amazonaws.com/cms/October2023/e7o73lcftnQZ8c7uMPhVb7UFnqLfch-metaQ29uc3VsdCBldmVuIGJlZm9yZSBtYWtpbmcgYSB0cmlwLnBuZw==-.png" alt="Teleconsultation (if required)">
+                        </div>
+                    </div>
+                </div>
+                                <div class="slide-item">
+                    <div class="white-dots-card solid-white eqheight">
+                        <div class="card-header mb-20">
+                            <div class="count heading-lg font-700">
+                                3.
+                            </div>
+                            <div class="title font700">Appointment Assistance
+                            </div>
+                        </div>
+                        <div class="para-wrap">
+                            <p><p>Our dedicated team assists you in scheduling appointments with the relevant specialists, ensuring a streamlined and efficient process.</p></p>
+                        </div>
+                        <div class="icon">
+                            <img width="100" height="100" src="https://medanta.s3.ap-south-1.amazonaws.com/cms/October2023/XdR1yxUUGab4PFztObbXaCkRdDFO2h-metaQ29uZmlybSBkYXRlcywgd2UnbGwgc29ydCBvdXQgcmVzdC5wbmc=-.png" alt="Appointment Assistance">
+                        </div>
+                    </div>
+                </div>
+                                <div class="slide-item">
+                    <div class="white-dots-card solid-white eqheight">
+                        <div class="card-header mb-20">
+                            <div class="count heading-lg font-700">
+                                4.
+                            </div>
+                            <div class="title font700">Visa Assistance
+                            </div>
+                        </div>
+                        <div class="para-wrap">
+                            <p><p>For international patients, we provide comprehensive visa assistance to facilitate a hassle-free entry into the country for your medical treatment.<br><br></p></p>
+                        </div>
+                        <div class="icon">
+                            <img width="100" height="100" src="https://medanta.s3.ap-south-1.amazonaws.com/cms/December2023/v5MuSd2pZaMOGKI3b6uM6XS6eX2YDR-metaY29uc3VsdGF0aW9uLnBuZw==-.png" alt="Visa Assistance">
+                        </div>
+                    </div>
+                </div>
+                                <div class="slide-item">
+                    <div class="white-dots-card solid-white eqheight">
+                        <div class="card-header mb-20">
+                            <div class="count heading-lg font-700">
+                                5.
+                            </div>
+                            <div class="title font700">Complementary Pick-up and Drop
+                            </div>
+                        </div>
+                        <div class="para-wrap">
+                            <p><p>Enjoy the convenience of complimentary pick-up and drop services to and from the airport, ensuring a comfortable start and end to your journey.</p></p>
+                        </div>
+                        <div class="icon">
+                            <img width="100" height="100" src="https://medanta.s3.ap-south-1.amazonaws.com/cms/December2023/wzhRK4s7QOogOtTv52PizMg9hQaZKO-metacGlja3VwLnBuZw==-.png" alt="Complementary Pick-up and Drop">
+                        </div>
+                    </div>
+                </div>
+                                <div class="slide-item">
+                    <div class="white-dots-card solid-white eqheight">
+                        <div class="card-header mb-20">
+                            <div class="count heading-lg font-700">
+                                6.
+                            </div>
+                            <div class="title font700">Foreign Language Interpreter Service
+                            </div>
+                        </div>
+                        <div class="para-wrap">
+                            <p><p>We offer full-time foreign language interpreter services in languages such as Russian, Arabic, Bengali, Burmese, and Persian to enhance communication and understanding during your stay.</p></p>
+                        </div>
+                        <div class="icon">
+                            <img width="100" height="100" src="https://medanta.s3.ap-south-1.amazonaws.com/cms/December2023/nDJY78zTIvzWXOLS3wM8AMoCa6yJd4-metabGFuZ2lhZ2UgaW50ZXJwcmV0ZXIucG5n-.png" alt="Foreign Language Interpreter Service">
+                        </div>
+                    </div>
+                </div>
+                                <div class="slide-item">
+                    <div class="white-dots-card solid-white eqheight">
+                        <div class="card-header mb-20">
+                            <div class="count heading-lg font-700">
+                                7.
+                            </div>
+                            <div class="title font700">Express Check-In at International Patient&#039;s Lounge
+                            </div>
+                        </div>
+                        <div class="para-wrap">
+                            <p><p>Experience a swift and hassle-free check-in process through our dedicated International Patient's Lounge, ensuring a comfortable and efficient arrival.</p></p>
+                        </div>
+                        <div class="icon">
+                            <img width="100" height="100" src="https://medanta.s3.ap-south-1.amazonaws.com/cms/December2023/c2alGxspSgghK84JX8isbuGeOgk0t6-metabG91bmdlLnBuZw==-.png" alt="Express Check-In at International Patient&#039;s Lounge">
+                        </div>
+                    </div>
+                </div>
+                                <div class="slide-item">
+                    <div class="white-dots-card solid-white eqheight">
+                        <div class="card-header mb-20">
+                            <div class="count heading-lg font-700">
+                                8.
+                            </div>
+                            <div class="title font700">Dedicated Buddy/Staff Allocation
+                            </div>
+                        </div>
+                        <div class="para-wrap">
+                            <p><p>Throughout your stay, a dedicated buddy or staff member is assigned to you to provide personalised assistance and ensure smooth coordination during your entire treatment journey.</p></p>
+                        </div>
+                        <div class="icon">
+                            <img width="100" height="100" src="https://medanta.s3.ap-south-1.amazonaws.com/cms/December2023/CxoIh7iS7GzVxapNNfnjkjCs6Oruzh-metac3RhZmYucG5n-.png" alt="Dedicated Buddy/Staff Allocation">
+                        </div>
+                    </div>
+                </div>
+                                <div class="slide-item">
+                    <div class="white-dots-card solid-white eqheight">
+                        <div class="card-header mb-20">
+                            <div class="count heading-lg font-700">
+                                9.
+                            </div>
+                            <div class="title font700">Food Arrangements
+                            </div>
+                        </div>
+                        <div class="para-wrap">
+                            <p><p>Upon admission, we provide international patients and their attendants with a choice of vegetarian and non-vegetarian cuisine. Our goal is to ensure your nutritional needs are met during your stay.</p></p>
+                        </div>
+                        <div class="icon">
+                            <img width="100" height="100" src="https://medanta.s3.ap-south-1.amazonaws.com/cms/December2023/j8sRjtL6AwClUSCdBnflEA4f1jc0M6-metaRm9vZC5wbmc=-.png" alt="Food Arrangements">
+                        </div>
+                    </div>
+                </div>
+                                <div class="slide-item">
+                    <div class="white-dots-card solid-white eqheight">
+                        <div class="card-header mb-20">
+                            <div class="count heading-lg font-700">
+                                10.
+                            </div>
+                            <div class="title font700">Affordable and Comfortable Guest House Arrangement (if required)
+                            </div>
+                        </div>
+                        <div class="para-wrap">
+                            <p><p>We can assist in arranging affordable and comfortable guest house accommodations to ensure a pleasant and convenient stay for you and your accompanying members.</p></p>
+                        </div>
+                        <div class="icon">
+                            <img width="100" height="100" src="https://medanta.s3.ap-south-1.amazonaws.com/cms/December2023/wzEQY77ZmgwwiqcavQJYpqA6rvbGxU-metaZ3Vlc3QgaG91c2UucG5n-.png" alt="Affordable and Comfortable Guest House Arrangement (if required)">
+                        </div>
+                    </div>
+                </div>
+                                <div class="slide-item">
+                    <div class="white-dots-card solid-white eqheight">
+                        <div class="card-header mb-20">
+                            <div class="count heading-lg font-700">
+                                11.
+                            </div>
+                            <div class="title font700">Ambulance Pick-Up (if required)
+                            </div>
+                        </div>
+                        <div class="para-wrap">
+                            <p><p>In case of emergency or specific medical needs, we offer ambulance pick-up services to transport you safely to the hospital.</p></p>
+                        </div>
+                        <div class="icon">
+                            <img width="100" height="100" src="https://medanta.s3.ap-south-1.amazonaws.com/cms/December2023/m8ZMtl5lq1bKmvf4q9wmv9Ha3svhER-metadmlzYSBmcmVlLnBuZw==-.png" alt="Ambulance Pick-Up (if required)">
+                        </div>
+                    </div>
+                </div>
+                            </div>
+        </div>
+    </section>
+    
+       
+
+ <section class="hospital-section py-50" id="hospitals-section">
+    <div class="container">
+            <div class="heading mb-10 text-center wow fadeInUp">Dr Gaurav Mohan Network</div>
+        <div >
+    <div class="slider-mobile-layout space-row slick-arrow-style-1 eqslides-height wow fadeInUp" data-wow-delay=".3s" id="hospital-slider">
+                                <div class="slide-item">
+                <div class="hospital-card hospital-card eqheight">
+                    <div class="thumb thumb-ratio thumb-ratio1">
+                                                    <a href="/hospitals-near-me/gurugram-hospital">
+                                <img loading="lazy" src="https://medanta.s3.ap-south-1.amazonaws.com/hospitals/February2025/KRKHMv9Fxr54fLXKN0OjZzxiiwFTBq-metaT2JSZkdhUTI1bnJwWldCdkJKMWxzdHBCVG91cEdNLW1ldGFSM1Z5ZFdkeVlXMHVhbkJuLS5qcGc=-.jpg" alt="gurugram-hospital" width="514" height="400">
+                            </a>
+                                            </div>
+                    <div class="card-desc text-center">
+                        <div class="location mb-20">
+                            <span class="location-icon">
+                                <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="https://www.w3.org/2000/svg">
+                            <path d="M13 7.6665C13 12.3332 7 16.3332 7 16.3332C7 16.3332 1 12.3332 1 7.6665C1 6.07521 1.63214 4.54908 2.75736 3.42386C3.88258 2.29864 5.4087 1.6665 7 1.6665C8.5913 1.6665 10.1174 2.29864 11.2426 3.42386C12.3679 4.54908 13 6.07521 13 7.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 9.6665C8.10457 9.6665 9 8.77107 9 7.6665C9 6.56193 8.10457 5.6665 7 5.6665C5.89543 5.6665 5 6.56193 5 7.6665C5 8.77107 5.89543 9.6665 7 9.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            </span>Delhi</div>
+                        <div class="heading-md mb-30">Dr Gaurav Mohan - The Medicity, Delhi</div>
+                                                                                    <div class="action-cta dflex space-between centered-items">
+                                    <a href="/hospitals-near-me/gurugram-hospital" class="anchor-button">Know More <span></span></a>
+                                </div>
+                                                                        </div>
+                </div>
+            </div>
+                                <div class="slide-item">
+                <div class="hospital-card hospital-card eqheight">
+                    <div class="thumb thumb-ratio thumb-ratio1">
+                                                    <a href="/hospitals-near-me/delhi-hospital">
+                                <img loading="lazy" src="https://medanta.s3.ap-south-1.amazonaws.com/hospitals/September2023/7SQ9q1Q1OCZRgZRErb64rLCNhnUGSi-metabHVja25vdy5qcGc=-.jpg" alt="delhi-hospital" width="514" height="400">
+                            </a>
+                                            </div>
+                    <div class="card-desc text-center">
+                        <div class="location mb-20">
+                            <span class="location-icon">
+                                <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="https://www.w3.org/2000/svg">
+                            <path d="M13 7.6665C13 12.3332 7 16.3332 7 16.3332C7 16.3332 1 12.3332 1 7.6665C1 6.07521 1.63214 4.54908 2.75736 3.42386C3.88258 2.29864 5.4087 1.6665 7 1.6665C8.5913 1.6665 10.1174 2.29864 11.2426 3.42386C12.3679 4.54908 13 6.07521 13 7.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 9.6665C8.10457 9.6665 9 8.77107 9 7.6665C9 6.56193 8.10457 5.6665 7 5.6665C5.89543 5.6665 5 6.56193 5 7.6665C5 8.77107 5.89543 9.6665 7 9.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            </span>Delhi</div>
+                        <div class="heading-md mb-30">Dr Gaurav Mohan Super Speciality Hospital, Delhi</div>
+                                                                                    <div class="action-cta dflex space-between centered-items">
+                                    <a href="/hospitals-near-me/delhi-hospital" class="anchor-button">Know More <span></span></a>
+                                </div>
+                                                                        </div>
+                </div>
+            </div>
+                                <div class="slide-item">
+                <div class="hospital-card hospital-card eqheight">
+                    <div class="thumb thumb-ratio thumb-ratio1">
+                                                    <a href="/hospitals-near-me/patna-hospital">
+                                <img loading="lazy" src="https://medanta.s3.ap-south-1.amazonaws.com/hospitals/February2025/YelIyqoA5uGHAsU26kWk9EH54Aumyv-metaUGF0bmEgSG9zcGl0YWwgSW1hZ2UgKDIpLmpwZw==-.jpg" alt="delhi-hospital" width="514" height="400">
+                            </a>
+                                            </div>
+                    <div class="card-desc text-center">
+                        <div class="location mb-20">
+                            <span class="location-icon">
+                                <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="https://www.w3.org/2000/svg">
+                            <path d="M13 7.6665C13 12.3332 7 16.3332 7 16.3332C7 16.3332 1 12.3332 1 7.6665C1 6.07521 1.63214 4.54908 2.75736 3.42386C3.88258 2.29864 5.4087 1.6665 7 1.6665C8.5913 1.6665 10.1174 2.29864 11.2426 3.42386C12.3679 4.54908 13 6.07521 13 7.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 9.6665C8.10457 9.6665 9 8.77107 9 7.6665C9 6.56193 8.10457 5.6665 7 5.6665C5.89543 5.6665 5 6.56193 5 7.6665C5 8.77107 5.89543 9.6665 7 9.6665Z" stroke="#58595B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            </span>Delhi</div>
+                        <div class="heading-md mb-30">Jay Prabha Dr Gaurav Mohan Super Specialty Hospital, Delhi</div>
+                                                                                    <div class="action-cta dflex space-between centered-items">
+                                    <a href="/hospitals-near-me/patna-hospital" class="anchor-button">Know More <span></span></a>
+                                </div>
+                                                                        </div>
+                </div>
+            </div>
+            </div>
+</div>
+</div>
+</section>
+    </main>
+
+
+
+
+  <script src="https://www.sudharshanheartclinic.com/assets/js/jquery.min.js"></script>
+  <script src="https://www.sudharshanheartclinic.com/assets/js/jquery-ui.js"></script>
+  <script src="https://www.sudharshanheartclinic.com/assets/js/slick.min.js"></script>
+  <script src="https://www.sudharshanheartclinic.com/assets/js/wow.min.js"></script>
+  <script src="https://www.sudharshanheartclinic.com/assets/js/jquery.magnific-popup.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" defer></script> -->
+  <script src="https://www.sudharshanheartclinic.com/assets/js/custom.js?v=2.2"></script>
+
+
+  <script>
+    $(document).ready(function () {
+        $('.download-slider').slick({
+            speed: 300,
+            slidesToShow: 4,
+            arrows: true,
+            slidesToScroll: 1,
+            prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}'  /></button>",
+            nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+            responsive: [
+                {
+                    breakpoint: 1199,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false
+                    }
+                }
+            ]
+        });
+
+        $('.specialities-slider').slick({
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}'  /></button>",
+            nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+            responsive: [
+                {
+                    breakpoint: 1199,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+
+        $('.doctor-slider').slick({
+            speed: 300,
+            slidesToShow: 3,
+            arrows: true,
+            slidesToScroll: 1,
+            prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}'  /></button>",
+            nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+            responsive: [
+                {
+                    breakpoint: 1319,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+
+        $('.patientservice-slider').slick({
+            speed: 300,
+            slidesToShow: 3,
+            arrows: true,
+            slidesToScroll: 1,
+            prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}'  /></button>",
+            nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+            responsive: [
+                {
+                    breakpoint: 1199,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+
+        $('#association-process-slider').slick({
+            speed: 300,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}'  /></button>",
+            nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+            responsive: [
+                {
+                    breakpoint: 1199,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false
+                    }
+                }
+            ]
+        });
+
+        $('.featured-post-slider').slick({
+            speed: 300,
+            slidesToShow: 3,
+            arrows: true,
+            slidesToScroll: 1,
+            prevArrow: "<button type='button' class='slick-arrow slick-prev'><img src='{% static 'base/images/icons/vector-left.png' %}'  /></button>",
+            nextArrow: "<button type='button' class='slick-arrow slick-next'><img src='{% static 'base/images/icons/vector-right.png' %}' /></button>",
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 991,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+
+        $('.specialities-tabs-btn .theme-button').click(function () {
+            var id = $(this).attr('id');
+            $('.specialities-tabs-btn .theme-button').addClass('button-outline');
+            $(this).removeClass('button-outline');
+            $('.specialities-and-tabs-content.active').removeClass('active');
+            $('.specialities-and-tabs-content#' + id).addClass('active');
+            $('.specialities-slider').slick('refresh');
+        });
+
+        $('.doc-tabs-anchor a').click(function (e) {
+            e.preventDefault();
+            var id = $(this).attr('href');
+            $(this).parents('.doc-card').find('.doc-tabs-holder .doc-tab.active').removeClass('active');
+            $(this).parents('.doc-card').find('.doc-tabs-anchor a.active').removeClass('active');
+            $(this).addClass('active');
+            $(this).parents('.doc-card').find('.doc-tabs-holder .doc-tab' + id).addClass('active');
+        });
+
+    });
+
+</script>
+  
+  <script src="/livewire/livewire.js?id=90730a3b0e7144480175" data-turbo-eval="false" data-turbolinks-eval="false" ></script><script data-turbo-eval="false" data-turbolinks-eval="false" >window.livewire = new Livewire();window.Livewire = window.livewire;window.livewire_app_url = '';window.livewire_token = 'qyKEBEY2hOs8PY68ynJcIwizTbxwHpR0s4xL4lcx';window.deferLoadingAlpine = function (callback) {window.addEventListener('livewire:load', function () {callback();});};let started = false;window.addEventListener('alpine:initializing', function () {if (! started) {window.livewire.start();started = true;}});document.addEventListener("DOMContentLoaded", function () {if (! started) {window.livewire.start();started = true;}});</script>
+</body>
+
+</html>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Add contact page specific JavaScript here -->
+{% endblock %}
